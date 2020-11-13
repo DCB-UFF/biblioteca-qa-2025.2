@@ -15,8 +15,20 @@ public abstract class Pessoa {
     protected String nascimento;
     protected String telefone;
     
-    protected abstract void cadastro();
-    protected abstract void modificar();
+    protected void cadastro(String nome, String nascimento, String telefone){
+    
+        this.nome = nome;
+        this.nascimento = nascimento;
+        this.telefone = telefone;
+    
+    };
+    protected void modificar(String nome, String nascimento, String telefone){
+    
+        this.nome = nome;
+        this.nascimento = nascimento;
+        this.telefone = telefone;
+        
+    };
     protected abstract void excluir();
     
 }
