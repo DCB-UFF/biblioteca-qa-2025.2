@@ -8,18 +8,50 @@ public class Acervo {
     protected ArrayList<Estante> estantes = new ArrayList();
     protected ArrayList<Emprestimo> emprestimos = new ArrayList();
     
+    
     public void addEstante(Estante nova) {
         this.estantes.add(nova);
         
     }
     
-    public void registarEmprestimo(Emprestimo novo) {
-        this.emprestimos.add(novo);
+    public void addLivro(Livro novo){
+        for (Estante e : estantes){
+            if (e.genero.equals(novo.genero)){
+                e.addLivroNaEstante(novo);
+            }
+        }
         
     }
     
-    public void registarDevolucao(Emprestimo e) {
-        this.emprestimos.remove(e);
+    public void buscarLivro (Livro livro){
+        for (Estante e : estantes){
+            if (e.genero.equals(livro.genero)){
+                e.buscarLivroNaEstante(livro.titulo);
+            }
+        }
+    }
+    
+    public Livro buscarLivroId (int idLivro){
+        for (Estante e : estantes){
+                Livro aux = e.buscarLivroNaEstanteId(idLivro);
+                if (!aux.isEmpty()){
+                    return aux;
+            }
+        }
+        return null;
+    }
+    
+    public void imprimirAcervo(){
+        for (Estante e : estantes){
+            e.imprimirEstante();
+        }
+    }
+    
+    
+    
+    
+    public void registarEmprestimo(Emprestimo novo) {
+        this.emprestimos.add(novo);
         
     }
     
@@ -33,11 +65,12 @@ public class Acervo {
         return null;
     }
     
-    
-    public void imprimirAcervo(){
-        for (Estante e : estantes){
-            e.imprimirEstante();
-        }
+    public void registarDevolucao(int idEmprestimo) {
+        // Checar atraso
+        Emprestimo emp = this.buscarEmprestimo(idEmprestimo);
+        // Buscar o livro no acervo e mudar para não-emprestado
+        //Buscar Cliente no Admnistração e retirar livro do array dele 
+        this.emprestimos.remove(emp);
+        
     }
-
 }

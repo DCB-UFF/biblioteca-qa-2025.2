@@ -2,6 +2,8 @@ package biblioteca.livros;
 
 public class Livro implements Emprestavel {
    int idLivro;
+   boolean estaEmprestado;
+   
    String titulo;
    String autor;
    int numPaginas;
@@ -11,13 +13,19 @@ public class Livro implements Emprestavel {
    int anoPublicacao;
    String editora;
    int edicao;
-   boolean estaEmprestado;
    
    
-    public Livro(String titulo, String autor) {
+   
+    public Livro(String titulo, String autor, int anoPublicacao, String editora, int edicao) {
         this.idLivro = Acervo.idsLivros++;
+        this.estaEmprestado = false;
+        
         this.titulo = titulo;
         this.autor = autor;
+        this.anoPublicacao = anoPublicacao;
+        this.editora = editora;
+        this.edicao= edicao;
+        
     }
     public Livro(String titulo, String autor, int numPaginas, long ISBN, String genero, 
             String idioma, int anoPublicacao, String editora, int edicao) {
@@ -31,11 +39,19 @@ public class Livro implements Emprestavel {
         this.anoPublicacao = anoPublicacao;
         this.editora = editora;
         this.edicao = edicao;
+        this.estaEmprestado = false;
     }
 
     
     public void imprimirLivro(){
-        System.out.printf("%s (%d)\n%s - %s %dªed. \n", this.titulo, this.anoPublicacao, this.autor, this.editora, this.edicao);
+        if (this.estaEmprestado){
+            System.out.printf("Cód: %d [Emprestado]| %s (%d)\n%s - %s %dªed.  \n",
+                    this.idLivro, this.titulo, this.anoPublicacao, this.autor, this.editora, this.edicao);    
+        }
+        else{
+            System.out.printf("Cód: %d | %s (%d)\n%s - %s %dªed. \n",
+            this.idLivro, this.titulo, this.anoPublicacao, this.autor, this.editora, this.edicao);
+        }       
     }
 
     @Override
@@ -46,15 +62,15 @@ public class Livro implements Emprestavel {
         this.estaEmprestado = true;
         
     }
-
-    @Override
-    public void devolverLivro(Acervo acervo, int idEmprestimo) {
-        // Checar atraso
-        Emprestimo emp = acervo.buscarEmprestimo(idEmprestimo);
-        // Buscar o livro no acervo e mudar para não-emprestado
-        //Buscar Cliente no Admnistração e retirar livro do array dele 
-        acervo.registarDevolucao(emp);
-        
+    
+   @Override
+    public void devolverLivro() {
+        this.estaEmprestado = false;
     }
+
+    public boolean isEmpty() {
+       return this.idLivro==0;
+    }
+
    
 }

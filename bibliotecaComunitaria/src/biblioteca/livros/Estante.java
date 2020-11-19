@@ -18,14 +18,12 @@ public class Estante {
     public void imprimirEstante(){
         System.out.printf("\nEstante %d - %s - %d Livros\n", this.idEstante, this.genero, this.livros.size() );
         for (Livro livro:livros){
-            if (!livro.estaEmprestado)
-                System.out.println(livro.titulo);
-            else
-                System.out.println(livro.titulo + " (Emprestado)"); 
+            livro.imprimirLivro();
         }
     }
 
-    public void addLivro(Livro livro) {
+    public void addLivroNaEstante(Livro livro) {
+        //Adicionar exceção
         if(livros.size()<this.capacidade){
             this.livros.add(livro);
         }
@@ -38,5 +36,24 @@ public class Estante {
         this.livros.add(livro4);
         this.livros.add(livro5);
         
+    }
+
+    void buscarLivroNaEstante(String nomeLivro) {
+        for (Livro livro:livros){
+            if (livro.titulo.equals(nomeLivro)){
+                livro.imprimirLivro();
+            }
+        }   
+    }
+    
+    Livro buscarLivroNaEstanteId(int idLivro) {
+        for (Livro livro:livros){
+            if (Integer.compare(livro.idLivro, idLivro)==0){
+                return livro;
+            }
+        }   
+        
+        //Exceção aqui dps
+        return null;
     }
 }
