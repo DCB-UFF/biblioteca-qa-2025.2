@@ -1,4 +1,7 @@
 package biblioteca.livros;
+
+import biblioteca.pessoas.Cliente;
+
 /* @author Luam */
 
 public class Emprestimo {

@@ -1,22 +1,46 @@
 package biblioteca.livros;
+
 import java.util.ArrayList;
+import biblioteca.pessoas.*;
+
 /* @author Luam */
 
 public class Acervo {
-    public static int idsLivros= 1;
-    public static int idsEstantes = 1;
-    protected ArrayList<Estante> estantes = new ArrayList();
-    protected ArrayList<Emprestimo> emprestimos = new ArrayList();
+    public int idsLivros= 1;
+    public int idsEstantes = 1;
+    public ArrayList<Estante> estantes = new ArrayList<>();
+    public ArrayList<Emprestimo> emprestimos = new ArrayList<>();
+    public ArrayList<Autor> autores = new ArrayList<>();
     
+    public boolean buscarAutor(String nome){
+        for (Autor autor : autores){
+            if (autor.getNome().equals(nome))
+                return true;
+        }
+        return false;
+    }
     
+  
     public void addEstante(Estante nova) {
-        this.estantes.add(nova);
-        
+        estantes.add(nova)
+        idsEstantes++;
     }
     
     public void addLivro(Livro novo){
+        if (autores.contains(novo.getAutor())){
+            for (Autor autor : autores){
+                autor.addLivro(novo);
+            }
+        }
+        
+        else{
+            Autor autor = new Autor(novo.getAutor());
+            autor.addLivro(novo);
+            this.autores.add(autor);
+        }
+        
         for (Estante e : estantes){
-            if (e.genero.equals(novo.genero)){
+            if (e.getGenero().equals(novo.genero)){
                 e.addLivroNaEstante(novo);
             }
         }
@@ -46,9 +70,6 @@ public class Acervo {
             e.imprimirEstante();
         }
     }
-    
-    
-    
     
     public void registarEmprestimo(Emprestimo novo) {
         this.emprestimos.add(novo);

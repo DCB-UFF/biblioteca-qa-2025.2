@@ -9,12 +9,13 @@ public class Estante {
     protected int capacidade;
     protected String genero;
 
-    public Estante(int capacidade, String genero) {
-        this.idEstante = Acervo.idsEstantes++;
+    public Estante(int id, int capacidade, String genero) {
+        this.idEstante = id;
         this.capacidade = capacidade;
         this.genero = genero;
     }
- 
+
+
     public void imprimirEstante(){
         System.out.printf("\nEstante %d - %s - %d Livros\n", this.idEstante, this.genero, this.livros.size() );
         for (Livro livro:livros){
@@ -55,5 +56,27 @@ public class Estante {
         
         //Exceção aqui dps
         return null;
+    }public int getIdEstante() {
+        return idEstante;
+    }
+
+    public void setIdEstante(int idEstante) {
+        this.idEstante = idEstante;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }

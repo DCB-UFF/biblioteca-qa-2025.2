@@ -4,53 +4,36 @@ public class Livro implements Emprestavel {
    int idLivro;
    boolean estaEmprestado;
    
-   String titulo;
-   String autor;
-   int numPaginas;
-   long ISBN;
-   String genero;
-   String idioma;
-   int anoPublicacao;
-   String editora;
-   int edicao;
+   protected String titulo;
+   protected String autor;
+   protected int numPaginas;
+   protected String ISBN;
+   protected String genero;
+   protected String editora;
    
    
-   
-    public Livro(String titulo, String autor, int anoPublicacao, String editora, int edicao) {
-        this.idLivro = Acervo.idsLivros++;
-        this.estaEmprestado = false;
-        
-        this.titulo = titulo;
+    public Livro(int idLivro, String autor, String titulo, String ISBN, int numPaginas , String genero,  String editora) {
+        this.idLivro = idLivro;
+       
         this.autor = autor;
-        this.anoPublicacao = anoPublicacao;
-        this.editora = editora;
-        this.edicao= edicao;
-        
-    }
-    public Livro(String titulo, String autor, int numPaginas, long ISBN, String genero, 
-            String idioma, int anoPublicacao, String editora, int edicao) {
-        this.idLivro = Acervo.idsLivros++;
         this.titulo = titulo;
-        this.autor = autor;
-        this.numPaginas = numPaginas;
         this.ISBN = ISBN;
+        this.numPaginas = numPaginas;
         this.genero = genero;
-        this.idioma = idioma;
-        this.anoPublicacao = anoPublicacao;
         this.editora = editora;
-        this.edicao = edicao;
         this.estaEmprestado = false;
-    }
 
+    }
+  
     
     public void imprimirLivro(){
         if (this.estaEmprestado){
-            System.out.printf("Cód: %d [Emprestado]| %s (%d)\n%s - %s %dªed.  \n",
-                    this.idLivro, this.titulo, this.anoPublicacao, this.autor, this.editora, this.edicao);    
+            System.out.printf("Cód: %d [Emprestado]| %s \n%s - %s  \n",
+                    this.idLivro, this.titulo, this.autor, this.editora);    
         }
         else{
-            System.out.printf("Cód: %d | %s (%d)\n%s - %s %dªed. \n",
-            this.idLivro, this.titulo, this.anoPublicacao, this.autor, this.editora, this.edicao);
+            System.out.printf("Cód: %d | %s \n%s - %s  \n",
+            this.idLivro, this.titulo, this.autor, this.editora);
         }       
     }
 
@@ -70,6 +53,70 @@ public class Livro implements Emprestavel {
 
     public boolean isEmpty() {
        return this.idLivro==0;
+    }
+
+    public int getIdLivro() {
+        return idLivro;
+    }
+
+    public void setIdLivro(int idLivro) {
+        this.idLivro = idLivro;
+    }
+
+    public boolean isEstaEmprestado() {
+        return estaEmprestado;
+    }
+
+    public void setEstaEmprestado(boolean estaEmprestado) {
+        this.estaEmprestado = estaEmprestado;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 
    

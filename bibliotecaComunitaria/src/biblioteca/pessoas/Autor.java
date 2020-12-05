@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package biblioteca.pessoas;
+import java.util.ArrayList;
+import biblioteca.livros.Livro;
 
 /**
  *
@@ -13,6 +10,21 @@ public class Autor extends Pessoa{
     
     protected String biografia;
     protected String pais;
+    protected ArrayList<Livro> livrosAutor = new ArrayList<>();
+
+    public Autor() {    
+    }
+    
+    
+    
+    public void addLivro(Livro livro){
+        this.livrosAutor.add(livro);
+    }
+    
+    public Autor (String nome){
+        super.cadastro(nome);
+    }
+  
     
     @Override
     public void cadastro(String nome, String biografia, String pais){
@@ -46,12 +58,8 @@ public class Autor extends Pessoa{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    
-    
     @Override
     public void excluir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
