@@ -14,9 +14,10 @@ public class Autor extends Pessoa{
     protected String biografia;
     protected String pais;
     
-    protected void cadastro(String nome, String nascimento, String telefone, String biografia, String pais){
+    @Override
+    public void cadastro(String nome, String biografia, String pais){
         
-        super.cadastro(nome, nascimento, telefone);
+        super.cadastro(nome);
         this.biografia = biografia;
         this.pais = pais;
     
