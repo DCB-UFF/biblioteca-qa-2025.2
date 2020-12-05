@@ -54,6 +54,7 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
+    // checar devolução
     
     
     
