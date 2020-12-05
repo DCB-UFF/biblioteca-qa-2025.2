@@ -5,11 +5,16 @@
  */
 package biblioteca.pessoas;
 
+import biblioteca.livros.Livro;
+import java.util.ArrayList;
+
 /**
  *
  * @author victoria
  */
 public class Cliente extends Pessoa{
+    
+    ArrayList<Livro> historico = new ArrayList<>();
     
     @Override
     public void cadastro(String nome, String nascimento, String telefone){
