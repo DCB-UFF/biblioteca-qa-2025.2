@@ -12,14 +12,14 @@ package biblioteca.pessoas;
 public class Cliente extends Pessoa{
     
     @Override
-    protected void cadastro(String nome, String nascimento, String telefone){
+    public void cadastro(String nome, String nascimento, String telefone){
         
         super.cadastro(nome, nascimento, telefone);
     
     }
 
     @Override
-    protected void excluir() {
+    public void excluir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -9,26 +9,31 @@ package biblioteca.pessoas;
  *
  * @author victoria
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Cadastravel{
     
     protected String nome;
     protected String nascimento;
     protected String telefone;
     
-    protected void cadastro(String nome, String nascimento, String telefone){
+    @Override
+    public void cadastro(String nome, String nascimento, String telefone){
     
         this.nome = nome;
         this.nascimento = nascimento;
         this.telefone = telefone;
     
     };
-    protected void modificar(String nome, String nascimento, String telefone){
+    
+    @Override
+    public void modificar(String nome, String nascimento, String telefone){
     
         this.nome = nome;
         this.nascimento = nascimento;
         this.telefone = telefone;
         
     };
-    protected abstract void excluir();
+    
+    @Override
+    public abstract void excluir();
     
 }

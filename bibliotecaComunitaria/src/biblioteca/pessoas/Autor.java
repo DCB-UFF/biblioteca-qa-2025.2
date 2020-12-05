@@ -23,7 +23,7 @@ public class Autor extends Pessoa{
     }
 
     @Override
-    protected void excluir() {
+    public void excluir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
