@@ -9,9 +9,9 @@ public class Estante {
     protected int capacidade;
     protected String genero;
 
-    public Estante(int id, String genero) {
+    public Estante(int id, int capacidade, String genero) {
         this.idEstante = id;
-        this.capacidade = 50;
+        this.capacidade = capacidade;
         this.genero = genero;
     }
 
