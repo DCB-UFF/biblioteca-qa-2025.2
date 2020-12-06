@@ -42,7 +42,7 @@ public class TestesArquivo {
     /*  Teste da Função Escrita 
     
     Escritor.escreverAutor(new Autor("Leon Toistoi", "Russia"));
-    Escritor.escreveEstante(new Estante(55, "Literatura Russa"));
+    Escritor.escreverEstante(new Estante(55, "Literatura Russa"));
     Autor lucy = new Autor("Lucy Maud Montgomery","Canada");
     Escritor.escreveLivro(new Livro(90,lucy, "Lucy Maud Montgomery","1234",120,"Infantil","Abril",false));
     

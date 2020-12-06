@@ -17,7 +17,7 @@ public class Funcionario extends Pessoa{
     private String cargo;
     private Endereco end;
 
-    protected void cadastro(String nome, String nascimento, String telefone, float salario, String cargo, String rua, String bairro, String cep, String cidade, String estado){
+    public void cadastro(String nome, String nascimento, String telefone, float salario, String cargo, String rua, String bairro, String cep, String cidade, String estado){
         
         super.cadastro(nome, nascimento, telefone);
         this.salario = salario;
