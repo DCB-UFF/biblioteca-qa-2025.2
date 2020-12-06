@@ -1,7 +1,6 @@
 package biblioteca.arquivo;
 
 import biblioteca.livros.*;
-import biblioteca.pessoas.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -41,12 +40,12 @@ public class Editor {
                 }
 
                 pw.println(linhaEditada);
-                pw.flush();      
-                
             }
+            pw.flush();  
             pw.close();
-            antigo.delete();
             br.close();
+            antigo.delete();
+            
             
             File aux = new File ("livros.csv");
             novo.renameTo(aux);
