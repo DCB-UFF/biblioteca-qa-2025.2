@@ -17,7 +17,6 @@ public abstract class Pessoa implements Cadastravel{
     
     @Override
     public void cadastro(String nome, String nascimento, String telefone){
-    
         this.nome = nome;
         this.nascimento = nascimento;
         this.telefone = telefone;

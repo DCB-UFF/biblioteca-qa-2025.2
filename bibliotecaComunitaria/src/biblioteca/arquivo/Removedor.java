@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /* @author Luam */
+
 public class Removedor {
     
      public static void remover(Acervo acervo, Livro livroEmprestado) {
