@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /* @author Luam */
 
-public class TestesArquivo {
+public class TesteLivroAutorEstante {
     
     public static void main(String[] args){
     
@@ -36,7 +36,7 @@ public class TestesArquivo {
     /*  Teste da Função Editar */
     Autor rr = new Autor("Rick Riordan","Estados Unidos");
     Livro livroDeletado = new Livro(2, rr, "O Sangue do Olimpo","8452004", 650, "Mitologia", "Intrinseca", false);
-    Removedor.remover(acervo, livroDeletado);
+    Removedor.removerLivro(livroDeletado);
     
     
     /*  Teste da Função Escrita 

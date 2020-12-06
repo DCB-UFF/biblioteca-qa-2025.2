@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package biblioteca.arquivo;
 import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
 import java.util.ArrayList;
 
-/**
- *
- * @author victoria
- */
-public class TesteClientes {
+/* @author victoria */
+
+public class TesteClienteFuncionario {
     
     public static void main(String[] args){
         ArrayList<Cliente> clientes = new ArrayList();
@@ -34,11 +27,30 @@ public class TesteClientes {
         LeituraPessoas.imprimir(clientes);*/
         
         /*Funcionario funcionario = new Funcionario();
-        funcionario.cadastro("Maria", "12/12/2000", "99999-9999", 4000, "gerente", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
+        funcionario.cadastro("Maria", "12/12/2000", "99999-9999", 4000, "gerente", "Rua 1",
+        "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         
         Escritor.escreverFuncionario(funcionario);
         funcionarios = Leitor.leitorFuncionarios();
         imprimir(funcionarios);*/
+        
+        
+        /* Testando remoção
+        Funcionario funcionario = new Funcionario();
+        funcionario.cadastro("Maria", "12/12/2000", "99999-9999", 4000, "gerente", "Rua 1",
+        "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
+        
+        Removedor.removerFuncionario(funcionario);
+        */
+        Cliente cliente = new Cliente();
+        cliente.cadastro("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
+        Removedor.removerCliente(cliente);
+        
+        
+        
+        
+        
+        
     }
     
     public static void imprimir(ArrayList a){

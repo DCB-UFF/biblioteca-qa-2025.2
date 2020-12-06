@@ -83,6 +83,8 @@ public class Escritor {
         }
     }
     
+    /* @author victoria */
+    
     public static void escreverCliente(Cliente cliente) {
         BufferedWriter bw = null;
         String linha = cliente.getNome() + "," + cliente.getNascimento() + "," + cliente.getTelefone() + "," + cliente.getEnd().getRua() + "," + cliente.getEnd().getBairro() + "," + cliente.getEnd().getCep() + "," + cliente.getEnd().getCidade() + "," + cliente.getEnd().getEstado();
