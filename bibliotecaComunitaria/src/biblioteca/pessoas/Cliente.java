@@ -28,6 +28,11 @@ public class Cliente extends Pessoa{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public String toString() {
+        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone);
+    }
+    
     protected void cobrarDevolucao(){
     
         // se o cliente não tiver devolvido um livro não deixar pegar outro
