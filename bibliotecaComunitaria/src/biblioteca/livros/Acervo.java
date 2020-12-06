@@ -22,7 +22,7 @@ public class Acervo {
     
   
     public void addEstante(Estante nova) {
-        estantes.add(nova)
+        estantes.add(nova);
         idsEstantes++;
     }
     
@@ -34,7 +34,7 @@ public class Acervo {
         }
         
         else{
-            Autor autor = new Autor(novo.getAutor());
+            Autor autor = new Autor(novo.getAutor().getNome());
             autor.addLivro(novo);
             this.autores.add(autor);
         }

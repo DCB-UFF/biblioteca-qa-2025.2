@@ -21,7 +21,7 @@ public class leitoresDeArquivo {
             while ((linha = br.readLine()) != null) {
                 String[] autor = linha.split(",");
                 Autor novo = new Autor();
-                novo.cadastro(autor[0],"",autor[1]);
+                novo.cadastro(autor[0],autor[1]);
                 Autores.add(novo);
                 
             }
@@ -86,8 +86,9 @@ public class leitoresDeArquivo {
             while ((linha = br.readLine()) != null) {
                 
                 String[] livro = linha.split(",");
-                Livro novo = new Livro(acervo.idsLivros++, livro[0],livro[1], 
-                    livro[2], Integer.parseInt(livro[3]), livro[4],livro[5]);
+                Autor autor = new Autor(livro[0],livro[7]);
+                Livro novo = new Livro(acervo.idsLivros++, autor,livro[1], 
+                    livro[2], Integer.parseInt(livro[3]), livro[4],livro[5],Boolean.parseBoolean(livro[6]));
                 acervo.addLivro(novo);
             
             }
