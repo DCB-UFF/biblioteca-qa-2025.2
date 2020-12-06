@@ -22,7 +22,7 @@ public class Acervo {
     
   
     public void addEstante(Estante nova) {
-        estantes.add(nova)
+        estantes.add(nova);
         idsEstantes++;
     }
     
