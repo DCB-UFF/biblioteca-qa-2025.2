@@ -13,9 +13,9 @@ import biblioteca.biblioteca.Endereco;
  */
 public class Funcionario extends Pessoa{
     
-    protected float salario;
-    protected String cargo;
-    protected Endereco end;
+    private float salario;
+    private String cargo;
+    private Endereco end;
 
     protected void cadastro(String nome, String nascimento, String telefone, float salario, String cargo, String rua, String bairro, String cep, String cidade, String estado){
         
@@ -33,8 +33,20 @@ public class Funcionario extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Cargo: " + this.cargo + " - " + "Endereço -> " + this.end);
+        return ("Nome: " + this.getNome() + " - " + "Nascimento: " + this.getNascimento() + " - " + "Telefone: " + this.getTelefone() + " - " + "Cargo: " + this.getCargo() + " - " + "Endereço -> " + this.getEnd());
     }
     
     protected void ajusteSalario(){}
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public Endereco getEnd() {
+        return end;
+    }
 }
