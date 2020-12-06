@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /* @author Luam */
 
-public class TesteLeitores {
+public class TestesArquivo {
     
     public static void main(String[] args){
     ArrayList<Autor> autores = new ArrayList();
@@ -23,6 +23,8 @@ public class TesteLeitores {
     
     leitoresDeArquivo.leitorLivros(acervo);
     acervo.imprimirAcervo();
+    
+    Escritor.escreverAutor(new Autor("Meg", "Estados Unidos"));
     
     /*ArrayList<Estante> estantes = new ArrayList();
     estantes = leitoresDeArquivo.leitorEstantes();
