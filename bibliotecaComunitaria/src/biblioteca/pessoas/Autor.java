@@ -2,20 +2,19 @@ package biblioteca.pessoas;
 import java.util.ArrayList;
 import biblioteca.livros.Livro;
 
-/**
- *
- * @author victoria
- */
+/* @author victoria */
+
 public class Autor extends Pessoa{
-    
-    protected String biografia;
     protected String pais;
     protected ArrayList<Livro> livrosAutor = new ArrayList<>();
 
     public Autor() {    
     }
-    
-    
+
+    public Autor(String nome, String pais) {
+        super.cadastro(nome);
+        this.pais = pais;
+    }
     
     public void addLivro(Livro livro){
         this.livrosAutor.add(livro);
@@ -26,22 +25,12 @@ public class Autor extends Pessoa{
     }
   
     
-    @Override
-    public void cadastro(String nome, String biografia, String pais){
-        
+    public void cadastro(String nome, String pais){
         super.cadastro(nome);
-        this.biografia = biografia;
         this.pais = pais;
     
     }
 
-    public String getBiografia() {
-        return biografia;
-    }
-
-    public void setBiografia(String biografia) {
-        this.biografia = biografia;
-    }
 
     public String getPais() {
         return pais;
