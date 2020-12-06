@@ -9,12 +9,13 @@ package biblioteca.biblioteca;
  *
  * @author victoria
  */
-public class Unidade extends Endereco{
+public class Unidade{
     
     protected String nome;
+    public Endereco end;
     
     public void Endereco(String nome, String rua, String bairro, String cep, String cidade, String estado){
-        super.Endereco(rua, bairro, cep, cidade, estado);
+        //super.Endereco(rua, bairro, cep, cidade, estado);
         this.nome = nome;
     }
     
