@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /* @author Luam */
-public class leitoresDeArquivo {
+public class Leitor {
      public static ArrayList<Autor> leitorAutores() {
         BufferedReader br = null;
         String linha = "";
@@ -53,7 +53,7 @@ public class leitoresDeArquivo {
             
             while ((linha = br.readLine()) != null) {
                 String[] estante = linha.split(",");
-                Estante nova = new Estante(Integer.parseInt(estante[0]),Integer.parseInt(estante[1]),estante[2]);
+                Estante nova = new Estante(Integer.parseInt(estante[0]),estante[1]);
                 acervo.addEstante(nova);
             }
             return acervo;
