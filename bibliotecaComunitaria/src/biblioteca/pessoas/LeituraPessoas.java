@@ -24,7 +24,7 @@ public class LeituraPessoas {
             while ((linha = br.readLine()) != null) {
                 String[] cliente = linha.split(",");
                 Cliente novo = new Cliente();
-                novo.cadastro(cliente[0], cliente[1], cliente[2]);
+                novo.cadastro(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4], cliente[5], cliente[6], cliente[7]);
                 clientes.add(novo);
             }
             return clientes;
@@ -56,7 +56,7 @@ public class LeituraPessoas {
             while ((linha = br.readLine()) != null) {
                 String[] funcionario = linha.split(",");
                 Funcionario novo = new Funcionario();
-                novo.cadastro(funcionario[0], funcionario[1], funcionario[2], 1000, funcionario[4]);
+                novo.cadastro(funcionario[0], funcionario[1], funcionario[2], Float.parseFloat(funcionario[3]), funcionario[4], funcionario[5], funcionario[6], funcionario[7], funcionario[8], funcionario[9]);
                 funcionarios.add(novo);
             }
             return funcionarios;

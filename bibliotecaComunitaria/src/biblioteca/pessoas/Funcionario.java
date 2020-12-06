@@ -5,6 +5,8 @@
  */
 package biblioteca.pessoas;
 
+import biblioteca.biblioteca.Endereco;
+
 /**
  *
  * @author victoria
@@ -13,12 +15,14 @@ public class Funcionario extends Pessoa{
     
     protected float salario;
     protected String cargo;
+    protected Endereco end;
 
-    protected void cadastro(String nome, String nascimento, String telefone, float salario, String cargo){
+    protected void cadastro(String nome, String nascimento, String telefone, float salario, String cargo, String rua, String bairro, String cep, String cidade, String estado){
         
         super.cadastro(nome, nascimento, telefone);
         this.salario = salario;
         this.cargo = cargo;
+        this.end = new Endereco(rua, bairro, cep, cidade, estado);
     
     }
     
@@ -29,7 +33,7 @@ public class Funcionario extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Cargo: " + this.cargo);
+        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Cargo: " + this.cargo + " - " + "Endereço -> " + this.end);
     }
     
     protected void ajusteSalario(){}

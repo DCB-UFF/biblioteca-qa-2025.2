@@ -5,6 +5,7 @@
  */
 package biblioteca.pessoas;
 
+import biblioteca.biblioteca.Endereco;
 import biblioteca.livros.Livro;
 import java.util.ArrayList;
 
@@ -15,11 +16,12 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa{
     
     ArrayList<Livro> historico = new ArrayList<>();
-    
-    @Override
-    public void cadastro(String nome, String nascimento, String telefone){
+    public Endereco end;
+
+    public void cadastro(String nome, String nascimento, String telefone, String rua, String bairro, String cep, String cidade, String estado){
         
         super.cadastro(nome, nascimento, telefone);
+        this.end = new Endereco(rua, bairro, cep, cidade, estado);
     
     }
 
@@ -30,7 +32,7 @@ public class Cliente extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone);
+        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Endereço -> " + this.end);
     }
     
     protected void cobrarDevolucao(){

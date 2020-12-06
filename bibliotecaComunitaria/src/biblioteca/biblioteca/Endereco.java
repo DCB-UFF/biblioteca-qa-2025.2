@@ -9,7 +9,7 @@ package biblioteca.biblioteca;
  *
  * @author victoria
  */
-public abstract class Endereco {
+public class Endereco {
     
     protected String rua;
     protected String bairro;
@@ -17,11 +17,16 @@ public abstract class Endereco {
     protected String cidade;
     protected String estado;
     
-    public void Endereco(String rua, String bairro, String cep, String cidade, String estado){
+    public Endereco(String rua, String bairro, String cep, String cidade, String estado){
         this.rua = rua;
         this.bairro = bairro;
         this.cep = cep;
         this.cidade = cidade;
         this.estado = estado;
+    }
+    
+    @Override
+    public String toString() {
+        return ("Rua: " + this.rua + " - " + "Bairro: " + this.bairro + " - " + "CEP: " + this.cep + " - " + "Cidade: " + this.cidade + " - " + "Estado: " + this.estado);
     }
 }

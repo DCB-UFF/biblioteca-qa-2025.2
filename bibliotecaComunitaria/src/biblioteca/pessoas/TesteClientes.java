@@ -18,7 +18,7 @@ public class TesteClientes {
         clientes = LeituraPessoas.leitorClientes();
         LeituraPessoas.imprimir(clientes);
 
-        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         ArrayList<Funcionario> funcionarios = new ArrayList();
 
