@@ -65,7 +65,7 @@ public class Livro implements Emprestavel {
         this.idLivro = idLivro;
     }
 
-    public boolean isEstaEmprestado() {
+    public boolean getEstaEmprestado() {
         return estaEmprestado;
     }
 
