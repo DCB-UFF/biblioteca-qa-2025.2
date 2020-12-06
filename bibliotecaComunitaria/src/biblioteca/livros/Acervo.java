@@ -34,7 +34,7 @@ public class Acervo {
         }
         
         else{
-            Autor autor = new Autor(novo.getAutor());
+            Autor autor = new Autor(novo.getAutor().getNome());
             autor.addLivro(novo);
             this.autores.add(autor);
         }

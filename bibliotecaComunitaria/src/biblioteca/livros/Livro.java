@@ -1,27 +1,29 @@
 package biblioteca.livros;
 
+import biblioteca.pessoas.Autor;
+
 public class Livro implements Emprestavel {
    int idLivro;
    boolean estaEmprestado;
    
    protected String titulo;
-   protected String autor;
+   protected Autor autor;
    protected int numPaginas;
    protected String ISBN;
    protected String genero;
    protected String editora;
    
    
-    public Livro(int idLivro, String autor, String titulo, String ISBN, int numPaginas , String genero,  String editora) {
+    public Livro(int idLivro, Autor autor, String titulo, String ISBN, int numPaginas ,
+            String genero,  String editora, Boolean estaEmprestado) {
         this.idLivro = idLivro;
-       
         this.autor = autor;
         this.titulo = titulo;
         this.ISBN = ISBN;
         this.numPaginas = numPaginas;
         this.genero = genero;
         this.editora = editora;
-        this.estaEmprestado = false;
+        this.estaEmprestado = estaEmprestado;
 
     }
   
@@ -29,11 +31,11 @@ public class Livro implements Emprestavel {
     public void imprimirLivro(){
         if (this.estaEmprestado){
             System.out.printf("Cód: %d [Emprestado]| %s \n%s - %s  \n",
-                    this.idLivro, this.titulo, this.autor, this.editora);    
+                    this.idLivro, this.titulo, this.autor.getNome(), this.editora);    
         }
         else{
             System.out.printf("Cód: %d | %s \n%s - %s  \n",
-            this.idLivro, this.titulo, this.autor, this.editora);
+            this.idLivro, this.titulo, this.autor.getNome(), this.editora);
         }       
     }
 
@@ -79,11 +81,11 @@ public class Livro implements Emprestavel {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
