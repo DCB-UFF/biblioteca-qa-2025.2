@@ -11,11 +11,11 @@ package biblioteca.biblioteca;
  */
 public class Endereco {
     
-    protected String rua;
-    protected String bairro;
-    protected String cep;
-    protected String cidade;
-    protected String estado;
+    private String rua;
+    private String bairro;
+    private String cep;
+    private String cidade;
+    private String estado;
     
     public Endereco(String rua, String bairro, String cep, String cidade, String estado){
         this.rua = rua;
@@ -24,9 +24,29 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
     }
-    
+
     @Override
     public String toString() {
-        return ("Rua: " + this.rua + " - " + "Bairro: " + this.bairro + " - " + "CEP: " + this.cep + " - " + "Cidade: " + this.cidade + " - " + "Estado: " + this.estado);
+        return ("Rua: " + this.getRua() + " - " + "Bairro: " + this.getBairro() + " - " + "CEP: " + this.getCep() + " - " + "Cidade: " + this.getCidade() + " - " + "Estado: " + this.getEstado());
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getEstado() {
+        return estado;
     }
 }
