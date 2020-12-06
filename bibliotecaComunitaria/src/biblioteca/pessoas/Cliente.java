@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa{
     
     ArrayList<Livro> historico = new ArrayList<>();
-    public Endereco end;
+    private Endereco end;
 
     public void cadastro(String nome, String nascimento, String telefone, String rua, String bairro, String cep, String cidade, String estado){
         
@@ -32,13 +32,17 @@ public class Cliente extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Endereço -> " + this.end);
+        return ("Nome: " + this.getNome() + " - " + "Nascimento: " + this.getNascimento() + " - " + "Telefone: " + this.getTelefone() + " - " + "Endereço -> " + this.getEnd());
     }
     
     protected void cobrarDevolucao(){
     
         // se o cliente não tiver devolvido um livro não deixar pegar outro
         
+    }
+
+    public Endereco getEnd() {
+        return end;
     }
     
 }

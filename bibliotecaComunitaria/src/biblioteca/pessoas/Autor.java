@@ -23,14 +23,12 @@ public class Autor extends Pessoa{
     public Autor (String nome){
         super.cadastro(nome);
     }
-  
     
     public void cadastro(String nome, String pais){
         super.cadastro(nome);
         this.pais = pais;
     
     }
-
 
     public String getPais() {
         return pais;
@@ -39,11 +37,7 @@ public class Autor extends Pessoa{
     public void setPais(String pais) {
         this.pais = pais;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }

@@ -39,8 +39,20 @@ public abstract class Pessoa implements Cadastravel{
         this.telefone = telefone;
         
     };
-    
+
     @Override
     public abstract void excluir();
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
     
 }
