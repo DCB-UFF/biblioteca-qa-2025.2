@@ -1,16 +1,14 @@
-#id,#Capacidade,#Gênero
-1,50,Aventura
-2,50,Ciência
-3,50,Clássico
-4,50,Distopia
-5,50,Fantasia
-6,50,Filosofia
-7,50,Guerra
-8,50,Holocausto
-9,50,Infantil
-10,50,Jovem Adulto
-11,50,Mitologia
-12,50,Psicologia
-13,50,Realismo
-14,50,Suspense
-15,50,Teatro
+#id,#Gênero
+1,Aventura
+2,Ciência
+3,Clássico
+4,Distopia
+5,Fantasia
+6,Filosofia
+7,Guerra
+8,Holocausto
+9,Infantil
+10,Jovem Adulto
+11,Mitologia
+12,Psicologia
+13,Realismo

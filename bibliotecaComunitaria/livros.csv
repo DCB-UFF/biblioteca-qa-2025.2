@@ -1,4 +1,4 @@
-#autor,#Titulo,#Paginas,#ISBN,#Gênero,#Editora,#estaEmprestado,#Pais
+#autor,#Titulo,#Paginas,,#Gênero,#Editora,#estaEmprestado,#Pais
 Albert Camus,O Estrangeiro,82,5145798,Clássico,Globo Livros,false,Argélia
 Alexandre Dumas,O Conde de Monte Cristo,88,5810391,Aventura,Zahar,false,França
 Aluísio Azevedo,O cortiço,518,5229885,Clássico,Cia das Letras,false,Brasil
