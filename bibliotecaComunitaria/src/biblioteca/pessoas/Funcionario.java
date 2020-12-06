@@ -33,7 +33,7 @@ public class Funcionario extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Cargo: " + this.cargo + " - " + "Endereço: " + this.end);
+        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Cargo: " + this.cargo + " - " + "Endereço -> " + this.end);
     }
     
     protected void ajusteSalario(){}

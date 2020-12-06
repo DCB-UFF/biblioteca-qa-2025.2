@@ -32,7 +32,7 @@ public class Cliente extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Endereço: " + this.end);
+        return ("Nome: " + this.nome + " - " + "Nascimento: " + this.nascimento + " - " + "Telefone: " + this.telefone + " - " + "Endereço -> " + this.end);
     }
     
     protected void cobrarDevolucao(){
