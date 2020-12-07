@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 /* @author victoria */
 
-public class BibliotecaComunitaria{
+public class MainBibliotecas{
     
     protected ArrayList <Unidade> unidades = new ArrayList<>();
-
+    
 }
