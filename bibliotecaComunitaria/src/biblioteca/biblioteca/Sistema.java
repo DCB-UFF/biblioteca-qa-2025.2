@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Sistema{
     protected int contadorUnidades;
-    protected ArrayList <Unidade> unidades = new ArrayList<>();
+    public ArrayList <Unidade> unidades = new ArrayList<>();
 
     public int getContadorUnidades() {
         return contadorUnidades;
