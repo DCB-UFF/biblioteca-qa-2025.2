@@ -6,7 +6,8 @@ import biblioteca.pessoas.*;
 /* @author Luam */
 
 public class Acervo {
-    public int idsLivros= 1;
+    
+    public int idsLivros = 1;
     public int idsEstantes = 1;
     protected ArrayList<Estante> estantes = new ArrayList<>();
     protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
@@ -19,9 +20,11 @@ public class Acervo {
     public void setAutores(ArrayList<Autor> autores) {
         this.autores = autores;
     }
-    
-    
-    
+
+    public ArrayList<Autor> getAutores() {
+        return autores;
+    }
+   
     public boolean buscarAutor(String nome){
         for (Autor autor : autores){
             if (autor.getNome().equals(nome))
