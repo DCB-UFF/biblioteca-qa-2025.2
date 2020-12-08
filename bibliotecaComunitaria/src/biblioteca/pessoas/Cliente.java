@@ -11,7 +11,7 @@ public class Cliente extends Pessoa{
     ArrayList<Livro> historico = new ArrayList<>();
     private Endereco end;
 
-    public void cadastro(String nome, String nascimento, String telefone, String rua, String bairro, String cep, String cidade, String estado){
+    public Cliente(String nome, String nascimento, String telefone, String rua, String bairro, String cep, String cidade, String estado){
         
         super.cadastro(nome, nascimento, telefone);
         this.end = new Endereco(rua, bairro, cep, cidade, estado);

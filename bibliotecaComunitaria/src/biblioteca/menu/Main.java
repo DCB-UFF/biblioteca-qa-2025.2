@@ -1,6 +1,8 @@
-package biblioteca.biblioteca;
+package biblioteca.menu;
 
 import biblioteca.arquivo.*;
+import biblioteca.biblioteca.Sistema;
+import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
 import java.util.ArrayList;
@@ -8,8 +10,8 @@ import java.util.ArrayList;
 /* @author Luam */
 
 public class Main {
+    
     public static void main(String[] args){
-        Sistema sistema = new Sistema();
         sistema.setUnidades(Leitor.leitorUnidades());
         
     }
@@ -39,6 +41,7 @@ public class Main {
         //imprimir(un.getFuncionarios());
     
     }
+    public static Sistema sistema = new Sistema();
     
     public static void imprimir(ArrayList a){
         for (Object i: a){
