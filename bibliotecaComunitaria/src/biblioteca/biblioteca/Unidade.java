@@ -26,6 +26,15 @@ public class Unidade{
                  " - " + "CEP: " + end.getCep() + " - " + "Cidade: " + end.getCidade() + " - " + "Estado: " + end.getEstado());
      }
 
+    public Endereco getEnd() {
+        return end;
+    }
+
+    public void setEnd(Endereco end) {
+        this.end = end;
+    }
+     
+     
     public String getPath() {
         return path;
     }

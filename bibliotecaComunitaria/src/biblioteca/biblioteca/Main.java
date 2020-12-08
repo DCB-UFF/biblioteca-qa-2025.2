@@ -10,37 +10,35 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args){
         Sistema sistema = new Sistema();
-        lerUnidade("1");
-       
+        sistema.setUnidades(Leitor.leitorUnidades());
+        
     }
     
-    
+    // Tenho que ler numero, nome e endereço de cada unidade e depois gerar a unidade
     
     public static void lerUnidade(String num){
          //Cria unidade
-        Unidade unNiteroi = new Unidade("src\\unidades\\un"+ num+"\\","Niteroi", "Rua Marechal Floriano 43", "Inga", "23441-001", "Niteroi", "Rio de Janeiro");
+        Unidade un = new Unidade("src\\unidades\\un"+ num+"\\","Niteroi", "Rua Marechal Floriano 43", "Inga", "23441-001", "Niteroi", "Rio de Janeiro");
         
         //Lê o acervo
-        Acervo acervoNiteroi = Leitor.leitorEstantes(unNiteroi.getPath());
-        ArrayList<Autor> autores = Leitor.leitorAutores(unNiteroi.getPath());
-        acervoNiteroi.setAutores(autores);
-        Leitor.leitorLivros(acervoNiteroi,unNiteroi.getPath());
-        unNiteroi.setAcervo(acervoNiteroi);
-        //unNiteroi.getAcervo().imprimirAcervo(unNiteroi.getNome());
+        Acervo acervoUn = Leitor.leitorEstantes(un.getPath());
+        ArrayList<Autor> autores = Leitor.leitorAutores(un.getPath());
+        acervoUn.setAutores(autores);
+        Leitor.leitorLivros(acervoUn,un.getPath());
+        un.setAcervo(acervoUn);
+        //unNiteroi.getAcervo().imprimirAcervo(un.getNome());
        
         //Lê os clientes
-        ArrayList<Cliente> clientesNiteroi = Leitor.leitorClientes(unNiteroi.getPath());
-        unNiteroi.setClientes(clientesNiteroi);
-        //imprimir(unNiteroi.getClientes());
+        ArrayList<Cliente> clientesNiteroi = Leitor.leitorClientes(un.getPath());
+        un.setClientes(clientesNiteroi);
+        //imprimir(un.getClientes());
         
         //Lê os funcionarios
-        ArrayList<Funcionario> funcionariosNiteroi = Leitor.leitorFuncionarios(unNiteroi.getPath());
-        unNiteroi.setFuncionarios(funcionariosNiteroi);
-        //imprimir(unNiteroi.getFuncionarios());
+        ArrayList<Funcionario> funcionariosNiteroi = Leitor.leitorFuncionarios(un.getPath());
+        un.setFuncionarios(funcionariosNiteroi);
+        //imprimir(un.getFuncionarios());
     
     }
-    
-    
     
     public static void imprimir(ArrayList a){
         for (Object i: a){
