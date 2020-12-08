@@ -11,9 +11,14 @@ import java.util.ArrayList;
 
 public class Main {
     
+    public static Sistema sistema;
+    
     public static void main(String[] args){
         sistema = Leitor.leitorUnidades();
-        
+        for(Unidade u : sistema.unidades){
+            lerUnidade(u.getPath());
+        }
+        Menu.chamada();
     }
     
     // Tenho que ler numero, nome e endereço de cada unidade e depois gerar a unidade
@@ -41,7 +46,6 @@ public class Main {
         //imprimir(un.getFuncionarios());
     
     }
-    public static Sistema sistema = new Sistema();
     
     public static void imprimir(ArrayList a){
         for (Object i: a){

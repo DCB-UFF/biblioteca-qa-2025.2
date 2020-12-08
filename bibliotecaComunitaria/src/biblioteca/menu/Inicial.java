@@ -5,6 +5,7 @@ import biblioteca.arquivo.*;
 import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /* @author victoria */
@@ -12,16 +13,14 @@ public class Inicial {
     
     public static void principal(){
         
-        System.out.println("\n1 - Escolher unidade");
-        System.out.println("2 - Adicionar nova unidade");
+        System.out.println("\n1 - Adicionar nova unidade");
+        System.out.println("2 - Escolher unidade");
         System.out.println("3 - Sair\n");
         
     }
     
     public static void escolher(){
-        
-        /* imprimir unidades disponíveis */
-        System.out.println("\nDigite o nome da unidade: ");
+
         System.out.println("\nEscolha o que deseja adicionar: ");
         System.out.println("1 - Livro");
         System.out.println("2 - Funcionário");
@@ -31,16 +30,11 @@ public class Inicial {
         
     }
     
-    public static void nova(){
-        
-        System.out.println("\nDigite o caminho do arquivo: ");
-        
-    }
-    
     public static Unidade buscarUnidade(String nome, Sistema sistema){
 
         for(Unidade u: sistema.unidades){
             if(u.getNome().equals(nome)){
+                System.out.println("oi\n");
                 return u;
             }
         }
@@ -147,6 +141,35 @@ public class Inicial {
         aux.getClientes().add(cliente);
         Escritor.escreverCliente(cliente, aux.getPath());
         
+    }
+    
+    public static void adicionarUnidade(Sistema sistema){
+        
+        Scanner tecla = new Scanner(System.in);
+        
+        System.out.println("\nDigite o nome do cliente: ");
+        String nome = tecla.nextLine();
+        System.out.println("\nDigite a rua da unidade: ");
+        String rua = tecla.nextLine();
+        System.out.println("\nDigite o bairro da unidade: ");
+        String bairro = tecla.nextLine();
+        System.out.println("\nDigite o cep da unidade: ");
+        String cep = tecla.nextLine();
+        System.out.println("\nDigite a cidade da unidade: ");
+        String cid = tecla.nextLine();
+        System.out.println("\nDigite o estado da unidade: ");
+        String est = tecla.nextLine();
+        
+        Unidade unidade = new Unidade(String.valueOf(sistema.getContadorUnidades()), nome, rua, bairro, cep, cid, est);
+        sistema.add(unidade);
+        Escritor.escreverUnidade(sistema, unidade);
+    
+    }
+
+    public static void imprimir(ArrayList a){
+        for (Object i: a){
+           System.out.println(i);
+        }
     }
     
 }
