@@ -11,7 +11,7 @@ public class TesteLivroAutorEstante {
     
     public static void main(String[] args){
     
-    /*  Teste da Função Escrita */
+    /*  Teste da Função Leitura */
        
     ArrayList<Autor> autores = new ArrayList();
     autores = Leitor.leitorAutores("src\\unidades\\un1\\");
@@ -30,7 +30,7 @@ public class TesteLivroAutorEstante {
     /*  Teste da Função Editar 
     Autor aluisio = new Autor("Aluísio Azevedo","Brasil");
     Livro livroEmprestado = new Livro(2, aluisio, "O cortiço","5229885", 518, "Clássico", "Cia das Letras", false);
-    Editor.emprestar(acervo, livroEmprestado, "src\\unidades\\un1\\");
+    Editor.modificarEmprestimo(acervo, livroEmprestado, "src\\unidades\\un1\\","true");
     */
     
     /*  Teste da Função Editar */

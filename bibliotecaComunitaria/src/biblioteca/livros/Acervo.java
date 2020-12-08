@@ -1,5 +1,7 @@
 package biblioteca.livros;
 
+import biblioteca.arquivo.Editor;
+import biblioteca.biblioteca.Unidade;
 import java.util.ArrayList;
 import biblioteca.pessoas.*;
 
@@ -13,12 +15,23 @@ public class Acervo {
     protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     protected ArrayList<Autor> autores = new ArrayList<>();
 
-    public void setEstantes(ArrayList<Estante> estantes) {
-        this.estantes = estantes;
-    }
+    public void emprestarLivro(Unidade unidade, Cliente cliente, String titulo) {
+        
+        if (cliente.getLivrosPegos()<3){ // Checa se o cliente pode pegar um livro
+            Livro aux  = this.buscarLivroTitulo(titulo);
+            Emprestimo novo = new Emprestimo(aux, "15/10/20", "30/12/20" );
+            aux.emprestar();
+            //Editor.modificarEmprestimo(this, aux, unidade.getPath(), "true");
 
-    public void setAutores(ArrayList<Autor> autores) {
-        this.autores = autores;
+            this.emprestimos.add(novo);
+            // Adicionar no arquivo de emprestimos
+            cliente.addLivrosPegos();
+            // Atualizar arquivo de clientes
+        }
+        
+        else {
+            System.out.println("O cliente já pegou o máximo de livros emprestado.");
+        }   
     }
 
     public ArrayList<Autor> getAutores() {
@@ -60,19 +73,12 @@ public class Acervo {
         
     }
     
-    public void buscarLivro (Livro livro){
+    public Livro buscarLivroTitulo (String titulo){
         for (Estante e : estantes){
-            if (e.genero.equals(livro.genero)){
-                e.buscarLivroNaEstante(livro.titulo);
-            }
-        }
-    }
-    
-    public Livro buscarLivroId (int idLivro){
-        for (Estante e : estantes){
-                Livro aux = e.buscarLivroNaEstanteId(idLivro);
-                if (!aux.isEmpty()){
-                    return aux;
+            for (Livro l : e.livros){
+                if (l.titulo.equals(titulo)){
+                    return l;
+                }
             }
         }
         return null;
@@ -84,28 +90,12 @@ public class Acervo {
             e.imprimirEstante();
         }
     }
-    
-    public void registarEmprestimo(Emprestimo novo) {
-        this.emprestimos.add(novo);
-        
+  
+    public void setEstantes(ArrayList<Estante> estantes) {
+        this.estantes = estantes;
     }
-    
-    public Emprestimo buscarEmprestimo(int idEmprestimo){
-        /// Criar exceção dps aqui
-        for (Emprestimo e : emprestimos){
-            if (Integer.compare(e.getIdEmprestimo(), idEmprestimo)==0){
-                return e;
-            }
-        }
-        return null;
-    }
-    
-    public void registarDevolucao(int idEmprestimo) {
-        // Checar atraso
-        Emprestimo emp = this.buscarEmprestimo(idEmprestimo);
-        // Buscar o livro no acervo e mudar para não-emprestado
-        //Buscar Cliente no Admnistração e retirar livro do array dele 
-        this.emprestimos.remove(emp);
-        
+
+    public void setAutores(ArrayList<Autor> autores) {
+        this.autores = autores;
     }
 }

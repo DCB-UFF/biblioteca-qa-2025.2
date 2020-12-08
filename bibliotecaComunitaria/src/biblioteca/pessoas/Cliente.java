@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Cliente extends Pessoa{
     
-    ArrayList<Livro> historico = new ArrayList<>();
+    public int livrosPegos;
     private Endereco end;
 
     public Cliente(String nome, String nascimento, String telefone, String rua, String bairro, String cep, String cidade, String estado){
@@ -17,6 +17,25 @@ public class Cliente extends Pessoa{
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     
     }
+    
+    public void addLivrosPegos(){
+        this.livrosPegos++;
+    }
+    
+    public void decrementLivrosPegos(){
+        this.livrosPegos--;
+    }
+    
+    public int getLivrosPegos() {
+        return livrosPegos;
+    }
+
+    public void setLivrosPegos(int livrosPegos) {
+        this.livrosPegos = livrosPegos;
+    }
+    
+    
+    
 
     @Override
     public void excluir() {
@@ -28,11 +47,6 @@ public class Cliente extends Pessoa{
         return ("Nome: " + this.getNome() + " - " + "Nascimento: " + this.getNascimento() + " - " + "Telefone: " + this.getTelefone() + " - " + "Endereço -> " + this.getEnd());
     }
     
-    protected void cobrarDevolucao(){
-    
-        // se o cliente não tiver devolvido um livro não deixar pegar outro
-        
-    }
 
     public Endereco getEnd() {
         return end;

@@ -16,6 +16,7 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
     }
+    
     public String getDataEmprestimo() {
         return dataEmprestimo;
     }
