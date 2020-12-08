@@ -1,5 +1,6 @@
 package biblioteca.arquivo;
 
+import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
 import java.io.*;
@@ -7,8 +8,52 @@ import java.io.*;
 /* @author Luam */
 
 public class Removedor {
+     public static void removerUnidade(Sistema sistema, Integer num) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        File antigo = new File("src\\unidades\\unidades.csv");
+        File novo = new File ("src\\unidades\\temp.csv");
+        
+        try {
+            br = new BufferedReader(new FileReader(antigo));
+            bw = new BufferedWriter(new FileWriter(novo, true));
+            PrintWriter pw= new PrintWriter(bw);
+            String linha = "";
+            
+            sistema.addContadorUnidades();
+            
+            while ((linha = br.readLine()) != null) {
     
-     public static void removerLivro(Livro livroDevolucao, String path) {
+                String[] un = linha.split(",");
+                if (!un[0].equals(String.valueOf(num))){
+                    pw.println(linha);
+                }
+            }
+            pw.flush();  
+            pw.close();
+            br.close();
+            antigo.delete();
+            
+            File aux = new File ("src\\unidades\\unidades.csv");
+            novo.renameTo(aux);
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }    
+     }
+    
+    
+     public static void removerLivro(Livro livroRemovido, String path) {
         BufferedReader br = null;
         BufferedWriter bw = null;
         File antigo = new File(path+"livros.csv");
@@ -23,7 +68,7 @@ public class Removedor {
             while ((linha = br.readLine()) != null) {
     
                 String[] livro = linha.split(",");
-                if (!livro[1].equals(livroDevolucao.getTitulo())){
+                if (!livro[1].equals(livroRemovido.getTitulo())){
                     pw.println(linha);
                 }
             }

@@ -8,33 +8,20 @@ import java.io.*;
 /* @author Luam */
 
 public class Escritor {
-    public static void escreverUnidade(Unidade unidade) {
+    public static void escreverUnidade(Sistema sistema,Unidade unidade) {
         BufferedWriter bw = null;
-        BufferedReader br = null;
-        int contador = 0;
-        try {
-            contador = Integer.parseInt(br.readLine());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }   
-        }
         
-        String linha = String.valueOf(contador)+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
-                + "," + unidade.getEnd().getBairro()+ "," +unidade.getEnd().getCidade() 
-                + "," + unidade.getEnd().getEstado();
+        String linha = String.valueOf(sistema.addContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
+                + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
+               + "," + unidade.getEnd().getEstado();
+        
+                
         try {
             bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
             PrintWriter pw= new PrintWriter(bw);
             pw.println(linha);
+            unidade.setPath(String.valueOf(sistema.getUnidades()));
+            
             pw.flush();
             pw.close();
         } catch (FileNotFoundException e) {

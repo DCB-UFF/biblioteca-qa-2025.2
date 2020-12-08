@@ -8,23 +8,24 @@ import java.util.ArrayList;
 
 /* @author Luam */
 public class Leitor {
-    public static ArrayList<Unidade> leitorUnidades() {
+    public static Sistema leitorUnidades() {
         BufferedReader br = null;
         String linha = "";
-        ArrayList<Unidade> unidades = new ArrayList<>();
+        Sistema sistema = new Sistema();
+        
         try {
             br = new BufferedReader(new FileReader("src\\unidades\\unidades.csv"));
-            br.readLine();
             br.readLine();
             
             while ((linha = br.readLine()) != null) {
                 String[] unidade = linha.split(",");
                 Unidade novo = new Unidade(unidade[0],unidade[1],unidade[2], unidade[3],
                         unidade[4], unidade[5], unidade[6]);
-                unidades.add(novo);
+                sistema.getUnidades().add(novo);
+                sistema.addContadorUnidades();
                 
             }
-            return unidades;
+            return sistema;
             
         } catch (FileNotFoundException e) {
             e.printStackTrace();
