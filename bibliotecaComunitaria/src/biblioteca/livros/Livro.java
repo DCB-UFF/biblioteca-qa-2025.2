@@ -2,7 +2,7 @@ package biblioteca.livros;
 
 import biblioteca.pessoas.Autor;
 
-public class Livro implements Emprestavel {
+public class Livro {
    int idLivro;
    boolean estaEmprestado;
    
@@ -12,7 +12,6 @@ public class Livro implements Emprestavel {
    protected String ISBN;
    protected String genero;
    protected String editora;
-   
    
     public Livro(int idLivro, Autor autor, String titulo, String ISBN, int numPaginas ,
             String genero,  String editora, Boolean estaEmprestado) {
@@ -26,7 +25,10 @@ public class Livro implements Emprestavel {
         this.estaEmprestado = estaEmprestado;
 
     }
-  
+    
+    public boolean isEmpty() {
+       return this.idLivro==0;
+    }
     
     public void imprimirLivro(){
         if (this.estaEmprestado){
@@ -39,24 +41,14 @@ public class Livro implements Emprestavel {
         }       
     }
 
-    @Override
-    public void emprestarLivro(Acervo acervo/*, Cliente c*/) {
-        Emprestimo novo = new Emprestimo(this, "12/10/20", "17/12/20" );
-        acervo.registarEmprestimo(novo);
-        // Adicionar livro emprestado ao array do Cliente
+    public void emprestar(){
         this.estaEmprestado = true;
-        
     }
     
-   @Override
-    public void devolverLivro() {
+    public void devolver(){
         this.estaEmprestado = false;
     }
-
-    public boolean isEmpty() {
-       return this.idLivro==0;
-    }
-
+    
     public int getIdLivro() {
         return idLivro;
     }

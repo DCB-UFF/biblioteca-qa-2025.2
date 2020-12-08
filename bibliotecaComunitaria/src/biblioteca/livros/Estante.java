@@ -56,7 +56,20 @@ public class Estante {
         
         //Exceção aqui dps
         return null;
-    }public int getIdEstante() {
+    }
+    
+    Livro buscarLivroNaEstanteTitulo(String titulo) {
+        for (Livro livro:livros){
+            if (livro.getTitulo().equals(titulo)){
+                return livro;
+            }
+        }   
+        
+        //Exceção aqui dps
+        return null;
+    }
+    
+    public int getIdEstante() {
         return idEstante;
     }
 

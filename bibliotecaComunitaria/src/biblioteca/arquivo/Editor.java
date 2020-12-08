@@ -6,7 +6,7 @@ import java.io.*;
 
 /* @author Luam */
 public class Editor {
-     public static void emprestar(Acervo acervo, Livro livroEmprestado, String path) {
+     public static void modificarEmprestimo(Acervo acervo, Livro livroEmprestado, String path, String booleano) {
         BufferedReader br = null;
         BufferedWriter bw = null;
         File antigo = new File(path+ "livros.csv");
@@ -24,7 +24,7 @@ public class Editor {
     
                 String[] livro = linha.split(",");
                 if (livro[1].equals(livroEmprestado.getTitulo())){
-                    livro[6]= "true";
+                    livro[6]= booleano;
                     linhaEditada = livro[0] + "," + livro[1] + "," + livro[2] + "," +
                 livro[3] + "," + livro[4]  + "," + livro[5] + "," + 
                 livro[6]+ "," + livro[7];
