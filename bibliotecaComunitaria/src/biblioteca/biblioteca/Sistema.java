@@ -26,9 +26,12 @@ public class Sistema{
 
     public void setUnidades(ArrayList<Unidade> unidades) {
         this.unidades = unidades;
-    }  
+    }
     
-   
+    public void add(Unidade u){
+        unidades.add(u);
+    }
+
 }
 
 
