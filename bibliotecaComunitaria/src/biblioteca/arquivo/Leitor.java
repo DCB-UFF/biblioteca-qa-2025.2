@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 /* @author Luam */
 public class Leitor {
-     public static ArrayList<Autor> leitorAutores() {
+     public static ArrayList<Autor> leitorAutores(String path) {
         BufferedReader br = null;
         String linha = "";
         ArrayList<Autor> Autores = new ArrayList<>();
         try {
-            br = new BufferedReader(new FileReader("autores.csv"));
+            br = new BufferedReader(new FileReader(path+"autores.csv"));
             br.readLine();
             
             while ((linha = br.readLine()) != null) {
@@ -40,12 +40,12 @@ public class Leitor {
         return null;
       }
      
-     public static Acervo leitorEstantes() {
+     public static Acervo leitorEstantes(String path) {
         BufferedReader br = null;
         String linha = "";
         Acervo acervo = new Acervo();
         try {
-            br = new BufferedReader(new FileReader("estantes.csv"));
+            br = new BufferedReader(new FileReader(path+"estantes.csv"));
             br.readLine();
             
             while ((linha = br.readLine()) != null) {
@@ -72,12 +72,12 @@ public class Leitor {
       }
      
      
-     public static void leitorLivros(Acervo acervo) {
+     public static void leitorLivros(Acervo acervo, String path) {
         BufferedReader br = null;
         String linha = "";
         
         try {
-            br = new BufferedReader(new FileReader("livros.csv"));
+            br = new BufferedReader(new FileReader(path+"livros.csv"));
             br.readLine();
             
             while ((linha = br.readLine()) != null) {
@@ -106,12 +106,12 @@ public class Leitor {
       }
      
      /* @author victoria */
-    public static ArrayList<Cliente> leitorClientes() {
+    public static ArrayList<Cliente> leitorClientes(String path) {
         BufferedReader br = null;
         String linha = "";
         ArrayList<Cliente> clientes = new ArrayList<>();
         try {
-            br = new BufferedReader(new FileReader("clientes.csv"));
+            br = new BufferedReader(new FileReader(path+"clientes.csv"));
             br.readLine();
 
             while ((linha = br.readLine()) != null) {
@@ -138,12 +138,12 @@ public class Leitor {
         return null;
       }
     
-    public static ArrayList<Funcionario> leitorFuncionarios() {
+    public static ArrayList<Funcionario> leitorFuncionarios(String path) {
         BufferedReader br = null;
         String linha = "";
         ArrayList<Funcionario> funcionarios = new ArrayList<>();
         try {
-            br = new BufferedReader(new FileReader("funcionarios.csv"));
+            br = new BufferedReader(new FileReader(path+"funcionarios.csv"));
             br.readLine();
 
             while ((linha = br.readLine()) != null) {

@@ -6,11 +6,11 @@ import java.io.*;
 
 /* @author Luam */
 public class Editor {
-     public static void emprestar(Acervo acervo, Livro livroEmprestado) {
+     public static void emprestar(Acervo acervo, Livro livroEmprestado, String path) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File("livros.csv");
-        File novo = new File ("temp.csv");
+        File antigo = new File(path+ "livros.csv");
+        File novo = new File (path+ "temp.csv");
         
         try {
             br = new BufferedReader(new FileReader(antigo));
@@ -41,7 +41,7 @@ public class Editor {
             antigo.delete();
             
             
-            File aux = new File ("livros.csv");
+            File aux = new File (path+"livros.csv");
             novo.renameTo(aux);
             
             

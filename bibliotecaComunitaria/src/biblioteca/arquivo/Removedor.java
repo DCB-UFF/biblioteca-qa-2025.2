@@ -8,11 +8,11 @@ import java.io.*;
 
 public class Removedor {
     
-     public static void removerLivro(Livro livroDevolucao) {
+     public static void removerLivro(Livro livroDevolucao, String path) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File("livros.csv");
-        File novo = new File ("temp.csv");
+        File antigo = new File(path+"livros.csv");
+        File novo = new File (path+"temp.csv");
         
         try {
             br = new BufferedReader(new FileReader(antigo));
@@ -32,7 +32,7 @@ public class Removedor {
             br.close();
             antigo.delete();
             
-            File aux = new File ("livros.csv");
+            File aux = new File (path+"livros.csv");
             novo.renameTo(aux);
             
         } catch (FileNotFoundException e) {
@@ -51,11 +51,11 @@ public class Removedor {
     }
      
      
-     public static void removerCliente(Cliente clienteDeletado) {
+     public static void removerCliente(Cliente clienteDeletado, String path) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File("clientes.csv");
-        File novo = new File ("temp.csv");
+        File antigo = new File(path+"clientes.csv");
+        File novo = new File (path+"temp.csv");
         
         try {
             br = new BufferedReader(new FileReader(antigo));
@@ -75,7 +75,7 @@ public class Removedor {
             br.close();
             antigo.delete();
             
-            File aux = new File ("clientes.csv");
+            File aux = new File (path+"clientes.csv");
             novo.renameTo(aux);
             
         } catch (FileNotFoundException e) {
@@ -94,11 +94,11 @@ public class Removedor {
     }
      
      
-     public static void removerFuncionario(Funcionario funcionarioDeletado) {
+     public static void removerFuncionario(Funcionario funcionarioDeletado, String path) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File("funcionarios.csv");
-        File novo = new File ("temp.csv");
+        File antigo = new File(path+"funcionarios.csv");
+        File novo = new File (path+"temp.csv");
         
         try {
             br = new BufferedReader(new FileReader(antigo));
@@ -118,7 +118,7 @@ public class Removedor {
             br.close();
             antigo.delete();
             
-            File aux = new File ("funcionarios.csv");
+            File aux = new File (path+"funcionarios.csv");
             novo.renameTo(aux);
             
         } catch (FileNotFoundException e) {

@@ -7,14 +7,15 @@ import java.util.ArrayList;
 /* @author victoria */
 
 public class Unidade{
-    
+    private String path;
     private String nome;
     private Endereco end;
     private Acervo acervo;
     private ArrayList <Cliente> clientes = new ArrayList<>();
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
     
-    public Unidade(String nome, String rua, String bairro, String cep, String cidade, String estado){
+    public Unidade(String path, String nome, String rua, String bairro, String cep, String cidade, String estado){
+        this.path = path;
         this.nome = nome;
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     }
@@ -24,7 +25,17 @@ public class Unidade{
          return ("Unidade "+ this.nome + "\nRua: " + end.getRua() + " - " + "Bairro: " + end.getBairro() +
                  " - " + "CEP: " + end.getCep() + " - " + "Cidade: " + end.getCidade() + " - " + "Estado: " + end.getEstado());
      }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
     
+     
+     
     public String getNome() {
         return nome;
     }

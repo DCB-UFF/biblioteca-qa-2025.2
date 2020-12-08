@@ -10,28 +10,28 @@ public class TesteClienteFuncionario {
     public static void main(String[] args){
         ArrayList<Cliente> clientes = new ArrayList();
         
-        clientes = Leitor.leitorClientes();
+        clientes = Leitor.leitorClientes("src\\unidades\\un1\\");
         imprimir(clientes);
 
         System.out.println("\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         ArrayList<Funcionario> funcionarios = new ArrayList();
 
-        funcionarios = Leitor.leitorFuncionarios();
+        funcionarios = Leitor.leitorFuncionarios("src\\unidades\\un1\\");
         imprimir(funcionarios);
         
         /*Cliente cliente = new Cliente();
         cliente.cadastro("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
-        Escritor.escreverCliente(cliente);
-        clientes = Leitor.leitorClientes();
+        Escritor.escreverCliente(cliente, "src\\unidades\\un1\\");
+        clientes = Leitor.leitorClientes("src\\unidades\\un1\\");
         LeituraPessoas.imprimir(clientes);*/
         
         /*Funcionario funcionario = new Funcionario();
         funcionario.cadastro("Maria", "12/12/2000", "99999-9999", 4000, "gerente", "Rua 1",
         "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         
-        Escritor.escreverFuncionario(funcionario);
-        funcionarios = Leitor.leitorFuncionarios();
+        Escritor.escreverFuncionario(funcionario, "src\\unidades\\un1\\");
+        funcionarios = Leitor.leitorFuncionarios("src\\unidades\\un1\\");
         imprimir(funcionarios);*/
         
         
@@ -40,11 +40,11 @@ public class TesteClienteFuncionario {
         funcionario.cadastro("Maria", "12/12/2000", "99999-9999", 4000, "gerente", "Rua 1",
         "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         
-        Removedor.removerFuncionario(funcionario);
+        Removedor.removerFuncionario(funcionario, "src\\unidades\\un1\\");
         */
         Cliente cliente = new Cliente();
         cliente.cadastro("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
-        Removedor.removerCliente(cliente);
+        Removedor.removerCliente(cliente, "src\\unidades\\un1\\");
         
         
         

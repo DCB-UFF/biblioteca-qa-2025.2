@@ -8,9 +8,19 @@ import biblioteca.pessoas.*;
 public class Acervo {
     public int idsLivros= 1;
     public int idsEstantes = 1;
-    public ArrayList<Estante> estantes = new ArrayList<>();
-    public ArrayList<Emprestimo> emprestimos = new ArrayList<>();
-    public ArrayList<Autor> autores = new ArrayList<>();
+    protected ArrayList<Estante> estantes = new ArrayList<>();
+    protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
+    protected ArrayList<Autor> autores = new ArrayList<>();
+
+    public void setEstantes(ArrayList<Estante> estantes) {
+        this.estantes = estantes;
+    }
+
+    public void setAutores(ArrayList<Autor> autores) {
+        this.autores = autores;
+    }
+    
+    
     
     public boolean buscarAutor(String nome){
         for (Autor autor : autores){
@@ -65,7 +75,8 @@ public class Acervo {
         return null;
     }
     
-    public void imprimirAcervo(){
+    public void imprimirAcervo(String nomeUnidade){
+        System.out.println("Acervo da Unidade - " + nomeUnidade);
         for (Estante e : estantes){
             e.imprimirEstante();
         }
