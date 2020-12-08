@@ -1,16 +1,57 @@
 package biblioteca.arquivo;
 
-import biblioteca.livros.Estante;
-import biblioteca.livros.Livro;
-import biblioteca.pessoas.Autor;
-import biblioteca.pessoas.Cliente;
-import biblioteca.pessoas.Funcionario;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
 import java.io.*;
-import java.util.ArrayList;
 
 /* @author Luam */
 
 public class Escritor {
+    public static void escreverUnidade(Unidade unidade) {
+        BufferedWriter bw = null;
+        BufferedReader br = null;
+        int contador = 0;
+        try {
+            contador = Integer.parseInt(br.readLine());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+        
+        String linha = String.valueOf(contador)+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
+                + "," + unidade.getEnd().getBairro()+ "," +unidade.getEnd().getCidade() 
+                + "," + unidade.getEnd().getEstado();
+        try {
+            bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
+            PrintWriter pw= new PrintWriter(bw);
+            pw.println(linha);
+            pw.flush();
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
+    
     public static void escreverAutor(Autor autor, String path) {
         BufferedWriter bw = null;
         String linha = autor.getNome()+","+autor.getPais();

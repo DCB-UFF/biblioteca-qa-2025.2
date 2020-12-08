@@ -1,5 +1,6 @@
 package biblioteca.arquivo;
 
+import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
 import java.io.*;
@@ -7,6 +8,40 @@ import java.util.ArrayList;
 
 /* @author Luam */
 public class Leitor {
+    public static ArrayList<Unidade> leitorUnidades() {
+        BufferedReader br = null;
+        String linha = "";
+        ArrayList<Unidade> unidades = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader("src\\unidades\\unidades.csv"));
+            br.readLine();
+            br.readLine();
+            
+            while ((linha = br.readLine()) != null) {
+                String[] unidade = linha.split(",");
+                Unidade novo = new Unidade(unidade[0],unidade[1],unidade[2], unidade[3],
+                        unidade[4], unidade[5], unidade[6]);
+                unidades.add(novo);
+                
+            }
+            return unidades;
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+        return null;
+      }
+    
      public static ArrayList<Autor> leitorAutores(String path) {
         BufferedReader br = null;
         String linha = "";
