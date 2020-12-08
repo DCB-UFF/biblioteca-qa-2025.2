@@ -49,15 +49,14 @@ public class Menu {
         
     }
     
-    public static Unidade buscarUnidade(String nome){
-        /*
-            for(Unidade u: biblioteca.unidades){
-                if(u.getNome().equals(nome){
+    public static Unidade buscarUnidade(String nome, Sistema sistema){
+
+            for(Unidade u: sistema.unidades){
+                if(u.getNome().equals(nome)){
                     return u;
                 }
             }
-            tratamento de ex~ceção 
-        */
+            //tratamento de exceção 
         return null;
     }
     
