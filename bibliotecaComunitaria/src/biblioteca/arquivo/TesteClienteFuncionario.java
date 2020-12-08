@@ -42,8 +42,7 @@ public class TesteClienteFuncionario {
         
         Removedor.removerFuncionario(funcionario, "src\\unidades\\un1\\");
         */
-        /*Cliente cliente = new Cliente();
-        cliente.cadastro("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
+        /*Cliente cliente = new Cliente("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         Removedor.removerCliente(cliente, "src\\unidades\\un1\\");*/
         
         

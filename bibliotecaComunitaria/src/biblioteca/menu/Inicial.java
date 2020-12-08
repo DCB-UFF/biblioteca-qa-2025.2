@@ -1,6 +1,7 @@
 
 package biblioteca.menu;
 
+import biblioteca.arquivo.*;
 import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
@@ -68,11 +69,9 @@ public class Inicial {
         String gene = tecla.nextLine();
         System.out.println("\nDigite a editora do livro: ");
         String edit = tecla.nextLine();
-        Livro novo = new Livro(id, autor, titulo,isbn, pag, gene, edit, false);
-                        
+        Livro novo = new Livro(id, autor, titulo, isbn, pag, gene, edit, false);               
         aux.getAcervo().addLivro(novo);
-                        
-        //adicionar no arquivo (na classe acervo)
+        Escritor.escreverLivro(novo, aux.getPath());
         
     }
     
@@ -103,8 +102,8 @@ public class Inicial {
         String est = tecla.nextLine();
                         
         Funcionario fun = new Funcionario(nome, data, tele, sala, cargo, rua, bairro, cep, cid, est);
-                        
-        //adicionar no arquivo (na classe acervo)
+        aux.getFuncionarios().add(fun);
+        Escritor.escreverFuncionario(fun, aux.getPath());
         
     }
     
@@ -118,8 +117,8 @@ public class Inicial {
         String pais = tecla.nextLine();
                         
         Autor autor = new Autor(nome, pais);
-                        
-        //adicionar no arquivo (na classe acervo)
+        aux.getAcervo().getAutores().add(autor);
+        Escritor.escreverAutor(autor, aux.getPath());
         
     }
     
@@ -143,10 +142,10 @@ public class Inicial {
         String cid = tecla.nextLine();
         System.out.println("\nDigite o estado do cliente: ");
         String est = tecla.nextLine();
-                        
+        
         Cliente cliente = new Cliente(nome, data, tele, rua, bairro, cep, cid, est);
-                        
-        //adicionar no arquivo (na classe acervo)
+        aux.getClientes().add(cliente);
+        Escritor.escreverCliente(cliente, aux.getPath());
         
     }
     

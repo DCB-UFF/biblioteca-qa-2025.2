@@ -8,7 +8,8 @@ import biblioteca.pessoas.*;
 /* @author Luam */
 
 public class Acervo {
-    public int idsLivros= 1;
+    
+    public int idsLivros = 1;
     public int idsEstantes = 1;
     protected ArrayList<Estante> estantes = new ArrayList<>();
     protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
@@ -32,31 +33,11 @@ public class Acervo {
             System.out.println("O cliente já pegou o máximo de livros emprestado.");
         }   
     }
-    
+
+    public ArrayList<Autor> getAutores() {
+        return autores;
+    }
    
-    public void devolverLivro(Unidade unidade, Cliente cliente, String titulo) {
-        Emprestimo devolucao = buscarEmprestimo(cliente,titulo);
-        emprestimos.remove(devolucao);
-        
-        Livro aux  = this.buscarLivroTitulo(titulo);
-        aux.devolver();
-        
-        Editor.modificarEmprestimo(this, aux, unidade.getPath(), "false");
-        
-        // Tirar doo arquivo de emprestimos
-        cliente.decrementLivrosPegos();
-        // Atualizar arquivo de clientes
-    }
-    
-    public Emprestimo buscarEmprestimo(Cliente cliente, String titulo){
-        for (Emprestimo e: emprestimos){
-            if ((e.getCliente().equals(cliente)) && (e.getLivro().getTitulo().equals(titulo))){
-                return e;
-            }
-        }
-        return null;
-    }
-    
     public boolean buscarAutor(String nome){
         for (Autor autor : autores){
             if (autor.getNome().equals(nome))
