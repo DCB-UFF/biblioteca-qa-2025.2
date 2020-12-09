@@ -13,10 +13,16 @@ public class Inicial {
     
     public static void principal(){
         
-        System.out.println("\n1 - Adicionar nova unidade");
-        System.out.println("2 - Escolher unidade");
+        System.out.println("\n1 - Escolher unidade");
+        System.out.println("2 - Adicionar nova unidade");
         System.out.println("3 - Sair\n");
         
+    }
+    
+    public static void opcoesAcessar(){
+        System.out.println("\n1 - Acesso");
+        System.out.println("2 - Emprestimo");
+        System.out.println("3 - Administração\n");
     }
     
     public static void escolher(){

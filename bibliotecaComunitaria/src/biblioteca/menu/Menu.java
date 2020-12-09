@@ -15,9 +15,6 @@ public class Menu {
         int op = teclado.nextInt();
         while(op != 3){
             if(op == 1){
-               Inicial.adicionarUnidade(Main.sistema);
-            }
-            else if(op == 2){
                 Inicial.imprimir(Main.sistema.unidades);
                 System.out.println("Digite o nome da unidade: ");
                 Scanner tecla = new Scanner(System.in);
@@ -43,6 +40,9 @@ public class Menu {
                             break;
                     }
                 }
+            }
+            else if(op == 2){
+                Inicial.opcoesAcessar();
             }
         }
         
