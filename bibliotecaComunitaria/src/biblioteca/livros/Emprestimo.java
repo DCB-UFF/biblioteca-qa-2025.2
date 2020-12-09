@@ -54,8 +54,8 @@ public class Emprestimo {
     
      @Override
     public String toString() {
-        return ("CPF: " + this.getCPF() + " - " + "IdLivro: " + this.getISNB()
-                + " - " + "Data de Emprestimo: " + this.getDataEmprestimo() +
+        return ("IdLivro: " + this.getISNB() + " - " +"CPF: " + this.getCPF() 
+                + " - " +  "Data de Emprestimo: " + this.getDataEmprestimo() +
                 " - " + "Data de Devolução: " + this.getDataDevolucao());
     }
     // checar devolução

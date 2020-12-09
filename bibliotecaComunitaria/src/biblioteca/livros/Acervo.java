@@ -14,7 +14,9 @@ public class Acervo {
     protected ArrayList<Estante> estantes = new ArrayList<>();
     protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     protected ArrayList<Autor> autores = new ArrayList<>();
-
+    
+    
+    
     public void emprestarLivro(Unidade unidade, Cliente cliente, String titulo) {
         
         if (cliente.getLivrosPegos()<3){ // Checa se o cliente pode pegar um livro
@@ -92,15 +94,16 @@ public class Acervo {
         return null;// Tratar execção dps
     }
     
-     public Livro buscarLivroAutor (String autor){
+     public ArrayList<Livro> buscarLivroAutor (String autor){
+        ArrayList<Livro> livros = new ArrayList();
         for (Estante e : estantes){
             for (Livro l : e.livros){
-                if (l.getAutor().equals(autor)){
-                    return l;
+                if (l.autor.getNome().equals(autor)){
+                    livros.add(l);
                 }
             }
         }
-        return null;// Tratar execção dps
+        return livros;// Tratar execção dps
     }
     
     
