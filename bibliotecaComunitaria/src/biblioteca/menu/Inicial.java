@@ -20,9 +20,37 @@ public class Inicial {
     }
     
     public static void opcoesAcessar(){
+        
         System.out.println("\n1 - Acervo");
         System.out.println("2 - Emprestimo");
         System.out.println("3 - Administração\n");
+        
+    }
+    
+    public static void opcoesAcessarAdmin(){
+        
+        System.out.println("\n1 - Cliente");
+        System.out.println("2 - Funcionário");
+        System.out.println("3 - Sair\n");
+        
+    }
+    
+    public static void opcoesAcessarAdminCliente(){
+        
+        System.out.println("\n1 - Buscar cliente");
+        System.out.println("2 - Adicionar cliente");
+        System.out.println("3 - Remover cliente");
+        System.out.println("4 - imprimir quadro de clientes\n");
+        
+    }
+    
+    public static void opcoesAcessarAdminFuncionario(){
+        
+        System.out.println("\n1 - Buscar funcionario");
+        System.out.println("2 - Adicionar funcionario");
+        System.out.println("3 - Remover funcionario");
+        System.out.println("4 - imprimir quadro de funcionarios\n");
+        
     }
     
     public static void opcoesCriarUnidade(){
@@ -71,6 +99,8 @@ public class Inicial {
         
         System.out.println("\nDigite o nome do funcionário: ");
         String nome = tecla.nextLine();
+        System.out.println("\nDigite o cpf do cliente: ");
+        String cpf = tecla.nextLine();
         System.out.println("\nDigite o nascimento do funcionário: ");
         String data = tecla.nextLine();
         System.out.println("\nDigite o telefone do funcionário: ");
@@ -90,7 +120,7 @@ public class Inicial {
         System.out.println("\nDigite o estado do funcionário: ");
         String est = tecla.nextLine();
                         
-        Funcionario fun = new Funcionario(nome, data, tele, sala, cargo, rua, bairro, cep, cid, est);
+        Funcionario fun = new Funcionario(nome, cpf, data, tele, sala, cargo, rua, bairro, cep, cid, est);
         aux.getFuncionarios().add(fun);
         Escritor.escreverFuncionario(fun, aux.getPath());
         
@@ -144,7 +174,7 @@ public class Inicial {
         
         Scanner tecla = new Scanner(System.in);
         
-        System.out.println("\nDigite o nome do cliente: ");
+        System.out.println("\nDigite o nome da unidade: ");
         String nome = tecla.nextLine();
         System.out.println("\nDigite a rua da unidade: ");
         String rua = tecla.nextLine();
