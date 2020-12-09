@@ -1,5 +1,6 @@
 package biblioteca.biblioteca;
 import biblioteca.arquivo.Criador;
+import biblioteca.arquivo.Escritor;
 import biblioteca.arquivo.Leitor;
 import biblioteca.livros.Acervo;
 import biblioteca.pessoas.Cliente;
@@ -56,6 +57,7 @@ public class Sistema{
         String path = String.valueOf(this.contadorUnidades); // Passa o contador atual para string
         Criador.criarPastaUnidade(path); // Cria a pasta da nova unidade no diretorio
         Unidade nova = new Unidade(path,nome,rua, bairro,cep,cidade,estado); // Cria a nova unidade de fato
+        Escritor.escreverUnidade(this, nova);
     }
  
     

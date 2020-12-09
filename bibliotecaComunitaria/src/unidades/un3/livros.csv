@@ -1,74 +1,75 @@
-#autor,#Titulo,#Paginas,,#Gênero,#Editora,#estaEmprestado,#Pais
-Albert Camus,O Estrangeiro,82,5145798,Clássico,Globo Livros,false,Argélia
-Alexandre Dumas,O Conde de Monte Cristo,88,5810391,Aventura,Zahar,false,França
-Aluísio Azevedo,O cortiço,518,5229885,Clássico,Cia das Letras,false,Brasil
-Andre Aciman,Me chame pelo seu nome,612,5568696,Jovem Adulto,L&PM,false,Egito
-Anne Frank,O Diario de Anne Frank,633,6123701,Holocausto,Globo Livros,false,Holanda
-Brian Selznik,A invenção de Hugo Cabret,489,41220,Infantil,Cia das Letras,false,Estados Unidos
-Dan Bronw,Anjos e Demônios,225,1535649,Suspense,Arqueiro,false,Estados Unidos
-Gabriel Garcia Marquez,Cem Anos de Solidão,619,2607593,Clássico,Globo Livros,false,Colômbia
-George R. R. Martin,A Dança dos Dragões,696,4380151,Guerra,Leya,false,Estados Unidos
-George R. R. Martin,A Furia dos Reis,280,9989200,Guerra,Leya,false,Estados Unidos
-George R. R. Martin,A Guerra dos Tronos,526,1338497,Guerra,Leya,false,Estados Unidos
-George R. R. Martin,A Tormenta das Espadas,562,2105652,Guerra,Leya,false,Estados Unidos
-George R. R. Martin,O Festim dos Corvos,305,1084451,Guerra,Leya,false,Estados Unidos
-Goethe,O sofrimento do Jovem Wether,559,8477645,Clássico,Globo Livros,false,Alemanha
-Graciliano Ramos,Vidas Secas,490,9098492,Clássico,Arqueiro,false,Brasil
-Harper Lee,O sol é para todos,470,9866666,Clássico,L&PM,false,Estados Unidos
-Isabel Allende,A Casa dos Espiritos,300,9543411,Realismo,Atica,false,Chile
-J. K. Rowling,Harry Potter e a Pedra Filosofal,403,9672139,Fantasia,Rocco,false,Inglaterra
-J. K. Rowling,Harry Potter e a Câmara Secreta,361,1285318,Fantasia,Rocco,false,Inglaterra
-J. K. Rowling,Harry Potter e o Prisioneiro de Askaban,393,9499157,Fantasia,Rocco,false,Inglaterra
-J. K. Rowling,Harry Potter e o Cálice de Fogo,70,817920,Fantasia,Rocco,false,Inglaterra
-J. K. Rowling,Harry Potter e a Ordem da Fênix,241,7265007,Fantasia,Rocco,false,Inglaterra
-J. K. Rowling,Harry Potter e o Enigma do Principe,276,9584277,Fantasia,Rocco,false,Inglaterra
-J. K. Rowling,Harry Potter e as Reliquias da Morte,685,4230316,Fantasia,Rocco,false,Inglaterra
-Jane Austen,Persuasão,644,6989069,Clássico,Cia das Letras,false,Inglaterra
-Jane Austen,Orgulho e Preconceito,49,9420672,Clássico,Atica,false,Inglaterra
-John Boyne,O menino do Pijama Listrado,219,3255726,Holocausto,Record,false,Irlanda
-John Green,Tartarugas até lá embaixo,450,6047209,Jovem Adulto,L&PM,false,Estados Unidos
-John Green,A Culpa é das Estrelas,587,8206610,Jovem Adulto,Arqueiro,false,Estados Unidos
-Jorge Amado,Capitães de Areia,341,4739667,Clássico,L&PM,false,Brasil
-José de Alencar,Senhora,311,3030767,Clássico,Globo Livros,false,Brasil
-José de Alencar,Iracema,494,2673062,Clássico,Arqueiro,false,Brasil
-Josh Malerman,Caixa de Pássaros,319,2152582,Suspense,Cia das Letras,false,Estados Unidos
-Josten Gaarder,O Mundo de Sofia,106,5999149,Filosofia,Atica,false,Noruega
-Julio Verne,Viagem ao centro da Terra,697,1426014,Aventura,Record,false,França
-Julio Verne,Volta ao mundo em 80 dias,434,5386452,Aventura,Record,false,França
-Julio Verne,20 mil léguas submarinas,591,7052910,Aventura,Record,false,França
-Lima Barreto,Triste Fim de Policarpo Quaresma,21,927715,Clássico,Globo Livros,false,Brasil
-Lima Barreto,Clara dos Anjos,495,6860225,Clássico,Globo Livros,false,Brasil
-Lima Barreto,Recordações do Escrivão Isaias Caminha,161,3191197,Clássico,Globo Livros,false,Brasil
-Machado de Assis,Dom Casmurro,576,1869792,Realismo,Penguim Compania,false,Brasil
-Machado de Assis,Memórias Póstumas de Brás Cubas,548,1772324,Realismo,Penguim Compania,false,Brasil
-Machado de Assis,Quincas Borba,297,1455643,Realismo,Penguim Compania,false,Brasil
-Machado de Assis,O Alienista,580,1344771,Realismo,Penguim Compania,false,Brasil
-Margareth Atwood,O conto da Aia,544,9807678,Distopia,Record,false,Canadá
-Markus Zusak,A Menina que Roubava Livros,64,7915154,Holocausto,Arqueiro,false,Austrália
-Mary Shelley,Frankenstein,352,4906825,Clássico,Globo Livros,false,Inglaterra
-Matthew Quick,O Lado Bom da Vida,138,4753051,Psicologia,Arqueiro,false,Estados Unidos
-Oscar Wilde,O retrato de Dorian Gray,253,3765665,Clássico,Cia das Letras,false,Inglaterra
-Paulo Coelho,O Alquimista,514,8298194,Clássico,Globo Livros,false,Brasil
-Raquel de Queirz,O Quinze,669,9299803,Clássico,Globo Livros,false,Brasil
-Rick Riordan,Percy Jackson e o Ladrão de Raios,915,9239208,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,Percy Jackson e o Mar de Monstros,459,4869121,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,Percy Jackson e a Maldição do Titã,180,2913389,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,Percy Jackson e a Batalha do Labirinto,403,2264364,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,Percy Jackson e o Último Olimpiano,310,6194559,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,O Herói Perdido,436,7713330,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,O Filho de Netuno,286,5116146,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,A Marca de Atena,343,8342281,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,A Casa de Hades,540,8619184,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,A Pirâmide Vermelha,509,9020026,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,O Trono de Fogo,587,954293,Mitologia,Intrinseca,false,Estados Unidos
-Rick Riordan,A Sombra da Serpente,367,9060137,Mitologia,Intrinseca,false,Estados Unidos
-RJ Palacio,O Extraordinario,332,4363440,Jovem Adulto,Globo Livros,false,Estados Unidos
-Shakespeare,Romeu e Julieta,645,8730413,Teatro,Cia das Letras,false,Inglaterra
-Shakespeare,Hamlet,389,9848654,Teatro,Cia das Letras,false,Inglaterra
-Suzanne Collins,Jogos Vorazes,140,2455038,Distopia,Rocco,false,Estados Unidos
-Suzanne Collins,Em Chamas,152,6027162,Distopia,Rocco,false,Estados Unidos
-Suzanne Collins,A Esperança,661,8674993,Distopia,Rocco,false,Estados Unidos
-Veronica Roth,Divergente ,305,1414063,Distopia,Rocco,false,Estados Unidos
-Veronica Roth,Insurgente,253,9388884,Distopia,Rocco,false,Estados Unidos
-Veronica Roth,Convergente,77,5743843,Distopia,Rocco,false,Estados Unidos
-Yuval Noah Harari,Sapiens,635,6788848,Ciência,Cia das Letras,false,Israel
+#autor,#Titulo,#Paginas,#ISBN,#Gênero,#Editora,#estaEmprestado,#Pais
+Albert Camus,O Estrangeiro,66,2871251,Clássico,Globo Livros,true,Argélia
+Alexandre Dumas,O Conde de Monte Cristo,147,2970387,Aventura,Zahar,true,França
+Aluísio Azevedo,O cortiço,510,1397423,Clássico,Cia das Letras,true,Brasil
+Andre Aciman,Me chame pelo seu nome,208,3867953,Jovem Adulto,L&PM,false,Egito
+Anne Frank,O Diario de Anne Frank,403,8631478,Holocausto,Globo Livros,false,Holanda
+Brian Selznik,A invenção de Hugo Cabret,552,7292671,Infantil,Cia das Letras,false,Estados Unidos
+Dan Bronw,Anjos e Demônios,372,9167390,Suspense,Arqueiro,false,Estados Unidos
+Gabriel Garcia Marquez,Cem Anos de Solidão,641,767238,Clássico,Globo Livros,false,Colômbia
+George R. R. Martin,A Dança dos Dragões,415,4826002,Guerra,Leya,false,Estados Unidos
+George R. R. Martin,A Furia dos Reis,249,4612958,Guerra,Leya,false,Estados Unidos
+George R. R. Martin,A Guerra dos Tronos,629,2773508,Guerra,Leya,false,Estados Unidos
+George R. R. Martin,A Tormenta das Espadas,525,1593526,Guerra,Leya,false,Estados Unidos
+George R. R. Martin,O Festim dos Corvos,116,4296362,Guerra,Leya,false,Estados Unidos
+Goethe,O sofrimento do Jovem Wether,397,3113921,Clássico,Globo Livros,false,Alemanha
+Graciliano Ramos,Vidas Secas,423,7656632,Clássico,Arqueiro,false,Brasil
+Harper Lee,O sol é para todos,300,2006292,Clássico,L&PM,false,Estados Unidos
+Isabel Allende,A Casa dos Espiritos,251,4947079,Realismo,Atica,false,Chile
+J. K. Rowling,Harry Potter e a Pedra Filosofal,17,1767638,Fantasia,Rocco,false,Inglaterra
+J. K. Rowling,Harry Potter e a Câmara Secreta,257,7688733,Fantasia,Rocco,false,Inglaterra
+J. K. Rowling,Harry Potter e o Prisioneiro de Askaban,169,6725516,Fantasia,Rocco,false,Inglaterra
+J. K. Rowling,Harry Potter e o Cálice de Fogo,525,5286163,Fantasia,Rocco,false,Inglaterra
+J. K. Rowling,Harry Potter e a Ordem da Fênix,273,5171643,Fantasia,Rocco,false,Inglaterra
+J. K. Rowling,Harry Potter e o Enigma do Principe,620,7629021,Fantasia,Rocco,false,Inglaterra
+J. K. Rowling,Harry Potter e as Reliquias da Morte,542,4474305,Fantasia,Rocco,false,Inglaterra
+Jane Austen,Persuasão,663,885853,Clássico,Cia das Letras,false,Inglaterra
+Jane Austen,Orgulho e Preconceito,674,795156,Clássico,Atica,false,Inglaterra
+John Boyne,O menino do Pijama Listrado,196,8692221,Holocausto,Record,false,Irlanda
+John Green,Tartarugas até lá embaixo,395,6811945,Jovem Adulto,L&PM,false,Estados Unidos
+John Green,A Culpa é das Estrelas,322,8835426,Jovem Adulto,Arqueiro,false,Estados Unidos
+Jorge Amado,Capitães de Areia,86,5084757,Clássico,L&PM,false,Brasil
+José de Alencar,Senhora,265,4559634,Clássico,Globo Livros,false,Brasil
+José de Alencar,Iracema,397,6979506,Clássico,Arqueiro,false,Brasil
+Josh Malerman,Caixa de Pássaros,372,5666111,Suspense,Cia das Letras,false,Estados Unidos
+Josten Gaarder,O Mundo de Sofia,54,2740136,Filosofia,Atica,false,Noruega
+Julio Verne,Viagem ao centro da Terra,506,5603052,Aventura,Record,false,França
+Julio Verne,Volta ao mundo em 80 dias,650,6022725,Aventura,Record,false,França
+Julio Verne,20 mil léguas submarinas,114,9198858,Aventura,Record,false,França
+Lima Barreto,Triste Fim de Policarpo Quaresma,654,394319,Clássico,Globo Livros,false,Brasil
+Lima Barreto,Clara dos Anjos,145,1093582,Clássico,Globo Livros,false,Brasil
+Lima Barreto,Recordações do Escrivão Isaias Caminha,179,8661942,Clássico,Globo Livros,false,Brasil
+Machado de Assis,Dom Casmurro,317,6298912,Realismo,Penguim Compania,false,Brasil
+Machado de Assis,Memórias Póstumas de Brás Cubas,178,1919175,Realismo,Penguim Compania,false,Brasil
+Machado de Assis,Quincas Borba,158,2731836,Realismo,Penguim Compania,false,Brasil
+Machado de Assis,O Alienista,243,646454,Realismo,Penguim Compania,false,Brasil
+Margareth Atwood,O conto da Aia,376,6616832,Distopia,Record,false,Canadá
+Markus Zusak,A Menina que Roubava Livros,603,7625769,Holocausto,Arqueiro,false,Austrália
+Mary Shelley,Frankenstein,616,7962961,Clássico,Globo Livros,false,Inglaterra
+Matthew Quick,O Lado Bom da Vida,116,2660748,Psicologia,Arqueiro,false,Estados Unidos
+Oscar Wilde,O retrato de Dorian Gray,629,7053820,Clássico,Cia das Letras,false,Inglaterra
+Paulo Coelho,O Alquimista,645,3740485,Clássico,Globo Livros,false,Brasil
+Raquel de Queirz,O Quinze,184,8229366,Clássico,Globo Livros,false,Brasil
+Rick Riordan,Percy Jackson e o Ladrão de Raios,598,3242608,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,Percy Jackson e o Mar de Monstros,353,2909915,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,Percy Jackson e a Maldição do Titã,649,1711676,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,Percy Jackson e a Batalha do Labirinto,50,5566030,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,Percy Jackson e o Último Olimpiano,321,4628221,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,O Herói Perdido,196,9456807,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,O Filho de Netuno,395,9137913,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,A Marca de Atena,615,757653,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,A Casa de Hades,27,956944,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,O Sangue do Olimpo,511,2022741,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,A Pirâmide Vermelha,101,5407741,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,O Trono de Fogo,105,7653935,Mitologia,Intrinseca,false,Estados Unidos
+Rick Riordan,A Sombra da Serpente,293,7848499,Mitologia,Intrinseca,false,Estados Unidos
+RJ Palacio,O Extraordinario,44,3585169,Jovem Adulto,Globo Livros,false,Estados Unidos
+Shakespeare,Romeu e Julieta,425,5502162,Teatro,Cia das Letras,false,Inglaterra
+Shakespeare,Hamlet,521,1178665,Teatro,Cia das Letras,false,Inglaterra
+Suzanne Collins,Jogos Vorazes,529,6007921,Distopia,Rocco,false,Estados Unidos
+Suzanne Collins,Em Chamas,46,6337533,Distopia,Rocco,false,Estados Unidos
+Suzanne Collins,A Esperança,675,4834925,Distopia,Rocco,false,Estados Unidos
+Veronica Roth,Divergente ,659,1070290,Distopia,Rocco,false,Estados Unidos
+Veronica Roth,Insurgente,461,9218677,Distopia,Rocco,false,Estados Unidos
+Veronica Roth,Convergente,81,7729738,Distopia,Rocco,false,Estados Unidos
+Yuval Noah Harari,Sapiens,263,6492003,Ciência,Cia das Letras,false,Israel

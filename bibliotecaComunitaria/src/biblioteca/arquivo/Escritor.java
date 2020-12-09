@@ -11,7 +11,7 @@ public class Escritor {
     public static void escreverUnidade(Sistema sistema,Unidade unidade) {
         BufferedWriter bw = null;
         
-        String linha = String.valueOf(sistema.addContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
+        String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
                 + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
                + "," + unidade.getEnd().getEstado();
         
