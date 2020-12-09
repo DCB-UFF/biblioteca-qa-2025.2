@@ -1,7 +1,7 @@
 package biblioteca.biblioteca;
+import biblioteca.arquivo.Criador;
 import biblioteca.arquivo.Leitor;
 import biblioteca.livros.Acervo;
-import biblioteca.pessoas.Autor;
 import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
 import java.util.ArrayList;
@@ -27,6 +27,13 @@ public class Sistema{
         //Lê os funcionarios
         ArrayList<Funcionario> funcionariosNiteroi = Leitor.leitorFuncionarios(un.getPath());
         un.setFuncionarios(funcionariosNiteroi);
+    }
+    
+    public void criarUnidade(String nome, String rua, String bairro, String cep, String cidade, String estado){
+        this.addContadorUnidades();
+        String path = String.valueOf(this.contadorUnidades);
+        Criador.criarPastaUnidade(path);
+        Unidade nova = new Unidade(path,nome,rua, bairro,cep,cidade,estado);
     }
  
     
