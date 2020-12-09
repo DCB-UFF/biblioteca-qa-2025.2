@@ -19,7 +19,7 @@ public class Acervo {
         
         if (cliente.getLivrosPegos()<3){ // Checa se o cliente pode pegar um livro
             Livro aux  = this.buscarLivroTitulo(titulo);
-            Emprestimo novo = new Emprestimo(cliente, aux, "15/10/20", "30/12/20" );
+            Emprestimo novo = new Emprestimo(cliente.getCPF(), aux.getISBN(), "15/10/20", "30/12/20" );
             aux.emprestar();
             //Editor.modificarEmprestimo(this, aux, unidade.getPath(), "true");
 

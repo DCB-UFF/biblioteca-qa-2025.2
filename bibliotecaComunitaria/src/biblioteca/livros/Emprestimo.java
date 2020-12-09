@@ -4,14 +4,14 @@ import biblioteca.pessoas.Cliente;
 /* @author Luam */
 
 public class Emprestimo {
-    private Cliente cliente;
-    private Livro livro;
+    private String CPF;
+    private String idLivro;
     private String dataEmprestimo;
     private String dataDevolucao;
 
-    public Emprestimo(Cliente cliente, Livro livro, String dataEmprestimo, String dataDevolucao) {
-        this.cliente = cliente;
-        this.livro = livro;
+    public Emprestimo(String CPF, String idLivro, String dataEmprestimo, String dataDevolucao) {
+        this.CPF= CPF;
+        this.idLivro = idLivro;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
     }
@@ -24,21 +24,23 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getCPF() {
+        return CPF;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
-    public Livro getLivro() {
-        return livro;
+    public String getIdLivro() {
+        return idLivro;
     }
 
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    public void setIdLivro(String idLivro) {
+        this.idLivro = idLivro;
     }
+
+    
 
     public String getDataDevolucao() {
         return dataDevolucao;
@@ -48,6 +50,13 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
+    
+     @Override
+    public String toString() {
+        return ("CPF: " + this.getCPF() + " - " + "IdLivro: " + this.getIdLivro()
+                + " - " + "Data de Emprestimo: " + this.getDataEmprestimo() +
+                " - " + "Data de Devolução: " + this.getDataDevolucao());
+    }
     // checar devolução
     
     

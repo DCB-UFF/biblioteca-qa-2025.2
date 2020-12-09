@@ -8,6 +8,49 @@ import java.io.*;
 /* @author Luam */
 
 public class Removedor {
+    public static void removerEmprestimo(Emprestimo emprestimoRemovido, String path) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        File antigo = new File(path+"emprestimos.csv");
+        File novo = new File (path+"temp.csv");
+        
+        try {
+            br = new BufferedReader(new FileReader(antigo));
+            bw = new BufferedWriter(new FileWriter(novo, true));
+            PrintWriter pw= new PrintWriter(bw);
+            String linha = "";
+            
+            while ((linha = br.readLine()) != null) {
+    
+                String[] emprestimo = linha.split(",");
+                if ((!emprestimo[0].equals(emprestimoRemovido.getCPF()))
+                        && (!emprestimo[1].equals(emprestimoRemovido.getIdLivro()))){
+                    pw.println(linha);
+                }
+            }
+            pw.flush();  
+            pw.close();
+            br.close();
+            antigo.delete();
+            
+            File aux = new File (path+"emprestimos.csv");
+            novo.renameTo(aux);
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
+    
      public static void removerUnidade(Sistema sistema, Integer num) {
         BufferedReader br = null;
         BufferedWriter bw = null;
