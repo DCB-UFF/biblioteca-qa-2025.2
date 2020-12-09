@@ -45,8 +45,16 @@ public class Acervo {
         }
         return false;
     }
+
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
     
-  
+    
     public void addEstante(Estante nova) {
         estantes.add(nova);
         idsEstantes++;
