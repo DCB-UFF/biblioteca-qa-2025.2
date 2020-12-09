@@ -11,7 +11,29 @@ import java.util.ArrayList;
 public class Sistema{
     protected int contadorUnidades;
     public ArrayList <Unidade> unidades = new ArrayList<>();
+    
+    public void carregarUnidades(){
+        for (Unidade un: this.unidades){
+            //Lê o acervo
+            Acervo acervoUn = Leitor.leitorEstantes(un.getPath()); // Lê as estantes pro acervo
+            acervoUn.setAutores(Leitor.leitorAutores(un.getPath()));//Lê os autores
+            Leitor.leitorLivros(acervoUn,un.getPath()); // Lê os livros
+            acervoUn.setEmprestimos(Leitor.leitorEmprestimos(un.getPath())); // Lê os empréstimos
+            un.setAcervo(acervoUn);
 
+             //Lê os clientes
+            ArrayList<Cliente> clientesNiteroi = Leitor.leitorClientes(un.getPath());
+            un.setClientes(clientesNiteroi);
+
+            //Lê os funcionarios
+            ArrayList<Funcionario> funcionariosNiteroi = Leitor.leitorFuncionarios(un.getPath());
+            un.setFuncionarios(funcionariosNiteroi);
+        }
+    }
+        
+        
+    
+    
     public void carregarUnidade(Unidade un){
          //Lê o acervo
         Acervo acervoUn = Leitor.leitorEstantes(un.getPath()); // Lê as estantes pro acervo
