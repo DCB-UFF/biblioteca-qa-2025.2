@@ -13,19 +13,19 @@ public class Inicial {
     
     public static void principal(){
         
-        System.out.println("\n1 - Escolher unidade");
+        System.out.println("1 - Escolher unidade");
         System.out.println("2 - Adicionar nova unidade");
         System.out.println("3 - Sair\n");
         
     }
     
     public static void opcoesAcessar(){
-        System.out.println("\n1 - Acesso");
+        System.out.println("\n1 - Acervo");
         System.out.println("2 - Emprestimo");
         System.out.println("3 - Administração\n");
     }
     
-    public static void escolher(){
+    public static void opcoesCriarUnidade(){
 
         System.out.println("\nEscolha o que deseja adicionar: ");
         System.out.println("1 - Livro");
@@ -36,17 +36,6 @@ public class Inicial {
         
     }
     
-    public static Unidade buscarUnidade(String nome, Sistema sistema){
-
-        for(Unidade u: sistema.unidades){
-            if(u.getNome().equals(nome)){
-                System.out.println("oi\n");
-                return u;
-            }
-        }
-            //tratamento de exceção 
-        return null;
-    }
     
     public static void adicionarLivro(Unidade aux){
         

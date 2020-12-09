@@ -89,8 +89,20 @@ public class Acervo {
                 }
             }
         }
-        return null;
+        return null;// Tratar execção dps
     }
+    
+     public Livro buscarLivroAutor (String autor){
+        for (Estante e : estantes){
+            for (Livro l : e.livros){
+                if (l.getAutor().equals(autor)){
+                    return l;
+                }
+            }
+        }
+        return null;// Tratar execção dps
+    }
+    
     
     public void imprimirAcervo(String nomeUnidade){
         System.out.println("Acervo da Unidade - " + nomeUnidade);

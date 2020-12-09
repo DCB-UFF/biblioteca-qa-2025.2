@@ -32,12 +32,12 @@ public class Livro {
     
     public void imprimirLivro(){
         if (this.estaEmprestado){
-            System.out.printf("Cód: %d [Emprestado]| %s \n%s - %s  \n",
-                    this.idLivro, this.titulo, this.autor.getNome(), this.editora);    
+            System.out.printf("\nCód: %s [Emprestado]| %s \n%s - %s  \n",
+                    this.ISBN, this.titulo, this.autor.getNome(), this.editora);    
         }
         else{
-            System.out.printf("Cód: %d | %s \n%s - %s  \n",
-            this.idLivro, this.titulo, this.autor.getNome(), this.editora);
+            System.out.printf("\nCód: %s | %s \n%s - %s  \n",
+            this.ISBN, this.titulo, this.autor.getNome(), this.editora);
         }       
     }
 

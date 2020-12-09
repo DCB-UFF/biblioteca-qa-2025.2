@@ -15,7 +15,7 @@ public class Main {
         /*for (Unidade u: sistema.getUnidades()){
             u.getAcervo().imprimirAcervo(u.getNome());
         }*/
-        Menu.chamada();
+        Menu.chamada(sistema);
         System.out.println("------------------------------------------");
         
         /*sistema.criarUnidade("Ouro Preto", "Rua da Mina 98", "Centro Histórico",

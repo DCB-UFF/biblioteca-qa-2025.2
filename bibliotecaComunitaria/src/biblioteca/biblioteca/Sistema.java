@@ -60,6 +60,14 @@ public class Sistema{
         Escritor.escreverUnidade(this, nova);
     }
  
+    public  Unidade buscarUnidade(String nome){
+      for(Unidade u: this.unidades){
+            if(u.getNome().equals(nome)){
+                return u;
+            }
+        } 
+        return null;
+    }
     
     public int getContadorUnidades() {
         return contadorUnidades;
