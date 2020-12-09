@@ -20,7 +20,7 @@ public class Unidade{
     }
     
     public Unidade(String path, String nome, String rua, String bairro, String cep, String cidade, String estado){
-        this.path = path;
+        this.path = "src\\unidades\\un"+ path +"\\";
         this.nome = nome;
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     }
