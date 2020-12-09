@@ -41,7 +41,7 @@ public class Escritor {
     
     public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
         BufferedWriter bw = null;
-        String linha = emprestimo.getCPF()+","+emprestimo.getIdLivro()+","+emprestimo.getDataEmprestimo()+","+
+        String linha = emprestimo.getCPF()+","+emprestimo.getISNB()+","+emprestimo.getDataEmprestimo()+","+
                 emprestimo.getDataDevolucao();
         try {
             bw = new BufferedWriter(new FileWriter(path+"emprestimos.csv", true));

@@ -5,13 +5,13 @@ import biblioteca.pessoas.Cliente;
 
 public class Emprestimo {
     private String CPF;
-    private String idLivro;
+    private String ISNB;
     private String dataEmprestimo;
     private String dataDevolucao;
 
-    public Emprestimo(String CPF, String idLivro, String dataEmprestimo, String dataDevolucao) {
+    public Emprestimo(String CPF, String ISNB, String dataEmprestimo, String dataDevolucao) {
         this.CPF= CPF;
-        this.idLivro = idLivro;
+        this.ISNB = ISNB;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
     }
@@ -32,14 +32,15 @@ public class Emprestimo {
         this.CPF = CPF;
     }
 
-    public String getIdLivro() {
-        return idLivro;
+    public String getISNB() {
+        return ISNB;
     }
 
-    public void setIdLivro(String idLivro) {
-        this.idLivro = idLivro;
+    public void setISNB(String ISNB) {
+        this.ISNB = ISNB;
     }
 
+    
     
 
     public String getDataDevolucao() {
@@ -53,7 +54,7 @@ public class Emprestimo {
     
      @Override
     public String toString() {
-        return ("CPF: " + this.getCPF() + " - " + "IdLivro: " + this.getIdLivro()
+        return ("CPF: " + this.getCPF() + " - " + "IdLivro: " + this.getISNB()
                 + " - " + "Data de Emprestimo: " + this.getDataEmprestimo() +
                 " - " + "Data de Devolução: " + this.getDataDevolucao());
     }

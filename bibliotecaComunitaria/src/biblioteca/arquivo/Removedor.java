@@ -24,7 +24,7 @@ public class Removedor {
     
                 String[] emprestimo = linha.split(",");
                 if ((!emprestimo[0].equals(emprestimoRemovido.getCPF()))
-                        && (!emprestimo[1].equals(emprestimoRemovido.getIdLivro()))){
+                        && (!emprestimo[1].equals(emprestimoRemovido.getISNB()))){
                     pw.println(linha);
                 }
             }
