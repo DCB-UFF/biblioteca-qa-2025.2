@@ -15,12 +15,12 @@ public class TesteClienteFuncionario {
 
         System.out.println("\n--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
-        ArrayList<Funcionario> funcionarios = new ArrayList();
+        /*ArrayList<Funcionario> funcionarios = new ArrayList();
 
         funcionarios = Leitor.leitorFuncionarios("src\\unidades\\un1\\");
         imprimir(funcionarios);
         
-        /*Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente();
         cliente.cadastro("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         Escritor.escreverCliente(cliente, "src\\unidades\\un1\\");
         clientes = Leitor.leitorClientes("src\\unidades\\un1\\");
