@@ -152,7 +152,7 @@ public class Leitor {
 
             while ((linha = br.readLine()) != null) {
                 String[] cliente = linha.split(",");
-                Cliente novo = new Cliente(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4], cliente[5], cliente[6], cliente[7]);
+                Cliente novo = new Cliente(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4], cliente[5], cliente[6], cliente[7], cliente[8]);
                 clientes.add(novo);
             }
             return clientes;

@@ -115,8 +115,11 @@ public class Escritor {
     
     public static void escreverCliente(Cliente cliente, String path) {
         BufferedWriter bw = null;
-        String linha = cliente.getNome() + "," + cliente.getNascimento() + "," + cliente.getTelefone() + "," + cliente.getEnd().getRua() + "," + cliente.getEnd().getBairro() + "," + cliente.getEnd().getCep() + "," + cliente.getEnd().getCidade() + "," + cliente.getEnd().getEstado();
-        try {
+        String linha = cliente.getNome() + "," + cliente.getCPF() + "," + cliente.getNascimento() 
+                + "," + cliente.getTelefone() + "," + cliente.getEnd().getRua() 
+                + "," + cliente.getEnd().getBairro() + "," + cliente.getEnd().getCep() 
+                + "," + cliente.getEnd().getCidade() + "," + cliente.getEnd().getEstado();
+        try { 
             bw = new BufferedWriter(new FileWriter(path+"clientes.csv", true));
             PrintWriter pw = new PrintWriter(bw);
             pw.println(linha);

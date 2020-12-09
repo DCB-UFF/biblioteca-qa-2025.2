@@ -6,12 +6,11 @@ import biblioteca.pessoas.Cliente;
 public class Emprestimo {
     private Cliente cliente;
     private Livro livro;
-    private int idEmprestimo;
     private String dataEmprestimo;
     private String dataDevolucao;
 
-    public Emprestimo(Livro livro, String dataEmprestimo, String dataDevolucao) {
-        /*this.idCliente = idCliente;*/
+    public Emprestimo(Cliente cliente, Livro livro, String dataEmprestimo, String dataDevolucao) {
+        this.cliente = cliente;
         this.livro = livro;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
@@ -39,14 +38,6 @@ public class Emprestimo {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
-    }
-
-    public int getIdEmprestimo() {
-        return idEmprestimo;
-    }
-
-    public void setIdEmprestimo(int idEmprestimo) {
-        this.idEmprestimo = idEmprestimo;
     }
 
     public String getDataDevolucao() {

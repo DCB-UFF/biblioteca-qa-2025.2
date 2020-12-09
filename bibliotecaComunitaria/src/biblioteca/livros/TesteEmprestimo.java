@@ -23,7 +23,7 @@ public class TesteEmprestimo {
         
         acervo.imprimirAcervo("Teste");
         
-        Cliente maria = new Cliente("Maria", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
+        Cliente maria = new Cliente("Maria", "123456789-10", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         
         
         acervo.emprestarLivro(unidade, maria, "A casa dos Espíritos");

@@ -122,6 +122,8 @@ public class Inicial {
         
         System.out.println("\nDigite o nome do cliente: ");
         String nome = tecla.nextLine();
+        System.out.println("\nDigite o cpf do cliente: ");
+        String cpf = tecla.nextLine();
         System.out.println("\nDigite o nascimento do cliente: ");
         String data = tecla.nextLine();
         System.out.println("\nDigite o telefone do cliente: ");
@@ -137,7 +139,7 @@ public class Inicial {
         System.out.println("\nDigite o estado do cliente: ");
         String est = tecla.nextLine();
         
-        Cliente cliente = new Cliente(nome, data, tele, rua, bairro, cep, cid, est);
+        Cliente cliente = new Cliente(nome, cpf, data, tele, rua, bairro, cep, cid, est);
         aux.getClientes().add(cliente);
         Escritor.escreverCliente(cliente, aux.getPath());
         
