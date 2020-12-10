@@ -50,8 +50,4 @@ public class Autor extends Pessoa{
     public void setNome(String nome) {
         this.nome = nome;
     }
-    @Override
-    public void excluir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

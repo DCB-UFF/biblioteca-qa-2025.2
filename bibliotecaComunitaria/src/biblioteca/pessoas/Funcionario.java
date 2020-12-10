@@ -3,6 +3,7 @@ package biblioteca.pessoas;
 import biblioteca.biblioteca.Endereco;
 
 /* @author victoria */
+
 public class Funcionario extends Pessoa{
     
     private String CPF;
@@ -26,11 +27,6 @@ public class Funcionario extends Pessoa{
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
-    }
-    
-    @Override
-    public void excluir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
