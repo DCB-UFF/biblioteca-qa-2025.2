@@ -15,6 +15,15 @@ public class Estante {
         this.genero = genero;
     }
 
+    public ArrayList<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(ArrayList<Livro> livros) {
+        this.livros = livros;
+    }
+    
+    
 
     public void imprimirEstante(){
         System.out.printf("\nEstante %d - %s - %d Livros\n", this.idEstante, this.genero, this.livros.size() );

@@ -35,7 +35,7 @@ public class TesteLivroAutorEstante {
     
     /*  Teste da Função Editar */
     Autor rr = new Autor("Rick Riordan","Estados Unidos");
-    Livro livroDeletado = new Livro(2, rr, "O Sangue do Olimpo","8452004", 650, "Mitologia", "Intrinseca", false);
+    Livro livroDeletado = new Livro(rr, "O Sangue do Olimpo","8452004", 650, "Mitologia", "Intrinseca", false);
     Removedor.removerLivro(livroDeletado,"src\\unidades\\un1\\");
     
     

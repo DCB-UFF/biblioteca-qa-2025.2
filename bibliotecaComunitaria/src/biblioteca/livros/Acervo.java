@@ -1,6 +1,8 @@
 package biblioteca.livros;
 
 import biblioteca.arquivo.Editor;
+import biblioteca.arquivo.Escritor;
+import biblioteca.arquivo.Removedor;
 import biblioteca.biblioteca.Unidade;
 import java.util.ArrayList;
 import biblioteca.pessoas.*;
@@ -63,9 +65,12 @@ public class Acervo {
     }
     
     public void addLivro(Livro novo){
+        
         if (autores.contains(novo.getAutor())){
             for (Autor autor : autores){
-                autor.addLivro(novo);
+                if (autor.equals(novo.getAutor())){
+                    autor.addLivro(novo);
+                }
             }
         }
         
@@ -82,6 +87,49 @@ public class Acervo {
         }
         
     }
+    
+    public void addLivro2(Livro novo, String path){
+        Escritor.escreverLivro(novo, path);
+        
+        if (autores.contains(novo.getAutor())){
+            for (Autor autor : autores){
+                if (autor.equals(novo.getAutor())){
+                    autor.addLivro(novo);
+                }
+            }
+        }
+        
+        else{
+            Autor autor = new Autor(novo.getAutor().getNome());
+            autor.addLivro(novo);
+            this.autores.add(autor);
+        }
+        
+        for (Estante e : estantes){
+            if (e.getGenero().equals(novo.genero)){
+                e.addLivroNaEstante(novo);
+            }
+        }
+        
+    }
+    
+    public void removeLivro(Livro l, String path){
+        Removedor.removerLivro(l, path);
+        
+        for (Autor autor : autores){
+            if (autor.equals(l.getAutor())){
+                autor.getLivrosAutor().remove(l);
+            }
+        }
+        
+        for (Estante e : estantes){
+            if (e.getGenero().equals(l.genero)){
+                e.getLivros().remove(l);
+            }
+        }
+    }
+        
+   
     
     public Livro buscarLivroTitulo (String titulo){
         for (Estante e : estantes){
@@ -120,5 +168,13 @@ public class Acervo {
 
     public void setAutores(ArrayList<Autor> autores) {
         this.autores = autores;
+    }
+
+    public void emprestarLivro(Emprestimo novo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void devolverLivro(String cpf2, String bn2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

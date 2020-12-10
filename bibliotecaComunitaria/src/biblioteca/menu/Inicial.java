@@ -37,32 +37,6 @@ public class Inicial {
     }
     
     
-    public static void adicionarLivro(Unidade aux){
-        
-        Scanner teclado = new Scanner(System.in);
-        Scanner tecla = new Scanner(System.in);
-        
-        int id = aux.getAcervo().idsLivros++;
-        System.out.println("\nDigite o nome do autor: ");
-        String nome = tecla.nextLine();
-        System.out.println("\nDigite o país do autor: ");
-        String pais = tecla.nextLine();
-        Autor autor = new Autor(nome, pais);
-        System.out.println("\nDigite o título do livro: ");
-        String titulo = tecla.nextLine();
-        System.out.println("\nDigite o isbn do livro: ");
-        String isbn = tecla.nextLine();
-        System.out.println("\nDigite a quantidade de páginas do livro: ");
-        int pag = teclado.nextInt();
-        System.out.println("\nDigite o gênero do livro: ");
-        String gene = tecla.nextLine();
-        System.out.println("\nDigite a editora do livro: ");
-        String edit = tecla.nextLine();
-        Livro novo = new Livro(id, autor, titulo, isbn, pag, gene, edit, false);               
-        aux.getAcervo().addLivro(novo);
-        Escritor.escreverLivro(novo, aux.getPath());
-        
-    }
     
     public static void adicionarFuncionario(Unidade aux){
         

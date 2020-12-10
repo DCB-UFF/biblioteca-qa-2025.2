@@ -15,6 +15,15 @@ public class Autor extends Pessoa{
         super.cadastro(nome);
         this.pais = pais;
     }
+
+    public ArrayList<Livro> getLivrosAutor() {
+        return livrosAutor;
+    }
+
+    public void setLivrosAutor(ArrayList<Livro> livrosAutor) {
+        this.livrosAutor = livrosAutor;
+    }
+    
     
     public void addLivro(Livro livro){
         this.livrosAutor.add(livro);

@@ -13,9 +13,8 @@ public class Livro {
    protected String genero;
    protected String editora;
    
-    public Livro(int idLivro, Autor autor, String titulo, String ISBN, int numPaginas ,
+    public Livro( Autor autor, String titulo, String ISBN, int numPaginas ,
             String genero,  String editora, Boolean estaEmprestado) {
-        this.idLivro = idLivro;
         this.autor = autor;
         this.titulo = titulo;
         this.ISBN = ISBN;
@@ -27,7 +26,7 @@ public class Livro {
     }
     
     public boolean isEmpty() {
-       return this.idLivro==0;
+       return this.ISBN.isEmpty();
     }
     
     public void imprimirLivro(){
