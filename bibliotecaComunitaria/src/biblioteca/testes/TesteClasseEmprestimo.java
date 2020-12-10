@@ -1,18 +1,20 @@
-package biblioteca.livros;
+package biblioteca.testes;
 
 import biblioteca.arquivo.Leitor;
 import biblioteca.biblioteca.Sistema;
 import biblioteca.biblioteca.Unidade;
+import biblioteca.livros.Acervo;
+import biblioteca.livros.Emprestimo;
 import biblioteca.pessoas.Autor;
 import biblioteca.pessoas.Cliente;
 import java.util.ArrayList;
 
 /* @author Luam */
 
-public class TesteEmprestimo {
+public class TesteClasseEmprestimo {
     public static void main(String[] args){
         
-        Unidade unidade = new Unidade ("São Gonçalo", "Rua Bento Riberio 889", "Centro", "22258-777", "Cabo Frio", "Rio de Janeiro");
+        /*Unidade unidade = new Unidade ("São Gonçalo", "Rua Bento Riberio 889", "Centro", "22258-777", "Cabo Frio", "Rio de Janeiro");
         
         
         ArrayList<Autor> autores = Leitor.leitorAutores("src\\unidades\\un1\\");
@@ -28,7 +30,7 @@ public class TesteEmprestimo {
         Emprestimo novo = new Emprestimo("123456789-10", "403", "12/12/12", "17/12/12");
         unidade.getAcervo().emprestarLivro(unidade, novo);
         
-        acervo.imprimirAcervo("São Gonçalo");
+        acervo.imprimirAcervo("São Gonçalo");*/
     
     }
 }
