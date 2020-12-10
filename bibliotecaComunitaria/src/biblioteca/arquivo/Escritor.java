@@ -168,7 +168,7 @@ public class Escritor {
     
     public static void escreverFuncionario(Funcionario funcionario, String path) {
         BufferedWriter bw = null;
-        String linha = funcionario.getNome() + "," + funcionario.getNascimento() + "," + funcionario.getTelefone() + ","+ funcionario.getSalario() + "," + funcionario.getCargo() + "," + funcionario.getEnd().getRua() + "," + funcionario.getEnd().getBairro() + "," + funcionario.getEnd().getCep() + "," + funcionario.getEnd().getCidade() + "," + funcionario.getEnd().getEstado();
+        String linha = funcionario.getNome() + "," + funcionario.getCPF()+ "," +funcionario.getNascimento() + "," + funcionario.getTelefone() + ","+ funcionario.getSalario() + "," + funcionario.getCargo() + "," + funcionario.getEnd().getRua() + "," + funcionario.getEnd().getBairro() + "," + funcionario.getEnd().getCep() + "," + funcionario.getEnd().getCidade() + "," + funcionario.getEnd().getEstado();
         try {
             bw = new BufferedWriter(new FileWriter(path+"funcionarios.csv", true));
             PrintWriter pw = new PrintWriter(bw);

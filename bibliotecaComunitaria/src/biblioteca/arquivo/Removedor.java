@@ -154,7 +154,7 @@ public class Removedor {
             while ((linha = br.readLine()) != null) {
     
                 String[] cliente = linha.split(",");
-                if (!cliente[0].equals(clienteDeletado.getNome())){
+                if (!cliente[1].equals(clienteDeletado.getCPF())){
                     pw.println(linha);
                 }
             }
@@ -197,7 +197,7 @@ public class Removedor {
             while ((linha = br.readLine()) != null) {
     
                 String[] funcionario = linha.split(",");
-                if (!funcionario[0].equals(funcionarioDeletado.getNome())){
+                if (!funcionario[1].equals(funcionarioDeletado.getCPF())){
                     pw.println(linha);
                 }
             }

@@ -27,6 +27,15 @@ public class Funcionario extends Pessoa{
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     
     }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+    
     
     @Override
     public void excluir() {
@@ -35,7 +44,7 @@ public class Funcionario extends Pessoa{
     
     @Override
     public String toString() {
-        return ("Nome: " + this.getNome() + " - " + "Nascimento: " + this.getNascimento() + " - " + "Telefone: " + this.getTelefone() + " - " + "Cargo: " + this.getCargo() + " - " + "Endereço -> " + this.getEnd());
+        return ("Nome: " + this.getNome() + " - " + "CPF: " + this.CPF + " - " + "Nascimento: " + this.getNascimento() + " - " + "Telefone: " + this.getTelefone() + " - " + "Cargo: " + this.getCargo() + " - " + "Endereço -> " + this.getEnd());
     }
     
     protected void ajusteSalario(){}
