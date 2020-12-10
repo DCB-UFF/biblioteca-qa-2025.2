@@ -19,6 +19,7 @@ public class Acervo {
             Escritor.escreverEmprestimo(novo, unidade.getPath());
             Livro emprestado = buscarLivroISNB(novo.getISNB());
             emprestado.emprestar(unidade, this);
+            System.out.println("\nO livro de ISBN "+novo.getISNB()+" foi emprestado para o cliente de cpf "+novo.getISNB());
         }
         else{
             System.out.println("O cliente não pode pegar um novo livro emprestado até que devolva o anterior");
@@ -31,6 +32,7 @@ public class Acervo {
         Removedor.removerEmprestimo(atual, unidade.getPath());
         Livro emprestado = buscarLivroISNB(ISNB);
         emprestado.emprestar(unidade, this);
+        System.out.println("\nO livro de ISBN "+ISNB+" foi devolvido pelo cliente de cpf "+CPF);   
     }
 
     public void imprimirAcervo(String nomeUnidade){
