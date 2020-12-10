@@ -46,17 +46,21 @@ public class Criador {
                     while  ((c=fis.read()) != -1) 
                         try { 
                             fos.write(c);
-                            fis.close();
-                            fos.close(); 
+                             
                         } catch (IOException ex) {
                             Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        fis.close();
+                        fos.close();    
                 } catch (IOException ex) {
                     Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            finally{
+                
             }
   
         } 
