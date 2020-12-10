@@ -1,5 +1,6 @@
 package biblioteca.menu;
 
+import biblioteca.arquivo.Copiador;
 import biblioteca.arquivo.Criador;
 import biblioteca.arquivo.Leitor;
 import biblioteca.biblioteca.Sistema;
@@ -12,6 +13,8 @@ import java.util.Scanner;
  */
 public class MenuCriarNovaUnidade {
     public static void iniciar(Sistema sistema, Scanner teclado){
+        // CRIA NOVA UNIDADE
+        
         teclado.nextLine();
         System.out.println("\nDigite o nome da unidade: ");
         String nome = teclado.nextLine();
@@ -36,36 +39,33 @@ public class MenuCriarNovaUnidade {
         Util.imprimir(sistema.getUnidades());
         
         
-        
+        // CARREGA OS ARQUIVOS DESSA NOVA UNIDADE
         System.out.println("\nDigite o diretório dos arquivos fonte da nova unidade:");
         String caminho = teclado.nextLine();
        
-        
-        
-        
         File estanteFonte = new File(caminho + "\\estantes.csv");
         File estanteDest = new File(aux.getPath() + "\\estantes.csv");
-        Criador.copiarArquivo(estanteFonte, estanteDest);
+        Copiador.copiarArquivo(estanteFonte, estanteDest);
         
         File autoresFonte = new File(caminho + "\\autores.csv");
         File autoresDest = new File(aux.getPath() + "\\autores.csv");
-        Criador.copiarArquivo(autoresFonte, autoresDest);
+        Copiador.copiarArquivo(autoresFonte, autoresDest);
         
         File livrosFonte = new File(caminho + "\\livros.csv");
         File livrosDest = new File(aux.getPath() + "\\livros.csv");
-        Criador.copiarArquivo(livrosFonte, livrosDest);
+        Copiador.copiarArquivo(livrosFonte, livrosDest);
         
         File emprestimosFonte = new File(caminho + "\\emprestimos.csv");
         File emprestimosDest = new File(aux.getPath() + "\\emprestimos.csv");
-        Criador.copiarArquivo(emprestimosFonte, emprestimosDest);
+        Copiador.copiarArquivo(emprestimosFonte, emprestimosDest);
         
         File clientesFonte = new File(caminho + "\\clientes.csv");
         File clientesDest = new File(aux.getPath() + "\\clientes.csv");
-        Criador.copiarArquivo(clientesFonte, clientesDest);
+        Copiador.copiarArquivo(clientesFonte, clientesDest);
         
         File funcionariosFonte = new File(caminho + "\\funcionarios.csv");
         File funcionariosDest = new File(aux.getPath() + "\\funcionarios.csv");
-        Criador.copiarArquivo(funcionariosFonte, funcionariosDest);
+        Copiador.copiarArquivo(funcionariosFonte, funcionariosDest);
         
         System.out.printf("\nUnidade %s carregada! ", nome);
     }

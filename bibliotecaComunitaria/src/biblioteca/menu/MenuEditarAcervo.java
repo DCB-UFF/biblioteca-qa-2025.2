@@ -1,14 +1,13 @@
 package biblioteca.menu;
 
-import biblioteca.arquivo.Escritor;
 import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.Livro;
 import biblioteca.pessoas.Autor;
 import static java.lang.System.exit;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /* @author Luam */
+
 public class MenuEditarAcervo {
 
     public static void opcoesEditarAcervo(){

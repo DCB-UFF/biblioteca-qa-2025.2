@@ -1,10 +1,7 @@
 package biblioteca.menu;
 
-import biblioteca.biblioteca.Main;
-import biblioteca.biblioteca.Sistema;
-import biblioteca.biblioteca.Unidade;
+import biblioteca.biblioteca.*;
 import static java.lang.System.exit;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /*@author victoria */
@@ -19,7 +16,7 @@ public class Menu {
         int op = teclado.nextInt();
         while(op != 3){
             if(op == 1){
-                MenuPrincipal.imprimir(Main.sistema.unidades);
+                Util.imprimir(Main.sistema.unidades);
                 System.out.println("\nDigite o nome da unidade: ");
                 
                 teclado.nextLine();

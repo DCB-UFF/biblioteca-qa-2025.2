@@ -6,6 +6,7 @@ import static java.lang.System.exit;
 import java.util.Scanner;
 
 /* @author Luam */
+
 public class MenuEmprestimo {
     public static void opcoesEmprestar(){
         System.out.println("Escolha o que você deseja fazer:");

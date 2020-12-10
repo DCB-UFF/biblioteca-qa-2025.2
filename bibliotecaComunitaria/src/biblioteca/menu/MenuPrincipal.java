@@ -1,14 +1,7 @@
-
 package biblioteca.menu;
 
-import biblioteca.arquivo.*;
-import biblioteca.biblioteca.*;
-import biblioteca.livros.*;
-import biblioteca.pessoas.*;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /* @author victoria */
+
 public class MenuPrincipal {
     
     public static void opcoesIniciais(){
@@ -41,10 +34,6 @@ public class MenuPrincipal {
         
     }
     
-   
-    
-    
-    
     public static void opcoesCriarUnidade(){
 
         System.out.println("\nEscolha o que deseja adicionar: ");
@@ -55,16 +44,4 @@ public class MenuPrincipal {
         System.out.println("5 - Sair\n");
         
     }
-    
-    
-    
-    
-    
-
-    public static void imprimir(ArrayList a){
-        for (Object i: a){
-           System.out.println(i);
-        }
-    }
-    
 }

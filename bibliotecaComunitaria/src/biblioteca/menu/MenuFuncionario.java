@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package biblioteca.menu;
 
 import biblioteca.arquivo.Escritor;
@@ -12,7 +7,9 @@ import static java.lang.System.exit;
 import java.util.Scanner;
 
 /* @author victoria */
+
 public class MenuFuncionario {
+
     public static void opcoesAcessarAdminFuncionario(){
         
         System.out.println("\n1 - Buscar funcionario");
