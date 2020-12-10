@@ -1,6 +1,6 @@
-#nome,#nascimento,#telefone,#salario,#cargo,#rua,#bairro,#cep,#cidade,#estado
-Amanda,06/06/2000,96666-6666,1500,faxineira,Rua Otaiapoque 43,Abolição,28755-024,Rio de Janeiro,RJ
-José,07/07/2000,97777-7777,2000,atendente,Rua 12 de Abril 99,Quitino,28651-554,Rio de Janeiro,RJ
-Gustavo,08/08/2000,98888-8888,2500,bibliotecario,Travessa do Relógio 218,Botafogo,24755-012,Rio de Janeiro,RJ
-Caio,09/09/2000,99999-9999,3000,gerente,Estrada dos Catete 834,Santa Cruz,29645-090,Rio de Janeiro,RJ
-Mariana,10/10/2000,91010-1010,3500,chefe,Rua Iquitiba 95,Largo do Machado,21457-556,Rio de Janeiro,RJMaria,12/12/2000,99999-9999,4000.0,gerente,Rua 1,Campo Grande,22222-222,Rio de Janeiro,RJ
+#nome,#cpf,#nascimento,#telefone,#salario,#cargo,#rua,#bairro,#cep,#cidade,#estado
+Amanda,150999497-88,06/06/2000,96666-6666,1500,faxineira,Rua Otaiapoque 43,Abolição,28755-024,Rio de Janeiro,RJ
+José,114459885-99,07/07/2000,97777-7777,2000,atendente,Rua 12 de Abril 99,Quitino,28651-554,Rio de Janeiro,RJ
+Gustavo,451878268-52,08/08/2000,98888-8888,2500,bibliotecario,Travessa do Relógio 218,Botafogo,24755-012,Rio de Janeiro,RJ
+Caio,247220159-56,09/09/2000,99999-9999,3000,gerente,Estrada dos Catete 834,Santa Cruz,29645-090,Rio de Janeiro,RJ
+Mariana,569875332-88,10/10/2000,91010-1010,3500,chefe,Rua Iquitiba 95,Largo do Machado,21457-556,Rio de Janeiro,RJ

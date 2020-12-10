@@ -139,6 +139,7 @@ public class Menu {
                                         }
                                     break;
                                 case 3:
+                                    exit(0);
                                     break;
                                 default:
                                     break;
@@ -153,10 +154,10 @@ public class Menu {
                 }
             }
             else if(op == 2){ // CRIAR UNIDADE
-                Inicial.opcoesAcessar();
+                MenuCriadorUnidades.gerar(sistema, teclado);
+                exit(0);
             }
         }
-        
     }
     
      public static void imprimir(ArrayList a){
