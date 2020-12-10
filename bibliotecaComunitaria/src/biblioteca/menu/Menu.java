@@ -3,6 +3,8 @@ package biblioteca.menu;
 import biblioteca.biblioteca.Sistema;
 import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.Livro;
+import biblioteca.pessoas.Cliente;
+import biblioteca.pessoas.Funcionario;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -63,8 +65,85 @@ public class Menu {
                             Emprestador.gerar(unidadeAtual, teclado);
                             break;
                         case 3: // ADMINISTRACAO
-                            Inicial.adicionarAutor(unidadeAtual);
-                            break;
+                            Inicial.opcoesAcessarAdmin();
+                            op = teclado.nextInt();
+                            teclado.nextLine();
+                            while(op != 3){
+                                switch(op){
+                                    case 1:
+                                        Inicial.opcoesAcessarAdminCliente();
+                                        op = teclado.nextInt();
+                                        teclado.nextLine();
+                                        while(op != 5){
+                                            switch(op){
+                                                case 1:
+                                                    System.out.println("Digite o cpf do cliente: ");
+                                                    String cpf = teclado.nextLine();
+                                                    for(Cliente c : unidadeAtual.getClientes()){
+                                                        if(c.getCPF().equals(cpf)){
+                                                            System.out.println(c);
+                                                        }
+                                                    }
+                                                    exit(0);
+                                                    break;
+                                                case 2:
+                                                    Inicial.adicionarCliente(unidadeAtual);
+                                                    exit(0);
+                                                    break;
+                                                case 3:
+                                                    exit(0);
+                                                    break;
+                                                case 4:
+                                                    for(Cliente c : unidadeAtual.getClientes()){
+                                                        System.out.println(c);
+                                                    }
+                                                    exit(0);
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    break;
+                                case 2:
+                                    Inicial.opcoesAcessarAdminFuncionario();
+                                    op = teclado.nextInt();
+                                    teclado.nextLine();
+                                    while(op != 5){
+                                            switch(op){
+                                                case 1:
+                                                    System.out.println("Digite o cpf do funcionário: ");
+                                                    String cpf = teclado.nextLine();
+                                                    /*for(Funcionario f : unidadeAtual.getFuncionarios()){
+                                                        if(f.getCPF().equals(cpf)){
+                                                            System.out.println(f);
+                                                        }
+                                                    }*/
+                                                    exit(0);
+                                                    break;
+                                                case 2:
+                                                    Inicial.adicionarFuncionario(unidadeAtual);
+                                                    exit(0);
+                                                    break;
+                                                case 3:
+                                                    exit(0);
+                                                    break;
+                                                case 4:
+                                                    for(Funcionario f : unidadeAtual.getFuncionarios()){
+                                                        System.out.println(f);
+                                                    }
+                                                    exit(0);
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    break;
+                                case 3:
+                                    break;
+                                default:
+                                    break;
+                                }
+                            }
                         case 4:
                             exit(0);
                             break;

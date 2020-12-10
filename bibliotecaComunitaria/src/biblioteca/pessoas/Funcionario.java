@@ -13,13 +13,15 @@ import biblioteca.biblioteca.Endereco;
  */
 public class Funcionario extends Pessoa{
     
+    private String CPF;
     private float salario;
     private String cargo;
     private Endereco end;
 
-    public Funcionario(String nome, String nascimento, String telefone, float salario, String cargo, String rua, String bairro, String cep, String cidade, String estado){
+    public Funcionario(String nome, String CPF,String nascimento, String telefone, float salario, String cargo, String rua, String bairro, String cep, String cidade, String estado){
         
         super.cadastro(nome, nascimento, telefone);
+        this.CPF = CPF;
         this.salario = salario;
         this.cargo = cargo;
         this.end = new Endereco(rua, bairro, cep, cidade, estado);

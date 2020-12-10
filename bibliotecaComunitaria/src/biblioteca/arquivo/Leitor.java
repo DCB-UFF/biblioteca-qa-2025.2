@@ -215,7 +215,7 @@ public class Leitor {
 
             while ((linha = br.readLine()) != null) {
                 String[] funcionario = linha.split(",");
-                Funcionario novo = new Funcionario(funcionario[0], funcionario[1], funcionario[2], Float.parseFloat(funcionario[3]), funcionario[4], funcionario[5], funcionario[6], funcionario[7], funcionario[8], funcionario[9]);
+                Funcionario novo = new Funcionario(funcionario[0], funcionario[1], funcionario[2], funcionario[3], Float.parseFloat(funcionario[4]), funcionario[5], funcionario[6], funcionario[7], funcionario[8], funcionario[9], funcionario[10]);
                 funcionarios.add(novo);
             }
             return funcionarios;
