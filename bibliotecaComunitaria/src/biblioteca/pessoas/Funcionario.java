@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package biblioteca.pessoas;
 
 import biblioteca.biblioteca.Endereco;
 
-/**
- *
- * @author victoria
- */
+/* @author victoria */
 public class Funcionario extends Pessoa{
     
     private String CPF;
@@ -36,7 +28,6 @@ public class Funcionario extends Pessoa{
         this.CPF = CPF;
     }
     
-    
     @Override
     public void excluir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -46,8 +37,6 @@ public class Funcionario extends Pessoa{
     public String toString() {
         return ("Nome: " + this.getNome() + " - " + "CPF: " + this.CPF + " - " + "Nascimento: " + this.getNascimento() + " - " + "Telefone: " + this.getTelefone() + " - " + "Cargo: " + this.getCargo() + " - " + "Endereço -> " + this.getEnd());
     }
-    
-    protected void ajusteSalario(){}
 
     public float getSalario() {
         return salario;

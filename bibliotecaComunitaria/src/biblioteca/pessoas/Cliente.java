@@ -1,7 +1,6 @@
 package biblioteca.pessoas;
 
 import biblioteca.biblioteca.Endereco;
-import biblioteca.livros.Livro;
 import java.util.ArrayList;
 
 /* @author victoria */
@@ -25,7 +24,6 @@ public class Cliente extends Pessoa{
         this.CPF = CPF;
     }
     
-
     @Override
     public void excluir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
