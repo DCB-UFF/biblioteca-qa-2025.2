@@ -3,14 +3,13 @@ package biblioteca.menu;
 import biblioteca.arquivo.Escritor;
 import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.Livro;
-import static biblioteca.menu.Menu.imprimir;
 import biblioteca.pessoas.Autor;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /* @author Luam */
-public class EditorAcervo {
+public class MenuEditarAcervo {
 
     public static void opcoesEditarAcervo(){
         System.out.println("Escolha o que você deseja fazer:");
@@ -19,7 +18,7 @@ public class EditorAcervo {
         System.out.println("3 - Sair\n");
     } 
     
-    public static void gerar(Unidade unidadeAtual, Scanner teclado){
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
         int op=0;
         opcoesEditarAcervo();
         while(op != 3){

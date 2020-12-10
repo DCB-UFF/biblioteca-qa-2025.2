@@ -4,13 +4,14 @@ import biblioteca.arquivo.Criador;
 import biblioteca.arquivo.Leitor;
 import biblioteca.biblioteca.Sistema;
 import biblioteca.biblioteca.Unidade;
+import biblioteca.biblioteca.Util;
 import java.io.File;
 import java.util.Scanner;
 
 /* @author Luam
  */
-public class MenuCriadorUnidades {
-    public static void gerar(Sistema sistema, Scanner teclado){
+public class MenuCriarNovaUnidade {
+    public static void iniciar(Sistema sistema, Scanner teclado){
         teclado.nextLine();
         System.out.println("\nDigite o nome da unidade: ");
         String nome = teclado.nextLine();
@@ -32,7 +33,7 @@ public class MenuCriadorUnidades {
         System.out.printf("\nUnidade %s criada!\n\n", nome);
         
         Unidade aux = sistema.buscarUnidade(nome);
-        Menu.imprimir(sistema.getUnidades());
+        Util.imprimir(sistema.getUnidades());
         
         
         

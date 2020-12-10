@@ -1,8 +1,8 @@
 package biblioteca.menu;
 
 import biblioteca.biblioteca.Unidade;
+import biblioteca.biblioteca.Util;
 import biblioteca.livros.Livro;
-import static biblioteca.menu.Menu.imprimir;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 
 
-public class ConsultorAcervo {
+public class MenuConsultarAcervo {
     public static void opcoesConsultarAcervo(){
         System.out.println("Escolha o que você deseja fazer:");
         System.out.println("1 - Buscar livro pelo título");
@@ -21,7 +21,7 @@ public class ConsultorAcervo {
         System.out.println("5 - Sair\n");
     } 
     
-    public static void gerar(Unidade unidadeAtual, Scanner teclado){
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
         int op=0;
         opcoesConsultarAcervo();
         while(op != 5){
@@ -49,7 +49,7 @@ public class ConsultorAcervo {
                     unidadeAtual.getAcervo().imprimirAcervo(unidadeAtual.getNome());
                     exit(0);
                 case 4:
-                    imprimir(unidadeAtual.getAcervo().getEmprestimos());
+                    Util.imprimir(unidadeAtual.getAcervo().getEmprestimos());
                     exit(0);
                     break;
                 case 5:

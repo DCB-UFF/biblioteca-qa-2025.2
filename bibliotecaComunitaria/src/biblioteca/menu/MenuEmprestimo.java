@@ -6,14 +6,14 @@ import static java.lang.System.exit;
 import java.util.Scanner;
 
 /* @author Luam */
-public class Emprestador {
+public class MenuEmprestimo {
     public static void opcoesEmprestar(){
         System.out.println("Escolha o que você deseja fazer:");
         System.out.println("1 - Emprestar um livro");
         System.out.println("2 - Devolver um livro");
         System.out.println("3 - Sair\n");
     } 
-    public static void gerar(Unidade unidadeAtual, Scanner teclado){
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
         int op=0;
         opcoesEmprestar();
         while(op != 3){

@@ -1,7 +1,8 @@
-package biblioteca.menu;
+package biblioteca.biblioteca;
 
 import biblioteca.arquivo.Leitor;
 import biblioteca.biblioteca.*;
+import biblioteca.menu.Menu;
 import java.util.ArrayList;
 
 /* @author Luam */
@@ -15,7 +16,7 @@ public class Main {
         /*for (Unidade u: sistema.getUnidades()){
             u.getAcervo().imprimirAcervo(u.getNome());
         }*/
-        Menu.chamada(sistema);
+        Menu.iniciar(sistema);
         System.out.println("------------------------------------------");
         
         /*sistema.criarUnidade("Ouro Preto", "Rua da Mina 98", "Centro Histórico",
