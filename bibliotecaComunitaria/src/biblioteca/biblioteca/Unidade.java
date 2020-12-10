@@ -1,6 +1,5 @@
 package biblioteca.biblioteca;
 import biblioteca.livros.Acervo;
-import biblioteca.livros.Emprestimo;
 import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
 import java.util.ArrayList;
@@ -14,11 +13,6 @@ public class Unidade{
     private Acervo acervo;
     private ArrayList <Cliente> clientes = new ArrayList<>();
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
-
-    public Unidade(String nome, String rua, String bairro, String cep, String cidade, String estado) {
-        this.nome = nome;
-        this.end = new Endereco(rua, bairro, cep, cidade, estado);
-    }
     
     public Unidade(String path, String nome, String rua, String bairro, String cep, String cidade, String estado){
         this.path = "src\\unidades\\un"+ path +"\\";
@@ -58,8 +52,6 @@ public class Unidade{
     public void setPath(String path) {
         this.path = path;
     }
-    
-     
      
     public String getNome() {
         return nome;
