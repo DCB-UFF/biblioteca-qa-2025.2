@@ -1,14 +1,14 @@
 package biblioteca.arquivo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /* @author Luam  */
+
+// MÉTODO QUE CRIA A PASTA DE UMA NOVA UNIDADE
+
 public class Criador {
     public static void criarPastaUnidade(String num) {
         File file = new File("src\\unidades\\un"+num); file.mkdir();
@@ -29,40 +29,5 @@ public class Criador {
         } catch (IOException ex) {
             Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-        
-    public static void copiarArquivo(File a, File b){ 
-        { 
-            /* If file doesnot exist FileInputStream throws 
-               FileNotFoundException and read() write() throws 
-               IOException if I/O error occurs */
-            FileInputStream fis; 
-            FileOutputStream fos; 
-            try {
-                fis = new FileInputStream(a);
-                fos = new FileOutputStream(b);
-                int c;
-                try {
-                    while  ((c=fis.read()) != -1) 
-                        try { 
-                            fos.write(c);
-                             
-                        } catch (IOException ex) {
-                            Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        fis.close();
-                        fos.close();    
-                } catch (IOException ex) {
-                    Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            finally{
-                
-            }
-  
-        } 
-    }
+    }        
 }

@@ -5,21 +5,22 @@ import biblioteca.livros.*;
 import biblioteca.pessoas.*;
 import java.io.*;
 
-/* @author Luam */
+// MÉTODOS QUE ESCREVEM UNIDADE, CLIENTES, FUNCIONARIOS, AUTORES, ESTANTES E LIVROS
 
 public class Escritor {
+    /* @author Luam */
     public static void escreverUnidade(Sistema sistema,Unidade unidade) {
         BufferedWriter bw = null;
         
         String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
                 + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
                + "," + unidade.getEnd().getEstado();
-        
-                
+                        
         try {
             bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
             PrintWriter pw= new PrintWriter(bw);
             pw.println(linha);
+        
             unidade.setPath(String.valueOf(sistema.getUnidades()));
             
             pw.flush();
@@ -38,7 +39,6 @@ public class Escritor {
             }   
         }
     }
-    
     public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
         BufferedWriter bw = null;
         String linha = emprestimo.getCPF()+","+emprestimo.getISNB()+","+emprestimo.getDataEmprestimo()+","+
@@ -63,8 +63,6 @@ public class Escritor {
             }   
         }
     }
-    
-    
     public static void escreverAutor(Autor autor, String path) {
         BufferedWriter bw = null;
         String linha = autor.getNome()+","+autor.getPais();
@@ -138,7 +136,6 @@ public class Escritor {
     }
     
     /* @author victoria */
-    
     public static void escreverCliente(Cliente cliente, String path) {
         BufferedWriter bw = null;
         String linha = cliente.getNome() + "," + cliente.getCPF() + "," + cliente.getNascimento() 
@@ -165,7 +162,6 @@ public class Escritor {
             }   
         }
     }
-    
     public static void escreverFuncionario(Funcionario funcionario, String path) {
         BufferedWriter bw = null;
         String linha = funcionario.getNome() + "," + funcionario.getCPF()+ "," +funcionario.getNascimento() + "," + funcionario.getTelefone() + ","+ funcionario.getSalario() + "," + funcionario.getCargo() + "," + funcionario.getEnd().getRua() + "," + funcionario.getEnd().getBairro() + "," + funcionario.getEnd().getCep() + "," + funcionario.getEnd().getCidade() + "," + funcionario.getEnd().getEstado();
@@ -189,6 +185,4 @@ public class Escritor {
             }   
         }
     }
-    
-    
 }

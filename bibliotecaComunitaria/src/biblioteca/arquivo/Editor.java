@@ -3,8 +3,10 @@ package biblioteca.arquivo;
 import biblioteca.livros.*;
 import java.io.*;
 
-
 /* @author Luam */
+
+// MÉTODO QUE MODIFICA O BOOLEANO ESTÁ EMPRESTADO DE UM LIVRO
+
 public class Editor {
      public static void modificarEmprestimo(Acervo acervo, Livro livroEmprestado, String path, String booleano) {
         BufferedReader br = null;
@@ -43,7 +45,6 @@ public class Editor {
             
             File aux = new File (path+"livros.csv");
             novo.renameTo(aux);
-            
             
         } catch (FileNotFoundException e) {
             e.printStackTrace();
