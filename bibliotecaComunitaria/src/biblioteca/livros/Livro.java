@@ -1,19 +1,19 @@
 package biblioteca.livros;
 
+import biblioteca.arquivo.Editor;
+import biblioteca.biblioteca.Unidade;
 import biblioteca.pessoas.Autor;
 
 public class Livro {
-   int idLivro;
-   boolean estaEmprestado;
-   
    protected String titulo;
    protected Autor autor;
    protected int numPaginas;
    protected String ISBN;
    protected String genero;
    protected String editora;
+   protected boolean estaEmprestado;
    
-    public Livro( Autor autor, String titulo, String ISBN, int numPaginas ,
+    public Livro( Autor autor, String titulo, int numPaginas, String ISBN,
             String genero,  String editora, Boolean estaEmprestado) {
         this.autor = autor;
         this.titulo = titulo;
@@ -23,10 +23,6 @@ public class Livro {
         this.editora = editora;
         this.estaEmprestado = estaEmprestado;
 
-    }
-    
-    public boolean isEmpty() {
-       return this.ISBN.isEmpty();
     }
     
     public void imprimirLivro(){
@@ -40,28 +36,16 @@ public class Livro {
         }       
     }
 
-    public void emprestar(){
+    public void emprestar(Unidade unidade,Acervo acervo){
         this.estaEmprestado = true;
+        Editor.modificarEmprestimo(acervo, this, unidade.getPath(), "true");
+        System.out.println("O livro "+this.titulo+" foi emprestado com sucesso!");
     }
     
-    public void devolver(){
-        this.estaEmprestado = false;
-    }
-    
-    public int getIdLivro() {
-        return idLivro;
-    }
-
-    public void setIdLivro(int idLivro) {
-        this.idLivro = idLivro;
-    }
-
-    public boolean getEstaEmprestado() {
-        return estaEmprestado;
-    }
-
-    public void setEstaEmprestado(boolean estaEmprestado) {
-        this.estaEmprestado = estaEmprestado;
+    public void devolver(Unidade unidade,Acervo acervo){
+       this.estaEmprestado = true;
+       Editor.modificarEmprestimo(acervo, this, unidade.getPath(), "false");
+       System.out.println("O livro "+this.titulo+" foi devolvido com sucesso!");
     }
 
     public String getTitulo() {
@@ -112,5 +96,11 @@ public class Livro {
         this.editora = editora;
     }
 
-   
+    public boolean isEstaEmprestado() {
+        return estaEmprestado;
+    }
+
+    public void setEstaEmprestado(boolean estaEmprestado) {
+        this.estaEmprestado = estaEmprestado;
+    }
 }

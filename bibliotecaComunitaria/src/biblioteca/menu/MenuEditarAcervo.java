@@ -42,10 +42,10 @@ public class MenuEditarAcervo {
                     String gene = teclado.nextLine();
                     System.out.println("\nDigite a editora do livro: ");
                     String edit = teclado.nextLine();
-                    Livro novo = new Livro(autor, titulo, isbn, pag, gene, edit, false); 
+                    Livro novo = new Livro(autor, titulo, pag, isbn, gene, edit, false); 
                     teclado.nextLine();
                     
-                    Livro adicionado = new Livro(autor, titulo, isbn, pag, gene, edit, false);               
+                    Livro adicionado = new Livro(autor, titulo,  pag,isbn, gene, edit, false);               
                     unidadeAtual.getAcervo().addLivro2(adicionado, unidadeAtual.getPath());
                     System.out.println("\nLivro adicionado!!");
                     

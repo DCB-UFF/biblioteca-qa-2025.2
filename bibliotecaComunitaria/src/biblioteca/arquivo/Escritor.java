@@ -115,7 +115,7 @@ public class Escritor {
         BufferedWriter bw = null;
         String linha = livro.getAutor().getNome() + "," + livro.getTitulo() + "," + livro.getNumPaginas() + "," +
                 livro.getISBN() + "," + livro.getGenero()  + "," + livro.getEditora() + "," + 
-                livro.getEstaEmprestado() + "," + livro.getAutor().getPais();
+                livro.isEstaEmprestado()+ "," + livro.getAutor().getPais();
         try {
             bw = new BufferedWriter(new FileWriter(path+"livros.csv", true));
             PrintWriter pw= new PrintWriter(bw);

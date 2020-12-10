@@ -1,8 +1,6 @@
 package biblioteca.livros;
 
-import biblioteca.arquivo.Editor;
-import biblioteca.arquivo.Escritor;
-import biblioteca.arquivo.Removedor;
+import biblioteca.arquivo.*;
 import biblioteca.biblioteca.Unidade;
 import java.util.ArrayList;
 import biblioteca.pessoas.*;
@@ -10,58 +8,36 @@ import biblioteca.pessoas.*;
 /* @author Luam */
 
 public class Acervo {
-    
-    public int idsLivros = 1;
     public int idsEstantes = 1;
     protected ArrayList<Estante> estantes = new ArrayList<>();
     protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     protected ArrayList<Autor> autores = new ArrayList<>();
     
-    
-    
-    public void emprestarLivro(Unidade unidade, Cliente cliente, String titulo) {
-        
-        if (cliente.getLivrosPegos()<3){ // Checa se o cliente pode pegar um livro
-            Livro aux  = this.buscarLivroTitulo(titulo);
-            Emprestimo novo = new Emprestimo(cliente.getCPF(), aux.getISBN(), "15/10/20", "30/12/20" );
-            aux.emprestar();
-            //Editor.modificarEmprestimo(this, aux, unidade.getPath(), "true");
-
+     public void emprestarLivro(Unidade unidade, Emprestimo novo) {
+        if (!buscarClienteNosEmprestimos(novo.getCPF())){
             this.emprestimos.add(novo);
-            // Adicionar no arquivo de emprestimos
-            cliente.addLivrosPegos();
-            // Atualizar arquivo de clientes
+            Escritor.escreverEmprestimo(novo, unidade.getPath());
+            Livro emprestado = buscarLivroISNB(novo.getISNB());
+            emprestado.emprestar(unidade, this);
         }
-        
-        else {
-            System.out.println("O cliente já pegou o máximo de livros emprestado.");
-        }   
-    }
-
-    public ArrayList<Autor> getAutores() {
-        return autores;
-    }
-   
-    public boolean buscarAutor(String nome){
-        for (Autor autor : autores){
-            if (autor.getNome().equals(nome))
-                return true;
+        else{
+            System.out.println("O cliente não pode pegar um novo livro emprestado até que devolva o anterior");
         }
-        return false;
     }
 
-    public ArrayList<Emprestimo> getEmprestimos() {
-        return emprestimos;
+    public void devolverLivro(Unidade unidade, String CPF, String ISNB) {
+        Emprestimo atual = buscarEmprestimo(CPF,ISNB);
+        this.emprestimos.remove(atual);
+        Removedor.removerEmprestimo(atual, unidade.getPath());
+        Livro emprestado = buscarLivroISNB(ISNB);
+        emprestado.emprestar(unidade, this);
     }
 
-    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-    }
-    
-    
-    public void addEstante(Estante nova) {
-        estantes.add(nova);
-        idsEstantes++;
+    public void imprimirAcervo(String nomeUnidade){
+        System.out.println("Acervo da Unidade - " + nomeUnidade);
+        for (Estante e : estantes){
+            e.imprimirEstante();
+        }
     }
     
     public void addLivro(Livro novo){
@@ -129,12 +105,27 @@ public class Acervo {
         }
     }
         
-   
+    public void addEstante(Estante nova) {
+        estantes.add(nova);
+        idsEstantes++;
+    }
     
     public Livro buscarLivroTitulo (String titulo){
         for (Estante e : estantes){
             for (Livro l : e.livros){
                 if (l.titulo.equals(titulo)){
+                    return l;
+                }
+            }
+        }
+        return null;// Tratar execção dps
+    }
+
+    
+    public Livro buscarLivroISNB (String ISNB){
+        for (Estante e : estantes){
+            for (Livro l : e.livros){
+                if (l.getISBN().equals(ISNB)){
                     return l;
                 }
             }
@@ -154,27 +145,65 @@ public class Acervo {
         return livros;// Tratar execção dps
     }
     
-    
-    public void imprimirAcervo(String nomeUnidade){
-        System.out.println("Acervo da Unidade - " + nomeUnidade);
-        for (Estante e : estantes){
-            e.imprimirEstante();
+    public boolean buscarAutor(String nome){
+        for (Autor autor : autores){
+            if (autor.getNome().equals(nome))
+                return true;
         }
+        return false;
     }
-  
+    
+    public Emprestimo buscarEmprestimo(String CPF, String ISNB){
+        for (Emprestimo e : emprestimos){
+            if ((e.getCPF().equals(CPF))&&(e.getISNB().equals(ISNB))){
+                return e;
+            }
+                
+        }
+        return null;
+    }
+    
+    public boolean buscarClienteNosEmprestimos(String CPF){
+        for (Emprestimo e : emprestimos){
+            if (e.getCPF().equals(CPF)){
+                return true;
+            }
+                
+        }
+        return false;
+    }
+    
+    public int getIdsEstantes() {
+        return idsEstantes;
+    }
+
+    public void setIdsEstantes(int idsEstantes) {
+        this.idsEstantes = idsEstantes;
+    }
+
+    public ArrayList<Estante> getEstantes() {
+        return estantes;
+    }
+
     public void setEstantes(ArrayList<Estante> estantes) {
         this.estantes = estantes;
+    }
+
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+
+    public ArrayList<Autor> getAutores() {
+        return autores;
     }
 
     public void setAutores(ArrayList<Autor> autores) {
         this.autores = autores;
     }
-
-    public void emprestarLivro(Emprestimo novo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void devolverLivro(String cpf2, String bn2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+   
 }

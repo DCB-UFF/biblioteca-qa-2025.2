@@ -153,7 +153,7 @@ public class Leitor {
                 String[] livro = linha.split(",");
                 Autor autor = new Autor(livro[0],livro[7]);
                 Livro novo = new Livro(autor,livro[1], 
-                    livro[2], Integer.parseInt(livro[3]), livro[4],livro[5],Boolean.parseBoolean(livro[6]));
+                    Integer.parseInt(livro[2]), livro[3], livro[4],livro[5],Boolean.parseBoolean(livro[6]));
                 acervo.addLivro(novo);
             
             }

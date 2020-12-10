@@ -25,8 +25,8 @@ public class TesteEmprestimo {
         
         Cliente maria = new Cliente("Maria", "123456789-10", "12/12/2000", "99999-9999", "Rua 1", "Campo Grande", "22222-222", "Rio de Janeiro", "RJ");
         
-        
-        acervo.emprestarLivro(unidade, maria, "A casa dos Espíritos");
+        Emprestimo novo = new Emprestimo("123456789-10", "403", "12/12/12", "17/12/12");
+        unidade.getAcervo().emprestarLivro(unidade, novo);
         
         acervo.imprimirAcervo("São Gonçalo");
     

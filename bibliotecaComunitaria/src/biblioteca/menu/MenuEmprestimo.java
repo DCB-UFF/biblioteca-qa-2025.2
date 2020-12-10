@@ -31,7 +31,7 @@ public class MenuEmprestimo {
                     String dev = teclado.nextLine();
 
                     Emprestimo novo = new Emprestimo(cpf,isbn,emp,dev);
-                    unidadeAtual.getAcervo().emprestarLivro(novo);
+                    unidadeAtual.getAcervo().emprestarLivro(unidadeAtual, novo);
 
                     System.out.println("\nO livro de ISBN "+isbn+" foi emprestado para o cliente de cpf "+cpf);
                     
@@ -43,7 +43,7 @@ public class MenuEmprestimo {
                     String cpf2 = teclado.nextLine();
                     System.out.println("\nDigite o ISBN do livro ");
                     String isbn2 = teclado.nextLine();
-                    unidadeAtual.getAcervo().devolverLivro(cpf2,isbn2);
+                    unidadeAtual.getAcervo().devolverLivro(unidadeAtual, cpf2, isbn2);
 
                     System.out.println("\nO livro de ISBN "+isbn2+" foi devolvido pelo cliente de cpf "+cpf2);
                     

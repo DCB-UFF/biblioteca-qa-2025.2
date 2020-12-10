@@ -15,16 +15,6 @@ public class Estante {
         this.genero = genero;
     }
 
-    public ArrayList<Livro> getLivros() {
-        return livros;
-    }
-
-    public void setLivros(ArrayList<Livro> livros) {
-        this.livros = livros;
-    }
-    
-    
-
     public void imprimirEstante(){
         System.out.printf("\nEstante %d - %s - %d Livros\n", this.idEstante, this.genero, this.livros.size() );
         for (Livro livro:livros){
@@ -39,14 +29,6 @@ public class Estante {
         }
         
     }
-    public void add5Livros(Livro livro1, Livro livro2, Livro livro3, Livro livro4, Livro livro5 ) {
-        this.livros.add(livro1);
-        this.livros.add(livro2);
-        this.livros.add(livro3);
-        this.livros.add(livro4);
-        this.livros.add(livro5);
-        
-    }
 
     void buscarLivroNaEstante(String nomeLivro) {
         for (Livro livro:livros){
@@ -54,17 +36,6 @@ public class Estante {
                 livro.imprimirLivro();
             }
         }   
-    }
-    
-    Livro buscarLivroNaEstanteId(int idLivro) {
-        for (Livro livro:livros){
-            if (Integer.compare(livro.idLivro, idLivro)==0){
-                return livro;
-            }
-        }   
-        
-        //Exceção aqui dps
-        return null;
     }
     
     Livro buscarLivroNaEstanteTitulo(String titulo) {
@@ -77,7 +48,15 @@ public class Estante {
         //Exceção aqui dps
         return null;
     }
-    
+
+    public ArrayList<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(ArrayList<Livro> livros) {
+        this.livros = livros;
+    }
+
     public int getIdEstante() {
         return idEstante;
     }
@@ -101,4 +80,6 @@ public class Estante {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+    
+   
 }
