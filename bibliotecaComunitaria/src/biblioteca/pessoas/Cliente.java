@@ -1,7 +1,6 @@
 package biblioteca.pessoas;
 
 import biblioteca.biblioteca.Endereco;
-import java.util.ArrayList;
 
 /* @author victoria */
 

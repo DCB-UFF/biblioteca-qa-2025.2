@@ -43,7 +43,6 @@ public class Acervo {
     }
     
     public void addLivro(Livro novo){
-        
         if (autores.contains(novo.getAutor())){
             for (Autor autor : autores){
                 if (autor.equals(novo.getAutor())){
@@ -120,7 +119,7 @@ public class Acervo {
                 }
             }
         }
-        return null;// Tratar execção dps
+        return null;
     }
 
     
@@ -132,10 +131,10 @@ public class Acervo {
                 }
             }
         }
-        return null;// Tratar execção dps
+        return null;
     }
     
-     public ArrayList<Livro> buscarLivroAutor (String autor){
+    public ArrayList<Livro> buscarLivroAutor (String autor){
         ArrayList<Livro> livros = new ArrayList();
         for (Estante e : estantes){
             for (Livro l : e.livros){
@@ -144,7 +143,7 @@ public class Acervo {
                 }
             }
         }
-        return livros;// Tratar execção dps
+        return livros;
     }
     
     public boolean buscarAutor(String nome){

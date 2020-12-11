@@ -23,7 +23,6 @@ public class Estante {
     }
 
     public void addLivroNaEstante(Livro livro) {
-        //Adicionar exceção
         if(livros.size()<this.capacidade){
             this.livros.add(livro);
         }
@@ -44,8 +43,6 @@ public class Estante {
                 return livro;
             }
         }   
-        
-        //Exceção aqui dps
         return null;
     }
 

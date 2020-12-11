@@ -39,13 +39,13 @@ public class Livro {
     public void emprestar(Unidade unidade,Acervo acervo){
         this.estaEmprestado = true;
         Editor.modificarEmprestimo(acervo, this, unidade.getPath(), "true");
-        System.out.println("O livro "+this.titulo+" foi emprestado com sucesso!");
+        System.out.println(this.titulo);
     }
     
     public void devolver(Unidade unidade,Acervo acervo){
-       this.estaEmprestado = true;
+       this.estaEmprestado = false;
        Editor.modificarEmprestimo(acervo, this, unidade.getPath(), "false");
-       System.out.println("O livro "+this.titulo+" foi devolvido com sucesso!");
+       System.out.println(this.titulo);
     }
 
     public String getTitulo() {
