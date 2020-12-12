@@ -2,6 +2,8 @@ package biblioteca.menu;
 
 import biblioteca.arquivo.Escritor;
 import biblioteca.biblioteca.Unidade;
+import biblioteca.biblioteca.Util;
+import biblioteca.excecoes.FuncionarioInexistenteException;
 import biblioteca.pessoas.Funcionario;
 import static java.lang.System.exit;
 import java.util.Scanner;
@@ -53,7 +55,7 @@ public class MenuFuncionario {
         
     }
     
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado){    
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws FuncionarioInexistenteException{    
         opcoesAcessarAdminFuncionario();
         int op = teclado.nextInt();
         teclado.nextLine();
@@ -62,11 +64,7 @@ public class MenuFuncionario {
                     case 1:
                         System.out.println("Digite o cpf do funcionário: ");
                         String cpf = teclado.nextLine();
-                        for(Funcionario f : unidadeAtual.getFuncionarios()){
-                            if(f.getCPF().equals(cpf)){
-                                System.out.println(f);
-                            }
-                        }
+                        Util.buscarFuncionario(unidadeAtual, cpf);
                         exit(0);
                         break;
                     case 2:

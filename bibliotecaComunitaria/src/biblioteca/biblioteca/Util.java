@@ -3,6 +3,7 @@ package biblioteca.biblioteca;
 import biblioteca.excecoes.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.Cliente;
+import biblioteca.pessoas.Funcionario;
 import java.util.ArrayList;
 
 /* @author Luam */
@@ -21,6 +22,15 @@ public class Util {
             }
         }
         throw new ClienteInexistenteException();
+    }
+    
+    public static void buscarFuncionario(Unidade unidadeatual, String cpf) throws FuncionarioInexistenteException {
+        for(Funcionario f : unidadeatual.getFuncionarios()){
+            if(f.getCPF().equals(cpf)){
+                System.out.println(f);
+            }
+        }
+        throw new FuncionarioInexistenteException();
     }
     
     public static Livro buscarLivroTitulo (String titulo, Unidade u) throws LivroNaoExistenteException{

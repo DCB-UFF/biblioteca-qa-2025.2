@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void iniciar(Sistema sistema) throws LivroNaoExistenteException, ClienteInexistenteException{
+    public static void iniciar(Sistema sistema) throws LivroNaoExistenteException, ClienteInexistenteException, FuncionarioInexistenteException{
         MenuPrincipal.opcoesIniciais();
         Unidade unidadeAtual;
         

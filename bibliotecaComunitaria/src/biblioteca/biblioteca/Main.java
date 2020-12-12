@@ -13,7 +13,7 @@ public class Main {
         sistema.carregarUnidades(); // Carrega o conteúdo dessas unidades
         try{
             Menu.iniciar(sistema); // Inicia o Menu
-        }catch(LivroNaoExistenteException | ClienteInexistenteException e){
+        }catch(LivroNaoExistenteException | ClienteInexistenteException | FuncionarioInexistenteException e){
             System.out.println(e.getMessage());
         }
     }
