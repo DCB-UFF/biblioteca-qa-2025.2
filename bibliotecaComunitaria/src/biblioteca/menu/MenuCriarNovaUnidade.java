@@ -1,18 +1,16 @@
 package biblioteca.menu;
 
-import biblioteca.arquivo.Copiador;
-import biblioteca.arquivo.Criador;
+import biblioteca.arquivo.*;
 import biblioteca.arquivo.Leitor;
-import biblioteca.biblioteca.Sistema;
-import biblioteca.biblioteca.Unidade;
-import biblioteca.biblioteca.Util;
+import biblioteca.biblioteca.*;
+import biblioteca.excecoes.UnidadeInexistenteException;
 import java.io.File;
 import java.util.Scanner;
 
 /* @author Luam
  */
 public class MenuCriarNovaUnidade {
-    public static void iniciar(Sistema sistema, Scanner teclado){
+    public static void iniciar(Sistema sistema, Scanner teclado) throws UnidadeInexistenteException{
         // CRIA NOVA UNIDADE
         
         teclado.nextLine();
@@ -35,7 +33,7 @@ public class MenuCriarNovaUnidade {
         
         System.out.printf("\nUnidade %s criada!\n\n", nome);
         
-        Unidade aux = sistema.buscarUnidade(nome);
+        Unidade aux = Util.buscarUnidade(nome, sistema);
         Util.imprimir(sistema.getUnidades());
         
         

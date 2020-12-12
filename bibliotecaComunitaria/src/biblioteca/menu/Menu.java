@@ -1,6 +1,7 @@
 package biblioteca.menu;
 
 import biblioteca.biblioteca.*;
+import biblioteca.excecoes.*;
 import static java.lang.System.exit;
 import java.util.Scanner;
 
@@ -8,20 +9,20 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void iniciar(Sistema sistema){
+    public static void iniciar(Sistema sistema) throws LivroNaoExistenteException, ClienteInexistenteException, FuncionarioInexistenteException, UnidadeInexistenteException{
         MenuPrincipal.opcoesIniciais();
-        Unidade unidadeAtual = null;
+        Unidade unidadeAtual;
         
         Scanner teclado = new Scanner(System.in);
         int op = teclado.nextInt();
         while(op != 3){
             if(op == 1){
-                Util.imprimir(Main.sistema.unidades);
+                sistema.imprimirUnidades(sistema);
                 System.out.println("\nDigite o nome da unidade: ");
                 
                 teclado.nextLine();
                 String unidade = teclado.nextLine();
-                unidadeAtual = sistema.buscarUnidade(unidade);
+                unidadeAtual = Util.buscarUnidade(unidade, sistema);
                 
                 System.out.println("\nBem vindo(a) à unidade " + unidadeAtual.getNome()+"!");
                 MenuPrincipal.opcoesAcessar();

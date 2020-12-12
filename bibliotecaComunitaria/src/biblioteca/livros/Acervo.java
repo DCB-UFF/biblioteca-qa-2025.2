@@ -111,18 +111,6 @@ public class Acervo {
         idsEstantes++;
     }
     
-    public Livro buscarLivroTitulo (String titulo){
-        for (Estante e : estantes){
-            for (Livro l : e.livros){
-                if (l.titulo.equals(titulo)){
-                    return l;
-                }
-            }
-        }
-        return null;
-    }
-
-    
     public Livro buscarLivroISNB (String ISNB){
         for (Estante e : estantes){
             for (Livro l : e.livros){

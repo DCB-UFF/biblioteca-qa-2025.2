@@ -44,9 +44,10 @@ public class Leitor {
             }   
         }
         return null;
-      }
+    }
+    
     public static ArrayList<Emprestimo> leitorEmprestimos(String path){
-    BufferedReader br = null;
+        BufferedReader br = null;
         String linha = "";
         ArrayList<Emprestimo> emprestimos = new ArrayList<>();
         try {
@@ -75,6 +76,7 @@ public class Leitor {
         }
         return null;
     }
+    
     public static ArrayList<Autor> leitorAutores(String path) {
        BufferedReader br = null;
        String linha = "";
@@ -106,7 +108,8 @@ public class Leitor {
            }   
        }
        return null;
-     }
+    }
+    
     public static Acervo leitorEstantes(String path) {
        BufferedReader br = null;
        String linha = "";
@@ -136,7 +139,8 @@ public class Leitor {
            }   
        }
        return null;
-     }
+    }
+    
     public static void leitorLivros(Acervo acervo, String path) {
        BufferedReader br = null;
        String linha = "";
@@ -168,7 +172,7 @@ public class Leitor {
                }
            }   
        }
-     }
+    }
      
      /* @author victoria */
     public static ArrayList<Cliente> leitorClientes(String path) {
@@ -200,7 +204,8 @@ public class Leitor {
             }
         }
         return null;
-      }
+    }
+    
     public static ArrayList<Funcionario> leitorFuncionarios(String path) {
         BufferedReader br = null;
         String linha = "";
@@ -232,5 +237,5 @@ public class Leitor {
             }
         }
         return null;
-      }   
+    }   
 }

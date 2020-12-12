@@ -1,7 +1,9 @@
 package biblioteca.menu;
 
 import biblioteca.arquivo.Escritor;
-import biblioteca.biblioteca.Unidade;
+import biblioteca.arquivo.Removedor;
+import biblioteca.biblioteca.*;
+import biblioteca.excecoes.ClienteInexistenteException;
 import biblioteca.pessoas.Cliente;
 import static java.lang.System.exit;
 import java.util.Scanner;
@@ -45,7 +47,20 @@ public class MenuCliente {
         Escritor.escreverCliente(cliente, aux.getPath());
         
     } 
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
+    
+    public static void removerCliente(Unidade unidadeAtual) throws ClienteInexistenteException{
+        Scanner tecla = new Scanner(System.in);
+        System.out.println("\nDigite o cpf do cliente: ");
+        String cpf = tecla.nextLine();
+        
+        Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
+        unidadeAtual.getClientes().remove(buscado);
+        Removedor.removerCliente(buscado, unidadeAtual.getPath());
+        System.out.println("O cliente de cpf "+cpf+"foi removido!");
+
+    }
+    
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws ClienteInexistenteException{
         opcoesAcessarAdminCliente();
         int op = teclado.nextInt();
         teclado.nextLine();
@@ -54,11 +69,7 @@ public class MenuCliente {
                 case 1:
                     System.out.println("Digite o cpf do cliente: ");
                     String cpf = teclado.nextLine();
-                    for(Cliente c : unidadeAtual.getClientes()){
-                        if(c.getCPF().equals(cpf)){
-                            System.out.println(c);
-                        }
-                    }
+                    Util.buscarCliente(unidadeAtual, cpf);
                     exit(0);
                     break;
                 case 2:
@@ -66,6 +77,7 @@ public class MenuCliente {
                     exit(0);
                     break;
                 case 3:
+                    removerCliente(unidadeAtual);
                     exit(0);
                     break;
                 case 4:

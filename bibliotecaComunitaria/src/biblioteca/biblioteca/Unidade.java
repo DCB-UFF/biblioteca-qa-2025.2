@@ -26,16 +26,6 @@ public class Unidade{
                  " - " + "CEP: " + end.getCep() + " - " + "Cidade: " + end.getCidade() + " - " + "Estado: " + end.getEstado());
      }
 
-     
-    public Cliente buscarCliente(String CPF){
-        for (Cliente c : clientes){
-            if (c.getCPF().equals(CPF))
-                return c;
-        }
-        return null;
-    }
-    
-    
     public Endereco getEnd() {
         return end;
     }

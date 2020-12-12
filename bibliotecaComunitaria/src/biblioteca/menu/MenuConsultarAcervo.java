@@ -2,6 +2,7 @@ package biblioteca.menu;
 
 import biblioteca.biblioteca.Unidade;
 import biblioteca.biblioteca.Util;
+import biblioteca.excecoes.*;
 import biblioteca.livros.Livro;
 import static java.lang.System.exit;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class MenuConsultarAcervo {
         System.out.println("5 - Sair\n");
     } 
     
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws LivroNaoExistenteException{
         int op=0;
         opcoesConsultarAcervo();
         while(op != 5){
@@ -31,7 +32,7 @@ public class MenuConsultarAcervo {
                     System.out.println("\nDigite o título do livro: ");
                     teclado.nextLine();
                     String livro = teclado.nextLine();
-                    Livro buscado = unidadeAtual.getAcervo().buscarLivroTitulo(livro);
+                    Livro buscado = Util.buscarLivroTitulo(livro, unidadeAtual);
                     buscado.imprimirLivro();
                     exit(0);
 
