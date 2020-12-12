@@ -15,19 +15,19 @@ public class Util {
         }
     }   
     
-    public static void buscarCliente(Unidade unidadeatual, String cpf) throws ClienteInexistenteException{
+    public static Cliente buscarCliente(Unidade unidadeatual, String cpf) throws ClienteInexistenteException{
         for(Cliente c : unidadeatual.getClientes()){
             if(c.getCPF().equals(cpf)){
-                System.out.println(c);
+                return c;
             }
         }
         throw new ClienteInexistenteException();
     }
     
-    public static void buscarFuncionario(Unidade unidadeatual, String cpf) throws FuncionarioInexistenteException {
+    public static Funcionario buscarFuncionario(Unidade unidadeatual, String cpf) throws FuncionarioInexistenteException {
         for(Funcionario f : unidadeatual.getFuncionarios()){
             if(f.getCPF().equals(cpf)){
-                System.out.println(f);
+                return f;
             }
         }
         throw new FuncionarioInexistenteException();

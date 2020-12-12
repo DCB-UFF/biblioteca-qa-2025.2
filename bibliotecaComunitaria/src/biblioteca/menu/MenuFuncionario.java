@@ -1,9 +1,12 @@
 package biblioteca.menu;
 
 import biblioteca.arquivo.Escritor;
+import biblioteca.arquivo.Removedor;
 import biblioteca.biblioteca.Unidade;
 import biblioteca.biblioteca.Util;
+import biblioteca.excecoes.ClienteInexistenteException;
 import biblioteca.excecoes.FuncionarioInexistenteException;
+import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
 import static java.lang.System.exit;
 import java.util.Scanner;
@@ -55,6 +58,18 @@ public class MenuFuncionario {
         
     }
     
+     public static void removerFuncionario(Unidade unidadeAtual) throws FuncionarioInexistenteException{
+        Scanner tecla = new Scanner(System.in);
+        System.out.println("\nDigite o cpf do funcionario: ");
+        String cpf = tecla.nextLine();
+        
+        Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);
+        unidadeAtual.getFuncionarios().remove(buscado);
+        Removedor.removerFuncionario(buscado, unidadeAtual.getPath());
+        System.out.println("O funcionario de cpf "+cpf+"foi removido!");
+
+    }
+    
     public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws FuncionarioInexistenteException{    
         opcoesAcessarAdminFuncionario();
         int op = teclado.nextInt();
@@ -72,6 +87,7 @@ public class MenuFuncionario {
                         exit(0);
                         break;
                     case 3:
+                        removerFuncionario(unidadeAtual);
                         exit(0);
                         break;
                     case 4:

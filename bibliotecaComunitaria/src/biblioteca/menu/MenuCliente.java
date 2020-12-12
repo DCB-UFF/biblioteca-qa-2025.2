@@ -1,6 +1,7 @@
 package biblioteca.menu;
 
 import biblioteca.arquivo.Escritor;
+import biblioteca.arquivo.Removedor;
 import biblioteca.biblioteca.*;
 import biblioteca.excecoes.ClienteInexistenteException;
 import biblioteca.pessoas.Cliente;
@@ -47,6 +48,18 @@ public class MenuCliente {
         
     } 
     
+    public static void removerCliente(Unidade unidadeAtual) throws ClienteInexistenteException{
+        Scanner tecla = new Scanner(System.in);
+        System.out.println("\nDigite o cpf do cliente: ");
+        String cpf = tecla.nextLine();
+        
+        Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
+        unidadeAtual.getClientes().remove(buscado);
+        Removedor.removerCliente(buscado, unidadeAtual.getPath());
+        System.out.println("O cliente de cpf "+cpf+"foi removido!");
+
+    }
+    
     public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws ClienteInexistenteException{
         opcoesAcessarAdminCliente();
         int op = teclado.nextInt();
@@ -64,6 +77,7 @@ public class MenuCliente {
                     exit(0);
                     break;
                 case 3:
+                    removerCliente(unidadeAtual);
                     exit(0);
                     break;
                 case 4:
