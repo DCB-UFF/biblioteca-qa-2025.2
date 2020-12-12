@@ -10,13 +10,13 @@ public class Menu {
 
     public static void iniciar(Sistema sistema){
         MenuPrincipal.opcoesIniciais();
-        Unidade unidadeAtual = null;
+        Unidade unidadeAtual;
         
         Scanner teclado = new Scanner(System.in);
         int op = teclado.nextInt();
         while(op != 3){
             if(op == 1){
-                Util.imprimir(Main.sistema.unidades);
+                sistema.imprimirUnidades(sistema);
                 System.out.println("\nDigite o nome da unidade: ");
                 
                 teclado.nextLine();

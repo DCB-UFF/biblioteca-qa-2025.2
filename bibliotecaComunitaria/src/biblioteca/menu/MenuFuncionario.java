@@ -62,11 +62,11 @@ public class MenuFuncionario {
                     case 1:
                         System.out.println("Digite o cpf do funcionário: ");
                         String cpf = teclado.nextLine();
-                        /*for(Funcionario f : unidadeAtual.getFuncionarios()){
+                        for(Funcionario f : unidadeAtual.getFuncionarios()){
                             if(f.getCPF().equals(cpf)){
                                 System.out.println(f);
                             }
-                        }*/
+                        }
                         exit(0);
                         break;
                     case 2:

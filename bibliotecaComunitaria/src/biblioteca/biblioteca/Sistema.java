@@ -37,13 +37,19 @@ public class Sistema{
         Escritor.escreverUnidade(this, nova);
     }
  
-    public  Unidade buscarUnidade(String nome){
-      for(Unidade u: this.unidades){
+    public Unidade buscarUnidade(String nome){
+        for(Unidade u: this.unidades){
             if(u.getNome().equals(nome)){
                 return u;
             }
         } 
         return null;
+    }
+    
+    public void imprimirUnidades(Sistema sistema){
+        for(Unidade u: sistema.unidades){
+            System.out.println(u.getNome());
+        }
     }
     
     public int getContadorUnidades() {
