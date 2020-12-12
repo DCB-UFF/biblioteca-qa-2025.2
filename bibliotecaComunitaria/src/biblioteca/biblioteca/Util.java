@@ -6,7 +6,7 @@ import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
 import java.util.ArrayList;
 
-/* @author Luam */
+/* @author victoria */
 
 public class Util {
     public static void imprimir(ArrayList a) {
@@ -44,5 +44,15 @@ public class Util {
         }
         throw new LivroNaoExistenteException();
     }
+    
+    public static Unidade buscarUnidade(String nome, Sistema sistema) throws UnidadeInexistenteException{
+        
+        for(Unidade u: sistema.unidades){
+            if(u.getNome().equals(nome)){
+                return u;
+            }
+        } 
+        throw new UnidadeInexistenteException();
+    }  
     
 }

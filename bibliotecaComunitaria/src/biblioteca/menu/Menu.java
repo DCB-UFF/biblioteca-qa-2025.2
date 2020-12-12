@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void iniciar(Sistema sistema) throws LivroNaoExistenteException, ClienteInexistenteException, FuncionarioInexistenteException{
+    public static void iniciar(Sistema sistema) throws LivroNaoExistenteException, ClienteInexistenteException, FuncionarioInexistenteException, UnidadeInexistenteException{
         MenuPrincipal.opcoesIniciais();
         Unidade unidadeAtual;
         
@@ -22,7 +22,7 @@ public class Menu {
                 
                 teclado.nextLine();
                 String unidade = teclado.nextLine();
-                unidadeAtual = sistema.buscarUnidade(unidade);
+                unidadeAtual = Util.buscarUnidade(unidade, sistema);
                 
                 System.out.println("\nBem vindo(a) à unidade " + unidadeAtual.getNome()+"!");
                 MenuPrincipal.opcoesAcessar();
