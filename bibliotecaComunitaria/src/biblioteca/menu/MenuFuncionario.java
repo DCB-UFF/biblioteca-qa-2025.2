@@ -79,7 +79,8 @@ public class MenuFuncionario {
                     case 1:
                         System.out.println("Digite o cpf do funcionário: ");
                         String cpf = teclado.nextLine();
-                        Util.buscarFuncionario(unidadeAtual, cpf);
+                        Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);
+                        System.out.println(buscado);
                         exit(0);
                         break;
                     case 2:

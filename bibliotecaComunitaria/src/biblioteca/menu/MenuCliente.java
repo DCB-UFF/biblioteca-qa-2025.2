@@ -69,7 +69,8 @@ public class MenuCliente {
                 case 1:
                     System.out.println("Digite o cpf do cliente: ");
                     String cpf = teclado.nextLine();
-                    Util.buscarCliente(unidadeAtual, cpf);
+                    Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
+                    System.out.println(buscado);
                     exit(0);
                     break;
                 case 2:
