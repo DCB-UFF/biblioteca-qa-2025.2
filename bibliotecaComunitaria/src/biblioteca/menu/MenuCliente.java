@@ -1,7 +1,8 @@
 package biblioteca.menu;
 
 import biblioteca.arquivo.Escritor;
-import biblioteca.biblioteca.Unidade;
+import biblioteca.biblioteca.*;
+import biblioteca.excecoes.ClienteInexistenteException;
 import biblioteca.pessoas.Cliente;
 import static java.lang.System.exit;
 import java.util.Scanner;
@@ -45,7 +46,8 @@ public class MenuCliente {
         Escritor.escreverCliente(cliente, aux.getPath());
         
     } 
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
+    
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws ClienteInexistenteException{
         opcoesAcessarAdminCliente();
         int op = teclado.nextInt();
         teclado.nextLine();
@@ -54,11 +56,7 @@ public class MenuCliente {
                 case 1:
                     System.out.println("Digite o cpf do cliente: ");
                     String cpf = teclado.nextLine();
-                    for(Cliente c : unidadeAtual.getClientes()){
-                        if(c.getCPF().equals(cpf)){
-                            System.out.println(c);
-                        }
-                    }
+                    Util.buscarCliente(unidadeAtual, cpf);
                     exit(0);
                     break;
                 case 2:

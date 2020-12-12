@@ -1,6 +1,7 @@
 package biblioteca.menu;
 
-import biblioteca.biblioteca.Unidade;
+import biblioteca.biblioteca.*;
+import biblioteca.excecoes.LivroNaoExistenteException;
 import biblioteca.livros.Livro;
 import biblioteca.pessoas.Autor;
 import static java.lang.System.exit;
@@ -17,7 +18,7 @@ public class MenuEditarAcervo {
         System.out.println("3 - Sair\n");
     } 
     
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado){
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws LivroNaoExistenteException{
         int op=0;
         opcoesEditarAcervo();
         while(op != 3){
@@ -54,7 +55,7 @@ public class MenuEditarAcervo {
                 case 2:
                     System.out.println("\nDigite o título do arquivo que você deseja remover:");
                     String titulo2 = teclado.nextLine();
-                    Livro removido = unidadeAtual.getAcervo().buscarLivroTitulo(titulo2);
+                    Livro removido = Util.buscarLivroTitulo(titulo2, unidadeAtual);
                     unidadeAtual.getAcervo().removeLivro(removido, unidadeAtual.getPath());
                     System.out.println("\nLivro removido!!");
                     exit(0);

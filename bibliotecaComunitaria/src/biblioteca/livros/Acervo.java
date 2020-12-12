@@ -2,6 +2,7 @@ package biblioteca.livros;
 
 import biblioteca.arquivo.*;
 import biblioteca.biblioteca.Unidade;
+import biblioteca.excecoes.LivroNaoExistenteException;
 import java.util.ArrayList;
 import biblioteca.pessoas.*;
 
@@ -110,18 +111,6 @@ public class Acervo {
         estantes.add(nova);
         idsEstantes++;
     }
-    
-    public Livro buscarLivroTitulo (String titulo){
-        for (Estante e : estantes){
-            for (Livro l : e.livros){
-                if (l.titulo.equals(titulo)){
-                    return l;
-                }
-            }
-        }
-        return null;
-    }
-
     
     public Livro buscarLivroISNB (String ISNB){
         for (Estante e : estantes){

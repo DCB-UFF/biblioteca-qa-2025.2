@@ -1,6 +1,7 @@
 package biblioteca.menu;
 
 import biblioteca.biblioteca.*;
+import biblioteca.excecoes.*;
 import static java.lang.System.exit;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void iniciar(Sistema sistema){
+    public static void iniciar(Sistema sistema) throws LivroNaoExistenteException, ClienteInexistenteException{
         MenuPrincipal.opcoesIniciais();
         Unidade unidadeAtual;
         
