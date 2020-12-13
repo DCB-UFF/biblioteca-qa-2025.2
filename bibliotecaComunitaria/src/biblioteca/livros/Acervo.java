@@ -8,7 +8,7 @@ import biblioteca.pessoas.*;
 /* @author Luam */
 
 public class Acervo {
-    public int idsEstantes = 1;
+    protected int idsEstantes = 1;
     protected ArrayList<Estante> estantes = new ArrayList<>();
     protected ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     protected ArrayList<Autor> autores = new ArrayList<>();

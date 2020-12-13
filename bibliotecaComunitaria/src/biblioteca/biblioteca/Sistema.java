@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Sistema{
     protected int contadorUnidades;
-    public ArrayList <Unidade> unidades = new ArrayList<>();
+    protected ArrayList <Unidade> unidades = new ArrayList<>();
     
     public void carregarUnidades(){
         for (Unidade un: this.unidades){
