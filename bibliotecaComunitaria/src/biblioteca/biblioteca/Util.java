@@ -47,7 +47,7 @@ public class Util {
     
     public static Unidade buscarUnidade(String nome, Sistema sistema) throws UnidadeInexistenteException{
         
-        for(Unidade u: sistema.unidades){
+        for(Unidade u: sistema.getUnidades()){
             if(u.getNome().equals(nome)){
                 return u;
             }
