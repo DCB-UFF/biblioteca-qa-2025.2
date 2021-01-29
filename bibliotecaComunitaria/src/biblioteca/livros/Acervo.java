@@ -91,7 +91,7 @@ public class Acervo {
     }
     
     public void removeLivro(Livro l, String path){
-        Removedor.removerLivro(l, path);
+        Livro.removerLivro(l, path);
         
         for (Autor autor : autores){
             if (autor.equals(l.getAutor())){

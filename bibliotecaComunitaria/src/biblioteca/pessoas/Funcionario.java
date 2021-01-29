@@ -108,5 +108,46 @@ public class Funcionario extends Pessoa{
         }
         return null;
     }
-
+    
+    public static void removerFuncionario(Funcionario funcionarioDeletado, String path) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        File antigo = new File(path+"funcionarios.csv");
+        File novo = new File (path+"temp.csv");
+        
+        try {
+            br = new BufferedReader(new FileReader(antigo));
+            bw = new BufferedWriter(new FileWriter(novo, true));
+            PrintWriter pw= new PrintWriter(bw);
+            String linha = "";
+            
+            while ((linha = br.readLine()) != null) {
+    
+                String[] funcionario = linha.split(",");
+                if (!funcionario[1].equals(funcionarioDeletado.getCPF())){
+                    pw.println(linha);
+                }
+            }
+            pw.flush();  
+            pw.close();
+            br.close();
+            antigo.delete();
+            
+            File aux = new File (path+"funcionarios.csv");
+            novo.renameTo(aux);
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
 }

@@ -97,4 +97,46 @@ public class Cliente extends Pessoa{
         }
         return null;
     }
+
+    public static void removerCliente(Cliente clienteDeletado, String path) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        File antigo = new File(path+"clientes.csv");
+        File novo = new File (path+"temp.csv");
+        
+        try {
+            br = new BufferedReader(new FileReader(antigo));
+            bw = new BufferedWriter(new FileWriter(novo, true));
+            PrintWriter pw= new PrintWriter(bw);
+            String linha = "";
+            
+            while ((linha = br.readLine()) != null) {
+    
+                String[] cliente = linha.split(",");
+                if (!cliente[1].equals(clienteDeletado.getCPF())){
+                    pw.println(linha);
+                }
+            }
+            pw.flush();  
+            pw.close();
+            br.close();
+            antigo.delete();
+            
+            File aux = new File (path+"clientes.csv");
+            novo.renameTo(aux);
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
 }

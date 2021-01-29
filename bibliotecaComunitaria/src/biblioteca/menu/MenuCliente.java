@@ -55,7 +55,7 @@ public class MenuCliente {
         
         Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
         unidadeAtual.getClientes().remove(buscado);
-        Removedor.removerCliente(buscado, unidadeAtual.getPath());
+        Cliente.removerCliente(buscado, unidadeAtual.getPath());
         System.out.println("O cliente de cpf "+cpf+"foi removido!");
 
     }

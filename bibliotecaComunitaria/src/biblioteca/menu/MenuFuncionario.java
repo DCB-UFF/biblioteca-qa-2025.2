@@ -65,7 +65,7 @@ public class MenuFuncionario {
         
         Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);
         unidadeAtual.getFuncionarios().remove(buscado);
-        Removedor.removerFuncionario(buscado, unidadeAtual.getPath());
+        Funcionario.removerFuncionario(buscado, unidadeAtual.getPath());
         System.out.println("O funcionario de cpf "+cpf+"foi removido!");
 
     }
