@@ -1,4 +1,5 @@
 # Sistema para a Administração de Bibliotecas
+Versão 2.0
 
 Trabalho para implementação dos conceitos de Orientação a Objetos.
 2020. 1 - Luam Silva e Victoria Granja
