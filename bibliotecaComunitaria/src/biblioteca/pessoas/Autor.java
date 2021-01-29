@@ -1,6 +1,11 @@
 package biblioteca.pessoas;
 import java.util.ArrayList;
 import biblioteca.livros.Livro;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+import java.io.*;
+
 
 /* @author victoria */
 
@@ -49,5 +54,29 @@ public class Autor extends Pessoa{
     
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public static void escreverAutor(Autor autor, String path) {
+        BufferedWriter bw = null;
+        String linha = autor.getNome()+","+autor.getPais();
+        try {
+            bw = new BufferedWriter(new FileWriter(path+"autores.csv", true));
+            PrintWriter pw= new PrintWriter(bw);
+            pw.println(linha);
+            pw.flush();
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
     }
 }

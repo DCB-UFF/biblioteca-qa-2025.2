@@ -66,7 +66,7 @@ public class Acervo {
     }
     
     public void addLivro2(Livro novo, String path){
-        Escritor.escreverLivro(novo, path);
+        Livro.escreverLivro(novo, path);
         
         if (autores.contains(novo.getAutor())){
             for (Autor autor : autores){

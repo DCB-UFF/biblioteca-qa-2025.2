@@ -44,7 +44,7 @@ public class MenuCliente {
         
         Cliente cliente = new Cliente(nome, cpf, data, tele, rua, bairro, cep, cid, est);
         aux.getClientes().add(cliente);
-        Escritor.escreverCliente(cliente, aux.getPath());
+        Cliente.escreverCliente(cliente, aux.getPath());
         
     } 
     

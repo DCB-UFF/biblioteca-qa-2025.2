@@ -1,6 +1,11 @@
 package biblioteca.livros;
 
 import java.util.ArrayList;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+import java.io.*;
+
 
 /* @author Luam */
 public class Estante {
@@ -78,5 +83,27 @@ public class Estante {
         this.genero = genero;
     }
     
-   
+    public static void escreveEstante(Estante estante, String path) {
+        BufferedWriter bw = null;
+        String linha = estante.getIdEstante()+","+estante.getGenero();
+        try {
+            bw = new BufferedWriter(new FileWriter(path+"estantes.csv", true));
+            PrintWriter pw= new PrintWriter(bw);
+            pw.println(linha);
+            pw.flush();
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
 }

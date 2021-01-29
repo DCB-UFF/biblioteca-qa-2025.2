@@ -3,6 +3,11 @@ package biblioteca.livros;
 import biblioteca.arquivo.Editor;
 import biblioteca.biblioteca.Unidade;
 import biblioteca.pessoas.Autor;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+import java.io.*;
+
 
 public class Livro {
    protected String titulo;
@@ -103,4 +108,31 @@ public class Livro {
     public void setEstaEmprestado(boolean estaEmprestado) {
         this.estaEmprestado = estaEmprestado;
     }
+    
+    public static void escreverLivro(Livro livro, String path) {
+        BufferedWriter bw = null;
+        String linha = livro.getAutor().getNome() + "," + livro.getTitulo() + "," + livro.getNumPaginas() + "," +
+                livro.getISBN() + "," + livro.getGenero()  + "," + livro.getEditora() + "," + 
+                livro.isEstaEmprestado()+ "," + livro.getAutor().getPais();
+        try {
+            bw = new BufferedWriter(new FileWriter(path+"livros.csv", true));
+            PrintWriter pw= new PrintWriter(bw);
+            pw.println(linha);
+            pw.flush();
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
+
 }

@@ -54,7 +54,7 @@ public class MenuFuncionario {
                         
         Funcionario fun = new Funcionario(nome, cpf, data, tele, sala, cargo, rua, bairro, cep, cid, est);
         aux.getFuncionarios().add(fun);
-        Escritor.escreverFuncionario(fun, aux.getPath());
+        Funcionario.escreverFuncionario(fun, aux.getPath());
         
     }
     
