@@ -16,7 +16,7 @@ public class Acervo {
      public void emprestarLivro(Unidade unidade, Emprestimo novo) {
         if (!buscarClienteNosEmprestimos(novo.getCPF())){
             this.emprestimos.add(novo);
-            Escritor.escreverEmprestimo(novo, unidade.getPath());
+            Emprestimo.escreverEmprestimo(novo, unidade.getPath());
             Livro emprestado = buscarLivroISNB(novo.getISNB());
             emprestado.emprestar(unidade, this);
             System.out.println("\nO livro de ISBN "+novo.getISNB()+" foi emprestado para o cliente de cpf "+novo.getISNB());

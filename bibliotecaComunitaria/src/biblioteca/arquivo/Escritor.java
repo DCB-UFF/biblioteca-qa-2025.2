@@ -10,30 +10,7 @@ import java.io.*;
 public class Escritor {
     /* @author Luam */
     
-    public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
-        BufferedWriter bw = null;
-        String linha = emprestimo.getCPF()+","+emprestimo.getISNB()+","+emprestimo.getDataEmprestimo()+","+
-                emprestimo.getDataDevolucao();
-        try {
-            bw = new BufferedWriter(new FileWriter(path+"emprestimos.csv", true));
-            PrintWriter pw= new PrintWriter(bw);
-            pw.println(linha);
-            pw.flush();
-            pw.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bw != null) {
-                try {
-                    bw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }   
-        }
-    }
+    
     public static void escreverAutor(Autor autor, String path) {
         BufferedWriter bw = null;
         String linha = autor.getNome()+","+autor.getPais();
