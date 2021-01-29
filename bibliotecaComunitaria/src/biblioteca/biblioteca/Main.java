@@ -9,7 +9,7 @@ import biblioteca.menu.Menu;
 public class Main {
     public static Sistema sistema;
     public static void main(String[] args){
-        sistema = Leitor.leitorUnidades(); // Lê as unidades para memória
+        sistema = Unidade.leitorUnidades(); // Lê as unidades para memória
         sistema.carregarUnidades(); // Carrega o conteúdo dessas unidades
         try{
             Menu.iniciar(sistema); // Inicia o Menu

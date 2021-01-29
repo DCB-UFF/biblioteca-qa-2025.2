@@ -105,61 +105,97 @@ public class Unidade{
     }
 
     public static void copiarArquivo(File a, File b) {
-            {
-                FileInputStream fis;
-                FileOutputStream fos;
-                try {
-                    fis = new FileInputStream(a);
-                    fos = new FileOutputStream(b);
-                    int c;
-                    try {
-                        while ((c = fis.read()) != -1) {
-                            try {
-                                fos.write(c);
-                            } catch (IOException ex) {
-                                Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        }
-                        fis.close();
-                        fos.close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
-                } finally {
-                }
-            }
-        }
-
-        public static void escreverUnidade(Sistema sistema,Unidade unidade) {
-            BufferedWriter bw = null;
-
-            String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
-                    + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
-                   + "," + unidade.getEnd().getEstado();
-
+        {
+            FileInputStream fis;
+            FileOutputStream fos;
             try {
-                bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
-                PrintWriter pw= new PrintWriter(bw);
-                pw.println(linha);
-
-                unidade.setPath(String.valueOf(sistema.getUnidades()));
-
-                pw.flush();
-                pw.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (bw != null) {
-                    try {
-                        bw.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                fis = new FileInputStream(a);
+                fos = new FileOutputStream(b);
+                int c;
+                try {
+                    while ((c = fis.read()) != -1) {
+                        try {
+                            fos.write(c);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
-                }   
+                    fis.close();
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
             }
         }
     }
+
+    public static void escreverUnidade(Sistema sistema,Unidade unidade) {
+        BufferedWriter bw = null;
+
+        String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
+                + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
+               + "," + unidade.getEnd().getEstado();
+
+        try {
+            bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
+            PrintWriter pw= new PrintWriter(bw);
+            pw.println(linha);
+
+            unidade.setPath(String.valueOf(sistema.getUnidades()));
+
+            pw.flush();
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+    }
+
+    public static Sistema leitorUnidades() {
+        BufferedReader br = null;
+        String linha = "";
+        Sistema sistema = new Sistema();
+        
+        try {
+            br = new BufferedReader(new FileReader("src\\unidades\\unidades.csv"));
+            br.readLine();
+            
+            while ((linha = br.readLine()) != null) {
+                String[] unidade = linha.split(",");
+                Unidade novo = new Unidade(unidade[0],unidade[1],unidade[2], unidade[3],
+                        unidade[4], unidade[5], unidade[6]);
+                sistema.getUnidades().add(novo);
+                sistema.addContadorUnidades();
+                
+            }
+            return sistema;
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }
+        return null;
+    }
+
+}

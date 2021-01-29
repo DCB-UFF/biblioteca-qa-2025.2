@@ -29,7 +29,7 @@ public class MenuCriarNovaUnidade {
         
         
         sistema.criarUnidade(nome, rua, bairro, cep, cidade, estado);
-        sistema = Leitor.leitorUnidades();
+        sistema = Unidade.leitorUnidades();
         
         System.out.printf("\nUnidade %s criada!\n\n", nome);
         

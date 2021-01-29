@@ -11,40 +11,6 @@ import java.util.ArrayList;
 // MÉTODOS QUE LEEM UNIDADE, CLIENTES, FUNCIONARIOS, AUTORES, ESTANTES E LIVROS
 
 public class Leitor {
-    public static Sistema leitorUnidades() {
-        BufferedReader br = null;
-        String linha = "";
-        Sistema sistema = new Sistema();
-        
-        try {
-            br = new BufferedReader(new FileReader("src\\unidades\\unidades.csv"));
-            br.readLine();
-            
-            while ((linha = br.readLine()) != null) {
-                String[] unidade = linha.split(",");
-                Unidade novo = new Unidade(unidade[0],unidade[1],unidade[2], unidade[3],
-                        unidade[4], unidade[5], unidade[6]);
-                sistema.getUnidades().add(novo);
-                sistema.addContadorUnidades();
-                
-            }
-            return sistema;
-            
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }   
-        }
-        return null;
-    }
     
     public static ArrayList<Emprestimo> leitorEmprestimos(String path){
         BufferedReader br = null;
