@@ -34,7 +34,7 @@ public class Sistema{
         String path = String.valueOf(this.contadorUnidades); // Passa o contador atual para string
         Unidade.criarPastaUnidade(path); // Cria a pasta da nova unidade no diretorio
         Unidade nova = new Unidade(path,nome,rua, bairro,cep,cidade,estado); // Cria a nova unidade de fato
-        Escritor.escreverUnidade(this, nova);
+        Unidade.escreverUnidade(this, nova);
     }
  
     public void imprimirUnidades(Sistema sistema){

@@ -9,36 +9,7 @@ import java.io.*;
 
 public class Escritor {
     /* @author Luam */
-    public static void escreverUnidade(Sistema sistema,Unidade unidade) {
-        BufferedWriter bw = null;
-        
-        String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
-                + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
-               + "," + unidade.getEnd().getEstado();
-                        
-        try {
-            bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
-            PrintWriter pw= new PrintWriter(bw);
-            pw.println(linha);
-        
-            unidade.setPath(String.valueOf(sistema.getUnidades()));
-            
-            pw.flush();
-            pw.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bw != null) {
-                try {
-                    bw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }   
-        }
-    }
+    
     public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
         BufferedWriter bw = null;
         String linha = emprestimo.getCPF()+","+emprestimo.getISNB()+","+emprestimo.getDataEmprestimo()+","+

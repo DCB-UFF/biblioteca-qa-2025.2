@@ -11,6 +11,10 @@ import java.io.FileOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+import java.io.*;
 
 /* @author victoria */
 
@@ -113,18 +117,49 @@ public class Unidade{
                             try {
                                 fos.write(c);
                             } catch (IOException ex) {
-                                Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
                         fis.close();
                         fos.close();
                     } catch (IOException ex) {
-                        Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                 }
+            }
+        }
+
+        public static void escreverUnidade(Sistema sistema,Unidade unidade) {
+            BufferedWriter bw = null;
+
+            String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
+                    + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
+                   + "," + unidade.getEnd().getEstado();
+
+            try {
+                bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
+                PrintWriter pw= new PrintWriter(bw);
+                pw.println(linha);
+
+                unidade.setPath(String.valueOf(sistema.getUnidades()));
+
+                pw.flush();
+                pw.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (bw != null) {
+                    try {
+                        bw.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }   
             }
         }
     }
