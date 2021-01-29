@@ -2,6 +2,10 @@ package biblioteca.biblioteca;
 import biblioteca.livros.Acervo;
 import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 
 /* @author victoria */
@@ -71,4 +75,24 @@ public class Unidade{
         this.funcionarios = funcionarios;
     }
     
+    public static void criarPastaUnidade(String num) {
+        File file = new File("src\\unidades\\un"+num); file.mkdir();
+        File aut = new File("src\\unidades\\un"+num+"\\autores.csv");
+        File cli = new File("src\\unidades\\un"+num+"\\clientes.csv");
+        File emp = new File("src\\unidades\\un"+num+"\\emprestimos.csv");
+        File est = new File("src\\unidades\\un"+num+"\\estantes.csv");
+        File fun = new File("src\\unidades\\un"+num+"\\funcionarios.csv");
+        File liv= new File("src\\unidades\\un"+num+"\\livros.csv");
+        
+        try {
+            aut.createNewFile();
+            cli.createNewFile();
+            emp.createNewFile();
+            est.createNewFile();
+            fun.createNewFile();
+            liv.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
