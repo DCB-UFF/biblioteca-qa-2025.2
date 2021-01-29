@@ -1,7 +1,5 @@
 package biblioteca.menu;
 
-import biblioteca.arquivo.*;
-import biblioteca.arquivo.Leitor;
 import biblioteca.biblioteca.*;
 import biblioteca.excecoes.UnidadeInexistenteException;
 import java.io.File;

@@ -2,8 +2,7 @@ package biblioteca.biblioteca;
 
 import biblioteca.excecoes.*;
 import biblioteca.livros.*;
-import biblioteca.pessoas.Cliente;
-import biblioteca.pessoas.Funcionario;
+import biblioteca.pessoas.*;
 import java.util.ArrayList;
 
 /* @author victoria */

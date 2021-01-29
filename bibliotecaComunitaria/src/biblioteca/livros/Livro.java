@@ -1,7 +1,5 @@
 package biblioteca.livros;
 
-import biblioteca.arquivo.Editor;
-import biblioteca.biblioteca.Unidade;
 import biblioteca.pessoas.Autor;
 import biblioteca.biblioteca.*;
 import biblioteca.livros.*;

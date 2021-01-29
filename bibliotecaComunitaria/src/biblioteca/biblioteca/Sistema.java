@@ -1,5 +1,4 @@
 package biblioteca.biblioteca;
-import biblioteca.arquivo.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
 
@@ -21,7 +20,7 @@ public class Sistema{
             un.setAcervo(acervoUn);
 
              //Lê os clientes
-            ArrayList<Cliente> clientesNiteroi = Cliete.leitorClientes(un.getPath());
+            ArrayList<Cliente> clientesNiteroi = Cliente.leitorClientes(un.getPath());
             un.setClientes(clientesNiteroi);
 
             //Lê os funcionarios

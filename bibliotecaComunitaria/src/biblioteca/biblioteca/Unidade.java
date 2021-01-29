@@ -1,20 +1,19 @@
 package biblioteca.biblioteca;
-import biblioteca.livros.Acervo;
-import biblioteca.pessoas.Cliente;
-import biblioteca.pessoas.Funcionario;
+
+import java.io.*;
 import java.io.File;
 import java.io.IOException;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+
 import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
-import java.io.*;
 
 /* @author victoria */
 

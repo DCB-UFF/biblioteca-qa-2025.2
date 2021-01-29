@@ -1,7 +1,5 @@
 package biblioteca.menu;
 
-import biblioteca.arquivo.Escritor;
-import biblioteca.arquivo.Removedor;
 import biblioteca.biblioteca.*;
 import biblioteca.excecoes.ClienteInexistenteException;
 import biblioteca.pessoas.Cliente;

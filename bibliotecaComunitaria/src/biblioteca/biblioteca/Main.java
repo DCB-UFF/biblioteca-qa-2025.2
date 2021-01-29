@@ -1,6 +1,5 @@
 package biblioteca.biblioteca;
 
-import biblioteca.arquivo.Leitor;
 import biblioteca.excecoes.*;
 import biblioteca.menu.Menu;
 
