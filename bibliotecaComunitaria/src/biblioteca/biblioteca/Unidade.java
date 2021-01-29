@@ -4,6 +4,10 @@ import biblioteca.pessoas.Cliente;
 import biblioteca.pessoas.Funcionario;
 import java.io.File;
 import java.io.IOException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
@@ -95,4 +99,32 @@ public class Unidade{
             Logger.getLogger(Unidade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
+
+    public static void copiarArquivo(File a, File b) {
+            {
+                FileInputStream fis;
+                FileOutputStream fos;
+                try {
+                    fis = new FileInputStream(a);
+                    fos = new FileOutputStream(b);
+                    int c;
+                    try {
+                        while ((c = fis.read()) != -1) {
+                            try {
+                                fos.write(c);
+                            } catch (IOException ex) {
+                                Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        fis.close();
+                        fos.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Criador.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                }
+            }
+        }
+    }
