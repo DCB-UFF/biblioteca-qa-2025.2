@@ -79,4 +79,37 @@ public class Autor extends Pessoa{
             }   
         }
     }
+
+    public static ArrayList<Autor> leitorAutores(String path) {
+       BufferedReader br = null;
+       String linha = "";
+       ArrayList<Autor> Autores = new ArrayList<>();
+       try {
+           br = new BufferedReader(new FileReader(path+"autores.csv"));
+           br.readLine();
+
+           while ((linha = br.readLine()) != null) {
+               String[] autor = linha.split(",");
+               Autor novo = new Autor();
+               novo.cadastro(autor[0],autor[1]);
+               Autores.add(novo);
+
+           }
+           return Autores;
+
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       } finally {
+           if (br != null) {
+               try {
+                   br.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }   
+       }
+       return null;
+    }
 }

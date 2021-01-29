@@ -14,18 +14,18 @@ public class Sistema{
     public void carregarUnidades(){
         for (Unidade un: this.unidades){
             //Lê o acervo
-            Acervo acervoUn = Leitor.leitorEstantes(un.getPath()); // Lê as estantes pro acervo
-            acervoUn.setAutores(Leitor.leitorAutores(un.getPath()));//Lê os autores
-            Leitor.leitorLivros(acervoUn,un.getPath()); // Lê os livros
+            Acervo acervoUn = Estante.leitorEstantes(un.getPath()); // Lê as estantes pro acervo
+            acervoUn.setAutores(Autor.leitorAutores(un.getPath()));//Lê os autores
+            Livro.leitorLivros(acervoUn,un.getPath()); // Lê os livros
             acervoUn.setEmprestimos(Emprestimo.leitorEmprestimos(un.getPath())); // Lê os empréstimos
             un.setAcervo(acervoUn);
 
              //Lê os clientes
-            ArrayList<Cliente> clientesNiteroi = Leitor.leitorClientes(un.getPath());
+            ArrayList<Cliente> clientesNiteroi = Cliete.leitorClientes(un.getPath());
             un.setClientes(clientesNiteroi);
 
             //Lê os funcionarios
-            ArrayList<Funcionario> funcionariosNiteroi = Leitor.leitorFuncionarios(un.getPath());
+            ArrayList<Funcionario> funcionariosNiteroi = Funcionario.leitorFuncionarios(un.getPath());
             un.setFuncionarios(funcionariosNiteroi);
         }
     }

@@ -7,6 +7,7 @@ import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class Livro {
@@ -133,6 +134,39 @@ public class Livro {
                 }
             }   
         }
+    }
+
+    public static void leitorLivros(Acervo acervo, String path) {
+       BufferedReader br = null;
+       String linha = "";
+
+       try {
+           br = new BufferedReader(new FileReader(path+"livros.csv"));
+           br.readLine();
+
+           while ((linha = br.readLine()) != null) {
+
+               String[] livro = linha.split(",");
+               Autor autor = new Autor(livro[0],livro[7]);
+               Livro novo = new Livro(autor,livro[1], 
+                   Integer.parseInt(livro[2]), livro[3], livro[4],livro[5],Boolean.parseBoolean(livro[6]));
+               acervo.addLivro(novo);
+
+           }
+
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       } finally {
+           if (br != null) {
+               try {
+                   br.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }   
+       }
     }
 
 }

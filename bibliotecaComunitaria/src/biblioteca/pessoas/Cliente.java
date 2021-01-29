@@ -4,6 +4,7 @@ import biblioteca.biblioteca.Endereco;
 import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
+import java.util.ArrayList;
 import java.io.*;
 
 
@@ -64,5 +65,36 @@ public class Cliente extends Pessoa{
                 }
             }   
         }
+    }
+
+    public static ArrayList<Cliente> leitorClientes(String path) {
+        BufferedReader br = null;
+        String linha = "";
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader(path+"clientes.csv"));
+            br.readLine();
+
+            while ((linha = br.readLine()) != null) {
+                String[] cliente = linha.split(",");
+                Cliente novo = new Cliente(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4], cliente[5], cliente[6], cliente[7], cliente[8]);
+                clientes.add(novo);
+            }
+            return clientes;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 }

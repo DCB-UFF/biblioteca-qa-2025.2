@@ -4,6 +4,7 @@ import biblioteca.biblioteca.Endereco;
 import biblioteca.biblioteca.*;
 import biblioteca.livros.*;
 import biblioteca.pessoas.*;
+import java.util.ArrayList;
 import java.io.*;
 
 
@@ -74,5 +75,38 @@ public class Funcionario extends Pessoa{
             }   
         }
    }
+    
+    public static ArrayList<Funcionario> leitorFuncionarios(String path) {
+        BufferedReader br = null;
+        String linha = "";
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader(path+"funcionarios.csv"));
+            br.readLine();
+
+            while ((linha = br.readLine()) != null) {
+                String[] funcionario = linha.split(",");
+                Funcionario novo = new Funcionario(funcionario[0], funcionario[1], funcionario[2],
+                        funcionario[3], Float.parseFloat(funcionario[4]), funcionario[5],
+                        funcionario[6], funcionario[7], funcionario[8], funcionario[9], funcionario[10]);
+                funcionarios.add(novo);
+            }
+            return funcionarios;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
 
 }

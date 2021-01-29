@@ -106,4 +106,35 @@ public class Estante {
             }   
         }
     }
+
+    public static Acervo leitorEstantes(String path) {
+       BufferedReader br = null;
+       String linha = "";
+       Acervo acervo = new Acervo();
+       try {
+           br = new BufferedReader(new FileReader(path+"estantes.csv"));
+           br.readLine();
+
+           while ((linha = br.readLine()) != null) {
+               String[] estante = linha.split(",");
+               Estante nova = new Estante(Integer.parseInt(estante[0]),estante[1]);
+               acervo.addEstante(nova);
+           }
+           return acervo;
+
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       } finally {
+           if (br != null) {
+               try {
+                   br.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }   
+       }
+       return null;
+    }
 }
