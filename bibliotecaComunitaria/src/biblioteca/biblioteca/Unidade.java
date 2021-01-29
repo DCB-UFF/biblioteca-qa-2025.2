@@ -198,4 +198,47 @@ public class Unidade{
         return null;
     }
 
+    public static void removerUnidade(Sistema sistema, Integer num) {
+        BufferedReader br = null;
+        BufferedWriter bw = null;
+        File antigo = new File("src\\unidades\\unidades.csv");
+        File novo = new File ("src\\unidades\\temp.csv");
+        
+        try {
+            br = new BufferedReader(new FileReader(antigo));
+            bw = new BufferedWriter(new FileWriter(novo, true));
+            PrintWriter pw= new PrintWriter(bw);
+            String linha = "";
+            
+            sistema.addContadorUnidades();
+            
+            while ((linha = br.readLine()) != null) {
+    
+                String[] un = linha.split(",");
+                if (!un[0].equals(String.valueOf(num))){
+                    pw.println(linha);
+                }
+            }
+            pw.flush();  
+            pw.close();
+            br.close();
+            antigo.delete();
+            
+            File aux = new File ("src\\unidades\\unidades.csv");
+            novo.renameTo(aux);
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }   
+        }    
+     }
 }
