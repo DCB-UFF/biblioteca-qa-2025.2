@@ -1,7 +1,8 @@
 package biblioteca.biblioteca;
 import biblioteca.arquivo.*;
-import biblioteca.livros.Acervo;
+import biblioteca.livros.*;
 import biblioteca.pessoas.*;
+
 import java.util.ArrayList;
 
 /* @author victoria */
@@ -16,7 +17,7 @@ public class Sistema{
             Acervo acervoUn = Leitor.leitorEstantes(un.getPath()); // Lê as estantes pro acervo
             acervoUn.setAutores(Leitor.leitorAutores(un.getPath()));//Lê os autores
             Leitor.leitorLivros(acervoUn,un.getPath()); // Lê os livros
-            acervoUn.setEmprestimos(Leitor.leitorEmprestimos(un.getPath())); // Lê os empréstimos
+            acervoUn.setEmprestimos(Emprestimo.leitorEmprestimos(un.getPath())); // Lê os empréstimos
             un.setAcervo(acervoUn);
 
              //Lê os clientes

@@ -12,36 +12,7 @@ import java.util.ArrayList;
 
 public class Leitor {
     
-    public static ArrayList<Emprestimo> leitorEmprestimos(String path){
-        BufferedReader br = null;
-        String linha = "";
-        ArrayList<Emprestimo> emprestimos = new ArrayList<>();
-        try {
-            br = new BufferedReader(new FileReader(path+"emprestimos.csv"));
-            br.readLine();
-            
-            while ((linha = br.readLine()) != null) {
-                String[] emprestimo = linha.split(",");
-                Emprestimo novo = new Emprestimo(emprestimo[0],emprestimo[1],emprestimo[2],emprestimo[3]);
-                emprestimos.add(novo);
-            }
-            return emprestimos;
-            
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }   
-        }
-        return null;
-    }
+    
     
     public static ArrayList<Autor> leitorAutores(String path) {
        BufferedReader br = null;

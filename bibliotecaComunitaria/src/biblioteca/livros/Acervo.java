@@ -29,7 +29,7 @@ public class Acervo {
     public void devolverLivro(Unidade unidade, String CPF, String ISNB) {
         Emprestimo atual = buscarEmprestimo(CPF,ISNB);
         this.emprestimos.remove(atual);
-        Removedor.removerEmprestimo(atual, unidade.getPath());
+        Emprestimo.removerEmprestimo(atual, unidade.getPath());
         Livro emprestado = buscarLivroISNB(ISNB);
         emprestado.emprestar(unidade, this);
         System.out.println("\nO livro de ISBN "+ISNB+" foi devolvido pelo cliente de cpf "+CPF);   
