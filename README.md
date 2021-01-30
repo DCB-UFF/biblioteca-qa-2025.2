@@ -4,7 +4,7 @@ __Versão 2.0__
 Trabalho para implementação dos conceitos de Orientação a Objetos.
 2020. 1 - Luam Silva e Victoria Granja
 
-O sistema é estruturado possuindo diversas unidades e cada unidade tem seus respectivos acervos, empréstimos, clientes e funcionários, e suas diversos métodos de adição, remoção e edição.
+O sistema é estruturado possuindo diversas unidades e cada unidade tem seus respectivos acervos, empréstimos, clientes e funcionários, e seus diversos métodos.
 
 # Interface
 <p align="center">
