@@ -23,5 +23,5 @@ O sistema é estruturado possuindo diversas unidades e cada unidade tem seus res
 
 # Exemplo de um Empréstimo
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/50959073/106340988-a5c54d00-62ac-11eb-8412-72af5e2367a0.png" />
+  <img src="https://user-images.githubusercontent.com/50959073/106341030-ce4d4700-62ac-11eb-8524-df48cd4b0d31.png" />
 </p>
