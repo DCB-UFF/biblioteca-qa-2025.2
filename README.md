@@ -1,3 +1,5 @@
+[Read this page in English](https://github.com/luamz/biblioteca/blob/main/README.en.md)
+
 # Sistema para a Administração de Bibliotecas
 __Versão 2.0__
 
