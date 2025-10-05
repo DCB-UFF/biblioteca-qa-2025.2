@@ -13,7 +13,8 @@ public class MenuCliente {
         System.out.println("\n1 - Buscar cliente");
         System.out.println("2 - Adicionar cliente");
         System.out.println("3 - Remover cliente");
-        System.out.println("4 - imprimir quadro de clientes\n");
+        System.out.println("4 - imprimir quadro de clientes");
+        System.out.println("5 - Sair\n");
         
     }
     
@@ -57,18 +58,26 @@ public class MenuCliente {
         System.out.println("O cliente de cpf "+cpf+"foi removido!");
 
     }
-    
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws ClienteInexistenteException{
+
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws ClienteInexistenteException {
         opcoesAcessarAdminCliente();
         int op = teclado.nextInt();
         teclado.nextLine();
-        while(op != 5){
-            switch(op){
+        while (op != 5) {
+            switch (op) {
                 case 1:
                     System.out.println("Digite o cpf do cliente: ");
                     String cpf = teclado.nextLine();
-                    Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
-                    System.out.println(buscado);
+                    if (cpf.length() != 11) {
+                        System.out.println("CPF inválido!");
+                    } else {
+                        Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
+                        if (buscado == null) {
+                            System.out.println("Cliente não encontrado!");
+                        } else {
+                            System.out.println(buscado);
+                        }
+                    }
                     exit(0);
                     break;
                 case 2:
@@ -80,14 +89,26 @@ public class MenuCliente {
                     exit(0);
                     break;
                 case 4:
-                    for(Cliente c : unidadeAtual.getClientes()){
-                        System.out.println(c);
+                    if (unidadeAtual.getClientes().isEmpty()) {
+                        System.out.println("Nenhum cliente cadastrado.");
+                    } else {
+                        for (Cliente c : unidadeAtual.getClientes()) {
+                            System.out.println(c);
+                        }
                     }
                     exit(0);
                     break;
+                case 5:
+                    System.out.println("Fechando aplicação...");
+                    exit(0);
+                    break;
                 default:
+                    System.out.println("Opção inválida.");
                     break;
             }
+            op = teclado.nextInt();
+            teclado.nextLine();
         }
     }
+
 }
