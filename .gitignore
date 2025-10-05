@@ -1,3 +1,11 @@
 /bibliotecaComunitaria/nbproject/private/
 /bibliotecaComunitaria/build/
 /bibliotecaComunitaria/src/biblioteca/testes/
+bibliotecaComunitaria/src/test/projeto-biblioteca-config.txt
+bibliotecaComunitaria/lib
+bibliotecaComunitaria/libs
+projeto-biblioteca-config.txt
+projeto-biblioteca-dados.txt
+projeto-biblioteca-java.txt
+bash_script.sh
+.gitignore

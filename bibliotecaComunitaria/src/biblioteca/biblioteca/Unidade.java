@@ -168,7 +168,7 @@ public class Unidade{
         Sistema sistema = new Sistema();
         
         try {
-            br = new BufferedReader(new FileReader("src\\unidades\\unidades.csv"));
+            br = new BufferedReader(new FileReader("src/unidades/unidades.csv"));
             br.readLine();
             
             while ((linha = br.readLine()) != null) {
@@ -200,8 +200,8 @@ public class Unidade{
     public static void removerUnidade(Sistema sistema, Integer num) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File("src\\unidades\\unidades.csv");
-        File novo = new File ("src\\unidades\\temp.csv");
+        File antigo = new File("src/unidades/unidades.csv");
+        File novo = new File("src/unidades/temp.csv");
         
         try {
             br = new BufferedReader(new FileReader(antigo));
