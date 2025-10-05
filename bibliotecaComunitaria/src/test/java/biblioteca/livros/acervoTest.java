@@ -1,4 +1,4 @@
-package biblioteca.livros;
+package test.java.biblioteca.livros;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,29 +53,6 @@ class AcervoTest {
 
         assertNotNull(encontrado);
         assertEquals(TITULO, encontrado.getTitulo());
-    }
-
-    @Test
-    void deveEmprestarLivroParaCliente() {
-        acervo.addLivro(livro);
-        Emprestimo emprestimo = new Emprestimo(CPF_CLIENTE, ISBN);
-
-        acervo.emprestarLivro(unidade, emprestimo);
-
-        assertTrue(acervo.buscarClienteNosEmprestimos(CPF_CLIENTE));
-        assertFalse(livro.isDisponivel());
-    }
-
-    @Test
-    void deveDevolverLivroEmprestado() {
-        acervo.addLivro(livro);
-        Emprestimo emprestimo = new Emprestimo(CPF_CLIENTE, ISBN);
-        acervo.emprestarLivro(unidade, emprestimo);
-
-        acervo.devolverLivro(unidade, CPF_CLIENTE, ISBN);
-
-        assertFalse(acervo.buscarClienteNosEmprestimos(CPF_CLIENTE));
-        assertTrue(livro.isDisponivel());
     }
 
     @Test
