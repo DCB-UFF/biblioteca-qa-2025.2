@@ -9,7 +9,14 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="bibliotecaComunitaria" default="default" basedir=".">
     <description>Builds, tests, and runs the project bibliotecaComunitaria.</description>
+
     <import file="nbproject/build-impl.xml"/>
+    <path id="junit5.classpath">
+        <fileset dir="lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
     <!--
 
     There exist several targets which are by default empty and which can be 
