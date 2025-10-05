@@ -66,37 +66,54 @@ public class MenuFuncionario {
         System.out.println("O funcionario de cpf "+cpf+"foi removido!");
 
     }
-    
-    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws FuncionarioInexistenteException{    
-        opcoesAcessarAdminFuncionario();
-        int op = teclado.nextInt();
-        teclado.nextLine();
-        while(op != 5){
-                switch(op){
-                    case 1:
-                        System.out.println("Digite o cpf do funcionário: ");
-                        String cpf = teclado.nextLine();
-                        Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);
-                        System.out.println(buscado);
-                        exit(0);
-                        break;
-                    case 2:
-                        adicionarFuncionario(unidadeAtual);
-                        exit(0);
-                        break;
-                    case 3:
-                        removerFuncionario(unidadeAtual);
-                        exit(0);
-                        break;
-                    case 4:
-                        for(Funcionario f : unidadeAtual.getFuncionarios()){
-                            System.out.println(f);
-                        }
-                        exit(0);
-                        break;
-                    default:
-                        break;
+
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws FuncionarioInexistenteException {
+        int op;
+        int tentativas = 0;
+        boolean continuar = true;
+
+        while (continuar) {
+            opcoesAcessarAdminFuncionario();
+            op = teclado.nextInt();
+            teclado.nextLine();
+
+            if (op == 1) {
+                System.out.println("Digite o cpf do funcionário: ");
+                String cpf = teclado.nextLine();
+                Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);
+                if (buscado != null) {
+                    System.out.println(buscado);
+                } else {
+                    System.out.println("Funcionário não encontrado.");
                 }
+                tentativas++;
+            } else if (op == 2) {
+                adicionarFuncionario(unidadeAtual);
+                tentativas++;
+            } else if (op == 3) {
+                removerFuncionario(unidadeAtual);
+                tentativas++;
+            } else if (op == 4) {
+                if (unidadeAtual.getFuncionarios().isEmpty()) {
+                    System.out.println("Nenhum funcionário cadastrado.");
+                } else {
+                    for (Funcionario f : unidadeAtual.getFuncionarios()) {
+                        System.out.println(f);
+                    }
+                }
+                tentativas++;
+            } else if (op == 5) {
+                System.out.println("Fechando aplicação...");
+                continuar = false;
+            } else {
+                System.out.println("Opção inválida.");
+                tentativas++;
             }
+
+            if (tentativas >= 5) {
+                System.out.println("Você já realizou 5 operações.");
+            }
+        }
     }
+
 }

@@ -108,33 +108,55 @@ public class Estante {
     }
 
     public static Acervo leitorEstantes(String path) {
-       BufferedReader br = null;
-       String linha = "";
-       Acervo acervo = new Acervo();
-       try {
-           br = new BufferedReader(new FileReader(path+"estantes.csv"));
-           br.readLine();
+        BufferedReader br = null;
+        String linha = "";
+        Acervo acervo = new Acervo();
+        try {
+            br = new BufferedReader(new FileReader(path + "estantes.csv"));
+            br.readLine();
 
-           while ((linha = br.readLine()) != null) {
-               String[] estante = linha.split(",");
-               Estante nova = new Estante(Integer.parseInt(estante[0]),estante[1]);
-               acervo.addEstante(nova);
-           }
-           return acervo;
+            while ((linha = br.readLine()) != null) {
+                if (linha.trim().isEmpty()) continue; // 1
+                String[] estante = linha.split(",");
+                if (estante.length < 2) continue; // 2
+                int id;
+                try {
+                    id = Integer.parseInt(estante[0]);
+                } catch (NumberFormatException e) {
+                    continue; // 3
+                }
+                String genero = estante[1];
+                if (genero == null || genero.trim().isEmpty()) continue; // 4
+                boolean repetido = false;
+                for (Estante e : acervo.getEstantes()) { // 5
+                    if (e.getIdEstante() == id) {
+                        repetido = true;
+                        break;
+                    }
+                }
+                if (repetido) continue; // 6
+                if (id < 0 || id > 9999) continue; // 7
+                if (genero.length() > 30) genero = genero.substring(0, 30); // 8
+                Estante nova = new Estante(id, genero);
+                if (nova.getCapacidade() < 10) continue; // 9
+                acervo.addEstante(nova); // 10
+            }
+            return acervo;
 
-       } catch (FileNotFoundException e) {
-           e.printStackTrace();
-       } catch (IOException e) {
-           e.printStackTrace();
-       } finally {
-           if (br != null) {
-               try {
-                   br.close();
-               } catch (IOException e) {
-                   e.printStackTrace();
-               }
-           }   
-       }
-       return null;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
+
 }
