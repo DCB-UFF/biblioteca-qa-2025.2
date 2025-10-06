@@ -79,4 +79,96 @@ public class MenuFuncionarioTest {
 
         assertTrue(unidade.getFuncionarios().isEmpty());
     }
+
+    @Test
+    void testIniciar_quandoBuscaFuncionarioExistente_deveImprimirSeusDados() throws Exception {
+        // Cria um funcionário existente
+        Funcionario f = new Funcionario(
+                "Jose", "114459885-99", "07/07/2000", "97777-7777",
+                2000f, "atendente", "Rua 12 de Abril 99", "Quitino",
+                "28651-554", "Rio de Janeiro", "RJ"
+        );
+        unidade.getFuncionarios().add(f);
+
+        // Simula a entrada do usuário: [1 -> buscar] [cpf -> "114459885-99"] [5 -> sair]
+        String entradaSimulada = String.join("\n", "1", "114459885-99", "5", "");
+
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(saida));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        String output = saida.toString();
+        assertTrue(output.contains("Jose"), "Deveria imprimir os dados do funcionário Jose");
+        assertTrue(output.contains("atendente"), "Deveria exibir o cargo do funcionário");
+    }
+
+    @Test
+    void testIniciar_quandoBuscaFuncionarioInexistente_deveLancarExcecao() {
+        // Simula o usuário tentando buscar um CPF inexistente
+        String entradaSimulada = String.join("\n", "1", "000000000-00", "5");
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        assertThrows(
+                biblioteca.excecoes.FuncionarioInexistenteException.class,
+                () -> MenuFuncionario.iniciar(unidade, new Scanner(System.in)),
+                "Deveria lançar FuncionarioInexistenteException ao buscar CPF inexistente"
+        );
+    }
+
+
+    @Test
+    void testIniciar_quandoImprimeQuadroDeFuncionarios_deveListarTodos() throws Exception {
+        // Adiciona alguns funcionários simulando o banco
+        unidade.getFuncionarios().addAll(Arrays.asList(
+                new Funcionario("Jose", "114459885-99", "07/07/2000", "97777-7777", 2000f, "atendente",
+                        "Rua 12 de Abril 99", "Quitino", "28651-554", "Rio de Janeiro", "RJ"),
+                new Funcionario("Gustavo", "451878268-52", "08/08/2000", "98888-8888", 2500f, "bibliotecario",
+                        "Travessa do Relogio 218", "Botafogo", "24755-012", "Rio de Janeiro", "RJ"),
+                new Funcionario("Caio", "247220159-56", "09/09/2000", "99999-9999", 3000f, "gerente",
+                        "Estrada dos Catete 834", "Santa Cruz", "29645-090", "Rio de Janeiro", "RJ")
+        ));
+
+        // Simula a entrada do usuário: [4 -> listar todos] [5 -> sair]
+        String entradaSimulada = String.join("\n", "4", "5", "");
+
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(saida));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        String output = saida.toString();
+        assertTrue(output.contains("Jose"), "Deveria listar o funcionário Jose");
+        assertTrue(output.contains("Gustavo"), "Deveria listar o funcionário Gustavo");
+        assertTrue(output.contains("Caio"), "Deveria listar o funcionário Caio");
+    }
+
+    @Test
+    void testIniciar_quandoRemoveFuncionarioExistente_deveConfirmarRemocao() throws Exception {
+        // Cria e adiciona um funcionário
+        Funcionario f = new Funcionario(
+                "Mariana", "569875332-88", "10/10/2000", "91010-1010",
+                3500f, "chefe", "Rua Iquitiba 95", "Largo do Machado",
+                "21457-556", "Rio de Janeiro", "RJ"
+        );
+        unidade.getFuncionarios().add(f);
+
+        // Simula a entrada do usuário: [3 -> remover] [cpf -> "569875332-88"] [5 -> sair]
+        String entradaSimulada = String.join("\n", "3", "569875332-88", "5");
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(saida));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        String output = saida.toString();
+        assertTrue(output.contains("foi removido"), "Deveria confirmar a remoção do funcionário");
+        assertTrue(unidade.getFuncionarios().isEmpty(), "O funcionário deveria ser removido da unidade");
+    }
+
 }
