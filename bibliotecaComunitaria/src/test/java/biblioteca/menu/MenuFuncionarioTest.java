@@ -41,7 +41,6 @@ public class MenuFuncionarioTest {
                 "01/01/1990",
                 "21999999999",
                 "3500",
-                "",
                 "Bibliotecária",
                 "Rua Flores",
                 "Centro",
