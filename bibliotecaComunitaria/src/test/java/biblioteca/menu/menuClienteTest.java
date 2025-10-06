@@ -1,320 +1,220 @@
-package biblioteca.menu;
+package test.java.biblioteca.menu;
 
 import biblioteca.biblioteca.Unidade;
 import biblioteca.excecoes.ClienteInexistenteException;
+import biblioteca.menu.MenuCliente;
 import biblioteca.pessoas.Cliente;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.After;
-import org.junit.jupiter.Before;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
-public class menuClienteTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-    // Exceção de teste para simular a saída controlada
-    private static class TestExitException extends RuntimeException {}
+class MenuClienteTest {
 
-    // Implementação de ExitHandler para Teste
-    private final ExitHandler mockExitHandler = status -> {
-        throw new TestExitException();
-    };
+    private final InputStream systemIn = System.in;
+    private final PrintStream systemOut = System.out;
+    private ByteArrayOutputStream testOut;
 
-    // Simulação de I/O (Entrada/Saída)
-    private final InputStream originalIn = System.in;
-    private final PrintStream originalOut = System.out;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private Unidade unidade;
+    private Path testUnidadePath;
+    private final String UNIDADE_ID = "Teste";
 
-    // Instâncias de teste
-    private Unidade mockUnidade;
-    private Scanner mockTeclado;
-    private MenuCliente menuCliente; // A classe de teste agora testa uma instância
+    @BeforeEach
+    void setUp() throws IOException {
+        testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
 
-    private static final String CLIENTE_TO_STRING = "Cliente Mocked Info";
-    private static final String CPF_VALIDO_BUSCA = "111111111111";
-    private static final String CPF_VALIDO_REMOCAO = "222222222222";
+        unidade = new Unidade(UNIDADE_ID, "Unidade de Teste", "Rua Teste", "Bairro Teste", "12345-678", "Cidade Teste", "TS");
 
-
-    @Before
-    public void setUp() {
-        // Redireciona System.out para capturar a saída do console
-        System.setOut(new PrintStream(outContent));
-
-        // 1. Inicializa a Unidade
-        mockUnidade = new Unidade("testPath", "TestUnit", "Rua", "Bairro", "CEP", "Cidade", "Estado");
-        mockUnidade.setClientes(new ArrayList<>());
-
-        // 2. Instancia o MenuCliente com o ExitHandler de teste
-        menuCliente = new MenuCliente(mockExitHandler);
+        testUnidadePath = Path.of(unidade.getPath());
+        Files.createDirectories(testUnidadePath);
     }
 
-    @After
-    public void restoreStreams() {
-        // Restaura System.in e System.out para seus estados originais
-        System.setIn(originalIn);
-        System.setOut(originalOut);
+    @AfterEach
+    void tearDown() throws IOException {
+        System.setIn(systemIn);
+        System.setOut(systemOut);
+
+        if (Files.exists(testUnidadePath)) {
+            Files.walk(testUnidadePath)
+                    .sorted(Comparator.reverseOrder())
+                    .map(Path::toFile)
+                    .forEach(File::delete);
+        }
     }
 
-    //-------------------------------------------------------------------------
-    // Testes de Métodos Simples
-    //-------------------------------------------------------------------------
+    private Scanner provideInput(String data) {
+        ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
+        return new Scanner(testIn);
+    }
 
-    /**
-     * Testa se o método estático exibe corretamente as opções do menu.
-     */
+    private String getOutput() {
+        return testOut.toString().replace("\r\n", "\n");
+    }
+
+    private Path getClientesCsvPath() {
+        return testUnidadePath.resolve("clientes.csv");
+    }
+
+    private Cliente criarClientePadrao() {
+        return new Cliente("Cliente Teste", "123456789-00", "01/01/1990", "98765-4321", "Rua T", "Bairro T", "11111-111", "Cidade T", "TS");
+    }
+
     @Test
-    public void testOpcoesAcessarAdminCliente() {
+    void opcoesAcessarAdminCliente_deveImprimirMenuCorretamente() {
         MenuCliente.opcoesAcessarAdminCliente();
-        String expectedOutput = "\n1 - Buscar cliente\n" +
-                "2 - Adicionar cliente\n" +
-                "3 - Remover cliente\n" +
-                "4 - imprimir quadro de clientes\n" +
-                "5 - Sair\n\n";
-
-        assertEquals(expectedOutput.replaceAll("\\s", ""), outContent.toString().replaceAll("\\s", ""));
+        String output = getOutput();
+        assertTrue(output.contains("1 - Buscar cliente"));
+        assertTrue(output.contains("5 - Voltar ao menu da unidade"));
     }
 
-    /**
-     * Testa a adição de um cliente com sucesso, verificando a lista e a exceção de saída.
-     * Cobertura: MenuCliente.adicionarCliente(Unidade aux)
-     */
-    @Test(expected = TestExitException.class)
-    public void testAdicionarCliente_Sucesso() {
-        // Dados de entrada para o Scanner
-        String input = "Nome Cliente\n123456789012\n01/01/2000\n123456789\nRua A\nBairro B\n12345678\nCidade C\nEstado D\n";
+    @Test
+    void adicionarCliente_deveEscreverNoArquivoEAtualizarUnidade() throws IOException {
+        String input = "Novo Cliente\n111222333-44\n02/02/2000\n99999-8888\nRua Nova\nBairro Novo\n22222-111\nCidade Nova\nTS\n";
+        Scanner scanner = provideInput(input);
 
-        // Simula a entrada do usuário (System.in)
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        MenuCliente.adicionarCliente(unidade, scanner);
 
-        menuCliente.adicionarCliente(mockUnidade); // Espera-se que lance TestExitException
-
-        // As verificações são feitas pelo @After ou se o teste falhar
-        assertEquals(1, mockUnidade.getClientes().size());
-        assertEquals("Nome Cliente", mockUnidade.getClientes().get(0).getNome());
+        Path csvPath = getClientesCsvPath();
+        assertTrue(Files.exists(csvPath));
+        List<String> lines = Files.readAllLines(csvPath);
+        assertTrue(lines.get(lines.size() - 1).contains("Novo Cliente,111222333-44"));
+        assertEquals(1, unidade.getClientes().size());
+        assertEquals("111222333-44", unidade.getClientes().get(0).getCPF());
+        assertTrue(getOutput().contains("Cliente adicionado com sucesso!"));
     }
 
-    /**
-     * Testa a remoção de um cliente com sucesso, verificando a remoção da lista e a saída.
-     * Cobertura: MenuCliente.removerCliente(Unidade unidadeAtual) - Sucesso
-     */
-    @Test(expected = TestExitException.class)
-    public void testRemoverCliente_Sucesso() throws ClienteInexistenteException {
-        String cpf = CPF_VALIDO_REMOCAO;
-        String input = cpf + "\n";
+    @Test
+    void removerCliente_quandoCpfValido_deveRemoverDoArquivoEDaUnidade() throws IOException, ClienteInexistenteException {
+        Cliente cliente = criarClientePadrao();
+        unidade.getClientes().add(cliente);
 
-        // Prepara a Unidade com um cliente para ser removido
-        Cliente clienteParaRemover = new Cliente("Removivel", cpf, "data", "tele", "rua", "bairro", "cep", "cidade", "estado");
-        mockUnidade.getClientes().add(clienteParaRemover);
-        assertEquals(1, mockUnidade.getClientes().size());
+        Path csvPath = getClientesCsvPath();
+        String header = "#nome,#cpf,#nascimento,#telefone,#rua,#bairro,#cep,#cidade,#estado";
+        String clientLine = cliente.getNome() + "," + cliente.getCPF() + "," + cliente.getNascimento() + "," + cliente.getTelefone() + "," + cliente.getEnd().getRua() + "," + cliente.getEnd().getBairro() + "," + cliente.getEnd().getCep() + "," + cliente.getEnd().getCidade() + "," + cliente.getEnd().getEstado();
+        Files.writeString(csvPath, header + "\n" + clientLine);
 
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Scanner scanner = provideInput("123456789-00\n");
+        MenuCliente.removerCliente(unidade, scanner);
 
-        menuCliente.removerCliente(mockUnidade); // Espera-se que lance TestExitException
-
-        // Verificações após a exceção:
-        assertTrue(mockUnidade.getClientes().isEmpty());
-        assertTrue(outContent.toString().contains("O cliente de cpf " + cpf + "foi removido!"));
+        assertTrue(unidade.getClientes().isEmpty());
+        List<String> lines = Files.readAllLines(getClientesCsvPath());
+        assertEquals(1, lines.size(), "Apenas o cabeçalho deveria permanecer no arquivo.");
     }
 
-    /**
-     * Testa a remoção de cliente quando o Util lança ClienteInexistenteException.
-     * Cobertura: MenuCliente.removerCliente(Unidade unidadeAtual) - Exceção
-     */
-    @Test(expected = ClienteInexistenteException.class)
-    public void testRemoverCliente_ClienteInexistente() throws ClienteInexistenteException {
-        String cpfInexistente = "99999999999";
-        String input = cpfInexistente + "\n";
-
-        // A lista está vazia, forçando o Util.buscarCliente a lançar a exceção
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-
-        menuCliente.removerCliente(mockUnidade);
+    @Test
+    void removerCliente_quandoCpfInvalido_deveLancarExcecao() {
+        Scanner scanner = provideInput("000.000.000-00\n");
+        assertThrows(ClienteInexistenteException.class, () -> {
+            MenuCliente.removerCliente(unidade, scanner);
+        });
     }
 
-    //-------------------------------------------------------------------------
-    // Testes para o método INICIAR (Loop Principal)
-    //-------------------------------------------------------------------------
-
-    /**
-     * Testa o case 1 (Buscar cliente) - CPF com comprimento inválido.
-     * Cobertura: case 1 - if (cpf.length() != 11)
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case1_CPFInvalido() throws ClienteInexistenteException {
-        // Simula a entrada: opção 1, CPF inválido (10 dígitos).
-        String input = "1\n1234567890\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
-
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains("CPF inválido!"));
+    @Test
+    void removerCliente_quandoCpfEmBranco_deveRetornarEMostrarMensagem() throws ClienteInexistenteException {
+        Scanner scanner = provideInput("\n");
+        MenuCliente.removerCliente(unidade, scanner);
+        assertTrue(getOutput().contains("CPF inválido."));
     }
 
-    /**
-     * Testa o case 1 (Buscar cliente) - Cliente encontrado.
-     * Cobertura: case 1 - else (cliente encontrado)
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case1_ClienteEncontrado() throws ClienteInexistenteException {
-        String cpf = CPF_VALIDO_BUSCA;
-        // Simula a entrada: opção 1, CPF válido.
-        String input = "1\n" + cpf + "\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
+    @Test
+    void iniciar_quandoOpcao1EClienteExiste_deveImprimirCliente() {
+        Cliente cliente = criarClientePadrao();
+        unidade.getClientes().add(cliente);
+        String input = "1\n123456789-00\n5\n";
+        Scanner scanner = provideInput(input);
 
-        // 1. Cria um Cliente real e o adiciona à lista para que o Util.buscarCliente o encontre
-        Cliente clienteEncontrado = new Cliente("Mocked", cpf, "data", "tele", "rua", "bairro", "cep", "cidade", "estado") {
-            @Override
-            public String toString() {
-                return CLIENTE_TO_STRING;
-            }
-        };
-        mockUnidade.getClientes().add(clienteEncontrado);
+        MenuCliente.iniciar(unidade, scanner);
 
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains(CLIENTE_TO_STRING));
+        String output = getOutput();
+        assertTrue(output.contains("--- Cliente Encontrado ---"));
+        assertTrue(output.contains("Nome: Cliente Teste - CPF: 123456789-00"));
     }
 
-    /**
-     * Testa o case 1 (Buscar cliente) - Cliente não encontrado (a linha buscado == null).
-     * OBS: O seu código `MenuCliente` tem a linha `if (buscado == null)` mas
-     * o `Util.buscarCliente` lança exceção em vez de retornar null.
-     * Para cobrir essa linha condicional, precisamos simular a exceção (que não podemos sem Mockito).
-     * O teste abaixo cobre a exceção que é lançada, que é o caminho funcional do seu código.
-     */
-    @Test(expected = ClienteInexistenteException.class)
-    public void testIniciar_Case1_ClienteNaoEncontrado() throws ClienteInexistenteException {
-        String cpf = CPF_VALIDO_BUSCA;
-        // Simula a entrada: opção 1, CPF válido.
-        String input = "1\n" + cpf + "\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
+    @Test
+    void iniciar_quandoOpcao1EClienteNaoExiste_deveImprimirMensagemErro() {
+        Cliente outroCliente = new Cliente("Outro Cliente", "999888777-66", "01/01/2000", "55555-4444", "Rua O", "Bairro O", "33333-222", "Cidade O", "TO");
+        unidade.getClientes().add(outroCliente);
 
-        // Lista de clientes vazia, forçando Util.buscarCliente a lançar exceção.
-        menuCliente.iniciar(mockUnidade, mockTeclado);
+        String input = "1\n000000000-00\n5\n"; // Procurar por um CPF que não existe
+        Scanner scanner = provideInput(input);
+
+        MenuCliente.iniciar(unidade, scanner);
+
+        assertTrue(getOutput().contains("Cliente não existe"));
     }
 
-    /**
-     * Testa o case 2 (Adicionar cliente).
-     * Cobertura: case 2
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case2_AdicionarCliente() throws ClienteInexistenteException {
-        // Simula a entrada: opção 2, dados do cliente.
-        String inputAdicionar = "Nome\n123456789012\nData\nTelefone\nRua\nBairro\nCEP\nCidade\nEstado\n";
-        String inputCompleto = "2\n" + inputAdicionar;
-        mockTeclado = new Scanner(new ByteArrayInputStream(inputCompleto.getBytes()));
+    @Test
+    void iniciar_quandoOpcao3EClienteExiste_deveImprimirSucesso() {
+        Cliente cliente = criarClientePadrao();
+        unidade.getClientes().add(cliente);
+        Cliente.escreverCliente(cliente, unidade.getPath());
 
-        menuCliente.iniciar(mockUnidade, mockTeclado);
+        String input = "3\n123456789-00\n5\n";
+        Scanner scanner = provideInput(input);
 
-        // Verifica se a adição foi iniciada
-        assertTrue(outContent.toString().contains("Digite o nome do cliente:"));
-        assertEquals(1, mockUnidade.getClientes().size());
+        MenuCliente.iniciar(unidade, scanner);
+
+        assertTrue(getOutput().contains("Cliente removido com sucesso."));
+        assertTrue(unidade.getClientes().isEmpty());
     }
 
-    /**
-     * Testa o case 3 (Remover cliente).
-     * Cobertura: case 3
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case3_RemoverCliente() throws ClienteInexistenteException {
-        String cpf = CPF_VALIDO_REMOCAO;
-        // Simula a entrada: opção 3, CPF do cliente.
-        String input = "3\n" + cpf + "\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
+    @Test
+    void iniciar_quandoOpcao4ComClientes_deveImprimirLista() {
+        Cliente c1 = criarClientePadrao();
+        Cliente c2 = new Cliente("Outro Cliente", "987654321-00", "02/02/1992", "12345-6789", "Rua O", "Bairro O", "22222-222", "Cidade O", "TS");
+        unidade.getClientes().add(c1);
+        unidade.getClientes().add(c2);
 
-        // Adiciona o cliente para ser removido
-        Cliente clienteParaRemover = new Cliente("Removivel", cpf, "data", "tele", "rua", "bairro", "cep", "cidade", "estado");
-        mockUnidade.getClientes().add(clienteParaRemover);
+        String input = "4\n5\n";
+        Scanner scanner = provideInput(input);
+        MenuCliente.iniciar(unidade, scanner);
 
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains("O cliente de cpf " + cpf + "foi removido!"));
-        assertTrue(mockUnidade.getClientes().isEmpty());
+        String output = getOutput();
+        assertTrue(output.contains("--- Quadro de Clientes ---"));
+        assertTrue(output.contains("123456789-00"));
+        assertTrue(output.contains("987654321-00"));
     }
 
-    /**
-     * Testa o case 4 (imprimir quadro de clientes) - Lista vazia.
-     * Cobertura: case 4 - if (unidadeAtual.getClientes().isEmpty())
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case4_ListaVazia() throws ClienteInexistenteException {
-        // Simula a entrada: opção 4.
-        String input = "4\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
+    @Test
+    void iniciar_quandoOpcao4SemClientes_deveImprimirMensagemVazio() {
+        String input = "4\n5\n";
+        Scanner scanner = provideInput(input);
+        MenuCliente.iniciar(unidade, scanner);
 
-        mockUnidade.setClientes(new ArrayList<>());
-
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains("Nenhum cliente cadastrado."));
+        String output = getOutput();
+        assertTrue(output.contains("--- Quadro de Clientes ---"));
+        assertTrue(output.contains("Nenhum cliente cadastrado."));
     }
 
-    /**
-     * Testa o case 4 (imprimir quadro de clientes) - Imprimir clientes.
-     * Cobertura: case 4 - else (itera sobre a lista)
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case4_ImprimirClientes() throws ClienteInexistenteException {
-        // Simula a entrada: opção 4.
-        String input = "4\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
-
-        // Cria clientes reais com Override no toString para simular a saída
-        Cliente cliente1 = new Cliente("C1", "1", "d", "t", "r", "b", "c", "ci", "e") {
-            @Override public String toString() { return "Cliente Um Info"; }
-        };
-        Cliente cliente2 = new Cliente("C2", "2", "d", "t", "r", "b", "c", "ci", "e") {
-            @Override public String toString() { return "Cliente Dois Info"; }
-        };
-
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        clientes.add(cliente1);
-        clientes.add(cliente2);
-        mockUnidade.setClientes(clientes);
-
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains("Cliente Um Info"));
-        assertTrue(outContent.toString().contains("Cliente Dois Info"));
-    }
-
-    /**
-     * Testa o case 5 (Sair).
-     * Cobertura: case 5
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Case5_Sair() throws ClienteInexistenteException {
-        // Simula a entrada: opção 5 (Sair)
-        String input = "5\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
-
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains("Fechando aplicação..."));
-    }
-
-    /**
-     * Testa o default (Opção inválida) e a continuação do loop.
-     * Cobertura: default (opção inválida)
-     */
-    @Test(expected = TestExitException.class)
-    public void testIniciar_Default_OpcaoInvalida_Continua() throws ClienteInexistenteException {
-        // Simula a entrada: opção 9 (inválida), e opção 5 (Sair)
+    @Test
+    void iniciar_quandoOpcaoInvalida_deveImprimirMensagemErro() {
         String input = "9\n5\n";
-        mockTeclado = new Scanner(new ByteArrayInputStream(input.getBytes()));
+        Scanner scanner = provideInput(input);
+        MenuCliente.iniciar(unidade, scanner);
+        assertTrue(getOutput().contains("Opção inválida."));
+    }
 
-        menuCliente.iniciar(mockUnidade, mockTeclado);
-
-        assertTrue(outContent.toString().contains("Opção inválida."));
+    @Test
+    void iniciar_quandoOpcao5_deveSairDoLoop() {
+        String input = "5\n";
+        Scanner scanner = provideInput(input);
+        MenuCliente.iniciar(unidade, scanner);
+        assertTrue(getOutput().contains("Retornando ao menu da unidade..."));
     }
 }
+

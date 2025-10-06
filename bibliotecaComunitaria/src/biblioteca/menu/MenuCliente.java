@@ -3,104 +3,100 @@ package biblioteca.menu;
 import biblioteca.biblioteca.*;
 import biblioteca.excecoes.ClienteInexistenteException;
 import biblioteca.pessoas.Cliente;
-import static java.lang.System.exit;
 import java.util.Scanner;
 
-/* @author victoria */
 public class MenuCliente {
 
-
-    private final ExitHandler exitHandler;
-
-
-    public MenuCliente(ExitHandler exitHandler) {
-        this.exitHandler = exitHandler;
-    }
-
-    public static void opcoesAcessarAdminCliente(){
-
-        System.out.println("\n1 - Buscar cliente");
+    public static void opcoesAcessarAdminCliente() {
+        System.out.println("1 - Buscar cliente");
         System.out.println("2 - Adicionar cliente");
         System.out.println("3 - Remover cliente");
-        System.out.println("4 - imprimir quadro de clientes");
-        System.out.println("5 - Sair\n");
-
+        System.out.println("4 - Imprimir quadro de clientes");
+        System.out.println("5 - Voltar ao menu da unidade\n");
     }
 
-    public void adicionarCliente(Unidade aux){
-
-        Scanner tecla = new Scanner(System.in);
-
-        System.out.println("\nDigite o nome do cliente: ");
+    public static void adicionarCliente(Unidade aux, Scanner tecla) {
+        System.out.println("\n--- Adicionar Novo Cliente ---");
+        System.out.println("Digite o nome do cliente: ");
         String nome = tecla.nextLine();
-        System.out.println("\nDigite o cpf do cliente: ");
+        System.out.println("Digite o cpf do cliente: ");
         String cpf = tecla.nextLine();
-        System.out.println("\nDigite o nascimento do cliente: ");
+        System.out.println("Digite o nascimento do cliente (dd/mm/aaaa): ");
         String data = tecla.nextLine();
-        System.out.println("\nDigite o telefone do cliente: ");
+        System.out.println("Digite o telefone do cliente: ");
         String tele = tecla.nextLine();
-        System.out.println("\nDigite a rua do cliente: ");
+        System.out.println("Digite a rua do cliente: ");
         String rua = tecla.nextLine();
-        System.out.println("\nDigite o bairro do cliente: ");
+        System.out.println("Digite o bairro do cliente: ");
         String bairro = tecla.nextLine();
-        System.out.println("\nDigite o cep do cliente: ");
+        System.out.println("Digite o cep do cliente: ");
         String cep = tecla.nextLine();
-        System.out.println("\nDigite a cidade do cliente: ");
-        String cid = tecla.nextLine();
-        System.out.println("\nDigite o estado do cliente: ");
-        String est = tecla.nextLine();
+        System.out.println("Digite a cidade do cliente: ");
+        String cidade = tecla.nextLine();
+        System.out.println("Digite o estado do cliente (UF): ");
+        String estado = tecla.nextLine();
 
-        Cliente cliente = new Cliente(nome, cpf, data, tele, rua, bairro, cep, cid, est);
+        Cliente cliente = new Cliente(nome, cpf, data, tele, rua, bairro, cep, cidade, estado);
         aux.getClientes().add(cliente);
-        Cliente.escreverCliente(cliente, aux.getPath());
 
-        exitHandler.exit(0);
+        Cliente.escreverCliente(cliente, aux.getPath());
+        System.out.println("Cliente adicionado com sucesso!");
     }
 
-
-    public void removerCliente(Unidade unidadeAtual) throws ClienteInexistenteException{
-        Scanner tecla = new Scanner(System.in);
-        System.out.println("\nDigite o cpf do cliente: ");
+    public static void removerCliente(Unidade aux, Scanner tecla) throws ClienteInexistenteException {
+        System.out.println("\nDigite o cpf do cliente a ser removido: ");
         String cpf = tecla.nextLine();
 
-        Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
-        unidadeAtual.getClientes().remove(buscado);
-        Cliente.removerCliente(buscado, unidadeAtual.getPath());
-        System.out.println("O cliente de cpf "+cpf+"foi removido!");
+        if (cpf.isBlank()) {
+            System.out.println("CPF inválido.");
+            return;
+        }
 
-        exitHandler.exit(0);
-
+        Cliente clienteDeletado = Util.buscarCliente(aux, cpf);
+        aux.getClientes().remove(clienteDeletado);
+        Cliente.removerCliente(clienteDeletado, aux.getPath());
     }
 
-    public void iniciar(Unidade unidadeAtual, Scanner teclado) throws ClienteInexistenteException {
-        opcoesAcessarAdminCliente();
-        int op = teclado.nextInt();
-        teclado.nextLine();
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) {
+        boolean continuar = true;
+        while (continuar) {
+            opcoesAcessarAdminCliente();
+            int op = teclado.nextInt();
+            teclado.nextLine();
 
-        while (true) {
             switch (op) {
                 case 1:
-                    System.out.println("Digite o cpf do cliente: ");
+                    System.out.println("\nDigite o cpf do cliente: ");
                     String cpf = teclado.nextLine();
-                    if (cpf.length() != 11) {
-                        System.out.println("CPF inválido!");
+                    if (cpf.isBlank()) {
+                        System.out.println("CPF inválido.");
                     } else {
-                        Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
-                        if (buscado == null) {
-                            System.out.println("Cliente não encontrado!");
+                        if (unidadeAtual.getClientes().isEmpty()) {
+                            System.out.println("Nenhum cliente cadastrado nesta unidade.");
                         } else {
-                            System.out.println(buscado);
+                            try {
+                                Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);
+                                System.out.println("--- Cliente Encontrado ---");
+                                System.out.println(buscado);
+                            } catch (ClienteInexistenteException e) {
+                                System.out.println(e.getMessage());
+                            }
                         }
                     }
-                    exitHandler.exit(0);
                     break;
                 case 2:
-                    adicionarCliente(unidadeAtual);
+                    adicionarCliente(unidadeAtual, teclado);
                     break;
                 case 3:
-                    removerCliente(unidadeAtual);
+                    try {
+                        removerCliente(unidadeAtual, teclado);
+                        System.out.println("Cliente removido com sucesso.");
+                    } catch (ClienteInexistenteException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 4:
+                    System.out.println("\n--- Quadro de Clientes ---");
                     if (unidadeAtual.getClientes().isEmpty()) {
                         System.out.println("Nenhum cliente cadastrado.");
                     } else {
@@ -108,19 +104,16 @@ public class MenuCliente {
                             System.out.println(c);
                         }
                     }
-                    exitHandler.exit(0);
                     break;
                 case 5:
-                    System.out.println("Fechando aplicação...");
-                    exitHandler.exit(0);
+                    System.out.println("Retornando ao menu da unidade...");
+                    continuar = false;
+                    MenuPrincipal.opcoesAcessar();
                     break;
                 default:
                     System.out.println("Opção inválida.");
                     break;
             }
-
-            op = teclado.nextInt();
-            teclado.nextLine();
         }
     }
 }
