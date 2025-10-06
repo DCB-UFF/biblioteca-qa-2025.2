@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MenuClienteTest {
+public class MenuClienteTest {
 
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
