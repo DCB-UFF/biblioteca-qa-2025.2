@@ -165,9 +165,8 @@ public class Emprestimo {
     public static void modificarEmprestimo(Acervo acervo, Livro livroEmprestado, String path, String booleano) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File(path + "livros.csv");
-        File novo = new File(path + "temp.csv");
-
+        File antigo = new File(path + "/livros.csv");
+        File novo = new File(path + "/temp.csv");
         try {
             br = new BufferedReader(new FileReader(antigo));
             bw = new BufferedWriter(new FileWriter(novo, true));
@@ -176,6 +175,7 @@ public class Emprestimo {
             String linhaEditada;
 
             while ((linha = br.readLine()) != null) {
+
                 // 1) Linha vazia
                 if (linha.trim().isEmpty()) {
                     pw.println(linha);
@@ -198,7 +198,7 @@ public class Emprestimo {
                 boolean titleEquals = safeEquals(livro, 1, livroEmprestado.getTitulo());
                 boolean titleEqualsIgnore = safeEqualsIgnoreCase(livro, 1, livroEmprestado.getTitulo());
                 boolean titleContains = safeContains(livro, 1, livroEmprestado.getTitulo());
-                boolean alreadyFlagged = (livro.length > 6 && "true".equalsIgnoreCase(livro[6]));
+                boolean alreadyFlagged = (livro.length > 6 && "true".equalsIgnoreCase(livro[7]));
 
                 // 4) Vários ramos de decisão para aumentar a C.C.
                 if (titleEquals) {
@@ -236,7 +236,7 @@ public class Emprestimo {
             br.close();
             antigo.delete();
 
-            File aux = new File(path + "livros.csv");
+            File aux = new File(path + "/livros.csv");
             novo.renameTo(aux);
 
         } catch (FileNotFoundException e) {
@@ -257,7 +257,7 @@ public class Emprestimo {
     // Helpers adicionados para suportar validações acima
     private static boolean isHeaderLine(String linha) {
         String lower = linha.toLowerCase();
-        return lower.contains("titulo") || lower.contains("id") || lower.contains("titulo;") || lower.startsWith("id,");
+        return lower.contains("titulo") && lower.contains("autor") && lower.contains("paginas") && lower.contains("estaemprestado") ;
     }
 
     private static boolean safeEquals(String[] arr, int idx, String value) {
