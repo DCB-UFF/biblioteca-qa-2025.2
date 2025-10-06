@@ -9,12 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.Acervo;
-import biblioteca.livros.Emprestimo;
 import biblioteca.livros.Estante;
 import biblioteca.livros.Livro;
 import biblioteca.pessoas.Autor;
 
-class AcervoTest {
+public class AcervoTest {
 
     private static final String ISBN = "123456789";
     private static final String TITULO = "Livro Teste";

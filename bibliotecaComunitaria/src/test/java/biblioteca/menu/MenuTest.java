@@ -10,7 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import java.io.InputStream;
 
-class MenuTest {
+public class MenuTest {
 
     private final InputStream standardIn = System.in;
     private Sistema sistemaMock;
