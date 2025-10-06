@@ -24,13 +24,13 @@ public class Unidade{
     private Acervo acervo;
     private ArrayList <Cliente> clientes = new ArrayList<>();
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
-    
+
     public Unidade(String path, String nome, String rua, String bairro, String cep, String cidade, String estado){
         this.path = "src/unidades/un"+ path +"/";
         this.nome = nome;
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     }
-    
+
     @Override
      public String toString() {
          return ("Unidade "+ this.nome + "\nRua: " + end.getRua() + " - " + "Bairro: " + end.getBairro() +
@@ -44,8 +44,8 @@ public class Unidade{
     public void setEnd(Endereco end) {
         this.end = end;
     }
-     
-     
+
+
     public String getPath() {
         return path;
     }
@@ -53,35 +53,35 @@ public class Unidade{
     public void setPath(String path) {
         this.path = path;
     }
-     
+
     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
     }
-    
+
     public Acervo getAcervo() {
         return acervo;
     }
     public void setAcervo(Acervo acervo) {
         this.acervo = acervo;
     }
-    
+
     public ArrayList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
     public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
-    
+
     public static void criarPastaUnidade(String num) {
         File file = new File("src/unidades/un"+num); file.mkdir();
         File aut = new File("src/unidades/un"+num+"/autores.csv");
@@ -90,7 +90,7 @@ public class Unidade{
         File est = new File("src/unidades/un"+num+"/estantes.csv");
         File fun = new File("src/unidades/un"+num+"/funcionarios.csv");
         File liv= new File("src/unidades/un"+num+"/livros.csv");
-        
+
         try {
             aut.createNewFile();
             cli.createNewFile();
@@ -135,7 +135,7 @@ public class Unidade{
         BufferedWriter bw = null;
 
         String linha = String.valueOf(sistema.getContadorUnidades())+ "," +unidade.getNome()  + "," +unidade.getEnd().getRua()
-                + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade() 
+                + ","  + unidade.getEnd().getBairro()+ "," + unidade.getEnd().getCep()+ "," + unidade.getEnd().getCidade()
                + "," + unidade.getEnd().getEstado();
 
         try {
@@ -158,7 +158,7 @@ public class Unidade{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }   
+            }
         }
     }
 
@@ -166,24 +166,52 @@ public class Unidade{
         BufferedReader br = null;
         String linha = "";
         Sistema sistema = new Sistema();
-        
+
         try {
-            br = new BufferedReader(new FileReader("src/unidades/unidades.csv"));
-            br.readLine();
-            
-            while ((linha = br.readLine()) != null) {
+            File arquivoUnidades = new File("src/unidades/unidades.csv");
+
+            // Verifica se o diretório existe, se não, cria
+            File diretorio = new File("src/unidades");
+            if (!diretorio.exists()) {
+                diretorio.mkdirs(); // Cria o diretório e quaisquer diretórios pai necessários
+            }
+
+            // Verifica se o arquivo existe, se não, cria um arquivo vazio
+            if (!arquivoUnidades.exists()) {
+                arquivoUnidades.createNewFile();
+                // Opcional: adicionar cabeçalho se quiser
+                BufferedWriter bw = new BufferedWriter(new FileWriter(arquivoUnidades));
+                bw.write("id,nome,rua,bairro,cep,cidade,estado"); // cabeçalho
+                bw.newLine();
+                bw.close();
+                System.out.println("Arquivo de unidades criado: " + arquivoUnidades.getAbsolutePath());
+            }
+
+            br = new BufferedReader(new FileReader(arquivoUnidades));
+
+            // Lê o cabeçalho (se existir)
+            String cabecalho = br.readLine();
+            if (cabecalho == null) {
+                // Arquivo vazio, retorna sistema vazio
+                return sistema;
+            }
+
+            while ((linha = br.readLine()) != null && !linha.trim().isEmpty()) {
                 String[] unidade = linha.split(",");
-                Unidade novo = new Unidade(unidade[0],unidade[1],unidade[2], unidade[3],
-                        unidade[4], unidade[5], unidade[6]);
-                sistema.getUnidades().add(novo);
-                sistema.addContadorUnidades();
-                
+                if (unidade.length >= 7) {
+                    Unidade novo = new Unidade(unidade[0], unidade[1], unidade[2], unidade[3],
+                            unidade[4], unidade[5], unidade[6]);
+                    sistema.getUnidades().add(novo);
+                    sistema.addContadorUnidades();
+                }
             }
             return sistema;
-            
+
         } catch (FileNotFoundException e) {
+            System.err.println("Arquivo não encontrado: " + e.getMessage());
             e.printStackTrace();
         } catch (IOException e) {
+            System.err.println("Erro de I/O: " + e.getMessage());
             e.printStackTrace();
         } finally {
             if (br != null) {
@@ -192,40 +220,40 @@ public class Unidade{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }   
+            }
         }
-        return null;
+        return sistema; // Retorna sistema vazio em caso de erro, não null
     }
 
     public static void removerUnidade(Sistema sistema, Integer num) {
         BufferedReader br = null;
         BufferedWriter bw = null;
         File antigo = new File("src/unidades/unidades.csv");
-        File novo = new File ("src/unidades/temp.csv");
-        
+        File novo = new File("src/unidades/temp.csv");
+
         try {
             br = new BufferedReader(new FileReader(antigo));
             bw = new BufferedWriter(new FileWriter(novo, true));
             PrintWriter pw= new PrintWriter(bw);
             String linha = "";
-            
+
             sistema.addContadorUnidades();
-            
+
             while ((linha = br.readLine()) != null) {
-    
+
                 String[] un = linha.split(",");
                 if (!un[0].equals(String.valueOf(num))){
                     pw.println(linha);
                 }
             }
-            pw.flush();  
+            pw.flush();
             pw.close();
             br.close();
             antigo.delete();
-            
+
             File aux = new File ("src/unidades/unidades.csv");
             novo.renameTo(aux);
-            
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -237,7 +265,7 @@ public class Unidade{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }   
-        }    
+            }
+        }
      }
 }
