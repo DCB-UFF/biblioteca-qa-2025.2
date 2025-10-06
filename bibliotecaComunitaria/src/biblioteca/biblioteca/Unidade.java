@@ -26,7 +26,7 @@ public class Unidade{
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
     
     public Unidade(String path, String nome, String rua, String bairro, String cep, String cidade, String estado){
-        this.path = "src\\unidades\\un"+ path +"\\";
+        this.path = "src/unidades/un"+ path +"/";
         this.nome = nome;
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     }
@@ -83,13 +83,13 @@ public class Unidade{
     }
     
     public static void criarPastaUnidade(String num) {
-        File file = new File("src\\unidades\\un"+num); file.mkdir();
-        File aut = new File("src\\unidades\\un"+num+"\\autores.csv");
-        File cli = new File("src\\unidades\\un"+num+"\\clientes.csv");
-        File emp = new File("src\\unidades\\un"+num+"\\emprestimos.csv");
-        File est = new File("src\\unidades\\un"+num+"\\estantes.csv");
-        File fun = new File("src\\unidades\\un"+num+"\\funcionarios.csv");
-        File liv= new File("src\\unidades\\un"+num+"\\livros.csv");
+        File file = new File("src/unidades/un"+num); file.mkdir();
+        File aut = new File("src/unidades/un"+num+"/autores.csv");
+        File cli = new File("src/unidades/un"+num+"/clientes.csv");
+        File emp = new File("src/unidades/un"+num+"/emprestimos.csv");
+        File est = new File("src/unidades/un"+num+"/estantes.csv");
+        File fun = new File("src/unidades/un"+num+"/funcionarios.csv");
+        File liv= new File("src/unidades/un"+num+"/livros.csv");
         
         try {
             aut.createNewFile();
@@ -139,7 +139,7 @@ public class Unidade{
                + "," + unidade.getEnd().getEstado();
 
         try {
-            bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
+            bw = new BufferedWriter(new FileWriter("src/unidades/unidades.csv", true));
             PrintWriter pw= new PrintWriter(bw);
             pw.println(linha);
 
@@ -168,7 +168,7 @@ public class Unidade{
         Sistema sistema = new Sistema();
         
         try {
-            br = new BufferedReader(new FileReader("src\\unidades\\unidades.csv"));
+            br = new BufferedReader(new FileReader("src/unidades/unidades.csv"));
             br.readLine();
             
             while ((linha = br.readLine()) != null) {
@@ -200,8 +200,8 @@ public class Unidade{
     public static void removerUnidade(Sistema sistema, Integer num) {
         BufferedReader br = null;
         BufferedWriter bw = null;
-        File antigo = new File("src\\unidades\\unidades.csv");
-        File novo = new File ("src\\unidades\\temp.csv");
+        File antigo = new File("src/unidades/unidades.csv");
+        File novo = new File ("src/unidades/temp.csv");
         
         try {
             br = new BufferedReader(new FileReader(antigo));
@@ -223,7 +223,7 @@ public class Unidade{
             br.close();
             antigo.delete();
             
-            File aux = new File ("src\\unidades\\unidades.csv");
+            File aux = new File ("src/unidades/unidades.csv");
             novo.renameTo(aux);
             
         } catch (FileNotFoundException e) {
