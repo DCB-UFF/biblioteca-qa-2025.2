@@ -25,29 +25,29 @@ public class MenuFuncionario {
         
         Scanner teclado = new Scanner(System.in);
         Scanner tecla = new Scanner(System.in);
-        
+
         System.out.println("\nDigite o nome do funcionário: ");
-        String nome = tecla.nextLine();
+        String nome = teclado.nextLine();
         System.out.println("\nDigite o cpf do cliente: ");
-        String cpf = tecla.nextLine();
+        String cpf = teclado.nextLine();
         System.out.println("\nDigite o nascimento do funcionário: ");
-        String data = tecla.nextLine();
+        String data = teclado.nextLine();
         System.out.println("\nDigite o telefone do funcionário: ");
-        String tele = tecla.nextLine();
+        String tele = teclado.nextLine();
         System.out.println("\nDigite o salário do funcionário: ");
-        float sala = teclado.nextFloat();
+        float sala = Float.parseFloat(teclado.nextLine()); // lê linha completa
         System.out.println("\nDigite o cargo do funcionário: ");
-        String cargo = tecla.nextLine();
+        String cargo = teclado.nextLine();
         System.out.println("\nDigite a rua do funcionário: ");
-        String rua = tecla.nextLine();
+        String rua = teclado.nextLine();
         System.out.println("\nDigite o bairro do funcionário: ");
-        String bairro = tecla.nextLine();
+        String bairro = teclado.nextLine();
         System.out.println("\nDigite o cep do funcionário: ");
-        String cep = tecla.nextLine();
+        String cep = teclado.nextLine();
         System.out.println("\nDigite a cidade do funcionário: ");
-        String cid = tecla.nextLine();
+        String cid = teclado.nextLine();
         System.out.println("\nDigite o estado do funcionário: ");
-        String est = tecla.nextLine();
+        String est = teclado.nextLine();
                         
         Funcionario fun = new Funcionario(nome, cpf, data, tele, sala, cargo, rua, bairro, cep, cid, est);
         aux.getFuncionarios().add(fun);
