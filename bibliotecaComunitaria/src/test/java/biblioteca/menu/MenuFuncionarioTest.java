@@ -20,7 +20,6 @@ public class MenuFuncionarioTest {
 
     @Test
     void deveExibirOpcoesCorretamente() {
-        // Captura o output do console
         ByteArrayOutputStream saida = new ByteArrayOutputStream();
         System.setOut(new PrintStream(saida));
 
@@ -36,29 +35,26 @@ public class MenuFuncionarioTest {
 
     @Test
     void deveAdicionarFuncionarioNaUnidade() {
-        // Simula a entrada do usuário
         String entradaSimulada = String.join("\n",
-                "Maria Teste",     // nome
-                "11122233344",     // cpf
-                "01/01/1990",      // data
-                "21999999999",     // telefone
-                "3500",            // salário
+                "Maria Teste",
+                "11122233344",
+                "01/01/1990",
+                "21999999999",
+                "3500",
                 "",
-                "Bibliotecária",   // cargo
-                "Rua Flores",      // rua
-                "Centro",          // bairro
-                "23000-000",       // cep
-                "Niterói",         // cidade
-                "RJ"               // estado
+                "Bibliotecária",
+                "Rua Flores",
+                "Centro",
+                "23000-000",
+                "Niterói",
+                "RJ"
         );
 
         InputStream input = new ByteArrayInputStream(entradaSimulada.getBytes());
         System.setIn(input);
 
-        // Executa o método
         MenuFuncionario.adicionarFuncionario(unidade);
 
-        // Verifica se funcionário foi adicionado
         assertEquals(1, unidade.getFuncionarios().size());
         Funcionario f = unidade.getFuncionarios().get(0);
         assertEquals("Maria Teste", f.getNome());
@@ -67,27 +63,21 @@ public class MenuFuncionarioTest {
 
     @Test
     void deveRemoverFuncionarioDaUnidade() throws Exception {
-        // Cria um funcionário simulado
+
         Funcionario f = new Funcionario(
                 "Carlos", "12345678900", "10/10/1980", "2133334444",
                 4000f, "Gerente", "Rua A", "Bairro B", "24000-000", "Niterói", "RJ"
         );
         unidade.getFuncionarios().add(f);
 
-        // Simula o CPF digitado
+
         String entradaSimulada = "12345678900\n";
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
-        // Substitui método de utilitário (opcionalmente, pode mockar)
-        // Aqui assumimos que buscarFuncionario retorna o próprio f
-        // Você pode ajustar caso Util.buscarFuncionario() tenha lógica extra
-
-        // Executa o método
         assertDoesNotThrow(() -> {
             MenuFuncionario.removerFuncionario(unidade);
         });
 
-        // Verifica se o funcionário foi removido
         assertTrue(unidade.getFuncionarios().isEmpty());
     }
 }
