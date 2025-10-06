@@ -26,7 +26,7 @@ public class Unidade{
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
     public Unidade(String path, String nome, String rua, String bairro, String cep, String cidade, String estado){
-        this.path = "src\\unidades\\un"+ path +"\\";
+        this.path = "src/unidades/un"+ path +"/";
         this.nome = nome;
         this.end = new Endereco(rua, bairro, cep, cidade, estado);
     }
@@ -83,13 +83,13 @@ public class Unidade{
     }
 
     public static void criarPastaUnidade(String num) {
-        File file = new File("src\\unidades\\un"+num); file.mkdir();
-        File aut = new File("src\\unidades\\un"+num+"\\autores.csv");
-        File cli = new File("src\\unidades\\un"+num+"\\clientes.csv");
-        File emp = new File("src\\unidades\\un"+num+"\\emprestimos.csv");
-        File est = new File("src\\unidades\\un"+num+"\\estantes.csv");
-        File fun = new File("src\\unidades\\un"+num+"\\funcionarios.csv");
-        File liv= new File("src\\unidades\\un"+num+"\\livros.csv");
+        File file = new File("src/unidades/un"+num); file.mkdir();
+        File aut = new File("src/unidades/un"+num+"/autores.csv");
+        File cli = new File("src/unidades/un"+num+"/clientes.csv");
+        File emp = new File("src/unidades/un"+num+"/emprestimos.csv");
+        File est = new File("src/unidades/un"+num+"/estantes.csv");
+        File fun = new File("src/unidades/un"+num+"/funcionarios.csv");
+        File liv= new File("src/unidades/un"+num+"/livros.csv");
 
         try {
             aut.createNewFile();
@@ -139,7 +139,7 @@ public class Unidade{
                + "," + unidade.getEnd().getEstado();
 
         try {
-            bw = new BufferedWriter(new FileWriter("src\\unidades\\unidades.csv", true));
+            bw = new BufferedWriter(new FileWriter("src/unidades/unidades.csv", true));
             PrintWriter pw= new PrintWriter(bw);
             pw.println(linha);
 
@@ -251,7 +251,7 @@ public class Unidade{
             br.close();
             antigo.delete();
 
-            File aux = new File ("src\\unidades\\unidades.csv");
+            File aux = new File ("src/unidades/unidades.csv");
             novo.renameTo(aux);
 
         } catch (FileNotFoundException e) {
