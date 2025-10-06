@@ -2,7 +2,6 @@ package biblioteca.menu;
 
 import biblioteca.biblioteca.*;
 import biblioteca.excecoes.*;
-import static java.lang.System.exit;
 import java.util.Scanner;
 
 public class Menu {
@@ -108,8 +107,13 @@ public class Menu {
                 tentativas++;
             }
 
-            if (tentativas > 0 && tentativas % 3 == 0) {
+            if (tentativas == 4) {
                 System.out.println("Considere revisar suas opções para melhor uso do sistema.");
+            }
+
+            if (tentativas == 7) {
+                System.out.println("Fechando a aplicação");
+                continuar = false;
             }
         }
     }

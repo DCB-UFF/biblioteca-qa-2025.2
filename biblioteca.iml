@@ -7,5 +7,48 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library name="JUnit5.8.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/junit-jupiter-5.8.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/junit-jupiter-api-5.8.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/opentest4j-1.2.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/junit-platform-commons-1.8.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/apiguardian-api-1.1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/junit-jupiter-params-5.8.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/junit-jupiter-engine-5.8.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/junit-platform-engine-1.8.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Mockito3.4.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/mockito-core-3.4.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/byte-buddy-1.10.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/byte-buddy-agent-1.10.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/objenesis-2.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+        <orderEntry type="module-library" exported="">
+          <library name="JaCoCo-0.8.11">
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/jacocoagent.jar!/" />
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/jacocoant.jar!/" />
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/jacococli.jar!/" />
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/org.jacoco.agent-0.8.11.202310140853.jar!/" />
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/org.jacoco.ant-0.8.11.202310140853.jar!/" />
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/org.jacoco.core-0.8.11.202310140853.jar!/" />
+              <root url="jar://$MODULE_DIR$/bibliotecaComunitaria/lib/org.jacoco.report-0.8.11.202310140853.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES />
+          </library>
+        </orderEntry>
   </component>
 </module>
