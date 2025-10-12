@@ -5,6 +5,7 @@
 - Código-fonte: `src/biblioteca/`
 - Dados das unidades: `src/unidades/unidades.csv`
 - Link: `https://github.com/DCB-UFF/biblioteca-qa-2025.2`
+- TestLink : `Plano de Teste - GRUPO DCB / Plano de teste - Biblioteca`
 
 ### Principais Arquivos
 
