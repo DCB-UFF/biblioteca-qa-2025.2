@@ -33,8 +33,8 @@ public class MenuEmprestimo {
 
                     Emprestimo novo = new Emprestimo(cpf,isbn,emp,dev);
                     unidadeAtual.getAcervo().emprestarLivro(unidadeAtual, novo);
-                    
-                    exit(0);
+
+
 
                     break;
                 case 2:
@@ -44,10 +44,10 @@ public class MenuEmprestimo {
                     String isbn2 = teclado.nextLine();
                     unidadeAtual.getAcervo().devolverLivro(unidadeAtual, cpf2, isbn2);
 
-                    exit(0);
+                    return;
                     
                 case 3:
-                    exit(0);
+                    return;
                 default:
                     break;
                 } 

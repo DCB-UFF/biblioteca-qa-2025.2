@@ -26,12 +26,14 @@ public class MenuEditarAcervoTest {
         Acervo acervoVazio = new Acervo();
         unidadeMock.setAcervo(acervoVazio);
 
+        unidadeMock.setPath("src/unidades/un1/livros.csv");
+
         java.nio.file.Path dir = java.nio.file.Paths.get("src/unidades/un1/");
         java.nio.file.Files.createDirectories(dir);
         java.nio.file.Path file = dir.resolve("livros.csv");
-        if (!java.nio.file.Files.exists(file)) {
-            java.nio.file.Files.createFile(file);
-        }
+
+        String cabecalho = "Autor;Titulo;Paginas;ISBN;Genero;Editora;Emprestado\n";
+        java.nio.file.Files.writeString(file, cabecalho);
     }
 
     @AfterEach
