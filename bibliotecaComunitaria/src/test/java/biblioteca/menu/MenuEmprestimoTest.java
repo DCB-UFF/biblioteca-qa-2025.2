@@ -29,13 +29,9 @@ public class MenuEmprestimoTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        // 1. Prepara a Unidade e Acervo
         unidadeMock = new Unidade("1", "Niteroi", "Rua A", "Bairro B", "12345", "Cidade C", "Estado D");
         Acervo acervoVazio = new Acervo();
 
-        // --- CORREÇÃO 1: Construtor da Estante ---
-        // Se a lista de estantes estiver vazia, criamos uma estante "falsa" para guardar os livros do teste.
-        // O construtor pede (int id, String genero)
         if (acervoVazio.getEstantes().isEmpty()) {
             Estante estanteTeste = new Estante(1, "Geral");
             acervoVazio.getEstantes().add(estanteTeste);
@@ -43,20 +39,15 @@ public class MenuEmprestimoTest {
 
         unidadeMock.setAcervo(acervoVazio);
 
-        // 2. Cria a estrutura de pastas e arquivos
-        // Garante que a pasta existe
         Path dir = Paths.get("src/unidades/un1/");
         Files.createDirectories(dir);
 
-        // Cria arquivo de Livros com cabeçalho (para o sistema não crashar ao ler)
         Path arquivoLivros = dir.resolve("livros.csv");
         Files.writeString(arquivoLivros, "Autor;Titulo;Paginas;ISBN;Genero;Editora;Emprestado\n");
 
-        // Cria arquivo de Emprestimos com cabeçalho
         Path arquivoEmprestimos = dir.resolve("emprestimos.csv");
         Files.writeString(arquivoEmprestimos, "CPF;ISBN;DataEmp;DataDev\n");
 
-        // Aponta a unidade para essa pasta de teste
         unidadeMock.setPath("src/unidades/un1/");
     }
 

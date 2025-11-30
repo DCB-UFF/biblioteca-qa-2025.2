@@ -65,6 +65,7 @@ public class MenuEditarAcervoTest {
             simularEntradaUsuario(entrada);
             MenuEditarAcervo.iniciar(unidadeMock, new Scanner(System.in));
         } catch (Exception e) {
+
         }
     }
 
