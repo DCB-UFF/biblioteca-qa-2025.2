@@ -48,8 +48,8 @@ public class MenuEditarAcervo {
                     Livro adicionado = new Livro(autor, titulo,  pag,isbn, gene, edit, false);               
                     unidadeAtual.getAcervo().addLivro2(adicionado, unidadeAtual.getPath());
                     System.out.println("\nLivro adicionado!!");
-                    
-                    exit(0);
+
+
 
                     break;
                 case 2:
@@ -58,10 +58,10 @@ public class MenuEditarAcervo {
                     Livro removido = Util.buscarLivroTitulo(titulo2, unidadeAtual);
                     unidadeAtual.getAcervo().removeLivro(removido, unidadeAtual.getPath());
                     System.out.println("\nLivro removido!!");
-                    exit(0);
+                    return;
                     
                 case 3:
-                    exit(0);
+                    return;
                 default:
                     break;
                 } 

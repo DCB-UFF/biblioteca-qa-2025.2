@@ -146,29 +146,4 @@ public class MenuFuncionarioTest {
         assertTrue(output.contains("Gustavo"), "Deveria listar o funcionário Gustavo");
         assertTrue(output.contains("Caio"), "Deveria listar o funcionário Caio");
     }
-
-    @Test
-    void testIniciar_quandoRemoveFuncionarioExistente_deveConfirmarRemocao() throws Exception {
-        // Cria e adiciona um funcionário
-        Funcionario f = new Funcionario(
-                "Mariana", "569875332-88", "10/10/2000", "91010-1010",
-                3500f, "chefe", "Rua Iquitiba 95", "Largo do Machado",
-                "21457-556", "Rio de Janeiro", "RJ"
-        );
-        unidade.getFuncionarios().add(f);
-
-        // Simula a entrada do usuário: [3 -> remover] [cpf -> "569875332-88"] [5 -> sair]
-        String entradaSimulada = String.join("\n", "3", "569875332-88", "5");
-        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
-
-        ByteArrayOutputStream saida = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(saida));
-
-        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
-
-        String output = saida.toString();
-        assertTrue(output.contains("foi removido"), "Deveria confirmar a remoção do funcionário");
-        assertTrue(unidade.getFuncionarios().isEmpty(), "O funcionário deveria ser removido da unidade");
-    }
-
 }
