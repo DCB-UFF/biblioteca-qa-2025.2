@@ -1,45 +1,54 @@
 package biblioteca.livros;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Emprestimo {
 
-    private String CPF;
-    private String ISNB;
+    // [Correção 6] Constante para string duplicada
+    private static final String NOME_ARQUIVO = "emprestimos.csv";
+    private static final String TEMP_FILE = "temp.csv";
+
+    // [Correções 1 e 2] Campos em camelCase
+    private String cpf;
+    private String isnb;
     private String dataEmprestimo;
     private String dataDevolucao;
 
-    public Emprestimo(String CPF, String ISNB, String dataEmprestimo, String dataDevolucao) {
-        this.CPF = CPF;
-        this.ISNB = ISNB;
+    // [Correções 3 e 4] Parâmetros em camelCase
+    public Emprestimo(String cpf, String isnb, String dataEmprestimo, String dataDevolucao) {
+        this.cpf = cpf;
+        this.isnb = isnb;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
     }
 
     public String getDataEmprestimo() { return dataEmprestimo; }
     public void setDataEmprestimo(String dataEmprestimo) { this.dataEmprestimo = dataEmprestimo; }
-    public String getCPF() { return CPF; }
-    public void setCPF(String CPF) { this.CPF = CPF; }
-    public String getISNB() { return ISNB; }
-    public void setISNB(String ISNB) { this.ISNB = ISNB; }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+    public String getIsnb() { return isnb; }
+    public void setIsnb(String isnb) { this.isnb = isnb; }
     public String getDataDevolucao() { return dataDevolucao; }
     public void setDataDevolucao(String dataDevolucao) { this.dataDevolucao = dataDevolucao; }
 
     @Override
     public String toString() {
-        return ("IdLivro: " + this.getISNB() + " - " + "CPF: " + this.getCPF()
+        return "IdLivro: " + this.getIsnb() + " - " + "CPF: " + this.getCpf()
                 + " - " + "Data de Emprestimo: " + this.getDataEmprestimo() +
-                " - " + "Data de Devolução: " + this.getDataDevolucao());
+                " - " + "Data de Devolução: " + this.getDataDevolucao();
     }
 
     public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
-        // Uso de try-with-resources elimina a necessidade do bloco finally complexo
-        // reduzindo pontos de mutação em tratamento de exceção.
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "emprestimos.csv", true));
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + NOME_ARQUIVO, true));
              PrintWriter pw = new PrintWriter(bw)) {
 
-            String linha = emprestimo.getCPF() + "," + emprestimo.getISNB() + "," +
+            String linha = emprestimo.getCpf() + "," + emprestimo.getIsnb() + "," +
                     emprestimo.getDataEmprestimo() + "," + emprestimo.getDataDevolucao();
             pw.println(linha);
             pw.flush();
@@ -48,50 +57,55 @@ public class Emprestimo {
         }
     }
 
-    public static ArrayList<Emprestimo> leitorEmprestimos(String path) {
-        ArrayList<Emprestimo> emprestimos = new ArrayList<>();
+    // [Correção 5] Retorna List (interface)
+    public static List<Emprestimo> leitorEmprestimos(String path) {
+        List<Emprestimo> emprestimos = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(path + "emprestimos.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path + NOME_ARQUIVO))) {
+            // [Correção 7] Armazena/Usa o retorno do readLine
+            String header = br.readLine();
+            if (header == null) return emprestimos;
+
             String linha;
-            br.readLine(); // Pula header
-
             while ((linha = br.readLine()) != null) {
                 String[] dados = linha.split(",");
-                // Proteção básica para evitar IndexOutOfBounds se a linha estiver vazia
                 if (dados.length >= 4) {
                     Emprestimo novo = new Emprestimo(dados[0], dados[1], dados[2], dados[3]);
                     emprestimos.add(novo);
                 }
             }
-            return emprestimos;
-
         } catch (IOException e) {
             e.printStackTrace();
+            // [Correção 17] Retorna lista vazia ao invés de null
+            return new ArrayList<>();
         }
-        return null;
+        return emprestimos;
     }
 
     public static void removerEmprestimo(Emprestimo emprestimoRemovido, String path) {
-        File antigo = new File(path + "emprestimos.csv");
-        File novo = new File(path + "temp.csv");
+        Path arquivoAntigo = Paths.get(path + NOME_ARQUIVO);
+        Path arquivoNovo = Paths.get(path + TEMP_FILE);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(antigo));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(novo, true));
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivoAntigo.toFile()));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(arquivoNovo.toFile(), true));
              PrintWriter pw = new PrintWriter(bw)) {
 
             String linha;
+            // [Correção 8] Redução de break/continue simplificando a lógica
             while ((linha = br.readLine()) != null) {
                 String[] dados = linha.split(",");
+                boolean manterLinha = true;
 
-                // Refatoração para matar mutantes de lógica condicional:
-                // Isola a lógica de "é igual?" em variáveis booleanas claras.
-                // Se negar 'isSameCpf', o comportamento muda drasticamente, matando o mutante.
-                boolean isSameCpf = safeEquals(dados, 0, emprestimoRemovido.getCPF());
-                boolean isSameIsbn = safeEquals(dados, 1, emprestimoRemovido.getISNB());
+                if (dados.length >= 2) {
+                    boolean mesmoCpf = safeEquals(dados, 0, emprestimoRemovido.getCpf());
+                    boolean mesmoIsbn = safeEquals(dados, 1, emprestimoRemovido.getIsnb());
 
-                // Só remove (não escreve) se AMBOS forem iguais.
-                // A lógica anterior (!A && !B) removia se QUALQUER um fosse igual, o que provavelmente era um bug lógico.
-                if (!(isSameCpf && isSameIsbn)) {
+                    if (mesmoCpf && mesmoIsbn) {
+                        manterLinha = false;
+                    }
+                }
+
+                if (manterLinha) {
                     pw.println(linha);
                 }
             }
@@ -99,82 +113,85 @@ public class Emprestimo {
 
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
 
-        // Operações de arquivo fora do try-with-resources
-        antigo.delete();
-        novo.renameTo(new File(path + "emprestimos.csv"));
+        // [Correções 9, 10, 11] Uso de Files.move/delete resolve o problema de ignorar booleanos
+        atualizarArquivos(arquivoAntigo, arquivoNovo);
     }
 
-    public static void modificarEmprestimo(Acervo acervo, Livro livroEmprestado, String path, String booleano) {
-        File antigo = new File(path + "/livros.csv");
-        File novo = new File(path + "/temp.csv");
+    // [Correção 18] Removido parâmetro 'acervo'
+    // [Correção 12] Complexidade Cognitiva reduzida extraindo lógica
+    public static void modificarEmprestimo(Livro livroEmprestado, String path, String booleano) {
+        // [Correção 16] Removido código comentado (S125) que existia aqui nas versões anteriores
+        Path arquivoAntigo = Paths.get(path + "/livros.csv");
+        Path arquivoNovo = Paths.get(path + "/temp.csv");
 
-        try (BufferedReader br = new BufferedReader(new FileReader(antigo));
-             BufferedWriter bw = new BufferedWriter(new FileWriter(novo, true));
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivoAntigo.toFile()));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(arquivoNovo.toFile(), true));
              PrintWriter pw = new PrintWriter(bw)) {
 
             String linha;
             while ((linha = br.readLine()) != null) {
-                if (linha.trim().isEmpty() || isHeaderLine(linha)) {
-                    pw.println(linha);
-                    continue;
-                }
-
-                String[] livro = linha.split(",");
-                if (livro.length < 2) {
-                    pw.println(linha);
-                    continue;
-                }
-
-                // Extração de variáveis booleanas para clareza e facilidade de teste
-                boolean titleEquals = safeEquals(livro, 1, livroEmprestado.getTitulo());
-                boolean titleEqualsIgnore = safeEqualsIgnoreCase(livro, 1, livroEmprestado.getTitulo());
-                boolean titleContains = safeContains(livro, 1, livroEmprestado.getTitulo());
-                boolean alreadyFlagged = (livro.length >= 8 && "true".equalsIgnoreCase(livro[7]));
-
-                boolean shouldUpdate = false;
-
-                // Lógica simplificada: decide SE deve atualizar primeiro.
-                // Isso remove a redundância de blocos 'else' que faziam a mesma coisa.
-                if (titleEquals) {
-                    shouldUpdate = true;
-                } else if (titleEqualsIgnore) {
-                    if (!alreadyFlagged) {
-                        shouldUpdate = true;
-                    }
-                } else if (titleContains && "true".equalsIgnoreCase(booleano)) {
-                    shouldUpdate = true;
-                }
-
-                if (shouldUpdate) {
-                    livro = ensureFields(livro, 8);
-                    livro[6] = booleano;
-                    pw.println(joinFields(livro));
-                } else {
-                    // CORREÇÃO PRINCIPAL DO SCORE:
-                    // Removeu-se o 'else if' redundante que existia aqui.
-                    // Agora existe apenas um caminho para "não modificar", eliminando mutantes equivalentes.
-                    pw.println(linha);
-                }
+                // Lógica delegada para método auxiliar para reduzir complexidade
+                String linhaProcessada = processarLinhaModificacao(linha, livroEmprestado, booleano);
+                pw.println(linhaProcessada);
             }
             pw.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
 
-        antigo.delete();
-        novo.renameTo(new File(path + "/livros.csv"));
+        // [Correções 13, 14, 15] Uso da API Files
+        atualizarArquivos(arquivoAntigo, arquivoNovo);
+    }
+
+    // Método auxiliar para reduzir Complexidade Cognitiva (S3776)
+    private static String processarLinhaModificacao(String linha, Livro livroEmprestado, String booleano) {
+        if (linha.trim().isEmpty() || isHeaderLine(linha)) {
+            return linha;
+        }
+
+        String[] livro = linha.split(",");
+        if (livro.length < 2) return linha;
+
+        if (deveAtualizar(livro, livroEmprestado, booleano)) {
+            livro = ensureFields(livro, 8);
+            livro[6] = booleano;
+            return joinFields(livro);
+        }
+
+        return linha;
+    }
+
+    private static boolean deveAtualizar(String[] livro, Livro livroEmprestado, String booleano) {
+        boolean titleEquals = safeEquals(livro, 1, livroEmprestado.getTitulo());
+        if (titleEquals) return true;
+
+        boolean titleEqualsIgnore = safeEqualsIgnoreCase(livro, 1, livroEmprestado.getTitulo());
+        boolean alreadyFlagged = (livro.length >= 8 && "true".equalsIgnoreCase(livro[7]));
+        if (titleEqualsIgnore && !alreadyFlagged) return true;
+
+        boolean titleContains = safeContains(livro, 1, livroEmprestado.getTitulo());
+        return titleContains && "true".equalsIgnoreCase(booleano);
+    }
+
+    // Helper para as correções de arquivos (S899 e S4042)
+    private static void atualizarArquivos(Path antigo, Path novo) {
+        try {
+            Files.move(novo, antigo, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            try { Files.deleteIfExists(novo); } catch (IOException ignored) {}
+        }
     }
 
     private static boolean isHeaderLine(String linha) {
-        // Verifica apenas o início. Verificar 4 strings diferentes cria 4 pontos de mutação
-        // (ex: mudar && para ||) que são difíceis de matar se o teste não cobrir todas as permutações.
         return linha != null && linha.toLowerCase().startsWith("titulo");
     }
 
-    // Helpers
     private static boolean safeEquals(String[] arr, int idx, String value) {
         return arr.length > idx && arr[idx] != null && arr[idx].equals(value);
     }
