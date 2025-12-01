@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.pessoas</a> &gt; <span class="el_source">Cliente.java</span></div><h1>Cliente.java</h1><pre class="source lang-java linenums">package biblioteca.pessoas;
+
+import biblioteca.biblioteca.Endereco;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+import java.util.ArrayList;
+import java.io.*;
+
+
+/* @author victoria */
+
+public class Cliente extends Pessoa{
+    private String CPF;
+    private Endereco end;
+
+<span class="fc" id="L17">    public Cliente(String nome, String CPF, String nascimento, String telefone, String rua, String bairro, String cep, String cidade, String estado){</span>
+<span class="fc" id="L18">        this.CPF=CPF;</span>
+<span class="fc" id="L19">        super.cadastro(nome, nascimento, telefone);</span>
+<span class="fc" id="L20">        this.end = new Endereco(rua, bairro, cep, cidade, estado);</span>
+    
+<span class="fc" id="L22">    }</span>
+
+    public String getCPF() {
+<span class="fc" id="L25">        return CPF;</span>
+    }
+
+    public void setCPF(String CPF) {
+<span class="nc" id="L29">        this.CPF = CPF;</span>
+<span class="nc" id="L30">    }</span>
+    
+    @Override
+    public String toString() {
+<span class="fc" id="L34">        return (&quot;Nome: &quot; + this.getNome() + &quot; - &quot; + &quot;CPF: &quot; + this.getCPF() + &quot; - &quot; + &quot;Nascimento: &quot; + this.getNascimento() + &quot; - &quot; + &quot;Telefone: &quot; + this.getTelefone() + &quot; - &quot; + &quot;Endereço -&gt; &quot; + this.getEnd());</span>
+    }
+    
+
+    public Endereco getEnd() {
+<span class="fc" id="L39">        return end;</span>
+    }
+    
+    /* @author victoria */
+    public static void escreverCliente(Cliente cliente, String path) {
+<span class="fc" id="L44">        BufferedWriter bw = null;</span>
+<span class="fc" id="L45">        String linha = cliente.getNome() + &quot;,&quot; + cliente.getCPF() + &quot;,&quot; + cliente.getNascimento() </span>
+<span class="fc" id="L46">                + &quot;,&quot; + cliente.getTelefone() + &quot;,&quot; + cliente.getEnd().getRua() </span>
+<span class="fc" id="L47">                + &quot;,&quot; + cliente.getEnd().getBairro() + &quot;,&quot; + cliente.getEnd().getCep() </span>
+<span class="fc" id="L48">                + &quot;,&quot; + cliente.getEnd().getCidade() + &quot;,&quot; + cliente.getEnd().getEstado();</span>
+        try { 
+<span class="fc" id="L50">            bw = new BufferedWriter(new FileWriter(path+&quot;clientes.csv&quot;, true));</span>
+<span class="fc" id="L51">            PrintWriter pw = new PrintWriter(bw);</span>
+<span class="fc" id="L52">            pw.println(linha);</span>
+<span class="fc" id="L53">            pw.flush();</span>
+<span class="fc" id="L54">            pw.close();</span>
+<span class="nc" id="L55">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L56">            e.printStackTrace();</span>
+<span class="nc" id="L57">        } catch (IOException e) {</span>
+<span class="nc" id="L58">            e.printStackTrace();</span>
+        } finally {
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">            if (bw != null) {</span>
+                try {
+<span class="fc" id="L62">                    bw.close();</span>
+<span class="nc" id="L63">                } catch (IOException e) {</span>
+<span class="nc" id="L64">                    e.printStackTrace();</span>
+<span class="fc" id="L65">                }</span>
+            }   
+        }
+<span class="fc" id="L68">    }</span>
+
+    public static ArrayList&lt;Cliente&gt; leitorClientes(String path) {
+<span class="nc" id="L71">        BufferedReader br = null;</span>
+<span class="nc" id="L72">        String linha = &quot;&quot;;</span>
+<span class="nc" id="L73">        ArrayList&lt;Cliente&gt; clientes = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="nc" id="L75">            br = new BufferedReader(new FileReader(path+&quot;clientes.csv&quot;));</span>
+<span class="nc" id="L76">            br.readLine();</span>
+
+<span class="nc bnc" id="L78" title="All 2 branches missed.">            while ((linha = br.readLine()) != null) {</span>
+<span class="nc" id="L79">                String[] cliente = linha.split(&quot;,&quot;);</span>
+<span class="nc" id="L80">                Cliente novo = new Cliente(cliente[0], cliente[1], cliente[2], cliente[3], cliente[4], cliente[5], cliente[6], cliente[7], cliente[8]);</span>
+<span class="nc" id="L81">                clientes.add(novo);</span>
+<span class="nc" id="L82">            }</span>
+<span class="nc" id="L83">            return clientes;</span>
+
+<span class="nc" id="L85">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L86">            e.printStackTrace();</span>
+<span class="nc" id="L87">        } catch (IOException e) {</span>
+<span class="nc" id="L88">            e.printStackTrace();</span>
+        } finally {
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (br != null) {</span>
+                try {
+<span class="nc" id="L92">                    br.close();</span>
+<span class="nc" id="L93">                } catch (IOException e) {</span>
+<span class="nc" id="L94">                    e.printStackTrace();</span>
+<span class="nc" id="L95">                }</span>
+            }
+        }
+<span class="nc" id="L98">        return null;</span>
+    }
+
+    public static void removerCliente(Cliente clienteDeletado, String path) {
+<span class="fc" id="L102">        BufferedReader br = null;</span>
+<span class="fc" id="L103">        BufferedWriter bw = null;</span>
+<span class="fc" id="L104">        File antigo = new File(path+&quot;clientes.csv&quot;);</span>
+<span class="fc" id="L105">        File novo = new File (path+&quot;temp.csv&quot;);</span>
+        
+        try {
+<span class="fc" id="L108">            br = new BufferedReader(new FileReader(antigo));</span>
+<span class="fc" id="L109">            bw = new BufferedWriter(new FileWriter(novo, true));</span>
+<span class="fc" id="L110">            PrintWriter pw= new PrintWriter(bw);</span>
+<span class="fc" id="L111">            String linha = &quot;&quot;;</span>
+            
+<span class="fc bfc" id="L113" title="All 2 branches covered.">            while ((linha = br.readLine()) != null) {</span>
+    
+<span class="fc" id="L115">                String[] cliente = linha.split(&quot;,&quot;);</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">                if (!cliente[1].equals(clienteDeletado.getCPF())){</span>
+<span class="fc" id="L117">                    pw.println(linha);</span>
+                }
+<span class="fc" id="L119">            }</span>
+<span class="fc" id="L120">            pw.flush();  </span>
+<span class="fc" id="L121">            pw.close();</span>
+<span class="fc" id="L122">            br.close();</span>
+<span class="fc" id="L123">            antigo.delete();</span>
+            
+<span class="fc" id="L125">            File aux = new File (path+&quot;clientes.csv&quot;);</span>
+<span class="fc" id="L126">            novo.renameTo(aux);</span>
+            
+<span class="nc" id="L128">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L129">            e.printStackTrace();</span>
+<span class="nc" id="L130">        } catch (IOException e) {</span>
+<span class="nc" id="L131">            e.printStackTrace();</span>
+        } finally {
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">            if (bw != null) {</span>
+                try {
+<span class="fc" id="L135">                    bw.close();</span>
+<span class="nc" id="L136">                } catch (IOException e) {</span>
+<span class="nc" id="L137">                    e.printStackTrace();</span>
+<span class="fc" id="L138">                }</span>
+            }   
+        }
+<span class="fc" id="L141">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

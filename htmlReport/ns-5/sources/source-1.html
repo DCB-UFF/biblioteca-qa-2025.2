@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Autor</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">biblioteca.pessoas</a>
+</div>
+
+<h1>Coverage Summary for Class: Autor (biblioteca.pessoas)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Autor</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (6/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    22%
+  </span>
+  <span class="absValue">
+    (9/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package biblioteca.pessoas;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import biblioteca.livros.Livro;
+&nbsp;import biblioteca.biblioteca.*;
+&nbsp;import biblioteca.livros.*;
+&nbsp;import biblioteca.pessoas.*;
+&nbsp;import java.io.*;
+&nbsp;
+&nbsp;
+&nbsp;/* @author victoria */
+&nbsp;
+&nbsp;public class Autor extends Pessoa{
+&nbsp;    protected String pais;
+<b class="fc">&nbsp;    protected ArrayList&lt;Livro&gt; livrosAutor = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;    public Autor() {    </b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Autor(String nome, String pais) {</b>
+<b class="fc">&nbsp;        super.cadastro(nome);</b>
+<b class="fc">&nbsp;        this.pais = pais;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Livro&gt; getLivrosAutor() {
+<b class="fc">&nbsp;        return livrosAutor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLivrosAutor(ArrayList&lt;Livro&gt; livrosAutor) {
+<b class="nc">&nbsp;        this.livrosAutor = livrosAutor;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    
+&nbsp;    public void addLivro(Livro livro){
+<b class="fc">&nbsp;        this.livrosAutor.add(livro);</b>
+&nbsp;    }
+&nbsp;    
+<b class="fc">&nbsp;    public Autor (String nome){</b>
+<b class="fc">&nbsp;        super.cadastro(nome);</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    public void cadastro(String nome, String pais){
+<b class="nc">&nbsp;        super.cadastro(nome);</b>
+<b class="nc">&nbsp;        this.pais = pais;</b>
+&nbsp;    
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getPais() {
+<b class="fc">&nbsp;        return pais;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPais(String pais) {
+<b class="nc">&nbsp;        this.pais = pais;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    public void setNome(String nome) {
+<b class="nc">&nbsp;        this.nome = nome;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void escreverAutor(Autor autor, String path) {
+<b class="nc">&nbsp;        BufferedWriter bw = null;</b>
+<b class="nc">&nbsp;        String linha = autor.getNome()+&quot;,&quot;+autor.getPais();</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            bw = new BufferedWriter(new FileWriter(path+&quot;autores.csv&quot;, true));</b>
+<b class="nc">&nbsp;            PrintWriter pw= new PrintWriter(bw);</b>
+<b class="nc">&nbsp;            pw.println(linha);</b>
+<b class="nc">&nbsp;            pw.flush();</b>
+&nbsp;            pw.close();
+&nbsp;        } catch (FileNotFoundException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        } catch (IOException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        } finally {
+<b class="nc">&nbsp;            if (bw != null) {</b>
+&nbsp;                try {
+&nbsp;                    bw.close();
+&nbsp;                } catch (IOException e) {
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+&nbsp;                }
+&nbsp;            }   
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static ArrayList&lt;Autor&gt; leitorAutores(String path) {
+<b class="nc">&nbsp;       BufferedReader br = null;</b>
+<b class="nc">&nbsp;       String linha = &quot;&quot;;</b>
+<b class="nc">&nbsp;       ArrayList&lt;Autor&gt; Autores = new ArrayList&lt;&gt;();</b>
+&nbsp;       try {
+<b class="nc">&nbsp;           br = new BufferedReader(new FileReader(path+&quot;autores.csv&quot;));</b>
+<b class="nc">&nbsp;           br.readLine();</b>
+&nbsp;
+<b class="nc">&nbsp;           while ((linha = br.readLine()) != null) {</b>
+<b class="nc">&nbsp;               String[] autor = linha.split(&quot;,&quot;);</b>
+<b class="nc">&nbsp;               Autor novo = new Autor();</b>
+<b class="nc">&nbsp;               novo.cadastro(autor[0],autor[1]);</b>
+<b class="nc">&nbsp;               Autores.add(novo);</b>
+&nbsp;
+&nbsp;           }
+<b class="nc">&nbsp;           return Autores;</b>
+&nbsp;
+&nbsp;       } catch (FileNotFoundException e) {
+<b class="nc">&nbsp;           e.printStackTrace();</b>
+&nbsp;       } catch (IOException e) {
+<b class="nc">&nbsp;           e.printStackTrace();</b>
+&nbsp;       } finally {
+<b class="nc">&nbsp;           if (br != null) {</b>
+&nbsp;               try {
+&nbsp;                   br.close();
+&nbsp;               } catch (IOException e) {
+<b class="nc">&nbsp;                   e.printStackTrace();</b>
+&nbsp;               }
+&nbsp;           }   
+&nbsp;       }
+<b class="nc">&nbsp;       return null;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-01 14:10</div>
+</div>
+</body>
+</html>

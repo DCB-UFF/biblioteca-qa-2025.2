@@ -1,0 +1,278 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Estante</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">biblioteca.livros</a>
+</div>
+
+<h1>Coverage Summary for Class: Estante (biblioteca.livros)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Estante</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    65.4%
+  </span>
+  <span class="absValue">
+    (34/52)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.3%
+  </span>
+  <span class="absValue">
+    (55/63)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package biblioteca.livros;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import biblioteca.biblioteca.*;
+&nbsp;import biblioteca.livros.*;
+&nbsp;import biblioteca.pessoas.*;
+&nbsp;import java.io.*;
+&nbsp;
+&nbsp;
+&nbsp;/* @author Luam */
+&nbsp;public class Estante {
+<b class="fc">&nbsp;    protected ArrayList&lt;Livro&gt; livros = new ArrayList();</b>
+&nbsp;    protected int idEstante;
+&nbsp;    protected int capacidade;
+&nbsp;    protected String genero;
+&nbsp;
+<b class="fc">&nbsp;    public Estante(int id, String genero) {</b>
+<b class="fc">&nbsp;        this.idEstante = id;</b>
+<b class="fc">&nbsp;        this.capacidade = 50;</b>
+<b class="fc">&nbsp;        this.genero = genero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void imprimirEstante(){
+<b class="fc">&nbsp;        System.out.printf(&quot;\nEstante %d - %s - %d Livros\n&quot;, this.idEstante, this.genero, this.livros.size() );</b>
+<b class="pc">&nbsp;        for (Livro livro:livros){</b>
+<b class="nc">&nbsp;            livro.imprimirLivro();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addLivroNaEstante(Livro livro) {
+<b class="fc">&nbsp;        if(livros.size()&lt;this.capacidade){</b>
+<b class="fc">&nbsp;            this.livros.add(livro);</b>
+&nbsp;        }
+&nbsp;        
+&nbsp;    }
+&nbsp;
+&nbsp;    void buscarLivroNaEstante(String nomeLivro) {
+<b class="fc">&nbsp;        for (Livro livro:livros){</b>
+<b class="fc">&nbsp;            if (livro.titulo.equals(nomeLivro)){</b>
+<b class="fc">&nbsp;                livro.imprimirLivro();</b>
+&nbsp;            }
+&nbsp;        }   
+&nbsp;    }
+&nbsp;    
+&nbsp;    Livro buscarLivroNaEstanteTitulo(String titulo) {
+<b class="fc">&nbsp;        for (Livro livro:livros){</b>
+<b class="fc">&nbsp;            if (livro.getTitulo().equals(titulo)){</b>
+<b class="fc">&nbsp;                return livro;</b>
+&nbsp;            }
+&nbsp;        }   
+<b class="fc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Livro&gt; getLivros() {
+<b class="fc">&nbsp;        return livros;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLivros(ArrayList&lt;Livro&gt; livros) {
+<b class="fc">&nbsp;        this.livros = livros;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getIdEstante() {
+<b class="fc">&nbsp;        return idEstante;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setIdEstante(int idEstante) {
+<b class="fc">&nbsp;        this.idEstante = idEstante;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCapacidade() {
+<b class="fc">&nbsp;        return capacidade;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCapacidade(int capacidade) {
+<b class="fc">&nbsp;        this.capacidade = capacidade;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getGenero() {
+<b class="fc">&nbsp;        return genero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGenero(String genero) {
+<b class="fc">&nbsp;        this.genero = genero;</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    public static void escreveEstante(Estante estante, String path) {
+<b class="fc">&nbsp;        BufferedWriter bw = null;</b>
+<b class="fc">&nbsp;        String linha = estante.getIdEstante()+&quot;,&quot;+estante.getGenero();</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            bw = new BufferedWriter(new FileWriter(path+&quot;estantes.csv&quot;, true));</b>
+<b class="fc">&nbsp;            PrintWriter pw= new PrintWriter(bw);</b>
+<b class="fc">&nbsp;            pw.println(linha);</b>
+<b class="fc">&nbsp;            pw.flush();</b>
+&nbsp;            pw.close();
+&nbsp;        } catch (FileNotFoundException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        } catch (IOException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        } finally {
+<b class="pc">&nbsp;            if (bw != null) {</b>
+&nbsp;                try {
+&nbsp;                    bw.close();
+&nbsp;                } catch (IOException e) {
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+&nbsp;                }
+&nbsp;            }   
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Acervo leitorEstantes(String path) {
+<b class="fc">&nbsp;        BufferedReader br = null;</b>
+<b class="fc">&nbsp;        String linha = &quot;&quot;;</b>
+<b class="fc">&nbsp;        Acervo acervo = new Acervo();</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            br = new BufferedReader(new FileReader(path + &quot;estantes.csv&quot;));</b>
+<b class="fc">&nbsp;            br.readLine();</b>
+&nbsp;
+<b class="fc">&nbsp;            while ((linha = br.readLine()) != null) {</b>
+<b class="fc">&nbsp;                if (linha.trim().isEmpty()) continue; // 1</b>
+<b class="fc">&nbsp;                String[] estante = linha.split(&quot;,&quot;);</b>
+<b class="fc">&nbsp;                if (estante.length &lt; 2) continue; // 2</b>
+&nbsp;                int id;
+&nbsp;                try {
+<b class="fc">&nbsp;                    id = Integer.parseInt(estante[0]);</b>
+&nbsp;                } catch (NumberFormatException e) {
+&nbsp;                    continue; // 3
+&nbsp;                }
+<b class="fc">&nbsp;                String genero = estante[1];</b>
+<b class="pc">&nbsp;                if (genero == null || genero.trim().isEmpty()) continue; // 4</b>
+<b class="fc">&nbsp;                boolean repetido = false;</b>
+<b class="fc">&nbsp;                for (Estante e : acervo.getEstantes()) { // 5</b>
+<b class="fc">&nbsp;                    if (e.getIdEstante() == id) {</b>
+<b class="fc">&nbsp;                        repetido = true;</b>
+&nbsp;                        break;
+&nbsp;                    }
+&nbsp;                }
+<b class="fc">&nbsp;                if (repetido) continue; // 6</b>
+<b class="fc">&nbsp;                if (id &lt; 0 || id &gt; 9999) continue; // 7</b>
+<b class="fc">&nbsp;                if (genero.length() &gt; 30) genero = genero.substring(0, 30); // 8</b>
+<b class="fc">&nbsp;                Estante nova = new Estante(id, genero);</b>
+<b class="pc">&nbsp;                if (nova.getCapacidade() &lt; 10) continue; // 9</b>
+<b class="fc">&nbsp;                acervo.addEstante(nova); // 10</b>
+&nbsp;            }
+<b class="fc">&nbsp;            return acervo;</b>
+&nbsp;
+&nbsp;        } catch (FileNotFoundException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        } catch (IOException e) {
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+&nbsp;        } finally {
+<b class="pc">&nbsp;            if (br != null) {</b>
+&nbsp;                try {
+&nbsp;                    br.close();
+&nbsp;                } catch (IOException e) {
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-01 14:10</div>
+</div>
+</body>
+</html>
