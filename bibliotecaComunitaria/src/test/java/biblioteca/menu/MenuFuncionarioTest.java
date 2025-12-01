@@ -146,4 +146,79 @@ public class MenuFuncionarioTest {
         assertTrue(output.contains("Gustavo"), "Deveria listar o funcionário Gustavo");
         assertTrue(output.contains("Caio"), "Deveria listar o funcionário Caio");
     }
+
+    @Test
+    void testIniciar_quandoListaVazia_deveInformarUsuario() throws Exception {
+        // Garantir que a lista está vazia
+        unidade.getFuncionarios().clear();
+
+        // Simula: [4 -> listar] [5 -> sair]
+        String entradaSimulada = "4\n5\n";
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(saida));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        String output = saida.toString();
+        // Verifica se entrou no if (isEmpty)
+        assertTrue(output.contains("Nenhum funcionário cadastrado."),
+                "Deveria exibir mensagem de lista vazia");
+    }
+
+    @Test
+    void testIniciar_quandoOpcaoInvalida_deveExibirMensagemErro() throws Exception {
+        // Simula: [99 -> inválido] [5 -> sair]
+        String entradaSimulada = "99\n5\n";
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(saida));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        String output = saida.toString();
+        // Verifica o else final
+        assertTrue(output.contains("Opção inválida."),
+                "Deveria informar que a opção é inválida");
+    }
+
+    @Test
+    void testIniciar_quandoAtingirCincoTentativas_deveExibirAviso() throws Exception {
+        // Simula 5 operações quaisquer (ex: listar vazio 5 vezes) e depois sai
+        // [4] [4] [4] [4] [4] -> aviso deve aparecer -> [5] sair
+        String entradaSimulada = "4\n4\n4\n4\n4\n5\n";
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        ByteArrayOutputStream saida = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(saida));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        String output = saida.toString();
+        // Verifica o contador de tentativas
+        assertTrue(output.contains("Você já realizou 5 operações."),
+                "Deveria exibir o aviso de limite de operações");
+    }
+
+    @Test
+    void testIniciar_fluxoCompletoRemocao() throws Exception {
+        // Adiciona um funcionário para ser removido
+        Funcionario f = new Funcionario(
+                "Removido", "99988877766", "01/01/2000", "21999999999",
+                3000f, "Tester", "Rua T", "Bairro T", "20000-000", "Cidade T", "UF"
+        );
+        unidade.getFuncionarios().add(f);
+
+        // Simula: [3 -> remover] [cpf] [5 -> sair]
+        String entradaSimulada = "3\n99988877766\n5\n";
+        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
+
+        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
+
+        // Verifica se a lista ficou vazia após o fluxo do menu
+        assertTrue(unidade.getFuncionarios().isEmpty(),
+                "O funcionário deveria ter sido removido através do fluxo do menu (Opção 3)");
+    }
 }
