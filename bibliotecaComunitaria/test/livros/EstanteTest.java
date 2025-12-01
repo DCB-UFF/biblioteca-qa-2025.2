@@ -1,4 +1,4 @@
-package test.java.biblioteca.livros;
+package biblioteca.livros;
 
 import biblioteca.livros.Acervo; // <--- CORRIGIDO: Agora importando do pacote certo
 import biblioteca.livros.Estante;

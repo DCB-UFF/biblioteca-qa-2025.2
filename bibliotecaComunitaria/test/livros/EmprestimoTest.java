@@ -1,4 +1,4 @@
-package test.java.biblioteca.livros;
+package biblioteca.livros;
 
 import biblioteca.livros.Acervo;
 import biblioteca.livros.Emprestimo;

@@ -1,4 +1,4 @@
-package test.java.biblioteca.menu;
+package biblioteca.menu;
 
 import biblioteca.livros.Acervo;
 import biblioteca.biblioteca.Unidade;
