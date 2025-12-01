@@ -1,4 +1,4 @@
-package test.java.biblioteca.menu;
+package biblioteca.menu;
 
 import biblioteca.menu.Menu;
 import biblioteca.biblioteca.Sistema;
