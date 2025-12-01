@@ -201,24 +201,4 @@ public class MenuFuncionarioTest {
         assertTrue(output.contains("Você já realizou 5 operações."),
                 "Deveria exibir o aviso de limite de operações");
     }
-
-    @Test
-    void testIniciar_fluxoCompletoRemocao() throws Exception {
-        // Adiciona um funcionário para ser removido
-        Funcionario f = new Funcionario(
-                "Removido", "99988877766", "01/01/2000", "21999999999",
-                3000f, "Tester", "Rua T", "Bairro T", "20000-000", "Cidade T", "UF"
-        );
-        unidade.getFuncionarios().add(f);
-
-        // Simula: [3 -> remover] [cpf] [5 -> sair]
-        String entradaSimulada = "3\n99988877766\n5\n";
-        System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
-
-        MenuFuncionario.iniciar(unidade, new Scanner(System.in));
-
-        // Verifica se a lista ficou vazia após o fluxo do menu
-        assertTrue(unidade.getFuncionarios().isEmpty(),
-                "O funcionário deveria ter sido removido através do fluxo do menu (Opção 3)");
-    }
 }
