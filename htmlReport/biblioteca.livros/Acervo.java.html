@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Acervo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.livros</a> &gt; <span class="el_source">Acervo.java</span></div><h1>Acervo.java</h1><pre class="source lang-java linenums">package biblioteca.livros;
+
+import biblioteca.biblioteca.Unidade;
+import java.util.ArrayList;
+import biblioteca.pessoas.*;
+
+/* @author Luam */
+
+<span class="fc" id="L9">public class Acervo {</span>
+<span class="fc" id="L10">    protected int idsEstantes = 1;</span>
+<span class="fc" id="L11">    protected ArrayList&lt;Estante&gt; estantes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L12">    protected ArrayList&lt;Emprestimo&gt; emprestimos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L13">    protected ArrayList&lt;Autor&gt; autores = new ArrayList&lt;&gt;();</span>
+
+    public void emprestarLivro(Unidade unidade, Emprestimo novo) {
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        if (!buscarClienteNosEmprestimos(novo.getCPF())){</span>
+<span class="fc" id="L17">            this.emprestimos.add(novo);</span>
+<span class="fc" id="L18">            Emprestimo.escreverEmprestimo(novo, unidade.getPath());</span>
+<span class="fc" id="L19">            Livro emprestado = buscarLivroISNB(novo.getISNB());</span>
+<span class="fc" id="L20">            emprestado.emprestar(unidade, this);</span>
+<span class="fc" id="L21">            System.out.println(&quot;\nO livro de ISBN &quot;+novo.getISNB()+&quot; foi emprestado para o cliente de cpf &quot;+novo.getISNB());</span>
+<span class="fc" id="L22">        }</span>
+        else{
+<span class="fc" id="L24">            System.out.println(&quot;O cliente não pode pegar um novo livro emprestado até que devolva o anterior&quot;);</span>
+        }
+<span class="fc" id="L26">    }</span>
+
+    public void devolverLivro(Unidade unidade, String CPF, String ISNB) {
+<span class="fc" id="L29">        Emprestimo atual = buscarEmprestimo(CPF,ISNB);</span>
+<span class="fc" id="L30">        this.emprestimos.remove(atual);</span>
+<span class="fc" id="L31">        Emprestimo.removerEmprestimo(atual, unidade.getPath());</span>
+<span class="fc" id="L32">        Livro emprestado = buscarLivroISNB(ISNB);</span>
+<span class="fc" id="L33">        emprestado.emprestar(unidade, this);</span>
+<span class="fc" id="L34">        System.out.println(&quot;\nO livro de ISBN &quot;+ISNB+&quot; foi devolvido pelo cliente de cpf &quot;+CPF);</span>
+<span class="fc" id="L35">    }</span>
+
+    public void imprimirAcervo(String nomeUnidade){
+<span class="fc" id="L38">        System.out.println(&quot;Acervo da Unidade - &quot; + nomeUnidade);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for (Estante e : estantes){</span>
+<span class="fc" id="L40">            e.imprimirEstante();</span>
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">    }</span>
+
+    public void addLivro(Livro novo){
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (novo == null) {</span>
+<span class="fc" id="L46">            return;</span>
+        }
+
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (this.autores == null) {</span>
+<span class="fc" id="L50">            this.autores = new ArrayList&lt;&gt;();</span>
+        }
+
+        // Tratamento avançado do autor (múltiplos ramos)
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (novo.getAutor() == null) {</span>
+<span class="fc" id="L55">            Autor autorDesconhecido = new Autor(&quot;Desconhecido&quot;);</span>
+<span class="fc" id="L56">            autorDesconhecido.addLivro(novo);</span>
+<span class="fc" id="L57">            this.autores.add(autorDesconhecido);</span>
+<span class="fc" id="L58">        } else {</span>
+<span class="fc" id="L59">            boolean contemAutor = autores.contains(novo.getAutor());</span>
+<span class="fc" id="L60">            boolean autorAssociado = false;</span>
+
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            if (contemAutor) {</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">                for (Autor autor : autores) {</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">                    if (autor == null) continue;</span>
+
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">                    if (autor.equals(novo.getAutor())) {</span>
+<span class="fc" id="L67">                        String nomeExistente = autor.getNome();</span>
+<span class="fc" id="L68">                        String nomeNovo = novo.getAutor().getNome();</span>
+
+<span class="pc bpc" id="L70" title="1 of 4 branches missed.">                        if (nomeExistente != null &amp;&amp; nomeExistente.equals(nomeNovo)) {</span>
+<span class="fc" id="L71">                            autor.addLivro(novo);</span>
+<span class="fc" id="L72">                            autorAssociado = true;</span>
+<span class="fc" id="L73">                            break;</span>
+<span class="pc bpc" id="L74" title="2 of 6 branches missed.">                        } else if (nomeExistente != null &amp;&amp; nomeNovo != null &amp;&amp; nomeExistente.equalsIgnoreCase(nomeNovo)) {</span>
+<span class="fc" id="L75">                            autor.addLivro(novo);</span>
+<span class="fc" id="L76">                            autorAssociado = true;</span>
+<span class="fc" id="L77">                            break;</span>
+                        } else {
+<span class="fc" id="L79">                            Autor novoAutor = new Autor(nomeNovo);</span>
+<span class="fc" id="L80">                            novoAutor.addLivro(novo);</span>
+<span class="fc" id="L81">                            this.autores.add(novoAutor);</span>
+<span class="fc" id="L82">                            autorAssociado = true;</span>
+<span class="fc" id="L83">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L86">                }</span>
+            }
+
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">            if (!contemAutor || !autorAssociado) {</span>
+<span class="fc" id="L90">                Autor autor = new Autor(novo.getAutor().getNome());</span>
+<span class="fc" id="L91">                autor.addLivro(novo);</span>
+<span class="fc" id="L92">                this.autores.add(autor);</span>
+            }
+        }
+
+        // Associação à estante com múltiplos ramos de decisão
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        if (this.estantes == null) {</span>
+<span class="fc" id="L98">            this.estantes = new ArrayList&lt;&gt;();</span>
+        }
+
+<span class="fc" id="L101">        boolean colocado = false;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        for (Estante e : estantes) {</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if (e == null) continue;</span>
+
+<span class="fc" id="L105">            String generoEstante = e.getGenero();</span>
+<span class="fc" id="L106">            String generoLivro = novo.genero;</span>
+
+<span class="fc bfc" id="L108" title="All 4 branches covered.">            if (generoEstante == null &amp;&amp; generoLivro == null) {</span>
+<span class="fc" id="L109">                e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L110">                colocado = true;</span>
+<span class="fc" id="L111">                break;</span>
+<span class="fc bfc" id="L112" title="All 4 branches covered.">            } else if (generoEstante != null &amp;&amp; generoEstante.equals(generoLivro)) {</span>
+<span class="fc" id="L113">                e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L114">                colocado = true;</span>
+<span class="fc" id="L115">                break;</span>
+<span class="pc bpc" id="L116" title="1 of 6 branches missed.">            } else if (generoEstante != null &amp;&amp; generoLivro != null &amp;&amp; generoEstante.equalsIgnoreCase(generoLivro)) {</span>
+<span class="fc" id="L117">                e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L118">                colocado = true;</span>
+<span class="fc" id="L119">                break;</span>
+<span class="pc bpc" id="L120" title="1 of 4 branches missed.">            } else if (generoLivro == null || generoLivro.trim().isEmpty()) {</span>
+<span class="pc bpc" id="L121" title="1 of 4 branches missed.">                if (generoEstante == null || generoEstante.trim().isEmpty()) {</span>
+<span class="fc" id="L122">                    e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L123">                    colocado = true;</span>
+<span class="fc" id="L124">                    break;</span>
+                }
+            }
+<span class="fc" id="L127">        }</span>
+
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if (!colocado) {</span>
+<span class="pc bpc" id="L130" title="1 of 4 branches missed.">            if (novo.genero != null &amp;&amp; !novo.genero.trim().isEmpty()) {</span>
+                // passa o id atual ao construtor conforme assinatura de Estante
+<span class="fc" id="L132">                Estante nova = new Estante(this.idsEstantes, novo.genero);</span>
+<span class="fc" id="L133">                nova.addLivroNaEstante(novo);</span>
+<span class="fc" id="L134">                addEstante(nova);</span>
+            } else {
+                // fallback: não há estante adequada; mantém comportamento sem lançar erro
+            }
+        }
+<span class="fc" id="L139">    }</span>
+
+
+    public void addLivro2(Livro novo, String path){
+        // 1) validação básica do objeto livro
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        if (novo == null) {</span>
+<span class="fc" id="L145">            return;</span>
+        }
+
+        // 2) path seguro
+<span class="fc bfc" id="L149" title="All 2 branches covered.">        if (path == null) {</span>
+<span class="fc" id="L150">            path = &quot;&quot;;</span>
+        }
+
+        // 3) grava o livro no arquivo (comportamento original)
+<span class="fc" id="L154">        Livro.escreverLivro(novo, path);</span>
+
+        // 4) tratativa avançada do autor (vários ramos)
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">        if (novo.getAutor() == null) {</span>
+            // autor ausente: cria um autor genérico e associa
+<span class="nc" id="L159">            Autor autorDesconhecido = new Autor(&quot;Desconhecido&quot;);</span>
+<span class="nc" id="L160">            autorDesconhecido.addLivro(novo);</span>
+<span class="nc" id="L161">            this.autores.add(autorDesconhecido);</span>
+<span class="nc" id="L162">        } else {</span>
+<span class="fc" id="L163">            boolean contemAutor = autores.contains(novo.getAutor());</span>
+<span class="fc" id="L164">            boolean autorAssociado = false;</span>
+
+<span class="fc bfc" id="L166" title="All 2 branches covered.">            if (contemAutor) {</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">                for (Autor autor : autores) {</span>
+<span class="pc bpc" id="L168" title="1 of 2 branches missed.">                    if (autor == null) continue;</span>
+
+                    // 5) comparação por igualdade de objeto
+<span class="pc bpc" id="L171" title="1 of 2 branches missed.">                    if (autor.equals(novo.getAutor())) {</span>
+                        // 6) nome exato
+<span class="pc bpc" id="L173" title="2 of 4 branches missed.">                        if (autor.getNome() != null &amp;&amp; autor.getNome().equals(novo.getAutor().getNome())) {</span>
+<span class="nc" id="L174">                            autor.addLivro(novo);</span>
+<span class="nc" id="L175">                            autorAssociado = true;</span>
+<span class="nc" id="L176">                            break;</span>
+                        }
+                        // 7) nome igual ignorando caixa
+<span class="pc bpc" id="L179" title="1 of 4 branches missed.">                        else if (autor.getNome() != null &amp;&amp; autor.getNome().equalsIgnoreCase(novo.getAutor().getNome())) {</span>
+<span class="fc" id="L180">                            autor.addLivro(novo);</span>
+<span class="fc" id="L181">                            autorAssociado = true;</span>
+<span class="fc" id="L182">                            break;</span>
+                        }
+                        // 8) autor parcialmente compatível: cria nova entrada para evitar sobrescrever
+                        else {
+<span class="fc" id="L186">                            Autor novoAutor = new Autor(novo.getAutor().getNome());</span>
+<span class="fc" id="L187">                            novoAutor.addLivro(novo);</span>
+<span class="fc" id="L188">                            this.autores.add(novoAutor);</span>
+<span class="fc" id="L189">                            autorAssociado = true;</span>
+<span class="fc" id="L190">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L193">                }</span>
+            }
+
+            // 9) se não achou ou não estava contido, adiciona novo autor
+<span class="pc bpc" id="L197" title="1 of 4 branches missed.">            if (!contemAutor || !autorAssociado) {</span>
+<span class="fc" id="L198">                Autor autor = new Autor(novo.getAutor().getNome());</span>
+<span class="fc" id="L199">                autor.addLivro(novo);</span>
+<span class="fc" id="L200">                this.autores.add(autor);</span>
+            }
+        }
+
+        // 10) associação à estante com múltiplos ramos de decisão
+<span class="fc" id="L205">        boolean colocado = false;</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        if (this.estantes == null) {</span>
+<span class="fc" id="L207">            this.estantes = new ArrayList&lt;&gt;();</span>
+        }
+
+<span class="fc bfc" id="L210" title="All 2 branches covered.">        for (Estante e : estantes) {</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">            if (e == null) continue;</span>
+
+<span class="fc" id="L213">            String generoEstante = e.getGenero();</span>
+<span class="fc" id="L214">            String generoLivro = novo.genero;</span>
+
+            // 11) ambos nulos -&gt; coloca
+<span class="fc bfc" id="L217" title="All 4 branches covered.">            if (generoEstante == null &amp;&amp; generoLivro == null) {</span>
+<span class="fc" id="L218">                e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L219">                colocado = true;</span>
+<span class="fc" id="L220">                break;</span>
+            }
+            // 12) comparação exata
+<span class="fc bfc" id="L223" title="All 4 branches covered.">            else if (generoEstante != null &amp;&amp; generoEstante.equals(generoLivro)) {</span>
+<span class="fc" id="L224">                e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L225">                colocado = true;</span>
+<span class="fc" id="L226">                break;</span>
+            }
+            // 13) comparação ignorando caixa
+<span class="fc bfc" id="L229" title="All 6 branches covered.">            else if (generoEstante != null &amp;&amp; generoLivro != null &amp;&amp; generoEstante.equalsIgnoreCase(generoLivro)) {</span>
+<span class="fc" id="L230">                e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L231">                colocado = true;</span>
+<span class="fc" id="L232">                break;</span>
+            }
+            // 14) livro sem gênero -&gt; tenta estante vazia
+<span class="fc bfc" id="L235" title="All 4 branches covered.">            else if (generoLivro == null || generoLivro.trim().isEmpty()) {</span>
+<span class="pc bpc" id="L236" title="1 of 4 branches missed.">                if (generoEstante == null || generoEstante.trim().isEmpty()) {</span>
+<span class="fc" id="L237">                    e.addLivroNaEstante(novo);</span>
+<span class="fc" id="L238">                    colocado = true;</span>
+<span class="fc" id="L239">                    break;</span>
+                }
+            }
+            // continua tentando outras estantes
+<span class="fc" id="L243">        }</span>
+
+        // 15) se não foi colocado, tenta criar nova estante quando possível
+<span class="fc bfc" id="L246" title="All 2 branches covered.">        if (!colocado) {</span>
+<span class="pc bpc" id="L247" title="2 of 4 branches missed.">            if (novo.genero != null &amp;&amp; !novo.genero.trim().isEmpty()) {</span>
+                // passa o id atual ao construtor conforme assinatura de Estante
+<span class="fc" id="L249">                Estante nova = new Estante(this.idsEstantes, novo.genero);</span>
+<span class="fc" id="L250">                nova.addLivroNaEstante(novo);</span>
+<span class="fc" id="L251">                addEstante(nova);</span>
+            } else {
+                // fallback: não há estante adequada; mantém comportamento sem lançar erro
+            }
+        }
+<span class="fc" id="L256">    }</span>
+
+    public void removeLivro(Livro l, String path){
+<span class="fc" id="L259">        Livro.removerLivro(l, path);</span>
+
+<span class="fc bfc" id="L261" title="All 2 branches covered.">        for (Autor autor : autores){</span>
+<span class="pc bpc" id="L262" title="1 of 2 branches missed.">            if (autor.equals(l.getAutor())){</span>
+<span class="nc" id="L263">                autor.getLivrosAutor().remove(l);</span>
+            }
+<span class="fc" id="L265">        }</span>
+
+<span class="fc bfc" id="L267" title="All 2 branches covered.">        for (Estante e : estantes){</span>
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">            if (e.getGenero().equals(l.genero)){</span>
+<span class="fc" id="L269">                e.getLivros().remove(l);</span>
+            }
+<span class="fc" id="L271">        }</span>
+<span class="fc" id="L272">    }</span>
+
+    public void addEstante(Estante nova) {
+<span class="fc" id="L275">        estantes.add(nova);</span>
+<span class="fc" id="L276">        idsEstantes++;</span>
+<span class="fc" id="L277">    }</span>
+
+    public Livro buscarLivroISNB (String ISNB){
+<span class="fc bfc" id="L280" title="All 2 branches covered.">        for (Estante e : estantes){</span>
+<span class="fc bfc" id="L281" title="All 2 branches covered.">            for (Livro l : e.livros){</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">                if (l.getISBN().equals(ISNB)){</span>
+<span class="fc" id="L283">                    return l;</span>
+                }
+<span class="fc" id="L285">            }</span>
+<span class="fc" id="L286">        }</span>
+<span class="fc" id="L287">        return null;</span>
+    }
+
+    public ArrayList&lt;Livro&gt; buscarLivroAutor (String autor){
+<span class="fc" id="L291">        ArrayList&lt;Livro&gt; livros = new ArrayList();</span>
+<span class="fc bfc" id="L292" title="All 2 branches covered.">        for (Estante e : estantes){</span>
+<span class="fc bfc" id="L293" title="All 2 branches covered.">            for (Livro l : e.livros){</span>
+<span class="fc bfc" id="L294" title="All 2 branches covered.">                if (l.autor.getNome().equals(autor)){</span>
+<span class="fc" id="L295">                    livros.add(l);</span>
+                }
+<span class="fc" id="L297">            }</span>
+<span class="fc" id="L298">        }</span>
+<span class="fc" id="L299">        return livros;</span>
+    }
+
+    public boolean buscarAutor(String nome){
+<span class="fc bfc" id="L303" title="All 2 branches covered.">        for (Autor autor : autores){</span>
+<span class="fc bfc" id="L304" title="All 2 branches covered.">            if (autor.getNome().equals(nome))</span>
+<span class="fc" id="L305">                return true;</span>
+<span class="fc" id="L306">        }</span>
+<span class="fc" id="L307">        return false;</span>
+    }
+
+    public Emprestimo buscarEmprestimo(String CPF, String ISNB){
+<span class="fc bfc" id="L311" title="All 2 branches covered.">        for (Emprestimo e : emprestimos){</span>
+<span class="fc bfc" id="L312" title="All 4 branches covered.">            if ((e.getCPF().equals(CPF))&amp;&amp;(e.getISNB().equals(ISNB))){</span>
+<span class="fc" id="L313">                return e;</span>
+            }
+
+<span class="fc" id="L316">        }</span>
+<span class="fc" id="L317">        return null;</span>
+    }
+
+    public boolean buscarClienteNosEmprestimos(String CPF){
+<span class="fc bfc" id="L321" title="All 2 branches covered.">        for (Emprestimo e : emprestimos){</span>
+<span class="fc bfc" id="L322" title="All 2 branches covered.">            if (e.getCPF().equals(CPF)){</span>
+<span class="fc" id="L323">                return true;</span>
+            }
+
+<span class="fc" id="L326">        }</span>
+<span class="fc" id="L327">        return false;</span>
+    }
+
+    public int getIdsEstantes() {
+<span class="fc" id="L331">        return idsEstantes;</span>
+    }
+
+    public void setIdsEstantes(int idsEstantes) {
+<span class="fc" id="L335">        this.idsEstantes = idsEstantes;</span>
+<span class="fc" id="L336">    }</span>
+
+    public ArrayList&lt;Estante&gt; getEstantes() {
+<span class="fc" id="L339">        return estantes;</span>
+    }
+
+    public void setEstantes(ArrayList&lt;Estante&gt; estantes) {
+<span class="fc" id="L343">        this.estantes = estantes;</span>
+<span class="fc" id="L344">    }</span>
+
+    public ArrayList&lt;Emprestimo&gt; getEmprestimos() {
+<span class="fc" id="L347">        return emprestimos;</span>
+    }
+
+    public void setEmprestimos(ArrayList&lt;Emprestimo&gt; emprestimos) {
+<span class="fc" id="L351">        this.emprestimos = emprestimos;</span>
+<span class="fc" id="L352">    }</span>
+
+    public ArrayList&lt;Autor&gt; getAutores() {
+<span class="fc" id="L355">        return autores;</span>
+    }
+
+    public void setAutores(ArrayList&lt;Autor&gt; autores) {
+<span class="fc" id="L359">        this.autores = autores;</span>
+<span class="fc" id="L360">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

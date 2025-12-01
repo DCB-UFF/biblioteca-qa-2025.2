@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Endereco.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.biblioteca</a> &gt; <span class="el_source">Endereco.java</span></div><h1>Endereco.java</h1><pre class="source lang-java linenums">package biblioteca.biblioteca;
+
+/* @author victoria */
+
+public class Endereco {
+    private String rua;
+    private String bairro;
+    private String cep;
+    private String cidade;
+    private String estado;
+    
+<span class="fc" id="L12">    public Endereco(String rua, String bairro, String cep, String cidade, String estado){</span>
+<span class="fc" id="L13">        this.rua = rua;</span>
+<span class="fc" id="L14">        this.bairro = bairro;</span>
+<span class="fc" id="L15">        this.cep = cep;</span>
+<span class="fc" id="L16">        this.cidade = cidade;</span>
+<span class="fc" id="L17">        this.estado = estado;</span>
+<span class="fc" id="L18">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L22">        return (&quot;Rua: &quot; + this.getRua() + &quot; - &quot; + &quot;Bairro: &quot; + this.getBairro() + &quot; - &quot; + &quot;CEP: &quot; + this.getCep() + &quot; - &quot; + &quot;Cidade: &quot; + this.getCidade() + &quot; - &quot; + &quot;Estado: &quot; + this.getEstado());</span>
+    }
+
+    public String getRua() {
+<span class="fc" id="L26">        return rua;</span>
+    }
+
+    public String getBairro() {
+<span class="fc" id="L30">        return bairro;</span>
+    }
+
+    public String getCep() {
+<span class="fc" id="L34">        return cep;</span>
+    }
+
+    public String getCidade() {
+<span class="fc" id="L38">        return cidade;</span>
+    }
+
+    public String getEstado() {
+<span class="fc" id="L42">        return estado;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

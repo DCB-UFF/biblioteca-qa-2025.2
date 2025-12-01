@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Autor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.pessoas</a> &gt; <span class="el_source">Autor.java</span></div><h1>Autor.java</h1><pre class="source lang-java linenums">package biblioteca.pessoas;
+
+import java.util.ArrayList;
+import biblioteca.livros.Livro;
+import biblioteca.biblioteca.*;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+import java.io.*;
+
+
+/* @author victoria */
+
+public class Autor extends Pessoa{
+    protected String pais;
+<span class="pc" id="L15">    protected ArrayList&lt;Livro&gt; livrosAutor = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L17">    public Autor() {    </span>
+<span class="nc" id="L18">    }</span>
+
+<span class="fc" id="L20">    public Autor(String nome, String pais) {</span>
+<span class="fc" id="L21">        super.cadastro(nome);</span>
+<span class="fc" id="L22">        this.pais = pais;</span>
+<span class="fc" id="L23">    }</span>
+
+    public ArrayList&lt;Livro&gt; getLivrosAutor() {
+<span class="fc" id="L26">        return livrosAutor;</span>
+    }
+
+    public void setLivrosAutor(ArrayList&lt;Livro&gt; livrosAutor) {
+<span class="nc" id="L30">        this.livrosAutor = livrosAutor;</span>
+<span class="nc" id="L31">    }</span>
+    
+    
+    public void addLivro(Livro livro){
+<span class="fc" id="L35">        this.livrosAutor.add(livro);</span>
+<span class="fc" id="L36">    }</span>
+    
+<span class="fc" id="L38">    public Autor (String nome){</span>
+<span class="fc" id="L39">        super.cadastro(nome);</span>
+<span class="fc" id="L40">    }</span>
+    
+    public void cadastro(String nome, String pais){
+<span class="nc" id="L43">        super.cadastro(nome);</span>
+<span class="nc" id="L44">        this.pais = pais;</span>
+    
+<span class="nc" id="L46">    }</span>
+
+    public String getPais() {
+<span class="fc" id="L49">        return pais;</span>
+    }
+
+    public void setPais(String pais) {
+<span class="nc" id="L53">        this.pais = pais;</span>
+<span class="nc" id="L54">    }</span>
+    
+    public void setNome(String nome) {
+<span class="nc" id="L57">        this.nome = nome;</span>
+<span class="nc" id="L58">    }</span>
+
+    public static void escreverAutor(Autor autor, String path) {
+<span class="nc" id="L61">        BufferedWriter bw = null;</span>
+<span class="nc" id="L62">        String linha = autor.getNome()+&quot;,&quot;+autor.getPais();</span>
+        try {
+<span class="nc" id="L64">            bw = new BufferedWriter(new FileWriter(path+&quot;autores.csv&quot;, true));</span>
+<span class="nc" id="L65">            PrintWriter pw= new PrintWriter(bw);</span>
+<span class="nc" id="L66">            pw.println(linha);</span>
+<span class="nc" id="L67">            pw.flush();</span>
+<span class="nc" id="L68">            pw.close();</span>
+<span class="nc" id="L69">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L70">            e.printStackTrace();</span>
+<span class="nc" id="L71">        } catch (IOException e) {</span>
+<span class="nc" id="L72">            e.printStackTrace();</span>
+        } finally {
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            if (bw != null) {</span>
+                try {
+<span class="nc" id="L76">                    bw.close();</span>
+<span class="nc" id="L77">                } catch (IOException e) {</span>
+<span class="nc" id="L78">                    e.printStackTrace();</span>
+<span class="nc" id="L79">                }</span>
+            }   
+        }
+<span class="nc" id="L82">    }</span>
+
+    public static ArrayList&lt;Autor&gt; leitorAutores(String path) {
+<span class="nc" id="L85">       BufferedReader br = null;</span>
+<span class="nc" id="L86">       String linha = &quot;&quot;;</span>
+<span class="nc" id="L87">       ArrayList&lt;Autor&gt; Autores = new ArrayList&lt;&gt;();</span>
+       try {
+<span class="nc" id="L89">           br = new BufferedReader(new FileReader(path+&quot;autores.csv&quot;));</span>
+<span class="nc" id="L90">           br.readLine();</span>
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">           while ((linha = br.readLine()) != null) {</span>
+<span class="nc" id="L93">               String[] autor = linha.split(&quot;,&quot;);</span>
+<span class="nc" id="L94">               Autor novo = new Autor();</span>
+<span class="nc" id="L95">               novo.cadastro(autor[0],autor[1]);</span>
+<span class="nc" id="L96">               Autores.add(novo);</span>
+
+<span class="nc" id="L98">           }</span>
+<span class="nc" id="L99">           return Autores;</span>
+
+<span class="nc" id="L101">       } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L102">           e.printStackTrace();</span>
+<span class="nc" id="L103">       } catch (IOException e) {</span>
+<span class="nc" id="L104">           e.printStackTrace();</span>
+       } finally {
+<span class="nc bnc" id="L106" title="All 2 branches missed.">           if (br != null) {</span>
+               try {
+<span class="nc" id="L108">                   br.close();</span>
+<span class="nc" id="L109">               } catch (IOException e) {</span>
+<span class="nc" id="L110">                   e.printStackTrace();</span>
+<span class="nc" id="L111">               }</span>
+           }   
+       }
+<span class="nc" id="L114">       return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
