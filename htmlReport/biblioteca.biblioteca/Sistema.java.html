@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Sistema.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.biblioteca</a> &gt; <span class="el_source">Sistema.java</span></div><h1>Sistema.java</h1><pre class="source lang-java linenums">package biblioteca.biblioteca;
+import biblioteca.livros.*;
+import biblioteca.pessoas.*;
+
+import java.util.ArrayList;
+
+/* @author victoria */
+
+<span class="fc" id="L9">public class Sistema{</span>
+    protected int contadorUnidades;
+<span class="fc" id="L11">    protected ArrayList &lt;Unidade&gt; unidades = new ArrayList&lt;&gt;();</span>
+    
+    public void carregarUnidades(){
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        for (Unidade un: this.unidades){</span>
+            //Lê o acervo
+<span class="nc" id="L16">            Acervo acervoUn = Estante.leitorEstantes(un.getPath()); // Lê as estantes pro acervo</span>
+<span class="nc" id="L17">            acervoUn.setAutores(Autor.leitorAutores(un.getPath()));//Lê os autores</span>
+<span class="nc" id="L18">            Livro.leitorLivros(acervoUn,un.getPath()); // Lê os livros</span>
+<span class="nc" id="L19">            acervoUn.setEmprestimos(Emprestimo.leitorEmprestimos(un.getPath())); // Lê os empréstimos</span>
+<span class="nc" id="L20">            un.setAcervo(acervoUn);</span>
+
+             //Lê os clientes
+<span class="nc" id="L23">            ArrayList&lt;Cliente&gt; clientesNiteroi = Cliente.leitorClientes(un.getPath());</span>
+<span class="nc" id="L24">            un.setClientes(clientesNiteroi);</span>
+
+            //Lê os funcionarios
+<span class="nc" id="L27">            ArrayList&lt;Funcionario&gt; funcionariosNiteroi = Funcionario.leitorFuncionarios(un.getPath());</span>
+<span class="nc" id="L28">            un.setFuncionarios(funcionariosNiteroi);</span>
+<span class="nc" id="L29">        }</span>
+<span class="nc" id="L30">    }</span>
+        
+    public void criarUnidade(String nome, String rua, String bairro, String cep, String cidade, String estado){
+<span class="fc" id="L33">        this.contadorUnidades++; // Adiciona uma nova no contador</span>
+<span class="fc" id="L34">        String path = String.valueOf(this.contadorUnidades); // Passa o contador atual para string</span>
+<span class="fc" id="L35">        Unidade.criarPastaUnidade(path); // Cria a pasta da nova unidade no diretorio</span>
+<span class="fc" id="L36">        Unidade nova = new Unidade(path,nome,rua, bairro,cep,cidade,estado); // Cria a nova unidade de fato</span>
+<span class="fc" id="L37">        Unidade.escreverUnidade(this, nova);</span>
+<span class="fc" id="L38">    }</span>
+ 
+    public void imprimirUnidades(Sistema sistema){
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        for(Unidade u: sistema.unidades){</span>
+<span class="fc" id="L42">            System.out.println(u.getNome());</span>
+<span class="fc" id="L43">        }</span>
+<span class="fc" id="L44">    }</span>
+    
+    public int getContadorUnidades() {
+<span class="fc" id="L47">        return contadorUnidades;</span>
+    }
+
+    public void setContadorUnidades(int contadorUnidades) {
+<span class="nc" id="L51">        this.contadorUnidades = contadorUnidades;</span>
+<span class="nc" id="L52">    }</span>
+
+    public int addContadorUnidades() {
+<span class="fc" id="L55">        contadorUnidades++;</span>
+<span class="fc" id="L56">        return contadorUnidades;</span>
+    }
+    
+    public ArrayList&lt;Unidade&gt; getUnidades() {
+<span class="fc" id="L60">        return unidades;</span>
+    }
+
+    public void setUnidades(ArrayList&lt;Unidade&gt; unidades) {
+<span class="nc" id="L64">        this.unidades = unidades;</span>
+<span class="nc" id="L65">    }</span>
+    
+    public void add(Unidade u){
+<span class="nc" id="L68">        unidades.add(u);</span>
+<span class="nc" id="L69">    }</span>
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

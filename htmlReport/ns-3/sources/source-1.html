@@ -1,0 +1,477 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Acervo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">biblioteca.livros</a>
+</div>
+
+<h1>Coverage Summary for Class: Acervo (biblioteca.livros)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Acervo</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.4%
+  </span>
+  <span class="absValue">
+    (135/160)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.4%
+  </span>
+  <span class="absValue">
+    (162/168)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package biblioteca.livros;
+&nbsp;
+&nbsp;import biblioteca.biblioteca.Unidade;
+&nbsp;import java.util.ArrayList;
+&nbsp;import biblioteca.pessoas.*;
+&nbsp;
+&nbsp;/* @author Luam */
+&nbsp;
+<b class="fc">&nbsp;public class Acervo {</b>
+<b class="fc">&nbsp;    protected int idsEstantes = 1;</b>
+<b class="fc">&nbsp;    protected ArrayList&lt;Estante&gt; estantes = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    protected ArrayList&lt;Emprestimo&gt; emprestimos = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    protected ArrayList&lt;Autor&gt; autores = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;    public void emprestarLivro(Unidade unidade, Emprestimo novo) {
+<b class="fc">&nbsp;        if (!buscarClienteNosEmprestimos(novo.getCPF())){</b>
+<b class="fc">&nbsp;            this.emprestimos.add(novo);</b>
+<b class="fc">&nbsp;            Emprestimo.escreverEmprestimo(novo, unidade.getPath());</b>
+<b class="fc">&nbsp;            Livro emprestado = buscarLivroISNB(novo.getISNB());</b>
+<b class="fc">&nbsp;            emprestado.emprestar(unidade, this);</b>
+<b class="fc">&nbsp;            System.out.println(&quot;\nO livro de ISBN &quot;+novo.getISNB()+&quot; foi emprestado para o cliente de cpf &quot;+novo.getISNB());</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="fc">&nbsp;            System.out.println(&quot;O cliente não pode pegar um novo livro emprestado até que devolva o anterior&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void devolverLivro(Unidade unidade, String CPF, String ISNB) {
+<b class="fc">&nbsp;        Emprestimo atual = buscarEmprestimo(CPF,ISNB);</b>
+<b class="fc">&nbsp;        this.emprestimos.remove(atual);</b>
+<b class="fc">&nbsp;        Emprestimo.removerEmprestimo(atual, unidade.getPath());</b>
+<b class="fc">&nbsp;        Livro emprestado = buscarLivroISNB(ISNB);</b>
+<b class="fc">&nbsp;        emprestado.emprestar(unidade, this);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;\nO livro de ISBN &quot;+ISNB+&quot; foi devolvido pelo cliente de cpf &quot;+CPF);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void imprimirAcervo(String nomeUnidade){
+<b class="fc">&nbsp;        System.out.println(&quot;Acervo da Unidade - &quot; + nomeUnidade);</b>
+<b class="fc">&nbsp;        for (Estante e : estantes){</b>
+<b class="fc">&nbsp;            e.imprimirEstante();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addLivro(Livro novo){
+<b class="fc">&nbsp;        if (novo == null) {</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if (this.autores == null) {</b>
+<b class="fc">&nbsp;            this.autores = new ArrayList&lt;&gt;();</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Tratamento avançado do autor (múltiplos ramos)
+<b class="fc">&nbsp;        if (novo.getAutor() == null) {</b>
+<b class="fc">&nbsp;            Autor autorDesconhecido = new Autor(&quot;Desconhecido&quot;);</b>
+<b class="fc">&nbsp;            autorDesconhecido.addLivro(novo);</b>
+<b class="fc">&nbsp;            this.autores.add(autorDesconhecido);</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            boolean contemAutor = autores.contains(novo.getAutor());</b>
+<b class="fc">&nbsp;            boolean autorAssociado = false;</b>
+&nbsp;
+<b class="fc">&nbsp;            if (contemAutor) {</b>
+<b class="pc">&nbsp;                for (Autor autor : autores) {</b>
+<b class="pc">&nbsp;                    if (autor == null) continue;</b>
+&nbsp;
+<b class="pc">&nbsp;                    if (autor.equals(novo.getAutor())) {</b>
+<b class="fc">&nbsp;                        String nomeExistente = autor.getNome();</b>
+<b class="fc">&nbsp;                        String nomeNovo = novo.getAutor().getNome();</b>
+&nbsp;
+<b class="pc">&nbsp;                        if (nomeExistente != null &amp;&amp; nomeExistente.equals(nomeNovo)) {</b>
+<b class="fc">&nbsp;                            autor.addLivro(novo);</b>
+<b class="fc">&nbsp;                            autorAssociado = true;</b>
+&nbsp;                            break;
+<b class="pc">&nbsp;                        } else if (nomeExistente != null &amp;&amp; nomeNovo != null &amp;&amp; nomeExistente.equalsIgnoreCase(nomeNovo)) {</b>
+<b class="fc">&nbsp;                            autor.addLivro(novo);</b>
+<b class="fc">&nbsp;                            autorAssociado = true;</b>
+&nbsp;                            break;
+&nbsp;                        } else {
+<b class="fc">&nbsp;                            Autor novoAutor = new Autor(nomeNovo);</b>
+<b class="fc">&nbsp;                            novoAutor.addLivro(novo);</b>
+<b class="fc">&nbsp;                            this.autores.add(novoAutor);</b>
+<b class="fc">&nbsp;                            autorAssociado = true;</b>
+&nbsp;                            break;
+&nbsp;                        }
+&nbsp;                    }
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+<b class="pc">&nbsp;            if (!contemAutor || !autorAssociado) {</b>
+<b class="fc">&nbsp;                Autor autor = new Autor(novo.getAutor().getNome());</b>
+<b class="fc">&nbsp;                autor.addLivro(novo);</b>
+<b class="fc">&nbsp;                this.autores.add(autor);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // Associação à estante com múltiplos ramos de decisão
+<b class="fc">&nbsp;        if (this.estantes == null) {</b>
+<b class="fc">&nbsp;            this.estantes = new ArrayList&lt;&gt;();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        boolean colocado = false;</b>
+<b class="fc">&nbsp;        for (Estante e : estantes) {</b>
+<b class="pc">&nbsp;            if (e == null) continue;</b>
+&nbsp;
+<b class="fc">&nbsp;            String generoEstante = e.getGenero();</b>
+<b class="fc">&nbsp;            String generoLivro = novo.genero;</b>
+&nbsp;
+<b class="fc">&nbsp;            if (generoEstante == null &amp;&amp; generoLivro == null) {</b>
+<b class="fc">&nbsp;                e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                colocado = true;</b>
+&nbsp;                break;
+<b class="fc">&nbsp;            } else if (generoEstante != null &amp;&amp; generoEstante.equals(generoLivro)) {</b>
+<b class="fc">&nbsp;                e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                colocado = true;</b>
+&nbsp;                break;
+<b class="pc">&nbsp;            } else if (generoEstante != null &amp;&amp; generoLivro != null &amp;&amp; generoEstante.equalsIgnoreCase(generoLivro)) {</b>
+<b class="fc">&nbsp;                e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                colocado = true;</b>
+&nbsp;                break;
+<b class="pc">&nbsp;            } else if (generoLivro == null || generoLivro.trim().isEmpty()) {</b>
+<b class="pc">&nbsp;                if (generoEstante == null || generoEstante.trim().isEmpty()) {</b>
+<b class="fc">&nbsp;                    e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                    colocado = true;</b>
+&nbsp;                    break;
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if (!colocado) {</b>
+<b class="pc">&nbsp;            if (novo.genero != null &amp;&amp; !novo.genero.trim().isEmpty()) {</b>
+&nbsp;                // passa o id atual ao construtor conforme assinatura de Estante
+<b class="fc">&nbsp;                Estante nova = new Estante(this.idsEstantes, novo.genero);</b>
+<b class="fc">&nbsp;                nova.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                addEstante(nova);</b>
+&nbsp;            } else {
+&nbsp;                // fallback: não há estante adequada; mantém comportamento sem lançar erro
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void addLivro2(Livro novo, String path){
+&nbsp;        // 1) validação básica do objeto livro
+<b class="fc">&nbsp;        if (novo == null) {</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // 2) path seguro
+<b class="fc">&nbsp;        if (path == null) {</b>
+<b class="fc">&nbsp;            path = &quot;&quot;;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // 3) grava o livro no arquivo (comportamento original)
+<b class="fc">&nbsp;        Livro.escreverLivro(novo, path);</b>
+&nbsp;
+&nbsp;        // 4) tratativa avançada do autor (vários ramos)
+<b class="pc">&nbsp;        if (novo.getAutor() == null) {</b>
+&nbsp;            // autor ausente: cria um autor genérico e associa
+<b class="nc">&nbsp;            Autor autorDesconhecido = new Autor(&quot;Desconhecido&quot;);</b>
+<b class="nc">&nbsp;            autorDesconhecido.addLivro(novo);</b>
+<b class="nc">&nbsp;            this.autores.add(autorDesconhecido);</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            boolean contemAutor = autores.contains(novo.getAutor());</b>
+<b class="fc">&nbsp;            boolean autorAssociado = false;</b>
+&nbsp;
+<b class="fc">&nbsp;            if (contemAutor) {</b>
+<b class="pc">&nbsp;                for (Autor autor : autores) {</b>
+<b class="pc">&nbsp;                    if (autor == null) continue;</b>
+&nbsp;
+&nbsp;                    // 5) comparação por igualdade de objeto
+<b class="pc">&nbsp;                    if (autor.equals(novo.getAutor())) {</b>
+&nbsp;                        // 6) nome exato
+<b class="pc">&nbsp;                        if (autor.getNome() != null &amp;&amp; autor.getNome().equals(novo.getAutor().getNome())) {</b>
+<b class="nc">&nbsp;                            autor.addLivro(novo);</b>
+<b class="nc">&nbsp;                            autorAssociado = true;</b>
+&nbsp;                            break;
+&nbsp;                        }
+&nbsp;                        // 7) nome igual ignorando caixa
+<b class="pc">&nbsp;                        else if (autor.getNome() != null &amp;&amp; autor.getNome().equalsIgnoreCase(novo.getAutor().getNome())) {</b>
+<b class="fc">&nbsp;                            autor.addLivro(novo);</b>
+<b class="fc">&nbsp;                            autorAssociado = true;</b>
+&nbsp;                            break;
+&nbsp;                        }
+&nbsp;                        // 8) autor parcialmente compatível: cria nova entrada para evitar sobrescrever
+&nbsp;                        else {
+<b class="fc">&nbsp;                            Autor novoAutor = new Autor(novo.getAutor().getNome());</b>
+<b class="fc">&nbsp;                            novoAutor.addLivro(novo);</b>
+<b class="fc">&nbsp;                            this.autores.add(novoAutor);</b>
+<b class="fc">&nbsp;                            autorAssociado = true;</b>
+&nbsp;                            break;
+&nbsp;                        }
+&nbsp;                    }
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+&nbsp;            // 9) se não achou ou não estava contido, adiciona novo autor
+<b class="pc">&nbsp;            if (!contemAutor || !autorAssociado) {</b>
+<b class="fc">&nbsp;                Autor autor = new Autor(novo.getAutor().getNome());</b>
+<b class="fc">&nbsp;                autor.addLivro(novo);</b>
+<b class="fc">&nbsp;                this.autores.add(autor);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // 10) associação à estante com múltiplos ramos de decisão
+<b class="fc">&nbsp;        boolean colocado = false;</b>
+<b class="fc">&nbsp;        if (this.estantes == null) {</b>
+<b class="fc">&nbsp;            this.estantes = new ArrayList&lt;&gt;();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        for (Estante e : estantes) {</b>
+<b class="fc">&nbsp;            if (e == null) continue;</b>
+&nbsp;
+<b class="fc">&nbsp;            String generoEstante = e.getGenero();</b>
+<b class="fc">&nbsp;            String generoLivro = novo.genero;</b>
+&nbsp;
+&nbsp;            // 11) ambos nulos -&gt; coloca
+<b class="fc">&nbsp;            if (generoEstante == null &amp;&amp; generoLivro == null) {</b>
+<b class="fc">&nbsp;                e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                colocado = true;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            // 12) comparação exata
+<b class="fc">&nbsp;            else if (generoEstante != null &amp;&amp; generoEstante.equals(generoLivro)) {</b>
+<b class="fc">&nbsp;                e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                colocado = true;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            // 13) comparação ignorando caixa
+<b class="fc">&nbsp;            else if (generoEstante != null &amp;&amp; generoLivro != null &amp;&amp; generoEstante.equalsIgnoreCase(generoLivro)) {</b>
+<b class="fc">&nbsp;                e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                colocado = true;</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;            // 14) livro sem gênero -&gt; tenta estante vazia
+<b class="fc">&nbsp;            else if (generoLivro == null || generoLivro.trim().isEmpty()) {</b>
+<b class="pc">&nbsp;                if (generoEstante == null || generoEstante.trim().isEmpty()) {</b>
+<b class="fc">&nbsp;                    e.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                    colocado = true;</b>
+&nbsp;                    break;
+&nbsp;                }
+&nbsp;            }
+&nbsp;            // continua tentando outras estantes
+&nbsp;        }
+&nbsp;
+&nbsp;        // 15) se não foi colocado, tenta criar nova estante quando possível
+<b class="fc">&nbsp;        if (!colocado) {</b>
+<b class="pc">&nbsp;            if (novo.genero != null &amp;&amp; !novo.genero.trim().isEmpty()) {</b>
+&nbsp;                // passa o id atual ao construtor conforme assinatura de Estante
+<b class="fc">&nbsp;                Estante nova = new Estante(this.idsEstantes, novo.genero);</b>
+<b class="fc">&nbsp;                nova.addLivroNaEstante(novo);</b>
+<b class="fc">&nbsp;                addEstante(nova);</b>
+&nbsp;            } else {
+&nbsp;                // fallback: não há estante adequada; mantém comportamento sem lançar erro
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void removeLivro(Livro l, String path){
+<b class="fc">&nbsp;        Livro.removerLivro(l, path);</b>
+&nbsp;
+<b class="fc">&nbsp;        for (Autor autor : autores){</b>
+<b class="pc">&nbsp;            if (autor.equals(l.getAutor())){</b>
+<b class="nc">&nbsp;                autor.getLivrosAutor().remove(l);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        for (Estante e : estantes){</b>
+<b class="pc">&nbsp;            if (e.getGenero().equals(l.genero)){</b>
+<b class="fc">&nbsp;                e.getLivros().remove(l);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addEstante(Estante nova) {
+<b class="fc">&nbsp;        estantes.add(nova);</b>
+<b class="fc">&nbsp;        idsEstantes++;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Livro buscarLivroISNB (String ISNB){
+<b class="fc">&nbsp;        for (Estante e : estantes){</b>
+<b class="fc">&nbsp;            for (Livro l : e.livros){</b>
+<b class="fc">&nbsp;                if (l.getISBN().equals(ISNB)){</b>
+<b class="fc">&nbsp;                    return l;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Livro&gt; buscarLivroAutor (String autor){
+<b class="fc">&nbsp;        ArrayList&lt;Livro&gt; livros = new ArrayList();</b>
+<b class="fc">&nbsp;        for (Estante e : estantes){</b>
+<b class="fc">&nbsp;            for (Livro l : e.livros){</b>
+<b class="fc">&nbsp;                if (l.autor.getNome().equals(autor)){</b>
+<b class="fc">&nbsp;                    livros.add(l);</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        return livros;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean buscarAutor(String nome){
+<b class="fc">&nbsp;        for (Autor autor : autores){</b>
+<b class="fc">&nbsp;            if (autor.getNome().equals(nome))</b>
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Emprestimo buscarEmprestimo(String CPF, String ISNB){
+<b class="fc">&nbsp;        for (Emprestimo e : emprestimos){</b>
+<b class="fc">&nbsp;            if ((e.getCPF().equals(CPF))&amp;&amp;(e.getISNB().equals(ISNB))){</b>
+<b class="fc">&nbsp;                return e;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        }
+<b class="fc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean buscarClienteNosEmprestimos(String CPF){
+<b class="fc">&nbsp;        for (Emprestimo e : emprestimos){</b>
+<b class="fc">&nbsp;            if (e.getCPF().equals(CPF)){</b>
+<b class="fc">&nbsp;                return true;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getIdsEstantes() {
+<b class="fc">&nbsp;        return idsEstantes;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setIdsEstantes(int idsEstantes) {
+<b class="fc">&nbsp;        this.idsEstantes = idsEstantes;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Estante&gt; getEstantes() {
+<b class="fc">&nbsp;        return estantes;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEstantes(ArrayList&lt;Estante&gt; estantes) {
+<b class="fc">&nbsp;        this.estantes = estantes;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Emprestimo&gt; getEmprestimos() {
+<b class="fc">&nbsp;        return emprestimos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEmprestimos(ArrayList&lt;Emprestimo&gt; emprestimos) {
+<b class="fc">&nbsp;        this.emprestimos = emprestimos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;Autor&gt; getAutores() {
+<b class="fc">&nbsp;        return autores;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAutores(ArrayList&lt;Autor&gt; autores) {
+<b class="fc">&nbsp;        this.autores = autores;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-01 14:10</div>
+</div>
+</body>
+</html>

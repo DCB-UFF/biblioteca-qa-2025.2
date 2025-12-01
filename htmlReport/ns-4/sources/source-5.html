@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MenuEditarAcervo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">biblioteca.menu</a>
+</div>
+
+<h1>Coverage Summary for Class: MenuEditarAcervo (biblioteca.menu)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MenuEditarAcervo</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.3%
+  </span>
+  <span class="absValue">
+    (36/37)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package biblioteca.menu;
+&nbsp;
+&nbsp;import biblioteca.biblioteca.*;
+&nbsp;import biblioteca.excecoes.LivroNaoExistenteException;
+&nbsp;import biblioteca.livros.Livro;
+&nbsp;import biblioteca.pessoas.Autor;
+&nbsp;import static java.lang.System.exit;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;/* @author Luam */
+&nbsp;
+<b class="nc">&nbsp;public class MenuEditarAcervo {</b>
+&nbsp;
+&nbsp;    public static void opcoesEditarAcervo(){
+<b class="fc">&nbsp;        System.out.println(&quot;Escolha o que você deseja fazer:&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;1 - Adicionar livro&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;2 - Remover livro&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;3 - Sair\n&quot;);</b>
+&nbsp;    } 
+&nbsp;    
+&nbsp;    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws LivroNaoExistenteException{
+<b class="fc">&nbsp;        int op=0;</b>
+<b class="fc">&nbsp;        opcoesEditarAcervo();</b>
+<b class="pc">&nbsp;        while(op != 3){</b>
+<b class="fc">&nbsp;            op = teclado.nextInt(); </b>
+<b class="fc">&nbsp;            teclado.nextLine();</b>
+<b class="fc">&nbsp;            switch (op) {</b>
+&nbsp;                case 1:
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o nome do autor: &quot;);</b>
+<b class="fc">&nbsp;                    String nome = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o país do autor: &quot;);</b>
+<b class="fc">&nbsp;                    String pais = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    Autor autor = new Autor(nome, pais);</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o título do livro: &quot;);</b>
+<b class="fc">&nbsp;                    String titulo = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o isbn do livro: &quot;);</b>
+<b class="fc">&nbsp;                    String isbn = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite a quantidade de páginas do livro: &quot;);</b>
+<b class="fc">&nbsp;                    int pag = teclado.nextInt();</b>
+<b class="fc">&nbsp;                    teclado.nextLine();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o gênero do livro: &quot;);</b>
+<b class="fc">&nbsp;                    String gene = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite a editora do livro: &quot;);</b>
+<b class="fc">&nbsp;                    String edit = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    Livro novo = new Livro(autor, titulo, pag, isbn, gene, edit, false); </b>
+<b class="fc">&nbsp;                    teclado.nextLine();</b>
+&nbsp;                    
+<b class="fc">&nbsp;                    Livro adicionado = new Livro(autor, titulo,  pag,isbn, gene, edit, false);               </b>
+<b class="fc">&nbsp;                    unidadeAtual.getAcervo().addLivro2(adicionado, unidadeAtual.getPath());</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nLivro adicionado!!&quot;);</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;                    break;
+&nbsp;                case 2:
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o título do arquivo que você deseja remover:&quot;);</b>
+<b class="fc">&nbsp;                    String titulo2 = teclado.nextLine();</b>
+<b class="fc">&nbsp;                    Livro removido = Util.buscarLivroTitulo(titulo2, unidadeAtual);</b>
+<b class="fc">&nbsp;                    unidadeAtual.getAcervo().removeLivro(removido, unidadeAtual.getPath());</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;\nLivro removido!!&quot;);</b>
+&nbsp;                    return;
+&nbsp;                    
+&nbsp;                case 3:
+&nbsp;                    return;
+&nbsp;                default:
+&nbsp;                    break;
+&nbsp;                } 
+&nbsp;            }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-01 14:10</div>
+</div>
+</body>
+</html>
