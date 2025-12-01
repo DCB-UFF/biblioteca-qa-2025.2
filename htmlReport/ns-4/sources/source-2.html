@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MenuCliente</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">biblioteca.menu</a>
+</div>
+
+<h1>Coverage Summary for Class: MenuCliente (biblioteca.menu)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MenuCliente</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.4%
+  </span>
+  <span class="absValue">
+    (14/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.3%
+  </span>
+  <span class="absValue">
+    (60/65)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package biblioteca.menu;
+&nbsp;
+&nbsp;import biblioteca.biblioteca.*;
+&nbsp;import biblioteca.excecoes.ClienteInexistenteException;
+&nbsp;import biblioteca.pessoas.Cliente;
+&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="nc">&nbsp;public class MenuCliente {</b>
+&nbsp;
+&nbsp;    public static void opcoesAcessarAdminCliente() {
+<b class="fc">&nbsp;        System.out.println(&quot;1 - Buscar cliente&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;2 - Adicionar cliente&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;3 - Remover cliente&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;4 - Imprimir quadro de clientes&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;5 - Voltar ao menu da unidade\n&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void adicionarCliente(Unidade aux, Scanner tecla) {
+<b class="fc">&nbsp;        System.out.println(&quot;\n--- Adicionar Novo Cliente ---&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o nome do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String nome = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o cpf do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String cpf = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o nascimento do cliente (dd/mm/aaaa): &quot;);</b>
+<b class="fc">&nbsp;        String data = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o telefone do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String tele = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite a rua do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String rua = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o bairro do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String bairro = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o cep do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String cep = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite a cidade do cliente: &quot;);</b>
+<b class="fc">&nbsp;        String cidade = tecla.nextLine();</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Digite o estado do cliente (UF): &quot;);</b>
+<b class="fc">&nbsp;        String estado = tecla.nextLine();</b>
+&nbsp;
+<b class="fc">&nbsp;        Cliente cliente = new Cliente(nome, cpf, data, tele, rua, bairro, cep, cidade, estado);</b>
+<b class="fc">&nbsp;        aux.getClientes().add(cliente);</b>
+&nbsp;
+<b class="fc">&nbsp;        Cliente.escreverCliente(cliente, aux.getPath());</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Cliente adicionado com sucesso!&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void removerCliente(Unidade aux, Scanner tecla) throws ClienteInexistenteException {
+<b class="fc">&nbsp;        System.out.println(&quot;\nDigite o cpf do cliente a ser removido: &quot;);</b>
+<b class="fc">&nbsp;        String cpf = tecla.nextLine();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (cpf.isBlank()) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;CPF inválido.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        Cliente clienteDeletado = Util.buscarCliente(aux, cpf);</b>
+<b class="fc">&nbsp;        aux.getClientes().remove(clienteDeletado);</b>
+<b class="fc">&nbsp;        Cliente.removerCliente(clienteDeletado, aux.getPath());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void iniciar(Unidade unidadeAtual, Scanner teclado) {
+<b class="fc">&nbsp;        boolean continuar = true;</b>
+<b class="fc">&nbsp;        while (continuar) {</b>
+<b class="fc">&nbsp;            opcoesAcessarAdminCliente();</b>
+<b class="fc">&nbsp;            int op = teclado.nextInt();</b>
+<b class="fc">&nbsp;            teclado.nextLine();</b>
+&nbsp;
+<b class="pc">&nbsp;            switch (op) {</b>
+&nbsp;                case 1:
+<b class="fc">&nbsp;                    System.out.println(&quot;\nDigite o cpf do cliente: &quot;);</b>
+<b class="fc">&nbsp;                    String cpf = teclado.nextLine();</b>
+<b class="pc">&nbsp;                    if (cpf.isBlank()) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;CPF inválido.&quot;);</b>
+&nbsp;                    } else {
+<b class="pc">&nbsp;                        if (unidadeAtual.getClientes().isEmpty()) {</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Nenhum cliente cadastrado nesta unidade.&quot;);</b>
+&nbsp;                        } else {
+&nbsp;                            try {
+<b class="fc">&nbsp;                                Cliente buscado = Util.buscarCliente(unidadeAtual, cpf);</b>
+<b class="fc">&nbsp;                                System.out.println(&quot;--- Cliente Encontrado ---&quot;);</b>
+<b class="fc">&nbsp;                                System.out.println(buscado);</b>
+&nbsp;                            } catch (ClienteInexistenteException e) {
+<b class="fc">&nbsp;                                System.out.println(e.getMessage());</b>
+&nbsp;                            }
+&nbsp;                        }
+&nbsp;                    }
+&nbsp;                    break;
+&nbsp;                case 2:
+<b class="nc">&nbsp;                    adicionarCliente(unidadeAtual, teclado);</b>
+&nbsp;                    break;
+&nbsp;                case 3:
+&nbsp;                    try {
+<b class="fc">&nbsp;                        removerCliente(unidadeAtual, teclado);</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Cliente removido com sucesso.&quot;);</b>
+&nbsp;                    } catch (ClienteInexistenteException e) {
+<b class="nc">&nbsp;                        System.out.println(e.getMessage());</b>
+&nbsp;                    }
+&nbsp;                    break;
+&nbsp;                case 4:
+<b class="fc">&nbsp;                    System.out.println(&quot;\n--- Quadro de Clientes ---&quot;);</b>
+<b class="fc">&nbsp;                    if (unidadeAtual.getClientes().isEmpty()) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Nenhum cliente cadastrado.&quot;);</b>
+&nbsp;                    } else {
+<b class="fc">&nbsp;                        for (Cliente c : unidadeAtual.getClientes()) {</b>
+<b class="fc">&nbsp;                            System.out.println(c);</b>
+&nbsp;                        }
+&nbsp;                    }
+&nbsp;                    break;
+&nbsp;                case 5:
+<b class="fc">&nbsp;                    System.out.println(&quot;Retornando ao menu da unidade...&quot;);</b>
+<b class="fc">&nbsp;                    continuar = false;</b>
+<b class="fc">&nbsp;                    MenuPrincipal.opcoesAcessar();</b>
+&nbsp;                    break;
+&nbsp;                default:
+<b class="fc">&nbsp;                    System.out.println(&quot;Opção inválida.&quot;);</b>
+&nbsp;                    break;
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-01 14:10</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>MenuConsultarAcervo.java</h1>
+
+<table class="src">
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package biblioteca.menu;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import biblioteca.biblioteca.*;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import biblioteca.excecoes.*;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import biblioteca.livros.Livro;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import biblioteca.livros.Estante;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import biblioteca.livros.Acervo;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static java.lang.System.exit;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Scanner;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*@author Luam */</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>public class MenuConsultarAcervo {</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static void opcoesConsultarAcervo(){</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_19'/>
+19
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_19'>1</a>
+<span>
+1. opcoesConsultarAcervo : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        System.out.println(&#34;Escolha o que voc&#234; deseja fazer:&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_20'/>
+20
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_20'>1</a>
+<span>
+1. opcoesConsultarAcervo : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        System.out.println(&#34;1 - Buscar livro pelo t&#237;tulo&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_21'/>
+21
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_21'>1</a>
+<span>
+1. opcoesConsultarAcervo : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        System.out.println(&#34;2 - Buscar livro pelo autor&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_22'/>
+22
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_22'>1</a>
+<span>
+1. opcoesConsultarAcervo : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        System.out.println(&#34;3 - Imprimir acervo&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_23'/>
+23
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_23'>1</a>
+<span>
+1. opcoesConsultarAcervo : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        System.out.println(&#34;4 - Imprimir livros emprestados&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_24'/>
+24
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_24'>1</a>
+<span>
+1. opcoesConsultarAcervo : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        System.out.println(&#34;5 - Sair\n&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws LivroNaoExistenteException {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int op = 0;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int tentativas = 0;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        boolean continuar = true;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_32'/>
+32
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_32'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        while (continuar) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_33'/>
+33
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_33'>1</a>
+<span>
+1. iniciar : removed call to biblioteca/menu/MenuConsultarAcervo::opcoesConsultarAcervo &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            opcoesConsultarAcervo();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_34'/>
+34
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_34'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (teclado.hasNextInt()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                op = teclado.nextInt();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                teclado.nextLine();</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            } else {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_38'/>
+38
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_38'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;Entrada inv&#225;lida. Digite um n&#250;mero.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                teclado.nextLine();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_40'/>
+40
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_40'>1</a>
+<span>
+1. iniciar : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                tentativas++;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                continue;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_44'/>
+44
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_44'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (op == 1) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_45'/>
+45
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_45'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;\nDigite o t&#237;tulo do livro: &#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                String titulo = teclado.nextLine();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                Livro buscado = Util.buscarLivroTitulo(titulo, unidadeAtual);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_48'/>
+48
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_48'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                if (buscado != null) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_49'/>
+49
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_49'>1</a>
+<span>
+1. iniciar : removed call to biblioteca/livros/Livro::imprimirLivro &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    buscado.imprimirLivro();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_50'/>
+50
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_50'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    if (buscado.isEstaEmprestado()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_51'/>
+51
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_51'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                        System.out.println(&#34;Este livro est&#225; emprestado.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    } else {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_53'/>
+53
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_53'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                        System.out.println(&#34;Este livro est&#225; dispon&#237;vel.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                } else {</span></pre></td></tr>
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_56'/>
+56
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_56'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>                    System.out.println(&#34;Livro n&#227;o encontrado.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_58'/>
+58
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_58'>1</a>
+<span>
+1. iniciar : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                tentativas++;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_59'/>
+59
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_59'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (op == 2) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_60'/>
+60
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_60'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;\nDigite o nome do autor:&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                String autor = teclado.nextLine();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                ArrayList&#60;Livro&#62; achados = unidadeAtual.getAcervo().buscarLivroAutor(autor);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_63'/>
+63
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_63'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                if (achados.isEmpty()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_64'/>
+64
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_64'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    System.out.println(&#34;Nenhum livro encontrado para este autor.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                } else {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    for (Livro l : achados) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_67'/>
+67
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_67'>1</a>
+<span>
+1. iniciar : removed call to biblioteca/livros/Livro::imprimirLivro &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                        l.imprimirLivro();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_70'/>
+70
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_70'>1</a>
+<span>
+1. iniciar : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                tentativas++;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_71'/>
+71
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_71'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (op == 3) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_72'/>
+72
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_72'>1</a>
+<span>
+1. iniciar : removed call to biblioteca/livros/Acervo::imprimirAcervo &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                unidadeAtual.getAcervo().imprimirAcervo(unidadeAtual.getNome());</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_73'/>
+73
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_73'>1</a>
+<span>
+1. iniciar : Changed increment from 1 to -1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                tentativas++;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_74'/>
+74
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_74'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (op == 4) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                ArrayList&#60;Livro&#62; emprestados = new ArrayList&#60;&#62;();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                for (Estante est : unidadeAtual.getAcervo().getEstantes()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    for (Livro l : est.getLivros()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_78'/>
+78
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_78'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                        if (l.isEstaEmprestado()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                            emprestados.add(l);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                        }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_83'/>
+83
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_83'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                if (emprestados.isEmpty()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_84'/>
+84
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_84'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    System.out.println(&#34;Nenhum livro emprestado.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                } else {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    for (Livro l : emprestados) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_87'/>
+87
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_87'>1</a>
+<span>
+1. iniciar : removed call to biblioteca/livros/Livro::imprimirLivro &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                        l.imprimirLivro();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_90'/>
+90
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_90'>1</a>
+<span>
+1. iniciar : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                tentativas++;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_91'/>
+91
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_91'>1</a>
+<span>
+1. iniciar : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (op == 5) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_92'/>
+92
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_92'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;Saindo...&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_93'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                continuar = false;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_94'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            } else {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_95'/>
+95
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_95'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;Op&#231;&#227;o inv&#225;lida.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_96'/>
+96
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_96'>1</a>
+<span>
+1. iniciar : Changed increment from 1 to -1 &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                tentativas++;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_98'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_99'/>
+99
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_99'>2</a>
+<span>
+1. iniciar : changed conditional boundary &rarr; SURVIVED<br/>
+2. iniciar : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (tentativas &#62;= 5) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_100'/>
+100
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_100'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;Voc&#234; j&#225; realizou 5 opera&#231;&#245;es.&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_101'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                continuar = false;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_102'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_103'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            // Decis&#227;o extra: alerta se usu&#225;rio s&#243; busca por autor</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_104'/>
+104
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_104'>5</a>
+<span>
+1. iniciar : negated conditional &rarr; SURVIVED<br/>
+2. iniciar : changed conditional boundary &rarr; SURVIVED<br/>
+3. iniciar : negated conditional &rarr; SURVIVED<br/>
+4. iniciar : negated conditional &rarr; SURVIVED<br/>
+5. iniciar : Replaced integer modulus with multiplication &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (tentativas &#62; 0 &#38;&#38; op == 2 &#38;&#38; tentativas % 2 == 0) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_105'/>
+105
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_105'>1</a>
+<span>
+1. iniciar : removed call to java/io/PrintStream::println &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                System.out.println(&#34;Voc&#234; est&#225; buscando muitos autores. Que tal buscar por t&#237;tulo?&#34;);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_106'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_107'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_108'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_109'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5709e10b_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_110'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_19'>19</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_19'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>opcoesConsultarAcervo<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[5],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[5],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[5],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_20'>20</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_20'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>opcoesConsultarAcervo<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[10],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[10],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[10],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_21'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>opcoesConsultarAcervo<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[15],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[15],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[15],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_22'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>opcoesConsultarAcervo<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[20],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[20],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[20],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_23'>23</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_23'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>opcoesConsultarAcervo<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[25],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[25],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[25],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_24'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>opcoesConsultarAcervo<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[30],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[30],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=opcoesConsultarAcervo,-methodDesc=()V],-indexes=[30],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_32'>32</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_32'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_33'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to biblioteca/menu/MenuConsultarAcervo::opcoesConsultarAcervo &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[20],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[20],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[20],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_34'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_38'>38</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_38'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[42],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[42],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[42],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_40'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[50],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[50],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[50],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_44'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_45'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[64],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[64],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[64],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_48'>48</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_48'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[79],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[79],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[79],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_49'>49</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_49'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to biblioteca/livros/Livro::imprimirLivro &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[83],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[83],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[83],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_50'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[88],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[88],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[88],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_51'>51</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_51'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[93],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[93],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[93],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_53'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[100],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[100],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[100],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_56'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; NO_COVERAGE</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_58'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[111],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[111],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[111],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_59'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_60'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[124],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[124],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[124],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_63'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[141],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[141],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[141],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_64'>64</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_64'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[146],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[146],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[146],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_67'>67</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_67'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to biblioteca/livros/Livro::imprimirLivro &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[166],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[166],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[166],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_70'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[173],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[173],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[173],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_71'>71</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_71'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_72'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to biblioteca/livros/Acervo::imprimirAcervo &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[188],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[188],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[188],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_73'>73</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_73'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</span></span> Changed increment from 1 to -1 &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_74'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_78'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[240],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[240],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[240],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_83'>83</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_83'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[260],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[260],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[260],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_84'>84</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_84'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[265],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[265],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[265],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_87'>87</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_87'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to biblioteca/livros/Livro::imprimirLivro &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[285],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[285],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[285],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_90'>90</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_90'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[292],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[292],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[292],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_91'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_92'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[305],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[305],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[305],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_95'>95</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_95'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[316],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[316],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[316],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_96'>96</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_96'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[319],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[319],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[319],-mutator=org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_99'>99</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_99'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[325],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[325],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[325],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[325],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[325],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[325],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_100'>100</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_100'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[330],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[330],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[330],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_104'>104</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_104'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[339],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[339],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[339],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[339],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[339],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[339],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[342],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[342],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[342],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()]</li> <li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()]</li> 
+</ul>
+</div></div> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[346],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[346],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[346],-mutator=org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> Replaced integer modulus with multiplication &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[345],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[345],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[345],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5709e10b_105'>105</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5709e10b_105'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>iniciar<br/><b>Killed by : </b>none</span></span> removed call to java/io/PrintStream::println &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[351],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[351],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=biblioteca.menu.MenuConsultarAcervo,-method=iniciar,-methodDesc=(Lbiblioteca/biblioteca/Unidade;Ljava/util/Scanner;)V],-indexes=[351],-mutator=org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao2_BuscarAutor()] (1 ms)</li><li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_Sucesso()] (2 ms)</li><li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testFluxo_Erros_E_Limite()] (1 ms)</li><li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao4_LivrosEmprestados()] (3 ms)</li><li>biblioteca.menu.MenuConsultarAcervoTest.[engine:junit-jupiter]/[class:biblioteca.menu.MenuConsultarAcervoTest]/[method:testOpcao1_BuscarTitulo_NaoEncontrado()] (3 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.20.0
+
+</body>
+</html>
