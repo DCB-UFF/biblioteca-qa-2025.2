@@ -1,8 +1,8 @@
 package test.java.biblioteca.livros;
 
+import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.Acervo;
 import biblioteca.livros.Emprestimo;
-import biblioteca.biblioteca.Unidade;
 import biblioteca.livros.Estante;
 import biblioteca.livros.Livro;
 import biblioteca.pessoas.Autor;
@@ -11,8 +11,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -35,8 +37,13 @@ public class AcervoTest {
     private Autor autor;
     private Unidade unidade;
 
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
     @BeforeEach
     void setUp() throws IOException {
+        System.setOut(new PrintStream(outContent));
+
         tempDir = Files.createTempDirectory("teste_acervo_merge");
         pathComBarra = tempDir.toAbsolutePath().toString() + File.separator;
 
@@ -60,11 +67,13 @@ public class AcervoTest {
 
     @AfterEach
     void tearDown() {
+        System.setOut(originalOut);
         try (Stream<Path> walk = Files.walk(tempDir)) {
             walk.sorted(Comparator.reverseOrder())
                     .map(Path::toFile)
                     .forEach(File::delete);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -76,9 +85,7 @@ public class AcervoTest {
     @DisplayName("Deve adicionar livro no acervo (Memória)")
     void deveAdicionarLivroNoAcervo() {
         acervo.addLivro(livro);
-
         Livro encontrado = acervo.buscarLivroISNB(ISBN);
-
         assertNotNull(encontrado);
         assertEquals(TITULO, encontrado.getTitulo());
     }
@@ -87,9 +94,7 @@ public class AcervoTest {
     @DisplayName("Deve buscar livro por ISBN")
     void deveBuscarLivroPorIsbn() {
         acervo.addLivro(livro);
-
         Livro encontrado = acervo.buscarLivroISNB(ISBN);
-
         assertNotNull(encontrado);
         assertEquals(ISBN, encontrado.getISBN());
     }
@@ -106,9 +111,7 @@ public class AcervoTest {
     void deveBuscarLivrosPorAutor() {
         acervo.getAutores().add(autor);
         acervo.addLivro(livro);
-
         ArrayList<Livro> livrosDoAutor = acervo.buscarLivroAutor(NOME_AUTOR);
-
         assertFalse(livrosDoAutor.isEmpty());
         assertEquals(1, livrosDoAutor.size());
         assertEquals(TITULO, livrosDoAutor.get(0).getTitulo());
@@ -126,12 +129,9 @@ public class AcervoTest {
     void testAddLivro_LogicaComplexa() {
         Autor autor1 = new Autor("J.K. Rowling", "UK");
         Livro l1 = new Livro(autor1, "Harry Potter", 300, "ISBN-HP", "Fantasia", "Rocco", false);
-
         acervo.addLivro2(l1, pathComBarra);
-
         assertEquals(1, acervo.getAutores().size());
         assertEquals(2, acervo.getEstantes().size());
-
         assertTrue(Files.exists(tempDir.resolve("livros.csv")));
     }
 
@@ -159,13 +159,11 @@ public class AcervoTest {
     void testBuscasBooleanas() {
         Autor machado = new Autor("Machado de Assis");
         acervo.getAutores().add(machado);
-
         assertTrue(acervo.buscarAutor("Machado de Assis"));
         assertFalse(acervo.buscarAutor("Clarice Lispector"));
 
         Emprestimo emp = new Emprestimo("CPF-TESTE-123", "ISBN-X", "Data1", "Data2");
         acervo.getEmprestimos().add(emp);
-
         assertTrue(acervo.buscarClienteNosEmprestimos("CPF-TESTE-123"));
         assertFalse(acervo.buscarClienteNosEmprestimos("CPF-NAO-EXISTE"));
     }
@@ -183,7 +181,6 @@ public class AcervoTest {
 
         Emprestimo emp = new Emprestimo("CPF123", "ISBN-LOTR", "01/01", "10/01");
         acervo.emprestarLivro(unidade, emp);
-
         assertTrue(acervo.buscarClienteNosEmprestimos("CPF123"));
         assertTrue(hobbit.isEstaEmprestado());
 
@@ -191,16 +188,12 @@ public class AcervoTest {
         acervo.emprestarLivro(unidade, emp2);
         assertEquals(1, acervo.getEmprestimos().size());
 
-        String conteudoPerfeito = "CPF,ISBN,DataE,DataD\n" +
-                "CPF123,ISBN-LOTR,01/01,10/01";
-
+        String conteudoPerfeito = "CPF,ISBN,DataE,DataD\n" + "CPF123,ISBN-LOTR,01/01,10/01";
         Files.writeString(tempDir.resolve("emprestimos.csv"), conteudoPerfeito);
 
         acervo.devolverLivro(unidade, "CPF123", "ISBN-LOTR");
-
         assertFalse(acervo.buscarClienteNosEmprestimos("CPF123"));
-
-        assertTrue(hobbit.isEstaEmprestado());
+        assertFalse(hobbit.isEstaEmprestado());
     }
 
     @Test
@@ -208,18 +201,15 @@ public class AcervoTest {
     void testRemoverLivro() throws IOException {
         Autor autorKing = new Autor("King", "EUA");
         Livro it = new Livro(autorKing, "It", 1000, "ISBN-IT", "Aventura", "Suma", false);
-
         autorKing.addLivro(it);
         acervo.getAutores().add(autorKing);
         acervo.getEstantes().get(0).addLivroNaEstante(it);
 
         Files.deleteIfExists(tempDir.resolve("livros.csv"));
         Files.createFile(tempDir.resolve("livros.csv"));
-
         Livro.escreverLivro(it, pathComBarra);
 
         acervo.removeLivro(it, pathComBarra);
-
         assertFalse(acervo.getEstantes().get(0).getLivros().contains(it));
         assertFalse(autorKing.getLivrosAutor().contains(it));
 
@@ -232,5 +222,107 @@ public class AcervoTest {
     void testAddLivro_Nulls() {
         assertDoesNotThrow(() -> acervo.addLivro(null));
         assertDoesNotThrow(() -> acervo.addLivro2(null, "path"));
+    }
+
+    @Test
+    @DisplayName("Deve imprimir acervo")
+    void deveImprimirAcervo() {
+        acervo.imprimirAcervo("Unidade Teste");
+        assertTrue(outContent.toString().contains("Acervo da Unidade - Unidade Teste"));
+    }
+
+    @Test
+    @DisplayName("Adicionar livro com autor nulo")
+    void testAddLivroComAutorNulo() {
+        Livro livroSemAutor = new Livro(null, "Livro Sem Autor", 100, "ISBN-SA", "Gênero", "Editora", false);
+        acervo.addLivro(livroSemAutor);
+        assertFalse(acervo.getAutores().isEmpty());
+        assertEquals("Desconhecido", acervo.getAutores().get(0).getNome());
+    }
+
+    @Test
+    @DisplayName("Adicionar livro com autor existente (case-insensitive)")
+    void testAddLivroComAutorExistenteCaseInsensitive() {
+        Autor autorExistente = new Autor("autor teste");
+        Livro outroLivro = new Livro(autorExistente, "Outro Livro", 150, "ISBN-OL", "Aventura", "Editora", false);
+        acervo.addLivro(livro); 
+        acervo.addLivro(outroLivro);
+        assertEquals(1, acervo.getAutores().size());
+    }
+
+    @Test
+    @DisplayName("Adicionar livro com gênero nulo")
+    void testAddLivroComGeneroNulo() {
+        Livro livroSemGenero = new Livro(autor, "Livro Sem Gênero", 120, "ISBN-SG", null, "Editora", false);
+        acervo.addLivro(livroSemGenero);
+        assertTrue(acervo.buscarLivroISNB("ISBN-SG") != null);
+    }
+
+    @Test
+    @DisplayName("Adicionar livro com estantes nulas")
+    void testAddLivroComEstantesNulas() {
+        acervo.setEstantes(null);
+        acervo.addLivro(livro);
+        assertFalse(acervo.getEstantes().isEmpty());
+    }
+
+    @Test
+    @DisplayName("addLivro2 com path nulo")
+    void testAddLivro2ComCaminhoNulo() {
+        assertDoesNotThrow(() -> acervo.addLivro2(livro, null));
+    }
+
+    @Test
+    @DisplayName("addLivro2 com autor já existente, mas objeto diferente")
+    void testAddLivro2ComAutorJaExistente() {
+        Autor autorClone = new Autor(NOME_AUTOR);
+        Livro outroLivro = new Livro(autorClone, "Clone", 100, "ISBN-C", "Aventura", "Editora", false);
+        acervo.addLivro2(livro, pathComBarra);
+        acervo.addLivro2(outroLivro, pathComBarra);
+        assertEquals(1, acervo.getAutores().size());
+    }
+
+    @Test
+    @DisplayName("addLivro2 com gênero nulo na estante e no livro")
+    void testAddLivro2ComGeneroNuloNaEstanteELivro() {
+        acervo.getEstantes().get(0).setGenero(null);
+        Livro livroSemGenero = new Livro(autor, "Sem Gênero", 100, "ISBN-SG", null, "Editora", false);
+        acervo.addLivro2(livroSemGenero, pathComBarra);
+        assertNotNull(acervo.buscarLivroISNB("ISBN-SG"));
+    }
+
+    @Test
+    @DisplayName("Remover livro que não existe na lista do autor")
+    void testRemoverLivroInexistenteNaListaDoAutor() {
+        autor.getLivrosAutor().clear();
+        acervo.getAutores().add(autor);
+        acervo.getEstantes().get(0).addLivroNaEstante(livro);
+        assertDoesNotThrow(() -> acervo.removeLivro(livro, pathComBarra));
+    }
+
+    @Test
+    @DisplayName("Remover livro de um gênero que não corresponde a nenhuma estante")
+    void testRemoverLivroDeGeneroSemEstanteCorrespondente() {
+        livro.setGenero("Ficção Científica");
+        acervo.getAutores().add(autor);
+        acervo.getEstantes().get(0).addLivroNaEstante(livro);
+        assertDoesNotThrow(() -> acervo.removeLivro(livro, pathComBarra));
+    }
+    
+    @Test
+    @DisplayName("Buscar empréstimo com CPF e ISBN")
+    void testBuscarEmprestimo() {
+        Emprestimo emprestimo = new Emprestimo("12345", "98765", "01/01/2025", "15/01/2025");
+        acervo.getEmprestimos().add(emprestimo);
+        Emprestimo emprestimoEncontrado = acervo.buscarEmprestimo("12345", "98765");
+        assertNotNull(emprestimoEncontrado);
+        assertEquals("12345", emprestimoEncontrado.getCPF());
+    }
+
+    @Test
+    @DisplayName("Buscar empréstimo com CPF e ISBN inexistente")
+    void testBuscarEmprestimoInexistente() {
+        Emprestimo emprestimoEncontrado = acervo.buscarEmprestimo("11111", "22222");
+        assertNull(emprestimoEncontrado);
     }
 }
