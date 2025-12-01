@@ -1,4 +1,4 @@
-package biblioteca.menu;
+package test.java.biblioteca.menu;
 
 import biblioteca.biblioteca.Sistema;
 import biblioteca.menu.MenuCriarNovaUnidade;
