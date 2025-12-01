@@ -82,7 +82,6 @@ public class MenuFuncionarioTest {
 
     @Test
     void testIniciar_quandoBuscaFuncionarioExistente_deveImprimirSeusDados() throws Exception {
-        // Cria um funcionário existente
         Funcionario f = new Funcionario(
                 "Jose", "114459885-99", "07/07/2000", "97777-7777",
                 2000f, "atendente", "Rua 12 de Abril 99", "Quitino",
@@ -90,7 +89,6 @@ public class MenuFuncionarioTest {
         );
         unidade.getFuncionarios().add(f);
 
-        // Simula a entrada do usuário: [1 -> buscar] [cpf -> "114459885-99"] [5 -> sair]
         String entradaSimulada = String.join("\n", "1", "114459885-99", "5", "");
 
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
@@ -107,7 +105,6 @@ public class MenuFuncionarioTest {
 
     @Test
     void testIniciar_quandoBuscaFuncionarioInexistente_deveLancarExcecao() {
-        // Simula o usuário tentando buscar um CPF inexistente
         String entradaSimulada = String.join("\n", "1", "000000000-00", "5");
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
@@ -121,7 +118,6 @@ public class MenuFuncionarioTest {
 
     @Test
     void testIniciar_quandoImprimeQuadroDeFuncionarios_deveListarTodos() throws Exception {
-        // Adiciona alguns funcionários simulando o banco
         unidade.getFuncionarios().addAll(Arrays.asList(
                 new Funcionario("Jose", "114459885-99", "07/07/2000", "97777-7777", 2000f, "atendente",
                         "Rua 12 de Abril 99", "Quitino", "28651-554", "Rio de Janeiro", "RJ"),
@@ -130,8 +126,6 @@ public class MenuFuncionarioTest {
                 new Funcionario("Caio", "247220159-56", "09/09/2000", "99999-9999", 3000f, "gerente",
                         "Estrada dos Catete 834", "Santa Cruz", "29645-090", "Rio de Janeiro", "RJ")
         ));
-
-        // Simula a entrada do usuário: [4 -> listar todos] [5 -> sair]
         String entradaSimulada = String.join("\n", "4", "5", "");
 
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
@@ -149,10 +143,8 @@ public class MenuFuncionarioTest {
 
     @Test
     void testIniciar_quandoListaVazia_deveInformarUsuario() throws Exception {
-        // Garantir que a lista está vazia
         unidade.getFuncionarios().clear();
 
-        // Simula: [4 -> listar] [5 -> sair]
         String entradaSimulada = "4\n5\n";
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
@@ -162,14 +154,12 @@ public class MenuFuncionarioTest {
         MenuFuncionario.iniciar(unidade, new Scanner(System.in));
 
         String output = saida.toString();
-        // Verifica se entrou no if (isEmpty)
         assertTrue(output.contains("Nenhum funcionário cadastrado."),
                 "Deveria exibir mensagem de lista vazia");
     }
 
     @Test
     void testIniciar_quandoOpcaoInvalida_deveExibirMensagemErro() throws Exception {
-        // Simula: [99 -> inválido] [5 -> sair]
         String entradaSimulada = "99\n5\n";
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
@@ -179,15 +169,12 @@ public class MenuFuncionarioTest {
         MenuFuncionario.iniciar(unidade, new Scanner(System.in));
 
         String output = saida.toString();
-        // Verifica o else final
         assertTrue(output.contains("Opção inválida."),
                 "Deveria informar que a opção é inválida");
     }
 
     @Test
     void testIniciar_quandoAtingirCincoTentativas_deveExibirAviso() throws Exception {
-        // Simula 5 operações quaisquer (ex: listar vazio 5 vezes) e depois sai
-        // [4] [4] [4] [4] [4] -> aviso deve aparecer -> [5] sair
         String entradaSimulada = "4\n4\n4\n4\n4\n5\n";
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
@@ -197,7 +184,6 @@ public class MenuFuncionarioTest {
         MenuFuncionario.iniciar(unidade, new Scanner(System.in));
 
         String output = saida.toString();
-        // Verifica o contador de tentativas
         assertTrue(output.contains("Você já realizou 5 operações."),
                 "Deveria exibir o aviso de limite de operações");
     }
