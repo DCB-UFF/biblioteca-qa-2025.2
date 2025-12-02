@@ -1,6 +1,7 @@
 package test.java.biblioteca.menu;
 
 import biblioteca.biblioteca.Unidade;
+import biblioteca.excecoes.FuncionarioInexistenteException;
 import biblioteca.menu.MenuFuncionario;
 import biblioteca.pessoas.Funcionario;
 import org.junit.jupiter.api.*;
@@ -10,6 +11,11 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MenuFuncionarioTest {
+
+    private static final String CIDADE_RJ = "Rio de Janeiro";
+    private static final String CPF_JOSE = "114459885-99";
+    private static final String CARGO_ATENDENTE = "atendente";
+
 
     private Unidade unidade;
 
@@ -61,7 +67,7 @@ public class MenuFuncionarioTest {
     }
 
     @Test
-    void deveRemoverFuncionarioDaUnidade() throws Exception {
+    void deveRemoverFuncionarioDaUnidade()  {
 
         Funcionario f = new Funcionario(
                 "Carlos", "12345678900", "10/10/1980", "2133334444",
@@ -81,15 +87,15 @@ public class MenuFuncionarioTest {
     }
 
     @Test
-    void testIniciar_quandoBuscaFuncionarioExistente_deveImprimirSeusDados() throws Exception {
+    void testIniciar_quandoBuscaFuncionarioExistente_deveImprimirSeusDados() throws FuncionarioInexistenteException {
         Funcionario f = new Funcionario(
-                "Jose", "114459885-99", "07/07/2000", "97777-7777",
-                2000f, "atendente", "Rua 12 de Abril 99", "Quitino",
-                "28651-554", "Rio de Janeiro", "RJ"
+                "Jose", CPF_JOSE, "07/07/2000", "97777-7777",
+                2000f, CARGO_ATENDENTE, "Rua 12 de Abril 99", "Quitino",
+                "28651-554", CIDADE_RJ, "RJ"
         );
         unidade.getFuncionarios().add(f);
 
-        String entradaSimulada = String.join("\n", "1", "114459885-99", "5", "");
+        String entradaSimulada = String.join("\n", "1", CPF_JOSE, "5", "");
 
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
@@ -100,7 +106,7 @@ public class MenuFuncionarioTest {
 
         String output = saida.toString();
         assertTrue(output.contains("Jose"), "Deveria imprimir os dados do funcionário Jose");
-        assertTrue(output.contains("atendente"), "Deveria exibir o cargo do funcionário");
+        assertTrue(output.contains(CARGO_ATENDENTE), "Deveria exibir o cargo do funcionário");
     }
 
     @Test
@@ -117,14 +123,14 @@ public class MenuFuncionarioTest {
 
 
     @Test
-    void testIniciar_quandoImprimeQuadroDeFuncionarios_deveListarTodos() throws Exception {
+    void testIniciar_quandoImprimeQuadroDeFuncionarios_deveListarTodos() throws FuncionarioInexistenteException {
         unidade.getFuncionarios().addAll(Arrays.asList(
-                new Funcionario("Jose", "114459885-99", "07/07/2000", "97777-7777", 2000f, "atendente",
-                        "Rua 12 de Abril 99", "Quitino", "28651-554", "Rio de Janeiro", "RJ"),
+                new Funcionario("Jose", CPF_JOSE, "07/07/2000", "97777-7777", 2000f, CARGO_ATENDENTE,
+                        "Rua 12 de Abril 99", "Quitino", "28651-554", CIDADE_RJ, "RJ"),
                 new Funcionario("Gustavo", "451878268-52", "08/08/2000", "98888-8888", 2500f, "bibliotecario",
-                        "Travessa do Relogio 218", "Botafogo", "24755-012", "Rio de Janeiro", "RJ"),
+                        "Travessa do Relogio 218", "Botafogo", "24755-012", CIDADE_RJ, "RJ"),
                 new Funcionario("Caio", "247220159-56", "09/09/2000", "99999-9999", 3000f, "gerente",
-                        "Estrada dos Catete 834", "Santa Cruz", "29645-090", "Rio de Janeiro", "RJ")
+                        "Estrada dos Catete 834", "Santa Cruz", "29645-090", CIDADE_RJ, "RJ")
         ));
         String entradaSimulada = String.join("\n", "4", "5", "");
 
@@ -142,7 +148,7 @@ public class MenuFuncionarioTest {
     }
 
     @Test
-    void testIniciar_quandoListaVazia_deveInformarUsuario() throws Exception {
+    void testIniciar_quandoListaVazia_deveInformarUsuario() throws FuncionarioInexistenteException {
         unidade.getFuncionarios().clear();
 
         String entradaSimulada = "4\n5\n";
@@ -159,7 +165,7 @@ public class MenuFuncionarioTest {
     }
 
     @Test
-    void testIniciar_quandoOpcaoInvalida_deveExibirMensagemErro() throws Exception {
+    void testIniciar_quandoOpcaoInvalida_deveExibirMensagemErro() throws FuncionarioInexistenteException {
         String entradaSimulada = "99\n5\n";
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
@@ -174,7 +180,7 @@ public class MenuFuncionarioTest {
     }
 
     @Test
-    void testIniciar_quandoAtingirCincoTentativas_deveExibirAviso() throws Exception {
+    void testIniciar_quandoAtingirCincoTentativas_deveExibirAviso() throws FuncionarioInexistenteException {
         String entradaSimulada = "4\n4\n4\n4\n4\n5\n";
         System.setIn(new ByteArrayInputStream(entradaSimulada.getBytes()));
 
