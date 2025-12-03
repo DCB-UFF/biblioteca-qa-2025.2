@@ -1,2 +1,3 @@
 id,nome,rua,bairro,cep,cidade,estado
-1,UnidadeTesteQA,Rua Teste,Bairro Teste,12345-000,Cidade Teste,RJ
+1,Niteroi,R,B,C,Cid,ES1,UnidadeTesteQA,Rua Teste,Bairro Teste,12345-000,Cidade Teste,RJ
+-1,UnidadeTesteQA,Rua Teste,Bairro Teste,12345-000,Cidade Teste,RJ

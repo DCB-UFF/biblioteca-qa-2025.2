@@ -10,4 +10,11 @@ projeto-biblioteca-java.txt
 bash_script.sh
 bibliotecaComunitaria/src/unidades/
 out/
+livros.csv
+nulllivros.csv
+src/unidades/un-1/
+src/unidades/un1/livros.csvlivros.csv
+report
+biblioteca.iml
+htmlReport
 .gitignore

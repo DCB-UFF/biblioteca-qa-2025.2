@@ -3,7 +3,6 @@ package biblioteca.livros;
 import java.io.*;
 import java.util.ArrayList;
 
-
 /* @author Luam */
 
 public class Emprestimo {
@@ -18,7 +17,7 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
     }
-    
+
     public String getDataEmprestimo() {
         return dataEmprestimo;
     }
@@ -43,9 +42,6 @@ public class Emprestimo {
         this.ISNB = ISNB;
     }
 
-    
-    
-
     public String getDataDevolucao() {
         return dataDevolucao;
     }
@@ -54,15 +50,13 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
-    
-     @Override
+    @Override
     public String toString() {
-        return ("IdLivro: " + this.getISNB() + " - " +"CPF: " + this.getCPF() 
+        return ("IdLivro: " + this.getISNB() + " - " +"CPF: " + this.getCPF()
                 + " - " +  "Data de Emprestimo: " + this.getDataEmprestimo() +
                 " - " + "Data de Devolução: " + this.getDataDevolucao());
     }
-    // checar devolução
-    
+
     public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
         BufferedWriter bw = null;
         String linha = emprestimo.getCPF()+","+emprestimo.getISNB()+","+emprestimo.getDataEmprestimo()+","+
@@ -74,7 +68,7 @@ public class Emprestimo {
             pw.flush();
             pw.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // O teste verifica se isso é impresso no System.err
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -84,7 +78,7 @@ public class Emprestimo {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }   
+            }
         }
     }
 
@@ -94,15 +88,15 @@ public class Emprestimo {
         ArrayList<Emprestimo> emprestimos = new ArrayList<>();
         try {
             br = new BufferedReader(new FileReader(path+"emprestimos.csv"));
-            br.readLine();
-            
+            br.readLine(); // Pula cabeçalho
+
             while ((linha = br.readLine()) != null) {
                 String[] emprestimo = linha.split(",");
                 Emprestimo novo = new Emprestimo(emprestimo[0],emprestimo[1],emprestimo[2],emprestimo[3]);
                 emprestimos.add(novo);
             }
             return emprestimos;
-            
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -114,7 +108,7 @@ public class Emprestimo {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }   
+            }
         }
         return null;
     }
@@ -124,29 +118,33 @@ public class Emprestimo {
         BufferedWriter bw = null;
         File antigo = new File(path+"emprestimos.csv");
         File novo = new File (path+"temp.csv");
-        
+
         try {
             br = new BufferedReader(new FileReader(antigo));
             bw = new BufferedWriter(new FileWriter(novo, true));
             PrintWriter pw= new PrintWriter(bw);
             String linha = "";
-            
+
             while ((linha = br.readLine()) != null) {
-    
+
                 String[] emprestimo = linha.split(",");
-                if ((!emprestimo[0].equals(emprestimoRemovido.getCPF()))
-                        && (!emprestimo[1].equals(emprestimoRemovido.getISNB()))){
+
+                // --- CORREÇÃO DO BUG DE REMOÇÃO ---
+                // Só não escreve (remove) se o CPF E o ISBN forem iguais ao removido.
+                // Se um dos dois for diferente, deve manter a linha.
+                if (!(emprestimo[0].equals(emprestimoRemovido.getCPF())
+                        && emprestimo[1].equals(emprestimoRemovido.getISNB()))){
                     pw.println(linha);
                 }
             }
-            pw.flush();  
+            pw.flush();
             pw.close();
             br.close();
             antigo.delete();
-            
+
             File aux = new File (path+"emprestimos.csv");
             novo.renameTo(aux);
-            
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -158,7 +156,7 @@ public class Emprestimo {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }   
+            }
         }
     }
 
@@ -198,33 +196,34 @@ public class Emprestimo {
                 boolean titleEquals = safeEquals(livro, 1, livroEmprestado.getTitulo());
                 boolean titleEqualsIgnore = safeEqualsIgnoreCase(livro, 1, livroEmprestado.getTitulo());
                 boolean titleContains = safeContains(livro, 1, livroEmprestado.getTitulo());
-                boolean alreadyFlagged = (livro.length > 6 && "true".equalsIgnoreCase(livro[7]));
 
-                // 4) Vários ramos de decisão para aumentar a C.C.
+                // --- CORREÇÃO AQUI ---
+                // Antes estava checando livro[6]. Voltamos para livro[7] conforme o teste espera.
+                // Verificamos se length > 7 (ou seja, tem pelo menos 8 itens, indo do índice 0 ao 7).
+                boolean alreadyFlagged = (livro.length > 7 && "true".equalsIgnoreCase(livro[7]));
+
                 if (titleEquals) {
                     livro = ensureFields(livro, 8);
                     livro[6] = booleano;
                     linhaEditada = joinFields(livro);
                 } else if (titleEqualsIgnore) {
-                    // tratar diferença de caixa como menos prioritário: apenas marca se ainda não estiver marcado
                     livro = ensureFields(livro, 8);
+
+                    // Se NÃO estiver flagado no campo 8 (índice 7), permite alterar
                     if (!alreadyFlagged) {
                         livro[6] = booleano;
                     }
                     linhaEditada = joinFields(livro);
                 } else if (titleContains && "true".equalsIgnoreCase(booleano)) {
-                    // se título contém e estamos marcando como emprestado, atualiza
                     livro = ensureFields(livro, 8);
                     livro[6] = booleano;
                     linhaEditada = joinFields(livro);
                 } else if (isMalformedLine(livro)) {
-                    // linha com conteúdo inesperado: preserva tal como está
                     linhaEditada = linha;
                 } else if (livro.length >= 8 && livro[7] != null && !livro[7].isEmpty()) {
-                    // outro ramo que mantém a linha original se campo 8 estiver presente
+                    // Preserva linha se tiver campo extra não tratado
                     linhaEditada = linha;
                 } else {
-                    // caso padrão: mantém a linha original sem alteração
                     linhaEditada = linha;
                 }
 
@@ -254,10 +253,9 @@ public class Emprestimo {
         }
     }
 
-    // Helpers adicionados para suportar validações acima
     private static boolean isHeaderLine(String linha) {
         String lower = linha.toLowerCase();
-        return lower.contains("titulo") && lower.contains("autor") && lower.contains("paginas") && lower.contains("estaemprestado") ;
+        return lower.contains("titulo") && lower.contains("autor") && lower.contains("paginas") && lower.contains("estaemprestado");
     }
 
     private static boolean safeEquals(String[] arr, int idx, String value) {
