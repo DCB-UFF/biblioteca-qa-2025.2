@@ -9,8 +9,9 @@ projeto-biblioteca-dados.txt
 projeto-biblioteca-java.txt
 bash_script.sh
 bibliotecaComunitaria/src/unidades/
-out/
 htmlReport/
-.gitignore
-src/
 livros.csv
+out/
+src/
+.gitignore
+.gitignore

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MenuFuncionario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.menu</a> &gt; <span class="el_source">MenuFuncionario.java</span></div><h1>MenuFuncionario.java</h1><pre class="source lang-java linenums">package biblioteca.menu;
+
+import biblioteca.biblioteca.*;
+import biblioteca.excecoes.ClienteInexistenteException;
+import biblioteca.excecoes.FuncionarioInexistenteException;
+import biblioteca.pessoas.Cliente;
+import biblioteca.pessoas.Funcionario;
+import static java.lang.System.exit;
+import java.util.Scanner;
+
+/* @author victoria */
+
+<span class="nc" id="L13">public class MenuFuncionario {</span>
+
+    public static void opcoesAcessarAdminFuncionario(){
+        
+<span class="fc" id="L17">        System.out.println(&quot;\n1 - Buscar funcionario&quot;);</span>
+<span class="fc" id="L18">        System.out.println(&quot;2 - Adicionar funcionario&quot;);</span>
+<span class="fc" id="L19">        System.out.println(&quot;3 - Remover funcionario&quot;);</span>
+<span class="fc" id="L20">        System.out.println(&quot;4 - imprimir quadro de funcionarios\n&quot;);</span>
+        
+<span class="fc" id="L22">    }</span>
+    
+    public static void adicionarFuncionario(Unidade aux){
+        
+<span class="fc" id="L26">        Scanner teclado = new Scanner(System.in);</span>
+<span class="fc" id="L27">        Scanner tecla = new Scanner(System.in);</span>
+
+<span class="fc" id="L29">        System.out.println(&quot;\nDigite o nome do funcionário: &quot;);</span>
+<span class="fc" id="L30">        String nome = teclado.nextLine();</span>
+<span class="fc" id="L31">        System.out.println(&quot;\nDigite o cpf do cliente: &quot;);</span>
+<span class="fc" id="L32">        String cpf = teclado.nextLine();</span>
+<span class="fc" id="L33">        System.out.println(&quot;\nDigite o nascimento do funcionário: &quot;);</span>
+<span class="fc" id="L34">        String data = teclado.nextLine();</span>
+<span class="fc" id="L35">        System.out.println(&quot;\nDigite o telefone do funcionário: &quot;);</span>
+<span class="fc" id="L36">        String tele = teclado.nextLine();</span>
+<span class="fc" id="L37">        System.out.println(&quot;\nDigite o salário do funcionário: &quot;);</span>
+<span class="fc" id="L38">        float sala = Float.parseFloat(teclado.nextLine()); // lê linha completa</span>
+<span class="fc" id="L39">        System.out.println(&quot;\nDigite o cargo do funcionário: &quot;);</span>
+<span class="fc" id="L40">        String cargo = teclado.nextLine();</span>
+<span class="fc" id="L41">        System.out.println(&quot;\nDigite a rua do funcionário: &quot;);</span>
+<span class="fc" id="L42">        String rua = teclado.nextLine();</span>
+<span class="fc" id="L43">        System.out.println(&quot;\nDigite o bairro do funcionário: &quot;);</span>
+<span class="fc" id="L44">        String bairro = teclado.nextLine();</span>
+<span class="fc" id="L45">        System.out.println(&quot;\nDigite o cep do funcionário: &quot;);</span>
+<span class="fc" id="L46">        String cep = teclado.nextLine();</span>
+<span class="fc" id="L47">        System.out.println(&quot;\nDigite a cidade do funcionário: &quot;);</span>
+<span class="fc" id="L48">        String cid = teclado.nextLine();</span>
+<span class="fc" id="L49">        System.out.println(&quot;\nDigite o estado do funcionário: &quot;);</span>
+<span class="fc" id="L50">        String est = teclado.nextLine();</span>
+                        
+<span class="fc" id="L52">        Funcionario fun = new Funcionario(nome, cpf, data, tele, sala, cargo, rua, bairro, cep, cid, est);</span>
+<span class="fc" id="L53">        aux.getFuncionarios().add(fun);</span>
+<span class="fc" id="L54">        Funcionario.escreverFuncionario(fun, aux.getPath());</span>
+        
+<span class="fc" id="L56">    }</span>
+    
+     public static void removerFuncionario(Unidade unidadeAtual) throws FuncionarioInexistenteException{
+<span class="fc" id="L59">        Scanner tecla = new Scanner(System.in);</span>
+<span class="fc" id="L60">        System.out.println(&quot;\nDigite o cpf do funcionario: &quot;);</span>
+<span class="fc" id="L61">        String cpf = tecla.nextLine();</span>
+        
+<span class="fc" id="L63">        Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);</span>
+<span class="fc" id="L64">        unidadeAtual.getFuncionarios().remove(buscado);</span>
+<span class="fc" id="L65">        Funcionario.removerFuncionario(buscado, unidadeAtual.getPath());</span>
+<span class="fc" id="L66">        System.out.println(&quot;O funcionario de cpf &quot;+cpf+&quot;foi removido!&quot;);</span>
+
+<span class="fc" id="L68">    }</span>
+
+    public static void iniciar(Unidade unidadeAtual, Scanner teclado) throws FuncionarioInexistenteException {
+        int op;
+<span class="fc" id="L72">        int tentativas = 0;</span>
+<span class="fc" id="L73">        boolean continuar = true;</span>
+
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        while (continuar) {</span>
+<span class="fc" id="L76">            opcoesAcessarAdminFuncionario();</span>
+<span class="fc" id="L77">            op = teclado.nextInt();</span>
+<span class="fc" id="L78">            teclado.nextLine();</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            if (op == 1) {</span>
+<span class="fc" id="L81">                System.out.println(&quot;Digite o cpf do funcionário: &quot;);</span>
+<span class="fc" id="L82">                String cpf = teclado.nextLine();</span>
+<span class="fc" id="L83">                Funcionario buscado = Util.buscarFuncionario(unidadeAtual, cpf);</span>
+<span class="pc bpc" id="L84" title="1 of 2 branches missed.">                if (buscado != null) {</span>
+<span class="fc" id="L85">                    System.out.println(buscado);</span>
+                } else {
+<span class="nc" id="L87">                    System.out.println(&quot;Funcionário não encontrado.&quot;);</span>
+                }
+<span class="fc" id="L89">                tentativas++;</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">            } else if (op == 2) {</span>
+<span class="nc" id="L91">                adicionarFuncionario(unidadeAtual);</span>
+<span class="nc" id="L92">                tentativas++;</span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">            } else if (op == 3) {</span>
+<span class="nc" id="L94">                removerFuncionario(unidadeAtual);</span>
+<span class="nc" id="L95">                tentativas++;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            } else if (op == 4) {</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">                if (unidadeAtual.getFuncionarios().isEmpty()) {</span>
+<span class="nc" id="L98">                    System.out.println(&quot;Nenhum funcionário cadastrado.&quot;);</span>
+                } else {
+<span class="fc bfc" id="L100" title="All 2 branches covered.">                    for (Funcionario f : unidadeAtual.getFuncionarios()) {</span>
+<span class="fc" id="L101">                        System.out.println(f);</span>
+<span class="fc" id="L102">                    }</span>
+                }
+<span class="fc" id="L104">                tentativas++;</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">            } else if (op == 5) {</span>
+<span class="fc" id="L106">                System.out.println(&quot;Fechando aplicação...&quot;);</span>
+<span class="fc" id="L107">                continuar = false;</span>
+            } else {
+<span class="nc" id="L109">                System.out.println(&quot;Opção inválida.&quot;);</span>
+<span class="nc" id="L110">                tentativas++;</span>
+            }
+
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">            if (tentativas &gt;= 5) {</span>
+<span class="nc" id="L114">                System.out.println(&quot;Você já realizou 5 operações.&quot;);</span>
+            }
+        }
+<span class="fc" id="L117">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

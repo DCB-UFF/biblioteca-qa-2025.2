@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Emprestimo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">test in biblioteca Coverage Results</a> &gt; <a href="index.source.html" class="el_package">biblioteca.livros</a> &gt; <span class="el_source">Emprestimo.java</span></div><h1>Emprestimo.java</h1><pre class="source lang-java linenums">package biblioteca.livros;
+
+import java.io.*;
+import java.util.ArrayList;
+
+
+/* @author Luam */
+
+public class Emprestimo {
+    private String CPF;
+    private String ISNB;
+    private String dataEmprestimo;
+    private String dataDevolucao;
+
+<span class="fc" id="L15">    public Emprestimo(String CPF, String ISNB, String dataEmprestimo, String dataDevolucao) {</span>
+<span class="fc" id="L16">        this.CPF= CPF;</span>
+<span class="fc" id="L17">        this.ISNB = ISNB;</span>
+<span class="fc" id="L18">        this.dataEmprestimo = dataEmprestimo;</span>
+<span class="fc" id="L19">        this.dataDevolucao = dataDevolucao;</span>
+<span class="fc" id="L20">    }</span>
+    
+    public String getDataEmprestimo() {
+<span class="fc" id="L23">        return dataEmprestimo;</span>
+    }
+
+    public void setDataEmprestimo(String dataEmprestimo) {
+<span class="fc" id="L27">        this.dataEmprestimo = dataEmprestimo;</span>
+<span class="fc" id="L28">    }</span>
+
+    public String getCPF() {
+<span class="fc" id="L31">        return CPF;</span>
+    }
+
+    public void setCPF(String CPF) {
+<span class="fc" id="L35">        this.CPF = CPF;</span>
+<span class="fc" id="L36">    }</span>
+
+    public String getISNB() {
+<span class="fc" id="L39">        return ISNB;</span>
+    }
+
+    public void setISNB(String ISNB) {
+<span class="fc" id="L43">        this.ISNB = ISNB;</span>
+<span class="fc" id="L44">    }</span>
+
+    
+    
+
+    public String getDataDevolucao() {
+<span class="fc" id="L50">        return dataDevolucao;</span>
+    }
+
+    public void setDataDevolucao(String dataDevolucao) {
+<span class="fc" id="L54">        this.dataDevolucao = dataDevolucao;</span>
+<span class="fc" id="L55">    }</span>
+
+    
+     @Override
+    public String toString() {
+<span class="nc" id="L60">        return (&quot;IdLivro: &quot; + this.getISNB() + &quot; - &quot; +&quot;CPF: &quot; + this.getCPF() </span>
+<span class="nc" id="L61">                + &quot; - &quot; +  &quot;Data de Emprestimo: &quot; + this.getDataEmprestimo() +</span>
+<span class="nc" id="L62">                &quot; - &quot; + &quot;Data de Devolução: &quot; + this.getDataDevolucao());</span>
+    }
+    // checar devolução
+    
+    public static void escreverEmprestimo(Emprestimo emprestimo, String path) {
+<span class="fc" id="L67">        BufferedWriter bw = null;</span>
+<span class="fc" id="L68">        String linha = emprestimo.getCPF()+&quot;,&quot;+emprestimo.getISNB()+&quot;,&quot;+emprestimo.getDataEmprestimo()+&quot;,&quot;+</span>
+<span class="fc" id="L69">                emprestimo.getDataDevolucao();</span>
+        try {
+<span class="fc" id="L71">            bw = new BufferedWriter(new FileWriter(path+&quot;emprestimos.csv&quot;, true));</span>
+<span class="fc" id="L72">            PrintWriter pw= new PrintWriter(bw);</span>
+<span class="fc" id="L73">            pw.println(linha);</span>
+<span class="fc" id="L74">            pw.flush();</span>
+<span class="fc" id="L75">            pw.close();</span>
+<span class="fc" id="L76">        } catch (FileNotFoundException e) {</span>
+<span class="fc" id="L77">            e.printStackTrace();</span>
+<span class="nc" id="L78">        } catch (IOException e) {</span>
+<span class="nc" id="L79">            e.printStackTrace();</span>
+        } finally {
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            if (bw != null) {</span>
+                try {
+<span class="fc" id="L83">                    bw.close();</span>
+<span class="nc" id="L84">                } catch (IOException e) {</span>
+<span class="nc" id="L85">                    e.printStackTrace();</span>
+<span class="fc" id="L86">                }</span>
+            }   
+        }
+<span class="fc" id="L89">    }</span>
+
+    public static ArrayList&lt;Emprestimo&gt; leitorEmprestimos(String path){
+<span class="fc" id="L92">        BufferedReader br = null;</span>
+<span class="fc" id="L93">        String linha = &quot;&quot;;</span>
+<span class="fc" id="L94">        ArrayList&lt;Emprestimo&gt; emprestimos = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="fc" id="L96">            br = new BufferedReader(new FileReader(path+&quot;emprestimos.csv&quot;));</span>
+<span class="fc" id="L97">            br.readLine();</span>
+            
+<span class="fc bfc" id="L99" title="All 2 branches covered.">            while ((linha = br.readLine()) != null) {</span>
+<span class="fc" id="L100">                String[] emprestimo = linha.split(&quot;,&quot;);</span>
+<span class="fc" id="L101">                Emprestimo novo = new Emprestimo(emprestimo[0],emprestimo[1],emprestimo[2],emprestimo[3]);</span>
+<span class="fc" id="L102">                emprestimos.add(novo);</span>
+<span class="fc" id="L103">            }</span>
+<span class="fc" id="L104">            return emprestimos;</span>
+            
+<span class="fc" id="L106">        } catch (FileNotFoundException e) {</span>
+<span class="fc" id="L107">            e.printStackTrace();</span>
+<span class="nc" id="L108">        } catch (IOException e) {</span>
+<span class="nc" id="L109">            e.printStackTrace();</span>
+        } finally {
+<span class="fc bfc" id="L111" title="All 2 branches covered.">            if (br != null) {</span>
+                try {
+<span class="fc" id="L113">                    br.close();</span>
+<span class="nc" id="L114">                } catch (IOException e) {</span>
+<span class="nc" id="L115">                    e.printStackTrace();</span>
+<span class="fc" id="L116">                }</span>
+            }   
+        }
+<span class="fc" id="L119">        return null;</span>
+    }
+
+    public static void removerEmprestimo(Emprestimo emprestimoRemovido, String path) {
+<span class="fc" id="L123">        BufferedReader br = null;</span>
+<span class="fc" id="L124">        BufferedWriter bw = null;</span>
+<span class="fc" id="L125">        File antigo = new File(path+&quot;emprestimos.csv&quot;);</span>
+<span class="fc" id="L126">        File novo = new File (path+&quot;temp.csv&quot;);</span>
+        
+        try {
+<span class="fc" id="L129">            br = new BufferedReader(new FileReader(antigo));</span>
+<span class="fc" id="L130">            bw = new BufferedWriter(new FileWriter(novo, true));</span>
+<span class="fc" id="L131">            PrintWriter pw= new PrintWriter(bw);</span>
+<span class="fc" id="L132">            String linha = &quot;&quot;;</span>
+            
+<span class="fc bfc" id="L134" title="All 2 branches covered.">            while ((linha = br.readLine()) != null) {</span>
+    
+<span class="fc" id="L136">                String[] emprestimo = linha.split(&quot;,&quot;);</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">                if ((!emprestimo[0].equals(emprestimoRemovido.getCPF()))</span>
+<span class="pc bpc" id="L138" title="1 of 2 branches missed.">                        &amp;&amp; (!emprestimo[1].equals(emprestimoRemovido.getISNB()))){</span>
+<span class="fc" id="L139">                    pw.println(linha);</span>
+                }
+<span class="fc" id="L141">            }</span>
+<span class="fc" id="L142">            pw.flush();  </span>
+<span class="fc" id="L143">            pw.close();</span>
+<span class="fc" id="L144">            br.close();</span>
+<span class="fc" id="L145">            antigo.delete();</span>
+            
+<span class="fc" id="L147">            File aux = new File (path+&quot;emprestimos.csv&quot;);</span>
+<span class="fc" id="L148">            novo.renameTo(aux);</span>
+            
+<span class="fc" id="L150">        } catch (FileNotFoundException e) {</span>
+<span class="fc" id="L151">            e.printStackTrace();</span>
+<span class="nc" id="L152">        } catch (IOException e) {</span>
+<span class="nc" id="L153">            e.printStackTrace();</span>
+        } finally {
+<span class="fc bfc" id="L155" title="All 2 branches covered.">            if (bw != null) {</span>
+                try {
+<span class="fc" id="L157">                    bw.close();</span>
+<span class="nc" id="L158">                } catch (IOException e) {</span>
+<span class="nc" id="L159">                    e.printStackTrace();</span>
+<span class="fc" id="L160">                }</span>
+            }   
+        }
+<span class="fc" id="L163">    }</span>
+
+    public static void modificarEmprestimo(Acervo acervo, Livro livroEmprestado, String path, String booleano) {
+<span class="fc" id="L166">        BufferedReader br = null;</span>
+<span class="fc" id="L167">        BufferedWriter bw = null;</span>
+<span class="fc" id="L168">        File antigo = new File(path + &quot;/livros.csv&quot;);</span>
+<span class="fc" id="L169">        File novo = new File(path + &quot;/temp.csv&quot;);</span>
+        try {
+<span class="fc" id="L171">            br = new BufferedReader(new FileReader(antigo));</span>
+<span class="fc" id="L172">            bw = new BufferedWriter(new FileWriter(novo, true));</span>
+<span class="fc" id="L173">            PrintWriter pw = new PrintWriter(bw);</span>
+            String linha;
+            String linhaEditada;
+
+<span class="fc bfc" id="L177" title="All 2 branches covered.">            while ((linha = br.readLine()) != null) {</span>
+
+                // 1) Linha vazia
+<span class="fc bfc" id="L180" title="All 2 branches covered.">                if (linha.trim().isEmpty()) {</span>
+<span class="fc" id="L181">                    pw.println(linha);</span>
+<span class="fc" id="L182">                    continue;</span>
+                }
+
+                // 2) Cabeçalho
+<span class="fc bfc" id="L186" title="All 2 branches covered.">                if (isHeaderLine(linha)) {</span>
+<span class="fc" id="L187">                    pw.println(linha);</span>
+<span class="fc" id="L188">                    continue;</span>
+                }
+
+<span class="fc" id="L191">                String[] livro = linha.split(&quot;,&quot;);</span>
+                // 3) Linha malformada (poucos campos)
+<span class="fc bfc" id="L193" title="All 2 branches covered.">                if (livro.length &lt; 2) {</span>
+<span class="fc" id="L194">                    pw.println(linha);</span>
+<span class="fc" id="L195">                    continue;</span>
+                }
+
+<span class="fc" id="L198">                boolean titleEquals = safeEquals(livro, 1, livroEmprestado.getTitulo());</span>
+<span class="fc" id="L199">                boolean titleEqualsIgnore = safeEqualsIgnoreCase(livro, 1, livroEmprestado.getTitulo());</span>
+<span class="fc" id="L200">                boolean titleContains = safeContains(livro, 1, livroEmprestado.getTitulo());</span>
+<span class="fc bfc" id="L201" title="All 4 branches covered.">                boolean alreadyFlagged = (livro.length &gt; 6 &amp;&amp; &quot;true&quot;.equalsIgnoreCase(livro[7]));</span>
+
+                // 4) Vários ramos de decisão para aumentar a C.C.
+<span class="fc bfc" id="L204" title="All 2 branches covered.">                if (titleEquals) {</span>
+<span class="fc" id="L205">                    livro = ensureFields(livro, 8);</span>
+<span class="fc" id="L206">                    livro[6] = booleano;</span>
+<span class="fc" id="L207">                    linhaEditada = joinFields(livro);</span>
+<span class="fc bfc" id="L208" title="All 2 branches covered.">                } else if (titleEqualsIgnore) {</span>
+                    // tratar diferença de caixa como menos prioritário: apenas marca se ainda não estiver marcado
+<span class="fc" id="L210">                    livro = ensureFields(livro, 8);</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">                    if (!alreadyFlagged) {</span>
+<span class="fc" id="L212">                        livro[6] = booleano;</span>
+                    }
+<span class="fc" id="L214">                    linhaEditada = joinFields(livro);</span>
+<span class="fc bfc" id="L215" title="All 4 branches covered.">                } else if (titleContains &amp;&amp; &quot;true&quot;.equalsIgnoreCase(booleano)) {</span>
+                    // se título contém e estamos marcando como emprestado, atualiza
+<span class="fc" id="L217">                    livro = ensureFields(livro, 8);</span>
+<span class="fc" id="L218">                    livro[6] = booleano;</span>
+<span class="fc" id="L219">                    linhaEditada = joinFields(livro);</span>
+<span class="pc bpc" id="L220" title="1 of 2 branches missed.">                } else if (isMalformedLine(livro)) {</span>
+                    // linha com conteúdo inesperado: preserva tal como está
+<span class="nc" id="L222">                    linhaEditada = linha;</span>
+<span class="pc bpc" id="L223" title="3 of 6 branches missed.">                } else if (livro.length &gt;= 8 &amp;&amp; livro[7] != null &amp;&amp; !livro[7].isEmpty()) {</span>
+                    // outro ramo que mantém a linha original se campo 8 estiver presente
+<span class="fc" id="L225">                    linhaEditada = linha;</span>
+                } else {
+                    // caso padrão: mantém a linha original sem alteração
+<span class="nc" id="L228">                    linhaEditada = linha;</span>
+                }
+
+<span class="fc" id="L231">                pw.println(linhaEditada);</span>
+<span class="fc" id="L232">            }</span>
+
+<span class="fc" id="L234">            pw.flush();</span>
+<span class="fc" id="L235">            pw.close();</span>
+<span class="fc" id="L236">            br.close();</span>
+<span class="fc" id="L237">            antigo.delete();</span>
+
+<span class="fc" id="L239">            File aux = new File(path + &quot;/livros.csv&quot;);</span>
+<span class="fc" id="L240">            novo.renameTo(aux);</span>
+
+<span class="fc" id="L242">        } catch (FileNotFoundException e) {</span>
+<span class="fc" id="L243">            e.printStackTrace();</span>
+<span class="nc" id="L244">        } catch (IOException e) {</span>
+<span class="nc" id="L245">            e.printStackTrace();</span>
+        } finally {
+<span class="fc bfc" id="L247" title="All 2 branches covered.">            if (bw != null) {</span>
+                try {
+<span class="fc" id="L249">                    bw.close();</span>
+<span class="nc" id="L250">                } catch (IOException e) {</span>
+<span class="nc" id="L251">                    e.printStackTrace();</span>
+<span class="fc" id="L252">                }</span>
+            }
+        }
+<span class="fc" id="L255">    }</span>
+
+    // Helpers adicionados para suportar validações acima
+    private static boolean isHeaderLine(String linha) {
+<span class="fc" id="L259">        String lower = linha.toLowerCase();</span>
+<span class="pc bpc" id="L260" title="1 of 8 branches missed.">        return lower.contains(&quot;titulo&quot;) &amp;&amp; lower.contains(&quot;autor&quot;) &amp;&amp; lower.contains(&quot;paginas&quot;) &amp;&amp; lower.contains(&quot;estaemprestado&quot;) ;</span>
+    }
+
+    private static boolean safeEquals(String[] arr, int idx, String value) {
+<span class="pc bpc" id="L264" title="2 of 6 branches missed.">        return (arr.length &gt; idx &amp;&amp; arr[idx] != null) &amp;&amp; arr[idx].equals(value);</span>
+    }
+
+    private static boolean safeEqualsIgnoreCase(String[] arr, int idx, String value) {
+<span class="pc bpc" id="L268" title="2 of 6 branches missed.">        return (arr.length &gt; idx &amp;&amp; arr[idx] != null) &amp;&amp; arr[idx].equalsIgnoreCase(value);</span>
+    }
+
+    private static boolean safeContains(String[] arr, int idx, String value) {
+<span class="pc bpc" id="L272" title="2 of 6 branches missed.">        return (arr.length &gt; idx &amp;&amp; arr[idx] != null) &amp;&amp; arr[idx].contains(value);</span>
+    }
+
+    private static boolean isMalformedLine(String[] arr) {
+<span class="fc" id="L276">        int empty = 0;</span>
+<span class="fc bfc" id="L277" title="All 2 branches covered.">        for (String s : arr) {</span>
+<span class="pc bpc" id="L278" title="2 of 4 branches missed.">            if (s == null || s.trim().isEmpty()) empty++;</span>
+        }
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">        return empty &gt;= arr.length - 1;</span>
+    }
+
+    private static String[] ensureFields(String[] arr, int size) {
+<span class="fc bfc" id="L284" title="All 2 branches covered.">        if (arr.length &gt;= size) return arr;</span>
+<span class="fc" id="L285">        String[] n = new String[size];</span>
+<span class="fc bfc" id="L286" title="All 2 branches covered.">        for (int i = 0; i &lt; size; i++) {</span>
+<span class="fc bfc" id="L287" title="All 2 branches covered.">            if (i &lt; arr.length) n[i] = arr[i];</span>
+<span class="fc" id="L288">            else n[i] = &quot;&quot;;</span>
+        }
+<span class="fc" id="L290">        return n;</span>
+    }
+
+    private static String joinFields(String[] arr) {
+<span class="fc" id="L294">        StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L295" title="All 2 branches covered.">        for (int i = 0; i &lt; arr.length; i++) {</span>
+<span class="fc bfc" id="L296" title="All 2 branches covered.">            if (i &gt; 0) sb.append(&quot;,&quot;);</span>
+<span class="pc bpc" id="L297" title="1 of 2 branches missed.">            sb.append(arr[i] == null ? &quot;&quot; : arr[i]);</span>
+        }
+<span class="fc" id="L299">        return sb.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
